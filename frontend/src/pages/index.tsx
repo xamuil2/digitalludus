@@ -38,7 +38,8 @@ const Home: React.FC = () => {
                 />
             </section>
             <footer style={{ marginTop: '2rem', color: '#aaa', fontSize: '0.95rem' }}>
-                &copy; {new Date().getFullYear()} DigitalLudus
+                a Max Liu & Ronald Qiao production<br />
+                Digitalludus &copy; {new Date().getFullYear()}
             </footer>
         </main>
     );
