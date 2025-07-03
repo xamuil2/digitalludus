@@ -1,0 +1,54 @@
+<svg width="200" height="60" viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bookGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8B0000;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#B22222;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#DC143C;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#FFA500;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FF8C00;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="pageGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFFEF7;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F5F5DC;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="textGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8B0000;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#B22222;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Book Logo -->
+  <!-- Book spine -->
+  <rect x="5" y="15" width="4" height="30" fill="url(#bookGradient)" rx="1"/>
+  
+  <!-- Left page -->
+  <path d="M9 15 Q10 12 13 12 L25 12 Q27 12 27 15 L27 40 Q27 43 25 43 L13 43 Q10 48 9 43 Z" 
+        fill="url(#pageGradient)" stroke="url(#goldGradient)" stroke-width="0.8"/>
+  
+  <!-- Right page -->
+  <path d="M33 15 Q33 12 35 12 L47 12 Q50 12 51 15 L51 43 Q50 48 47 43 L35 43 Q33 43 33 40 Z" 
+        fill="url(#pageGradient)" stroke="url(#goldGradient)" stroke-width="0.8"/>
+  
+  <!-- Book binding center -->
+  <rect x="27" y="13" width="6" height="32" fill="url(#bookGradient)" rx="1"/>
+  
+  <!-- Decorative elements -->
+  <line x1="13" y1="18" x2="23" y2="18" stroke="url(#goldGradient)" stroke-width="0.8" opacity="0.6"/>
+  <line x1="13" y1="21" x2="25" y2="21" stroke="url(#goldGradient)" stroke-width="0.8" opacity="0.6"/>
+  <line x1="13" y1="24" x2="21" y2="24" stroke="url(#goldGradient)" stroke-width="0.8" opacity="0.6"/>
+  
+  <line x1="37" y1="18" x2="47" y2="18" stroke="url(#goldGradient)" stroke-width="0.8" opacity="0.6"/>
+  <line x1="37" y1="21" x2="45" y2="21" stroke="url(#goldGradient)" stroke-width="0.8" opacity="0.6"/>
+  <line x1="37" y1="24" x2="48" y2="24" stroke="url(#goldGradient)" stroke-width="0.8" opacity="0.6"/>
+  
+  <!-- Text: DigitalLudus -->
+  <text x="65" y="25" font-family="Georgia, serif" font-size="16" font-weight="bold" fill="url(#textGradient)">Digital</text>
+  <text x="65" y="42" font-family="Georgia, serif" font-size="16" font-weight="bold" fill="url(#goldGradient)">Ludus</text>
+  
+  <!-- Decorative flourish -->
+  <circle cx="18" cy="32" r="1.5" fill="url(#goldGradient)" opacity="0.7"/>
+  <circle cx="42" cy="32" r="1.5" fill="url(#goldGradient)" opacity="0.7"/>
+</svg>

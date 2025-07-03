@@ -79,9 +79,11 @@ export default function LessonPage() {
                 <ArrowLeft className="h-5 w-5 group-hover:-translate-x-1 transition-transform" />
               </Button>
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 via-indigo-600 to-purple-600 rounded-xl flex items-center justify-center shadow-lg shadow-blue-200/50">
-                  <GraduationCap className="h-7 w-7 text-white" />
-                </div>
+                <img 
+                  src="/logo.svg" 
+                  alt="DigitalLudus Logo" 
+                  className="h-10 w-auto"
+                />
                 <div>
                   <h1 className="text-2xl font-bold bg-gradient-to-r from-slate-900 via-blue-800 to-indigo-800 bg-clip-text text-transparent">
                     {lesson.title}
