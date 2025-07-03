@@ -271,7 +271,11 @@ const Home: React.FC = () => {
                             </div>
 
                             <div className="flex justify-center mb-12">
-                                <VocabularyDriller selectedLesson={selectedLesson} />
+                                <VocabularyDriller 
+                                    selectedLesson={selectedLesson} 
+                                    allowLessonSelection={true}
+                                    allowMultipleLessons={true}
+                                />
                             </div>
                             
                             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">

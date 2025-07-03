@@ -1,17 +1,31 @@
 import React, { useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { Progress } from '@/components/ui/progress';
 import { Badge } from '@/components/ui/badge';
 import { 
-  ChevronDown, 
-  ChevronUp, 
-  Eye, 
+  BookOpen, 
+  Brain, 
+  CheckCircle, 
+  PenTool, 
+  Target, 
+  Trophy,
+  Clock,
+  FileText,
+  Languages,
+  BookOpenCheck,
+  Lightbulb,
+  Sparkles,
+  Globe,
+  ArrowRight,
+  Star,
+  Eye,
   EyeOff,
-  BookOpen,
   MessageCircle,
-  Brain
+  ChevronDown
 } from 'lucide-react';
-import { type Lesson } from '@/data/lessons';
+import { type Lesson, type LessonSection } from '@/data/lessons';
+import VocabularyDriller from '@/components/VocabularyDriller';
 
 // Component for displaying the prose passage as continuous text
 export function ProsePassage({ lesson }: { lesson: Lesson }) {
@@ -168,6 +182,26 @@ export function VocabularySection({ lesson }: { lesson: Lesson }) {
               )}
             </div>
           ))}
+        </div>
+        
+        {/* Vocabulary Practice Section */}
+        <div className="mt-12 pt-8 border-t border-slate-200">
+          <div className="text-center mb-8">
+            <h3 className="text-xl font-bold text-slate-800 mb-2 flex items-center justify-center gap-2">
+              <Brain className="h-6 w-6 text-emerald-600" />
+              Practice Vocabulary
+            </h3>
+            <p className="text-slate-600">
+              Test your knowledge with interactive vocabulary drills
+            </p>
+          </div>
+          
+          <div className="flex justify-center">
+            <VocabularyDriller 
+              selectedLesson={lesson.id} 
+              allowLessonSelection={false}
+            />
+          </div>
         </div>
       </CardContent>
     </Card>
