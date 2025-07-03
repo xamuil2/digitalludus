@@ -43,8 +43,8 @@ export default function LessonPage() {
       <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-indigo-50/40 flex items-center justify-center">
         <Card className="w-full max-w-md border-0 shadow-xl shadow-slate-200/50">
           <CardHeader className="text-center">
-            <div className="w-16 h-16 bg-gradient-to-br from-red-100 to-red-200 rounded-2xl flex items-center justify-center mx-auto mb-4">
-              <FileText className="h-8 w-8 text-red-600" />
+            <div className="w-16 h-16 bg-gradient-to-br from-blue-100 to-blue-200 rounded-2xl flex items-center justify-center mx-auto mb-4">
+              <FileText className="h-8 w-8 text-blue-600" />
             </div>
             <CardTitle className="text-2xl">Lesson Not Found</CardTitle>
             <CardDescription className="text-lg">
@@ -241,14 +241,14 @@ export default function LessonPage() {
                   </TabsTrigger>
                   <TabsTrigger 
                     value="vocabulary" 
-                    className="flex flex-col items-center gap-2 py-3 px-4 data-[state=active]:bg-gradient-to-br data-[state=active]:from-purple-500 data-[state=active]:to-pink-600 data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:shadow-purple-200/50 rounded-lg font-medium transition-all"
+                    className="flex flex-col items-center gap-2 py-3 px-4 data-[state=active]:bg-gradient-to-br data-[state=active]:from-blue-500 data-[state=active]:to-indigo-600 data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:shadow-blue-200/50 rounded-lg font-medium transition-all"
                   >
                     <Brain className="h-4 w-4" />
                     <span className="text-xs">Vocabulary</span>
                   </TabsTrigger>
                   <TabsTrigger 
                     value="grammar" 
-                    className="flex flex-col items-center gap-2 py-3 px-4 data-[state=active]:bg-gradient-to-br data-[state=active]:from-orange-500 data-[state=active]:to-red-600 data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:shadow-orange-200/50 rounded-lg font-medium transition-all"
+                    className="flex flex-col items-center gap-2 py-3 px-4 data-[state=active]:bg-gradient-to-br data-[state=active]:from-orange-500 data-[state=active]:to-amber-600 data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:shadow-orange-200/50 rounded-lg font-medium transition-all"
                   >
                     <PenTool className="h-4 w-4" />
                     <span className="text-xs">Grammar</span>
@@ -301,8 +301,8 @@ export default function LessonPage() {
 
                     {/* Cultural Context */}
                     {lesson.culturalNotes && lesson.culturalNotes.length > 0 && (
-                      <div className="bg-gradient-to-br from-purple-50 to-pink-50 p-6 rounded-xl border border-purple-200/50">
-                        <h3 className="text-xl font-bold text-purple-800 mb-4 flex items-center gap-2">
+                      <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-6 rounded-xl border border-blue-200/50">
+                        <h3 className="text-xl font-bold text-blue-800 mb-4 flex items-center gap-2">
                           <Globe className="h-6 w-6" />
                           Cultural Context
                         </h3>

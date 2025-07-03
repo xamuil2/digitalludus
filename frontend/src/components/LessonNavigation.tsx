@@ -62,7 +62,7 @@ export default function LessonNavigation({ selectedLesson, onLessonSelect }: Les
                     ? 'bg-gradient-to-r from-emerald-400 to-teal-500'
                     : isLocked
                       ? 'bg-gradient-to-r from-slate-300 to-slate-400'
-                      : 'bg-gradient-to-r from-purple-400 to-pink-500'
+                      : 'bg-gradient-to-r from-blue-400 to-indigo-500'
               }`}></div>
               
               <CardHeader className="pb-4">
@@ -166,7 +166,7 @@ export default function LessonNavigation({ selectedLesson, onLessonSelect }: Les
                         ? 'bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white shadow-lg hover:shadow-xl'
                         : isCompleted
                           ? 'bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white shadow-lg hover:shadow-xl'
-                          : 'bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white shadow-lg hover:shadow-xl'
+                          : 'bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white shadow-lg hover:shadow-xl'
                   }`}
                   disabled={isLocked}
                   size="sm"

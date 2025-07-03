@@ -223,10 +223,10 @@ export function GrammarSection({ lesson }: { lesson: Lesson }) {
   };
 
   const gradients = [
-    'from-purple-50 to-pink-50',
+    'from-blue-50 to-indigo-50',
     'from-blue-50 to-cyan-50', 
     'from-green-50 to-emerald-50',
-    'from-orange-50 to-red-50',
+    'from-orange-50 to-amber-50',
     'from-indigo-50 to-purple-50',
     'from-teal-50 to-blue-50',
     'from-yellow-50 to-orange-50'

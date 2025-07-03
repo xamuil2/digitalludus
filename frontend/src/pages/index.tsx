@@ -111,7 +111,7 @@ const Home: React.FC = () => {
                             </TabsTrigger>
                             <TabsTrigger 
                                 value="vocabulary" 
-                                className="flex flex-col items-center gap-2 py-4 px-6 data-[state=active]:bg-gradient-to-br data-[state=active]:from-purple-500 data-[state=active]:to-pink-600 data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:shadow-purple-200/50 rounded-lg font-medium transition-all"
+                                className="flex flex-col items-center gap-2 py-4 px-6 data-[state=active]:bg-gradient-to-br data-[state=active]:from-blue-500 data-[state=active]:to-indigo-600 data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:shadow-blue-200/50 rounded-lg font-medium transition-all"
                             >
                                 <Brain className="h-5 w-5" />
                                 <span className="text-sm">Vocabulary</span>
@@ -156,7 +156,7 @@ const Home: React.FC = () => {
                                     </CardContent>
                                 </Card>
 
-                                <Card className="border-0 bg-gradient-to-br from-purple-50 to-pink-50 shadow-lg shadow-purple-100/50">
+                                <Card className="border-0 bg-gradient-to-br from-blue-50 to-indigo-50 shadow-lg shadow-blue-100/50">
                                     <CardHeader className="pb-3">
                                         <CardTitle className="text-lg text-purple-800 flex items-center gap-2">
                                             <Target className="h-5 w-5" />
@@ -261,7 +261,7 @@ const Home: React.FC = () => {
                     <TabsContent value="vocabulary" className="space-y-8">
                         <div className="max-w-6xl mx-auto">
                             <div className="text-center mb-12">
-                                <h3 className="text-3xl font-bold mb-4 bg-gradient-to-r from-purple-800 to-pink-800 bg-clip-text text-transparent">
+                                <h3 className="text-3xl font-bold mb-4 bg-gradient-to-r from-blue-800 to-indigo-800 bg-clip-text text-transparent">
                                     Vocabulary Practice
                                 </h3>
                                 <p className="text-lg text-slate-600 max-w-2xl mx-auto">
@@ -279,28 +279,28 @@ const Home: React.FC = () => {
                             </div>
                             
                             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-                                <Card className="border-0 bg-gradient-to-br from-purple-50 to-pink-50 shadow-lg shadow-purple-100/50">
+                                <Card className="border-0 bg-gradient-to-br from-blue-50 to-indigo-50 shadow-lg shadow-blue-100/50">
                                     <CardHeader>
-                                        <CardTitle className="text-lg text-purple-800 flex items-center gap-2">
+                                        <CardTitle className="text-lg text-blue-800 flex items-center gap-2">
                                             <Brain className="h-5 w-5" />
                                             Study Strategy
                                         </CardTitle>
                                     </CardHeader>
-                                    <CardContent className="text-sm space-y-3 text-purple-700">
+                                    <CardContent className="text-sm space-y-3 text-blue-700">
                                         <div className="flex items-center gap-2">
-                                            <div className="w-2 h-2 bg-purple-400 rounded-full"></div>
+                                            <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
                                             Review words multiple times
                                         </div>
                                         <div className="flex items-center gap-2">
-                                            <div className="w-2 h-2 bg-purple-400 rounded-full"></div>
+                                            <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
                                             Practice both directions
                                         </div>
                                         <div className="flex items-center gap-2">
-                                            <div className="w-2 h-2 bg-purple-400 rounded-full"></div>
+                                            <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
                                             Focus on difficult words
                                         </div>
                                         <div className="flex items-center gap-2">
-                                            <div className="w-2 h-2 bg-purple-400 rounded-full"></div>
+                                            <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
                                             Use spaced repetition
                                         </div>
                                     </CardContent>
@@ -443,9 +443,11 @@ const Home: React.FC = () => {
                 <div className="container mx-auto px-4 py-12">
                     <div className="text-center">
                         <div className="flex justify-center mb-6">
-                            <div className="w-16 h-16 bg-gradient-to-br from-blue-500 via-indigo-600 to-purple-600 rounded-2xl flex items-center justify-center shadow-xl shadow-blue-200/50">
-                                <GraduationCap className="h-8 w-8 text-white" />
-                            </div>
+                            <img 
+                                src="/logo.svg" 
+                                alt="DigitalLudus Logo" 
+                                className="w-16 h-12"
+                            />
                         </div>
                         <h4 className="text-2xl font-bold mb-3 bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-transparent">
                             DigitalLudus
