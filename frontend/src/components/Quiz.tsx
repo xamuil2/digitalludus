@@ -1,15 +1,18 @@
 import { useState } from 'react';
+import { useRouter } from 'next/router';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
-import { CheckCircle, XCircle, Trophy, BookOpen } from 'lucide-react';
+import { CheckCircle, XCircle, Trophy, BookOpen, ArrowRight } from 'lucide-react';
 import { getQuizByLesson, type QuizQuestion } from '@/data/quiz';
+import { getAllLessons } from '@/data/lessons';
 
 interface QuizProps {
   selectedLesson?: number;
 }
 
 export default function Quiz({ selectedLesson = 1 }: QuizProps) {
+  const router = useRouter();
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
   const [showResult, setShowResult] = useState(false);
@@ -20,6 +23,8 @@ export default function Quiz({ selectedLesson = 1 }: QuizProps) {
   const questions = getQuizByLesson(selectedLesson);
   const currentQuestion = questions[currentQuestionIndex];
   const progress = questions.length > 0 ? ((currentQuestionIndex + 1) / questions.length) * 100 : 0;
+  const allLessons = getAllLessons();
+  const nextLesson = allLessons.find(lesson => lesson.id === selectedLesson + 1);
 
   const handleAnswerSelect = (answerIndex: number) => {
     if (showResult) return;
@@ -70,6 +75,12 @@ export default function Quiz({ selectedLesson = 1 }: QuizProps) {
     return "Keep studying! Review this lesson and try again.";
   };
 
+  const goToNextLesson = () => {
+    if (nextLesson) {
+      router.push(`/lesson/${nextLesson.id}`);
+    }
+  };
+
   if (questions.length === 0) {
     return (
       <Card>
@@ -100,11 +111,22 @@ export default function Quiz({ selectedLesson = 1 }: QuizProps) {
           </div>
           <div className="text-lg">{getScoreMessage()}</div>
           <div className="flex justify-center gap-4">
-            <Button onClick={resetQuiz}>
+            <Button onClick={resetQuiz} variant="outline">
               <BookOpen className="h-4 w-4 mr-2" />
               Retake Quiz
             </Button>
+            {getScorePercentage() >= 70 && nextLesson && (
+              <Button onClick={goToNextLesson} className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700">
+                <ArrowRight className="h-4 w-4 mr-2" />
+                Next Lesson
+              </Button>
+            )}
           </div>
+          {getScorePercentage() >= 70 && !nextLesson && (
+            <div className="text-center mt-4 p-4 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg border border-blue-200">
+              <p className="text-blue-800 font-medium">🎉 Congratulations! You've completed all available lessons!</p>
+            </div>
+          )}
         </CardContent>
       </Card>
     );

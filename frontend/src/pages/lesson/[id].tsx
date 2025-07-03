@@ -224,7 +224,7 @@ export default function LessonPage() {
           <div className="lg:col-span-3">
             <Tabs defaultValue="intro" className="space-y-8">
               <div className="flex justify-center">
-                <TabsList className="grid w-full max-w-3xl grid-cols-5 bg-white/80 backdrop-blur-sm border border-slate-200/50 shadow-lg shadow-slate-200/50 p-2 h-auto">
+                <TabsList className="grid w-full max-w-4xl grid-cols-6 bg-white/80 backdrop-blur-sm border border-slate-200/50 shadow-lg shadow-slate-200/50 p-2 h-auto">
                   <TabsTrigger 
                     value="intro" 
                     className="flex flex-col items-center gap-2 py-3 px-4 data-[state=active]:bg-gradient-to-br data-[state=active]:from-blue-500 data-[state=active]:to-indigo-600 data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:shadow-blue-200/50 rounded-lg font-medium transition-all"
@@ -259,6 +259,13 @@ export default function LessonPage() {
                   >
                     <Trophy className="h-4 w-4" />
                     <span className="text-xs">Practice</span>
+                  </TabsTrigger>
+                  <TabsTrigger 
+                    value="quiz" 
+                    className="flex flex-col items-center gap-2 py-3 px-4 data-[state=active]:bg-gradient-to-br data-[state=active]:from-green-500 data-[state=active]:to-emerald-600 data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:shadow-green-200/50 rounded-lg font-medium transition-all"
+                  >
+                    <CheckCircle className="h-4 w-4" />
+                    <span className="text-xs">Quiz</span>
                   </TabsTrigger>
                 </TabsList>
               </div>
@@ -359,6 +366,27 @@ export default function LessonPage() {
 
               <TabsContent value="practice" className="space-y-8">
                 <PracticeSection lesson={lesson} />
+              </TabsContent>
+
+              <TabsContent value="quiz" className="space-y-8">
+                <Card className="border-0 bg-white/70 backdrop-blur-sm shadow-xl shadow-slate-200/50 overflow-hidden">
+                  <CardHeader className="bg-gradient-to-r from-green-50 to-emerald-50 border-b border-green-100/50 pb-6">
+                    <CardTitle className="text-2xl font-bold text-slate-800 flex items-center gap-3">
+                      <div className="p-2 bg-gradient-to-br from-green-100 to-green-200 rounded-lg">
+                        <CheckCircle className="h-6 w-6 text-green-700" />
+                      </div>
+                      Lesson {lesson.id} Quiz
+                    </CardTitle>
+                    <CardDescription className="text-slate-600 text-base">
+                      Test your understanding of this lesson's concepts
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent className="p-8">
+                    <div className="flex justify-center">
+                      <Quiz selectedLesson={lesson.id} />
+                    </div>
+                  </CardContent>
+                </Card>
               </TabsContent>
             </Tabs>
           </div>
