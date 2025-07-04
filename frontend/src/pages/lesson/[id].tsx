@@ -22,11 +22,13 @@ import {
   PenTool,
   Sparkles,
   Users,
-  Flag
+  Flag,
+  MessageCircle
 } from 'lucide-react';
 import { getLessonById, type Lesson, type LessonSection } from '@/data/lessons';
 import VocabularyDriller from '@/components/VocabularyDriller';
 import Quiz from '@/components/Quiz';
+import AIChat from '@/components/AIChat';
 import { ProsePassage, VocabularySection, GrammarSection, PracticeSection } from '@/components/LessonComponents';
 
 export default function LessonPage() {
@@ -267,6 +269,13 @@ export default function LessonPage() {
                     <CheckCircle className="h-4 w-4" />
                     <span className="text-xs">Quiz</span>
                   </TabsTrigger>
+                  <TabsTrigger 
+                    value="ai-tutor" 
+                    className="flex flex-col items-center gap-2 py-3 px-4 data-[state=active]:bg-gradient-to-br data-[state=active]:from-purple-500 data-[state=active]:to-indigo-600 data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:shadow-purple-200/50 rounded-lg font-medium transition-all"
+                  >
+                    <MessageCircle className="h-4 w-4" />
+                    <span className="text-xs">AI Tutor</span>
+                  </TabsTrigger>
                 </TabsList>
               </div>
 
@@ -384,6 +393,30 @@ export default function LessonPage() {
                   <CardContent className="p-8">
                     <div className="flex justify-center">
                       <Quiz selectedLesson={lesson.id} />
+                    </div>
+                  </CardContent>
+                </Card>
+              </TabsContent>
+
+              <TabsContent value="ai-tutor" className="space-y-8">
+                <Card className="border-0 bg-white/70 backdrop-blur-sm shadow-xl shadow-slate-200/50 overflow-hidden">
+                  <CardHeader className="bg-gradient-to-r from-purple-50 to-indigo-50 border-b border-purple-100/50 pb-6">
+                    <CardTitle className="text-2xl font-bold text-slate-800 flex items-center gap-3">
+                      <div className="p-2 bg-gradient-to-br from-purple-100 to-purple-200 rounded-lg">
+                        <MessageCircle className="h-6 w-6 text-purple-700" />
+                      </div>
+                      AI Latin Tutor
+                    </CardTitle>
+                    <CardDescription className="text-slate-600 text-base">
+                      Get personalized help with Lesson {lesson.id} from your AI Latin tutor
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent className="p-8">
+                    <div className="flex justify-center">
+                      <AIChat 
+                        lesson={lesson.id} 
+                        context={`Lesson ${lesson.id}: ${lesson.title}. Topics: ${lesson.keyConcepts.join(', ')}`}
+                      />
                     </div>
                   </CardContent>
                 </Card>
