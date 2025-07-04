@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useRouter } from 'next/router';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -6,14 +7,18 @@ import { Badge } from '@/components/ui/badge';
 import PDFReader from '@/components/PDFReader';
 import VocabularyDriller from '@/components/VocabularyDriller';
 import Quiz from '@/components/Quiz';
+import MagisterChat from '@/components/AIChat';
+import UserProgress from '@/components/UserProgress';
 import LessonNavigation from '@/components/LessonNavigation';
 import { BookOpen, Brain, Trophy, GraduationCap, Star, Sparkles, ArrowRight, Clock, Target } from 'lucide-react';
 
 const PDF_URL = '/ludus.pdf';
 
 const Home: React.FC = () => {
+    const router = useRouter();
     const [selectedLesson, setSelectedLesson] = useState(1);
     const [currentPage, setCurrentPage] = useState(1);
+    const [activeTab, setActiveTab] = useState('lessons');
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-indigo-50/40">
@@ -39,6 +44,13 @@ const Home: React.FC = () => {
                             </div>
                         </div>
                         <div className="flex items-center gap-3">
+                            <Button
+                                variant="ghost"
+                                onClick={() => window.location.href = '/about'}
+                                className="hover:bg-slate-100 text-slate-600 hover:text-slate-800"
+                            >
+                                About Ludus
+                            </Button>
                             <Badge variant="secondary" className="bg-gradient-to-r from-amber-100 to-yellow-100 text-amber-700 border-amber-200 px-3 py-1.5 text-sm font-medium">
                                 <Star className="h-3.5 w-3.5 text-amber-500 mr-1.5" />
                                 Lesson {selectedLesson} Active
@@ -69,18 +81,20 @@ const Home: React.FC = () => {
                             Experience immersive lessons, interactive exercises, and intelligent practice tools designed for serious learners.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                            <Button 
-                                size="lg" 
-                                className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-8 py-4 text-lg font-semibold shadow-xl shadow-blue-200/50 hover:shadow-2xl hover:shadow-blue-300/50 transition-all duration-300 group"
-                                onClick={() => window.location.href = '/lesson/1'}
-                            >
-                                Start Learning Now
-                                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                            </Button>
+                            <a href="/lesson/1" className="inline-block">
+                                <Button 
+                                    size="lg" 
+                                    className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-8 py-4 text-lg font-semibold shadow-xl shadow-blue-200/50 hover:shadow-2xl hover:shadow-blue-300/50 transition-all duration-300 group w-full"
+                                >
+                                    Start Learning Now
+                                    <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                                </Button>
+                            </a>
                             <Button 
                                 variant="outline" 
                                 size="lg"
                                 className="bg-white/80 backdrop-blur-sm border-slate-300 hover:bg-slate-50 hover:border-slate-400 px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+                                onClick={() => setActiveTab('textbook')}
                             >
                                 <BookOpen className="mr-2 h-5 w-5" />
                                 Browse Textbook
@@ -92,7 +106,7 @@ const Home: React.FC = () => {
 
             {/* Main Content */}
             <main className="container mx-auto px-4 py-12">
-                <Tabs defaultValue="lessons" className="space-y-8">
+                <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-8">
                     <div className="flex justify-center">
                         <TabsList className="grid w-full max-w-2xl grid-cols-4 bg-white/80 backdrop-blur-sm border border-slate-200/50 shadow-lg shadow-slate-200/50 p-2 h-auto">
                             <TabsTrigger 
@@ -128,7 +142,12 @@ const Home: React.FC = () => {
                     
                     <TabsContent value="lessons" className="space-y-8">
                         <div className="max-w-6xl mx-auto">
-                            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 mb-12">
+                            {/* User Progress Section */}
+                            <div className="mb-8">
+                                <UserProgress />
+                            </div>
+                            
+                            <div className="grid gap-6 md:grid-cols-3 mb-12">
                                 {/* Quick Stats */}
                                 <Card className="border-0 bg-gradient-to-br from-blue-50 to-indigo-50 shadow-lg shadow-blue-100/50">
                                     <CardHeader className="pb-3">
@@ -192,11 +211,13 @@ const Home: React.FC = () => {
                                             <CardDescription>Interactive PDF reader with navigation and study tools</CardDescription>
                                         </CardHeader>
                                         <CardContent className="p-0">
-                                            <PDFReader 
-                                                pdfUrl={PDF_URL}
-                                                currentPage={currentPage}
-                                                onPageChange={setCurrentPage}
-                                            />
+                                            {activeTab === 'textbook' && (
+                                                <PDFReader 
+                                                    pdfUrl={PDF_URL}
+                                                    currentPage={currentPage}
+                                                    onPageChange={setCurrentPage}
+                                                />
+                                            )}
                                         </CardContent>
                                     </Card>
                                 </div>
@@ -253,6 +274,28 @@ const Home: React.FC = () => {
                                             </div>
                                         </CardContent>
                                     </Card>
+
+                                    <Card className="border-0 bg-gradient-to-br from-amber-50 to-orange-50 shadow-lg shadow-amber-100/50">
+                                        <CardHeader>
+                                            <CardTitle className="text-lg text-amber-800 flex items-center gap-2">
+                                                <img 
+                                                    src="/magister-marcellus.svg" 
+                                                    alt="Magister Marcellus" 
+                                                    className="w-6 h-6 rounded-full"
+                                                />
+                                                Ask Magister Marcellus
+                                            </CardTitle>
+                                            <CardDescription className="text-amber-600">
+                                                Get help with the textbook
+                                            </CardDescription>
+                                        </CardHeader>
+                                        <CardContent>
+                                            <MagisterChat 
+                                                context={`Reading textbook page ${currentPage}`}
+                                                compact={true}
+                                            />
+                                        </CardContent>
+                                    </Card>
                                 </div>
                             </div>
                         </div>
@@ -271,11 +314,13 @@ const Home: React.FC = () => {
                             </div>
 
                             <div className="flex justify-center mb-12">
-                                <VocabularyDriller 
-                                    selectedLesson={selectedLesson} 
-                                    allowLessonSelection={true}
-                                    allowMultipleLessons={true}
-                                />
+                                {activeTab === 'vocabulary' && (
+                                    <VocabularyDriller 
+                                        selectedLesson={selectedLesson} 
+                                        allowLessonSelection={true}
+                                        allowMultipleLessons={true}
+                                    />
+                                )}
                             </div>
                             
                             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -430,6 +475,31 @@ const Home: React.FC = () => {
                                             <div className="w-2 h-2 bg-green-400 rounded-full"></div>
                                             Below 70%: Requires more study
                                         </div>
+                                    </CardContent>
+                                </Card>
+                            </div>
+                            
+                            <div className="mt-8 flex justify-center">
+                                <Card className="border-0 bg-gradient-to-br from-amber-50 to-orange-50 shadow-lg shadow-amber-100/50">
+                                    <CardHeader>
+                                        <CardTitle className="text-lg text-amber-800 flex items-center gap-2">
+                                            <img 
+                                                src="/magister-marcellus.svg" 
+                                                alt="Magister Marcellus" 
+                                                className="w-6 h-6 rounded-full"
+                                            />
+                                            Ask Magister Marcellus
+                                        </CardTitle>
+                                        <CardDescription className="text-amber-600">
+                                            Get help with quiz questions
+                                        </CardDescription>
+                                    </CardHeader>
+                                    <CardContent>
+                                        <MagisterChat 
+                                            lesson={selectedLesson}
+                                            context={`Quiz practice for lesson ${selectedLesson}`}
+                                            compact={true}
+                                        />
                                     </CardContent>
                                 </Card>
                             </div>

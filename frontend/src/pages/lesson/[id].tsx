@@ -28,7 +28,7 @@ import {
 import { getLessonById, type Lesson, type LessonSection } from '@/data/lessons';
 import VocabularyDriller from '@/components/VocabularyDriller';
 import Quiz from '@/components/Quiz';
-import AIChat from '@/components/AIChat';
+import MagisterChat from '@/components/AIChat';
 import { ProsePassage, VocabularySection, GrammarSection, PracticeSection } from '@/components/LessonComponents';
 
 export default function LessonPage() {
@@ -101,6 +101,13 @@ export default function LessonPage() {
                   {progress}%
                 </div>
               </div>
+              <Button
+                variant="ghost"
+                onClick={() => window.location.href = '/about'}
+                className="hover:bg-slate-100 text-slate-600 hover:text-slate-800 mr-4"
+              >
+                About Ludus
+              </Button>
               <div className="w-16 h-16 relative">
                 <svg className="w-16 h-16 transform -rotate-90" viewBox="0 0 64 64">
                   <circle
@@ -271,10 +278,10 @@ export default function LessonPage() {
                   </TabsTrigger>
                   <TabsTrigger 
                     value="ai-tutor" 
-                    className="flex flex-col items-center gap-2 py-3 px-4 data-[state=active]:bg-gradient-to-br data-[state=active]:from-purple-500 data-[state=active]:to-indigo-600 data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:shadow-purple-200/50 rounded-lg font-medium transition-all"
+                    className="flex flex-col items-center gap-2 py-3 px-4 data-[state=active]:bg-gradient-to-br data-[state=active]:from-amber-500 data-[state=active]:to-orange-600 data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:shadow-amber-200/50 rounded-lg font-medium transition-all"
                   >
                     <MessageCircle className="h-4 w-4" />
-                    <span className="text-xs">AI Tutor</span>
+                    <span className="text-xs">Magister</span>
                   </TabsTrigger>
                 </TabsList>
               </div>
@@ -400,20 +407,24 @@ export default function LessonPage() {
 
               <TabsContent value="ai-tutor" className="space-y-8">
                 <Card className="border-0 bg-white/70 backdrop-blur-sm shadow-xl shadow-slate-200/50 overflow-hidden">
-                  <CardHeader className="bg-gradient-to-r from-purple-50 to-indigo-50 border-b border-purple-100/50 pb-6">
+                  <CardHeader className="bg-gradient-to-r from-amber-50 to-orange-50 border-b border-amber-100/50 pb-6">
                     <CardTitle className="text-2xl font-bold text-slate-800 flex items-center gap-3">
-                      <div className="p-2 bg-gradient-to-br from-purple-100 to-purple-200 rounded-lg">
-                        <MessageCircle className="h-6 w-6 text-purple-700" />
+                      <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-amber-200">
+                        <img 
+                          src="/magister-marcellus.svg" 
+                          alt="Magister Marcellus" 
+                          className="w-full h-full object-cover"
+                        />
                       </div>
-                      AI Latin Tutor
+                      Magister Marcellus
                     </CardTitle>
                     <CardDescription className="text-slate-600 text-base">
-                      Get personalized help with Lesson {lesson.id} from your AI Latin tutor
+                      Your wise Latin tutor is here to help with Lesson {lesson.id}
                     </CardDescription>
                   </CardHeader>
                   <CardContent className="p-8">
                     <div className="flex justify-center">
-                      <AIChat 
+                      <MagisterChat 
                         lesson={lesson.id} 
                         context={`Lesson ${lesson.id}: ${lesson.title}. Topics: ${lesson.keyConcepts.join(', ')}`}
                       />
