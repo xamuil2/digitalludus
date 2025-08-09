@@ -26,6 +26,33 @@ import {
 } from 'lucide-react';
 import { type Lesson, type LessonSection } from '@/data/lessons';
 import VocabularyDriller from '@/components/VocabularyDriller';
+import { WordTooltip } from '@/components/WordTooltip';
+import { lookupWord } from '@/lib/vocabularyLookup';
+
+// Function to render Latin text with clickable words
+function renderLatinTextWithTooltips(text: string): React.ReactNode {
+  // Split text into words while preserving punctuation and spaces
+  const parts = text.split(/(\s+|[.,;:!?"()[\]{}])/);
+  
+  return parts.map((part, index) => {
+    // If it's whitespace or punctuation, render as-is
+    if (/^\s+$/.test(part) || /^[.,;:!?"()[\]{}]+$/.test(part)) {
+      return <span key={index}>{part}</span>;
+    }
+    
+    // If it's a word, check for definition
+    if (part.trim()) {
+      const definition = lookupWord(part);
+      return (
+        <WordTooltip key={index} word={part} definition={definition}>
+          {part}
+        </WordTooltip>
+      );
+    }
+    
+    return <span key={index}>{part}</span>;
+  });
+}
 
 // Component for displaying the prose passage as continuous text
 export function ProsePassage({ lesson }: { lesson: Lesson }) {
@@ -73,11 +100,15 @@ export function ProsePassage({ lesson }: { lesson: Lesson }) {
         {/* Latin Text */}
         <div className="relative">
           <div className="absolute -left-4 top-0 w-1 h-full bg-gradient-to-b from-amber-400 to-amber-600 rounded-full"></div>
-          <div className="bg-gradient-to-br from-slate-50 to-slate-100 p-8 rounded-xl border border-slate-200/50 shadow-inner">
-            <div className="font-serif text-xl leading-relaxed text-slate-800 tracking-wide">
-              {latinText}
+                      <div className="bg-gradient-to-br from-slate-50 to-slate-100 p-8 rounded-xl border border-slate-200/50 shadow-inner">
+              <div className="font-serif text-xl leading-relaxed text-slate-800 tracking-wide">
+                {renderLatinTextWithTooltips(latinText)}
+              </div>
+              <div className="mt-4 text-sm text-slate-500 flex items-center gap-2">
+                <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
+                Click on any word to see its definition
+              </div>
             </div>
-          </div>
         </div>
 
         {/* Translation */}

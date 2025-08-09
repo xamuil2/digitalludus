@@ -108,21 +108,33 @@ In some sense, however, Latin survived through a kind of evolution. Like virtual
   },
   
   prosePassage: {
-    title: "Insula Sicilia",
-    context: "A story about Sicily describing the islands, their inhabitants, and the agricultural life",
+    title: "Cerberus",
+    context: "A story about the household of Caecilius in Pompeii, featuring the family dog Cerberus and his mischievous adventure in the kitchen",
     sentences: [
-      { id: "1-prose-1", latin: "Sunt multae īnsulae.", english: "There are many islands.", order: 1 },
-      { id: "1-prose-2", latin: "Multae īnsulae sunt parvae, sed multae quoque sunt magnae.", english: "Many islands are small, but many also are large.", order: 2 },
-      { id: "1-prose-3", latin: "Sicilia īnsula est.", english: "Sicily is an island.", order: 3 },
-      { id: "1-prose-4", latin: "Magna īnsula est.", english: "It is a large island.", order: 4 },
-      { id: "1-prose-5", latin: "Multās et magnās silvās nōn habet, sed īncolae Siciliae īnsulam saepe laudant.", english: "It does not have many and large forests, but the inhabitants of Sicily often praise the island.", order: 5 },
-      { id: "1-prose-6", latin: "Agricolae Siciliam amant quod terram bonam habet.", english: "Farmers love Sicily because it has good land.", order: 6 },
-      { id: "1-prose-7", latin: "Terram bonam īnsulae laudant.", english: "They praise the good land of the island.", order: 7 },
-      { id: "1-prose-8", latin: "Fēminae quoque Siciliam laudant.", english: "Women also praise Sicily.", order: 8 },
-      { id: "1-prose-9", latin: "Sicilia nōn est īnsula perīculōsa.", english: "Sicily is not a dangerous island.", order: 9 },
-      { id: "1-prose-10", latin: "Vīta agricolārum et fēminārum est bona quod Sicilia terra bona est.", english: "The life of farmers and women is good because Sicily is good land.", order: 10 }
+      { id: "1-prose-1", latin: "Caecilius est in hortō.", english: "Caecilius is in the garden.", order: 1 },
+      { id: "1-prose-2", latin: "Caecilius in hortō sedet.", english: "Caecilius sits in the garden.", order: 2 },
+      { id: "1-prose-3", latin: "Servus est in ātriō.", english: "The slave is in the atrium.", order: 3 },
+      { id: "1-prose-4", latin: "Servus in ātriō labōrat.", english: "The slave works in the atrium.", order: 4 },
+      { id: "1-prose-5", latin: "Metella est in ātriō.", english: "Metella is in the atrium.", order: 5 },
+      { id: "1-prose-6", latin: "Metella in ātriō sedet.", english: "Metella sits in the atrium.", order: 6 },
+      { id: "1-prose-7", latin: "Quīntus est in tablīnō.", english: "Quintus is in the study.", order: 7 },
+      { id: "1-prose-8", latin: "Quīntus in tablīnō scrībit.", english: "Quintus writes in the study.", order: 8 },
+      { id: "1-prose-9", latin: "Cerberus est in viā.", english: "Cerberus is in the street.", order: 9 },
+      { id: "1-prose-10", latin: "Coquus est in culīnā.", english: "The cook is in the kitchen.", order: 10 },
+      { id: "1-prose-11", latin: "Coquus in culīnā dormit.", english: "The cook sleeps in the kitchen.", order: 11 },
+      { id: "1-prose-12", latin: "Cerberus intrat.", english: "Cerberus enters.", order: 12 },
+      { id: "1-prose-13", latin: "Cerberus circumspectat.", english: "Cerberus looks around.", order: 13 },
+      { id: "1-prose-14", latin: "Cibus est in mēnsā.", english: "Food is on the table.", order: 14 },
+      { id: "1-prose-15", latin: "Canis salit.", english: "The dog jumps.", order: 15 },
+      { id: "1-prose-16", latin: "Canis in mēnsā stat.", english: "The dog stands on the table.", order: 16 },
+      { id: "1-prose-17", latin: "Grumio stertit.", english: "Grumio snores.", order: 17 },
+      { id: "1-prose-18", latin: "Canis lātrat.", english: "The dog barks.", order: 18 },
+      { id: "1-prose-19", latin: "Grumio surgit.", english: "Grumio gets up.", order: 19 },
+      { id: "1-prose-20", latin: "Coquus est īrātus.", english: "The cook is angry.", order: 20 },
+      { id: "1-prose-21", latin: "\"Pestis! Furcifer!\" coquus clāmat.", english: "\"Pest! Scoundrel!\" the cook shouts.", order: 21 },
+      { id: "1-prose-22", latin: "Cerberus exit.", english: "Cerberus leaves.", order: 22 }
     ],
-    fullTranslation: "There are many islands. Many islands are small, but many also are large. Sicily is an island. It is a large island. It does not have many and large forests, but the inhabitants of Sicily often praise the island. Farmers love Sicily because it has good land. They praise the good land of the island. Women also praise Sicily. Sicily is not a dangerous island. The life of farmers and women is good because Sicily is good land."
+    fullTranslation: "Caecilius is in the garden. Caecilius sits in the garden. The slave is in the atrium. The slave works in the atrium. Metella is in the atrium. Metella sits in the atrium. Quintus is in the study. Quintus writes in the study. Cerberus is in the street. The cook is in the kitchen. The cook sleeps in the kitchen. Cerberus enters. Cerberus looks around. Food is on the table. The dog jumps. The dog stands on the table. Grumio snores. The dog barks. Grumio gets up. The cook is angry. \"Pest! Scoundrel!\" the cook shouts. Cerberus leaves."
   },
   
   vocabulary: [
@@ -360,6 +372,293 @@ In some sense, however, Latin survived through a kind of evolution. Like virtual
       lesson: 1,
       difficulty: "medium",
       notes: "A famous Latin phrase meaning unexplored territory"
+    },
+    // Additional vocabulary for Cerberus passage
+    {
+      id: "1-vocab-27",
+      latin: "Caecilius",
+      principalParts: "Caecilius, -ī",
+      english: "Caecilius (Roman name)",
+      partOfSpeech: "noun",
+      lesson: 1,
+      difficulty: "easy",
+      notes: "A typical Roman praenomen (first name)"
+    },
+    {
+      id: "1-vocab-28",
+      latin: "hortus",
+      principalParts: "hortus, -ī",
+      english: "garden",
+      partOfSpeech: "noun",
+      lesson: 1,
+      difficulty: "easy"
+    },
+    {
+      id: "1-vocab-29",
+      latin: "sedet",
+      principalParts: "sedeō, sedēre, sēdī, sessus",
+      english: "he, she, it sits",
+      partOfSpeech: "verb",
+      lesson: 1,
+      difficulty: "easy"
+    },
+    {
+      id: "1-vocab-30",
+      latin: "servus",
+      principalParts: "servus, -ī",
+      english: "slave, servant",
+      partOfSpeech: "noun",
+      lesson: 1,
+      difficulty: "easy"
+    },
+    {
+      id: "1-vocab-31",
+      latin: "ātrium",
+      principalParts: "ātrium, -ī",
+      english: "atrium, main hall",
+      partOfSpeech: "noun",
+      lesson: 1,
+      difficulty: "easy"
+    },
+    {
+      id: "1-vocab-32",
+      latin: "labōrat",
+      principalParts: "labōrō, labōrāre, labōrāvī, labōrātus",
+      english: "he, she, it works",
+      partOfSpeech: "verb",
+      lesson: 1,
+      difficulty: "easy"
+    },
+    {
+      id: "1-vocab-33",
+      latin: "Metella",
+      principalParts: "Metella, -ae",
+      english: "Metella (Roman name)",
+      partOfSpeech: "noun",
+      lesson: 1,
+      difficulty: "easy",
+      notes: "A typical Roman woman's name"
+    },
+    {
+      id: "1-vocab-34",
+      latin: "Quīntus",
+      principalParts: "Quīntus, -ī",
+      english: "Quintus (Roman name)",
+      partOfSpeech: "noun",
+      lesson: 1,
+      difficulty: "easy",
+      notes: "A typical Roman praenomen meaning 'fifth'"
+    },
+    {
+      id: "1-vocab-35",
+      latin: "tablīnum",
+      principalParts: "tablīnum, -ī",
+      english: "study, office",
+      partOfSpeech: "noun",
+      lesson: 1,
+      difficulty: "easy"
+    },
+    {
+      id: "1-vocab-36",
+      latin: "scrībit",
+      principalParts: "scrībō, scrībere, scrīpsī, scrīptus",
+      english: "he, she, it writes",
+      partOfSpeech: "verb",
+      lesson: 1,
+      difficulty: "easy"
+    },
+    {
+      id: "1-vocab-37",
+      latin: "Cerberus",
+      principalParts: "Cerberus, -ī",
+      english: "Cerberus (dog's name)",
+      partOfSpeech: "noun",
+      lesson: 1,
+      difficulty: "easy",
+      notes: "Named after the three-headed dog that guards the underworld"
+    },
+    {
+      id: "1-vocab-38",
+      latin: "via",
+      principalParts: "via, -ae",
+      english: "street, road, way",
+      partOfSpeech: "noun",
+      lesson: 1,
+      difficulty: "easy"
+    },
+    {
+      id: "1-vocab-39",
+      latin: "coquus",
+      principalParts: "coquus, -ī",
+      english: "cook, chef",
+      partOfSpeech: "noun",
+      lesson: 1,
+      difficulty: "easy"
+    },
+    {
+      id: "1-vocab-40",
+      latin: "culīna",
+      principalParts: "culīna, -ae",
+      english: "kitchen",
+      partOfSpeech: "noun",
+      lesson: 1,
+      difficulty: "easy"
+    },
+    {
+      id: "1-vocab-41",
+      latin: "dormit",
+      principalParts: "dormiō, dormīre, dormīvī, dormītus",
+      english: "he, she, it sleeps",
+      partOfSpeech: "verb",
+      lesson: 1,
+      difficulty: "easy"
+    },
+    {
+      id: "1-vocab-42",
+      latin: "intrat",
+      principalParts: "intrō, intrāre, intrāvī, intrātus",
+      english: "he, she, it enters",
+      partOfSpeech: "verb",
+      lesson: 1,
+      difficulty: "easy"
+    },
+    {
+      id: "1-vocab-43",
+      latin: "circumspectat",
+      principalParts: "circumspectō, circumspectāre",
+      english: "he, she, it looks around",
+      partOfSpeech: "verb",
+      lesson: 1,
+      difficulty: "medium"
+    },
+    {
+      id: "1-vocab-44",
+      latin: "cibus",
+      principalParts: "cibus, -ī",
+      english: "food",
+      partOfSpeech: "noun",
+      lesson: 1,
+      difficulty: "easy"
+    },
+    {
+      id: "1-vocab-45",
+      latin: "mēnsa",
+      principalParts: "mēnsa, -ae",
+      english: "table",
+      partOfSpeech: "noun",
+      lesson: 1,
+      difficulty: "easy"
+    },
+    {
+      id: "1-vocab-46",
+      latin: "canis",
+      principalParts: "canis, canis",
+      english: "dog",
+      partOfSpeech: "noun",
+      lesson: 1,
+      difficulty: "easy"
+    },
+    {
+      id: "1-vocab-47",
+      latin: "salit",
+      principalParts: "saliō, salīre, saluī, saltus",
+      english: "he, she, it jumps",
+      partOfSpeech: "verb",
+      lesson: 1,
+      difficulty: "easy"
+    },
+    {
+      id: "1-vocab-48",
+      latin: "stat",
+      principalParts: "stō, stāre, stetī, status",
+      english: "he, she, it stands",
+      partOfSpeech: "verb",
+      lesson: 1,
+      difficulty: "easy"
+    },
+    {
+      id: "1-vocab-49",
+      latin: "Grumio",
+      principalParts: "Grumio, Grumiōnis",
+      english: "Grumio (slave's name)",
+      partOfSpeech: "noun",
+      lesson: 1,
+      difficulty: "easy",
+      notes: "The cook in Caecilius's household"
+    },
+    {
+      id: "1-vocab-50",
+      latin: "stertit",
+      principalParts: "stertō, stertere",
+      english: "he, she, it snores",
+      partOfSpeech: "verb",
+      lesson: 1,
+      difficulty: "easy"
+    },
+    {
+      id: "1-vocab-51",
+      latin: "lātrat",
+      principalParts: "lātrō, lātrāre, lātrāvī, lātrātus",
+      english: "he, she, it barks",
+      partOfSpeech: "verb",
+      lesson: 1,
+      difficulty: "easy"
+    },
+    {
+      id: "1-vocab-52",
+      latin: "surgit",
+      principalParts: "surgō, surgere, surrēxī, surrēctus",
+      english: "he, she, it gets up, rises",
+      partOfSpeech: "verb",
+      lesson: 1,
+      difficulty: "easy"
+    },
+    {
+      id: "1-vocab-53",
+      latin: "īrātus",
+      principalParts: "īrātus, -a, -um",
+      english: "angry",
+      partOfSpeech: "adjective",
+      lesson: 1,
+      difficulty: "easy"
+    },
+    {
+      id: "1-vocab-54",
+      latin: "pestis",
+      principalParts: "pestis, pestis",
+      english: "pest, plague",
+      partOfSpeech: "noun",
+      lesson: 1,
+      difficulty: "medium",
+      notes: "Used as an insult meaning 'pest' or 'nuisance'"
+    },
+    {
+      id: "1-vocab-55",
+      latin: "furcifer",
+      principalParts: "furcifer, furciferis",
+      english: "scoundrel, rascal",
+      partOfSpeech: "noun",
+      lesson: 1,
+      difficulty: "medium",
+      notes: "A strong insult in Latin, literally meaning 'fork-bearer'"
+    },
+    {
+      id: "1-vocab-56",
+      latin: "clāmat",
+      principalParts: "clāmō, clāmāre, clāmāvī, clāmātus",
+      english: "he, she, it shouts, calls out",
+      partOfSpeech: "verb",
+      lesson: 1,
+      difficulty: "easy"
+    },
+    {
+      id: "1-vocab-57",
+      latin: "exit",
+      principalParts: "exeō, exīre, exiī, exitus",
+      english: "he, she, it goes out, leaves",
+      partOfSpeech: "verb",
+      lesson: 1,
+      difficulty: "easy"
     }
   ],
   
