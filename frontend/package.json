@@ -23,6 +23,7 @@
     "lucide-react": "^0.525.0",
     "next": "latest",
     "next-auth": "^4.24.11",
+    "pdf-parse": "^1.1.1",
     "prisma": "^6.11.1",
     "react": "latest",
     "react-dom": "latest",
@@ -31,6 +32,7 @@
   },
   "devDependencies": {
     "@types/node": "^24.0.7",
+    "@types/pdf-parse": "^1.1.5",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
     "autoprefixer": "^10.4.21",

@@ -16,7 +16,11 @@ export default function LessonNavigation({ selectedLesson, onLessonSelect }: Les
 
   const handleLessonClick = (lessonId: number) => {
     onLessonSelect(lessonId);
-    router.push(`/lesson/${lessonId}`);
+    if (lessonId === 1) {
+      router.push('/lesson/c1');
+    } else {
+      router.push(`/lesson/${lessonId}`);
+    }
   };
 
   return (
