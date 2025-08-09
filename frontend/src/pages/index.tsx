@@ -77,7 +77,7 @@ const Home: React.FC = () => {
                             </span>
                         </h2>
                         <p className="text-xl text-slate-600 leading-relaxed mb-12 max-w-3xl mx-auto">
-                            Transform your Latin studies with our comprehensive digital companion to the <strong>Ludus</strong> textbook.
+                            Transform your Latin studies with our comprehensive digital companion to the <strong>Cambridge</strong> textbook.
                             Experience immersive lessons, interactive exercises, and intelligent practice tools designed for serious learners.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -206,7 +206,7 @@ const Home: React.FC = () => {
                                                 <div className="p-2 bg-gradient-to-br from-slate-100 to-slate-200 rounded-lg">
                                                     <BookOpen className="h-6 w-6 text-slate-600" />
                                                 </div>
-                                                Ludus Textbook Reader
+                                                Cambridge Textbook Reader
                                             </CardTitle>
                                             <CardDescription>Interactive PDF reader with navigation and study tools</CardDescription>
                                         </CardHeader>

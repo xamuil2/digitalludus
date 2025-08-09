@@ -22,7 +22,7 @@ export default function PDFReader({ pdfUrl, currentPage = 1, onPageChange }: PDF
       <CardHeader>
         <div className="flex items-center justify-between">
           <div>
-            <CardTitle>Ludus Textbook</CardTitle>
+            <CardTitle>Cambridge Textbook</CardTitle>
             <CardDescription>Page {currentPage} • {zoom}% zoom</CardDescription>
           </div>
           <div className="flex items-center gap-2">
