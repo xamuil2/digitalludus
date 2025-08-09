@@ -138,244 +138,10 @@ In some sense, however, Latin survived through a kind of evolution. Like virtual
   },
   
   vocabulary: [
-    {
-      id: "1-vocab-1",
-      latin: "amant",
-      principalParts: "amō, amāre, amāvī, amātus",
-      english: "they love, like",
-      partOfSpeech: "verb",
-      lesson: 1,
-      difficulty: "easy"
-    },
-    {
-      id: "1-vocab-2",
-      latin: "est",
-      principalParts: "sum, esse, fuī, futūrus",
-      english: "he, she, it is",
-      partOfSpeech: "verb",
-      lesson: 1,
-      difficulty: "easy"
-    },
-    {
-      id: "1-vocab-3",
-      latin: "habet",
-      principalParts: "habeō, habēre, habuī, habitus",
-      english: "he, she, it has, holds",
-      partOfSpeech: "verb",
-      lesson: 1,
-      difficulty: "easy"
-    },
-    {
-      id: "1-vocab-4",
-      latin: "laudant",
-      principalParts: "laudō, laudāre, laudāvī, laudātus",
-      english: "they praise",
-      partOfSpeech: "verb",
-      lesson: 1,
-      difficulty: "easy"
-    },
-    {
-      id: "1-vocab-5",
-      latin: "sunt",
-      principalParts: "sum, esse, fuī, futūrus",
-      english: "they are",
-      partOfSpeech: "verb",
-      lesson: 1,
-      difficulty: "easy"
-    },
-    {
-      id: "1-vocab-6",
-      latin: "vident",
-      principalParts: "videō, vidēre, vīdī, vīsus",
-      english: "they see",
-      partOfSpeech: "verb",
-      lesson: 1,
-      difficulty: "easy"
-    },
-    {
-      id: "1-vocab-7",
-      latin: "videt",
-      principalParts: "videō, vidēre, vīdī, vīsus",
-      english: "he, she, it sees",
-      partOfSpeech: "verb",
-      lesson: 1,
-      difficulty: "easy"
-    },
-    {
-      id: "1-vocab-8",
-      latin: "agricola",
-      principalParts: "agricola, -ae",
-      english: "farmer",
-      partOfSpeech: "noun",
-      lesson: 1,
-      difficulty: "easy"
-    },
-    {
-      id: "1-vocab-9",
-      latin: "īncola",
-      principalParts: "īncola, -ae",
-      english: "inhabitant",
-      partOfSpeech: "noun",
-      lesson: 1,
-      difficulty: "easy"
-    },
-    {
-      id: "1-vocab-10",
-      latin: "īnsula",
-      principalParts: "īnsula, -ae",
-      english: "island",
-      partOfSpeech: "noun",
-      lesson: 1,
-      difficulty: "easy"
-    },
-    {
-      id: "1-vocab-11",
-      latin: "puella",
-      principalParts: "puella, -ae",
-      english: "girl",
-      partOfSpeech: "noun",
-      lesson: 1,
-      difficulty: "easy"
-    },
-    {
-      id: "1-vocab-12",
-      latin: "silva",
-      principalParts: "silva, -ae",
-      english: "forest, woods",
-      partOfSpeech: "noun",
-      lesson: 1,
-      difficulty: "easy"
-    },
-    {
-      id: "1-vocab-13",
-      latin: "terra",
-      principalParts: "terra, -ae",
-      english: "land, earth",
-      partOfSpeech: "noun",
-      lesson: 1,
-      difficulty: "easy"
-    },
-    {
-      id: "1-vocab-14",
-      latin: "vīta",
-      principalParts: "vīta, -ae",
-      english: "life",
-      partOfSpeech: "noun",
-      lesson: 1,
-      difficulty: "easy"
-    },
-    {
-      id: "1-vocab-15",
-      latin: "bona",
-      principalParts: "bonus, -a, -um",
-      english: "good",
-      partOfSpeech: "adjective",
-      lesson: 1,
-      difficulty: "easy"
-    },
-    {
-      id: "1-vocab-16",
-      latin: "magna",
-      principalParts: "magnus, -a, -um",
-      english: "large, great",
-      partOfSpeech: "adjective",
-      lesson: 1,
-      difficulty: "easy"
-    },
-    {
-      id: "1-vocab-17",
-      latin: "multae",
-      principalParts: "multus, -a, -um",
-      english: "many",
-      partOfSpeech: "adjective",
-      lesson: 1,
-      difficulty: "easy"
-    },
-    {
-      id: "1-vocab-18",
-      latin: "parva",
-      principalParts: "parvus, -a, -um",
-      english: "small",
-      partOfSpeech: "adjective",
-      lesson: 1,
-      difficulty: "easy"
-    },
-    {
-      id: "1-vocab-19",
-      latin: "perīculōsa",
-      principalParts: "perīculōsus, -a, -um",
-      english: "dangerous",
-      partOfSpeech: "adjective",
-      lesson: 1,
-      difficulty: "easy"
-    },
-    {
-      id: "1-vocab-20",
-      latin: "et",
-      principalParts: "et",
-      english: "and",
-      partOfSpeech: "conjunction",
-      lesson: 1,
-      difficulty: "easy"
-    },
-    {
-      id: "1-vocab-21",
-      latin: "nōn",
-      principalParts: "nōn",
-      english: "not",
-      partOfSpeech: "adverb",
-      lesson: 1,
-      difficulty: "easy"
-    },
-    {
-      id: "1-vocab-22",
-      latin: "quod",
-      principalParts: "quod",
-      english: "because",
-      partOfSpeech: "conjunction",
-      lesson: 1,
-      difficulty: "easy"
-    },
-    {
-      id: "1-vocab-23",
-      latin: "quoque",
-      principalParts: "quoque",
-      english: "also, too",
-      partOfSpeech: "adverb",
-      lesson: 1,
-      difficulty: "easy"
-    },
-    {
-      id: "1-vocab-24",
-      latin: "saepe",
-      principalParts: "saepe",
-      english: "often",
-      partOfSpeech: "adverb",
-      lesson: 1,
-      difficulty: "easy"
-    },
-    {
-      id: "1-vocab-25",
-      latin: "sed",
-      principalParts: "sed",
-      english: "but",
-      partOfSpeech: "conjunction",
-      lesson: 1,
-      difficulty: "easy"
-    },
-    {
-      id: "1-vocab-26",
-      latin: "terra incognita",
-      principalParts: "terra incognita",
-      english: "unknown land",
-      partOfSpeech: "phrase",
-      lesson: 1,
-      difficulty: "medium",
-      notes: "A famous Latin phrase meaning unexplored territory"
-    },
+    
     // Additional vocabulary for Cerberus passage
     {
-      id: "1-vocab-27",
+      id: "1-vocab-1",
       latin: "Caecilius",
       principalParts: "Caecilius, -ī",
       english: "Caecilius (Roman name)",
@@ -385,7 +151,7 @@ In some sense, however, Latin survived through a kind of evolution. Like virtual
       notes: "A typical Roman praenomen (first name)"
     },
     {
-      id: "1-vocab-28",
+      id: "1-vocab-2",
       latin: "hortus",
       principalParts: "hortus, -ī",
       english: "garden",
@@ -394,7 +160,7 @@ In some sense, however, Latin survived through a kind of evolution. Like virtual
       difficulty: "easy"
     },
     {
-      id: "1-vocab-29",
+      id: "1-vocab-3",
       latin: "sedet",
       principalParts: "sedeō, sedēre, sēdī, sessus",
       english: "he, she, it sits",
@@ -403,7 +169,7 @@ In some sense, however, Latin survived through a kind of evolution. Like virtual
       difficulty: "easy"
     },
     {
-      id: "1-vocab-30",
+      id: "1-vocab-4",
       latin: "servus",
       principalParts: "servus, -ī",
       english: "slave, servant",
@@ -412,7 +178,7 @@ In some sense, however, Latin survived through a kind of evolution. Like virtual
       difficulty: "easy"
     },
     {
-      id: "1-vocab-31",
+      id: "1-vocab-5",
       latin: "ātrium",
       principalParts: "ātrium, -ī",
       english: "atrium, main hall",
@@ -421,7 +187,7 @@ In some sense, however, Latin survived through a kind of evolution. Like virtual
       difficulty: "easy"
     },
     {
-      id: "1-vocab-32",
+      id: "1-vocab-6",
       latin: "labōrat",
       principalParts: "labōrō, labōrāre, labōrāvī, labōrātus",
       english: "he, she, it works",
@@ -430,7 +196,7 @@ In some sense, however, Latin survived through a kind of evolution. Like virtual
       difficulty: "easy"
     },
     {
-      id: "1-vocab-33",
+      id: "1-vocab-7",
       latin: "Metella",
       principalParts: "Metella, -ae",
       english: "Metella (Roman name)",
@@ -440,7 +206,7 @@ In some sense, however, Latin survived through a kind of evolution. Like virtual
       notes: "A typical Roman woman's name"
     },
     {
-      id: "1-vocab-34",
+      id: "1-vocab-8",
       latin: "Quīntus",
       principalParts: "Quīntus, -ī",
       english: "Quintus (Roman name)",
@@ -450,7 +216,7 @@ In some sense, however, Latin survived through a kind of evolution. Like virtual
       notes: "A typical Roman praenomen meaning 'fifth'"
     },
     {
-      id: "1-vocab-35",
+      id: "1-vocab-9",
       latin: "tablīnum",
       principalParts: "tablīnum, -ī",
       english: "study, office",
@@ -459,7 +225,7 @@ In some sense, however, Latin survived through a kind of evolution. Like virtual
       difficulty: "easy"
     },
     {
-      id: "1-vocab-36",
+      id: "1-vocab-10",
       latin: "scrībit",
       principalParts: "scrībō, scrībere, scrīpsī, scrīptus",
       english: "he, she, it writes",
@@ -468,7 +234,7 @@ In some sense, however, Latin survived through a kind of evolution. Like virtual
       difficulty: "easy"
     },
     {
-      id: "1-vocab-37",
+      id: "1-vocab-11",
       latin: "Cerberus",
       principalParts: "Cerberus, -ī",
       english: "Cerberus (dog's name)",
@@ -478,7 +244,7 @@ In some sense, however, Latin survived through a kind of evolution. Like virtual
       notes: "Named after the three-headed dog that guards the underworld"
     },
     {
-      id: "1-vocab-38",
+      id: "1-vocab-12",
       latin: "via",
       principalParts: "via, -ae",
       english: "street, road, way",
@@ -487,7 +253,7 @@ In some sense, however, Latin survived through a kind of evolution. Like virtual
       difficulty: "easy"
     },
     {
-      id: "1-vocab-39",
+      id: "1-vocab-13",
       latin: "coquus",
       principalParts: "coquus, -ī",
       english: "cook, chef",
@@ -496,7 +262,7 @@ In some sense, however, Latin survived through a kind of evolution. Like virtual
       difficulty: "easy"
     },
     {
-      id: "1-vocab-40",
+      id: "1-vocab-14",
       latin: "culīna",
       principalParts: "culīna, -ae",
       english: "kitchen",
@@ -505,7 +271,7 @@ In some sense, however, Latin survived through a kind of evolution. Like virtual
       difficulty: "easy"
     },
     {
-      id: "1-vocab-41",
+      id: "1-vocab-15",
       latin: "dormit",
       principalParts: "dormiō, dormīre, dormīvī, dormītus",
       english: "he, she, it sleeps",
@@ -514,7 +280,7 @@ In some sense, however, Latin survived through a kind of evolution. Like virtual
       difficulty: "easy"
     },
     {
-      id: "1-vocab-42",
+      id: "1-vocab-16",
       latin: "intrat",
       principalParts: "intrō, intrāre, intrāvī, intrātus",
       english: "he, she, it enters",
@@ -523,7 +289,7 @@ In some sense, however, Latin survived through a kind of evolution. Like virtual
       difficulty: "easy"
     },
     {
-      id: "1-vocab-43",
+      id: "1-vocab-17",
       latin: "circumspectat",
       principalParts: "circumspectō, circumspectāre",
       english: "he, she, it looks around",
@@ -532,7 +298,7 @@ In some sense, however, Latin survived through a kind of evolution. Like virtual
       difficulty: "medium"
     },
     {
-      id: "1-vocab-44",
+      id: "1-vocab-18",
       latin: "cibus",
       principalParts: "cibus, -ī",
       english: "food",
@@ -541,7 +307,7 @@ In some sense, however, Latin survived through a kind of evolution. Like virtual
       difficulty: "easy"
     },
     {
-      id: "1-vocab-45",
+      id: "1-vocab-19",
       latin: "mēnsa",
       principalParts: "mēnsa, -ae",
       english: "table",
@@ -550,7 +316,7 @@ In some sense, however, Latin survived through a kind of evolution. Like virtual
       difficulty: "easy"
     },
     {
-      id: "1-vocab-46",
+      id: "1-vocab-20",
       latin: "canis",
       principalParts: "canis, canis",
       english: "dog",
@@ -559,7 +325,7 @@ In some sense, however, Latin survived through a kind of evolution. Like virtual
       difficulty: "easy"
     },
     {
-      id: "1-vocab-47",
+      id: "1-vocab-21",
       latin: "salit",
       principalParts: "saliō, salīre, saluī, saltus",
       english: "he, she, it jumps",
@@ -568,7 +334,7 @@ In some sense, however, Latin survived through a kind of evolution. Like virtual
       difficulty: "easy"
     },
     {
-      id: "1-vocab-48",
+      id: "1-vocab-22",
       latin: "stat",
       principalParts: "stō, stāre, stetī, status",
       english: "he, she, it stands",
@@ -577,7 +343,7 @@ In some sense, however, Latin survived through a kind of evolution. Like virtual
       difficulty: "easy"
     },
     {
-      id: "1-vocab-49",
+      id: "1-vocab-23",
       latin: "Grumio",
       principalParts: "Grumio, Grumiōnis",
       english: "Grumio (slave's name)",
@@ -587,7 +353,7 @@ In some sense, however, Latin survived through a kind of evolution. Like virtual
       notes: "The cook in Caecilius's household"
     },
     {
-      id: "1-vocab-50",
+      id: "1-vocab-24",
       latin: "stertit",
       principalParts: "stertō, stertere",
       english: "he, she, it snores",
@@ -596,7 +362,7 @@ In some sense, however, Latin survived through a kind of evolution. Like virtual
       difficulty: "easy"
     },
     {
-      id: "1-vocab-51",
+      id: "1-vocab-25",
       latin: "lātrat",
       principalParts: "lātrō, lātrāre, lātrāvī, lātrātus",
       english: "he, she, it barks",
@@ -605,7 +371,7 @@ In some sense, however, Latin survived through a kind of evolution. Like virtual
       difficulty: "easy"
     },
     {
-      id: "1-vocab-52",
+      id: "1-vocab-26",
       latin: "surgit",
       principalParts: "surgō, surgere, surrēxī, surrēctus",
       english: "he, she, it gets up, rises",
@@ -614,7 +380,7 @@ In some sense, however, Latin survived through a kind of evolution. Like virtual
       difficulty: "easy"
     },
     {
-      id: "1-vocab-53",
+      id: "1-vocab-27",
       latin: "īrātus",
       principalParts: "īrātus, -a, -um",
       english: "angry",
@@ -623,7 +389,7 @@ In some sense, however, Latin survived through a kind of evolution. Like virtual
       difficulty: "easy"
     },
     {
-      id: "1-vocab-54",
+      id: "1-vocab-28",
       latin: "pestis",
       principalParts: "pestis, pestis",
       english: "pest, plague",
@@ -633,7 +399,7 @@ In some sense, however, Latin survived through a kind of evolution. Like virtual
       notes: "Used as an insult meaning 'pest' or 'nuisance'"
     },
     {
-      id: "1-vocab-55",
+      id: "1-vocab-29",
       latin: "furcifer",
       principalParts: "furcifer, furciferis",
       english: "scoundrel, rascal",
@@ -643,7 +409,7 @@ In some sense, however, Latin survived through a kind of evolution. Like virtual
       notes: "A strong insult in Latin, literally meaning 'fork-bearer'"
     },
     {
-      id: "1-vocab-56",
+      id: "1-vocab-30",
       latin: "clāmat",
       principalParts: "clāmō, clāmāre, clāmāvī, clāmātus",
       english: "he, she, it shouts, calls out",
@@ -652,7 +418,7 @@ In some sense, however, Latin survived through a kind of evolution. Like virtual
       difficulty: "easy"
     },
     {
-      id: "1-vocab-57",
+      id: "1-vocab-31",
       latin: "exit",
       principalParts: "exeō, exīre, exiī, exitus",
       english: "he, she, it goes out, leaves",
