@@ -12,7 +12,7 @@ import UserProgress from '@/components/UserProgress';
 import LessonNavigation from '@/components/LessonNavigation';
 import { BookOpen, Brain, Trophy, GraduationCap, Star, Sparkles, ArrowRight, Clock, Target } from 'lucide-react';
 
-const PDF_URL = '/ludus.pdf';
+const PDF_URL = '/CLC_OCR.pdf';
 
 const Home: React.FC = () => {
     const router = useRouter();
