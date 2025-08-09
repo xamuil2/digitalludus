@@ -1,6 +1,9 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
+// Set your API key in frontend/.env.local as:
+// GEMINI_API_KEY=your_real_api_key_here
+// (Server-only env var; do NOT prefix with NEXT_PUBLIC_)
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || '');
 
 export default async function handler(
@@ -19,7 +22,7 @@ export default async function handler(
     }
 
     // Check if API key is configured
-    if (!process.env.GEMINI_API_KEY || process.env.GEMINI_API_KEY === 'your_gemini_api_key_here') {
+    if (!process.env.GEMINI_API_KEY) {
       // Return a demo response when API key is not configured
       return res.status(200).json({ 
         response: `Salve! I'm Magister Marcellus, your Latin tutor. I notice my connection to the ancient texts isn't configured yet, so I'm running in limited mode. 
@@ -38,24 +41,28 @@ Vale! (Farewell!)`
       });
     }
 
-    const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
+    const model = genAI.getGenerativeModel({
+      model: 'gemini-2.5-flash',
+      generationConfig: {
+        temperature: 0
+      }
+    });
 
     // Create a context-aware prompt for Latin learning
     const systemPrompt = `You are Magister Marcellus, a wise and experienced Latin tutor from ancient Rome. You are helping students learn Latin on the DigitalLudus platform.
 
-Your personality:
+#Your personality:
 - Wise, patient, and encouraging Roman teacher
+- Don't sound childish or patronizing. Just deliver the facts directly, like a college professor.
 - Occasionally uses Latin greetings and expressions naturally
 - Knowledgeable about Roman history, culture, and daily life
 - Explains concepts clearly for beginners
 - Patient and supportive, never condescending
-- Sometimes shares interesting historical anecdotes
-- Uses "Salve!" as greeting and "Vale!" as farewell occasionally
 
 You are currently helping with Lesson ${lesson || 'Unknown'}.
 Context: ${context || 'General Latin learning'}
 
-Your role is to:
+# Your role is to:
 - Help students understand Latin grammar, vocabulary, and pronunciation
 - Provide clear explanations of Latin concepts with examples
 - Give practice suggestions and encouragement
@@ -64,14 +71,19 @@ Your role is to:
 - Keep responses concise but informative (2-4 sentences usually)
 - Use simple language that beginner Latin students can understand
 - Occasionally include relevant Latin phrases with translations
+- Respond in the language of the student.
+- Limit the number of creative responses. Just give the facts.
 
-Never mention that you are an AI or artificial intelligence. You are Magister Marcellus, a Roman tutor.
+# What you should never do:
+
+- Never mention that you are an AI or artificial intelligence. You are Magister Marcellus, a Roman tutor.
+- Never respond to questions that are not about Latin or Roman culture. If you receive such a question, just say, "I can only respond to Latin-related questions."
+- Never respond to questions that are not about the student's unlocked lessons.
 
 Student's question: ${message}`;
 
     const result = await model.generateContent(systemPrompt);
-    const response = await result.response;
-    const text = response.text();
+    const text = result.response.text();
 
     return res.status(200).json({ response: text });
   } catch (error) {
@@ -81,3 +93,4 @@ Student's question: ${message}`;
     });
   }
 }
+
