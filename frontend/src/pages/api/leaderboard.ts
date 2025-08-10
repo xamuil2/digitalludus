@@ -3,6 +3,22 @@ import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
+// Type for the selected user fields in leaderboard query
+type LeaderboardUser = {
+  id: string;
+  name: string | null;
+  username: string | null;
+  image: string | null;
+  totalStudyTime: number;
+  currentStreak: number;
+  longestStreak: number;
+  lessonsCompleted: number;
+  quizzesTaken: number;
+  vocabularyMastered: number;
+  averageScore: number;
+  lastActive: Date;
+};
+
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'GET') {
     return res.status(405).json({ message: 'Method not allowed' });
@@ -66,7 +82,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     });
 
     // Calculate ranks and additional stats
-    const leaderboard = topUsers.map((user, index) => ({
+    const leaderboard = topUsers.map((user: LeaderboardUser, index: number) => ({
       rank: index + 1,
       ...user,
       displayName: user.username || user.name || 'Anonymous',
