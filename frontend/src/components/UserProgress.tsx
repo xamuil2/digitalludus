@@ -1,39 +1,78 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSession, signIn, signOut } from 'next-auth/react';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { User, LogIn, LogOut, BookOpen, Trophy, Star } from 'lucide-react';
+import { Card, CardContent } from '@/components/ui/card';
+import { User, LogIn, LogOut, Star } from 'lucide-react';
+
+interface UserStats {
+  id: string;
+  name?: string;
+  username?: string;
+  email: string;
+  totalStudyTime: number;
+  currentStreak: number;
+  longestStreak: number;
+  lessonsCompleted: number;
+  averageScore: number;
+  vocabularyMastered: number;
+  quizzesTaken: number;
+}
 
 interface UserProgressProps {
   compact?: boolean;
 }
 
-export default function UserProgress({ compact = false }: UserProgressProps) {
+export default function UserProgress(): React.ReactElement {
+  const { data: session, status } = useSession();
   const [isLoading, setIsLoading] = useState(false);
+  const [userStats, setUserStats] = useState<UserStats | null>(null);
+
+  useEffect(() => {
+    if (session?.user?.id) {
+      fetchUserStats();
+    }
+  }, [session]);
+
+  const fetchUserStats = async () => {
+    try {
+      const response = await fetch('/api/profile');
+      if (response.ok) {
+        const data = await response.json();
+        setUserStats(data.user);
+      }
+    } catch (error) {
+      console.error('Failed to fetch user stats:', error);
+    }
+  };
 
   const handleSignIn = async (provider: string) => {
     setIsLoading(true);
-    // Dummy implementation - just show loading state briefly
-    setTimeout(() => {
+    try {
+      if (provider === 'google') {
+        await signIn('google');
+      } else {
+        // Redirect to custom sign-in page
+        window.location.href = '/auth/signin';
+      }
+    } catch (error) {
+      console.error('Sign in error:', error);
+    } finally {
       setIsLoading(false);
-      // Show a simple alert for now
-      alert(`Sign in with ${provider} coming soon! Authentication is currently disabled for demo purposes.`);
-    }, 1000);
+    }
   };
 
   const handleSignOut = async () => {
     setIsLoading(true);
-    // Dummy implementation - just show loading state briefly
-    setTimeout(() => {
+    try {
+      await signOut({ callbackUrl: '/' });
+    } catch (error) {
+      console.error('Sign out error:', error);
+    } finally {
       setIsLoading(false);
-      alert('Sign out functionality is currently disabled for demo purposes.');
-    }, 1000);
+    }
   };
 
-  // For demo purposes, always show signed-out state
-  // Never show loading or signed-in state
-  const showLoading = false;
-  const session = null;
+  const showLoading = status === 'loading' || isLoading;
 
   if (showLoading) {
     return (
@@ -51,38 +90,58 @@ export default function UserProgress({ compact = false }: UserProgressProps) {
     );
   }
 
-  // For demo purposes, always show signed-out state
-  // if (session) {
-  if (false) {
+  if (session?.user) {
+    const displayName = userStats?.username || userStats?.name || session.user.name || 'Student';
+    
     return (
       <Card className="border-0 bg-gradient-to-r from-blue-50 via-indigo-50 to-purple-50 shadow-xl shadow-blue-200/50">
         <CardContent className="p-6">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full flex items-center justify-center">
-                <User className="h-6 w-6 text-white" />
+              <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full flex items-center justify-center overflow-hidden">
+                {session.user.image ? (
+                  <img 
+                    src={session.user.image} 
+                    alt="Profile" 
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  <User className="h-6 w-6 text-white" />
+                )}
               </div>
               <div>
                 <h3 className="text-xl font-semibold text-slate-800">
-                  Welcome back, Student!
+                  Welcome back, {displayName}!
                 </h3>
-                <p className="text-slate-600">demo@digitalludus.org</p>
+                <p className="text-slate-600">{session.user.email}</p>
               </div>
             </div>
             
             <div className="flex items-center gap-6">
               <div className="flex items-center gap-4">
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-blue-900">3</div>
+                  <div className="text-2xl font-bold text-blue-900">
+                    {userStats?.lessonsCompleted || 0}
+                  </div>
                   <div className="text-sm text-blue-600">Lessons</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-green-900">85%</div>
-                  <div className="text-sm text-green-600">Progress</div>
+                  <div className="text-2xl font-bold text-green-900">
+                    {userStats?.averageScore ? `${Math.round(userStats.averageScore)}%` : '0%'}
+                  </div>
+                  <div className="text-sm text-green-600">Average</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-purple-900">24</div>
-                  <div className="text-sm text-purple-600">Quizzes</div>
+                  <div className="text-2xl font-bold text-purple-900">
+                    {userStats?.currentStreak || 0}
+                  </div>
+                  <div className="text-sm text-purple-600">Streak</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-amber-900">
+                    {Math.floor((userStats?.totalStudyTime || 0) / 60)}h
+                  </div>
+                  <div className="text-sm text-amber-600">Study Time</div>
                 </div>
               </div>
               
@@ -129,7 +188,7 @@ export default function UserProgress({ compact = false }: UserProgressProps) {
               </div>
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 bg-amber-400 rounded-full"></div>
-                Sync devices
+                Join leaderboard
               </div>
             </div>
             
@@ -141,7 +200,7 @@ export default function UserProgress({ compact = false }: UserProgressProps) {
                   className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white shadow-lg"
                 >
                   <LogIn className="h-4 w-4 mr-2" />
-                  {isLoading ? 'Demo Mode...' : 'Sign in with Google (Demo)'}
+                  {isLoading ? 'Loading...' : 'Sign in with Google'}
                 </Button>
                 
                 <Button
@@ -151,12 +210,9 @@ export default function UserProgress({ compact = false }: UserProgressProps) {
                   className="bg-white/80 border-amber-200 hover:bg-amber-50 hover:border-amber-300"
                 >
                   <LogIn className="h-4 w-4 mr-2" />
-                  {isLoading ? 'Demo Mode...' : 'Email (Demo)'}
+                  {isLoading ? 'Loading...' : 'Email Sign In'}
                 </Button>
               </div>
-              <p className="text-xs text-amber-600">
-                Authentication temporarily disabled for demo
-              </p>
             </div>
           </div>
         </div>

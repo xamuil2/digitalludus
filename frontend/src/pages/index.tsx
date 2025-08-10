@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useRouter } from 'next/router';
+import { useSession } from 'next-auth/react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -10,12 +10,14 @@ import Quiz from '@/components/Quiz';
 import MagisterChat from '@/components/AIChat';
 import UserProgress from '@/components/UserProgress';
 import LessonNavigation from '@/components/LessonNavigation';
-import { BookOpen, Brain, Trophy, GraduationCap, Star, Sparkles, ArrowRight, Clock, Target } from 'lucide-react';
+import Leaderboard from '@/components/Leaderboard';
+import StudySessionTracker from '@/components/StudySessionTracker';
+import { BookOpen, Brain, Trophy, GraduationCap, Star, Sparkles, ArrowRight, Clock, Target, TrendingUp } from 'lucide-react';
 
 const PDF_URL = '/CLC_OCR.pdf';
 
 const Home: React.FC = () => {
-    const router = useRouter();
+    const { data: session } = useSession();
     const [selectedLesson, setSelectedLesson] = useState(1);
     const [currentPage, setCurrentPage] = useState(1);
     const [activeTab, setActiveTab] = useState('lessons');
@@ -108,7 +110,7 @@ const Home: React.FC = () => {
             <main className="container mx-auto px-4 py-12">
                 <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-8">
                     <div className="flex justify-center">
-                        <TabsList className="grid w-full max-w-2xl grid-cols-4 bg-white/80 backdrop-blur-sm border border-slate-200/50 shadow-lg shadow-slate-200/50 p-2 h-auto">
+                        <TabsList className="grid w-full max-w-3xl grid-cols-5 bg-white/80 backdrop-blur-sm border border-slate-200/50 shadow-lg shadow-slate-200/50 p-2 h-auto">
                             <TabsTrigger 
                                 value="lessons" 
                                 className="flex flex-col items-center gap-2 py-4 px-6 data-[state=active]:bg-gradient-to-br data-[state=active]:from-blue-500 data-[state=active]:to-indigo-600 data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:shadow-blue-200/50 rounded-lg font-medium transition-all"
@@ -136,6 +138,13 @@ const Home: React.FC = () => {
                             >
                                 <Trophy className="h-5 w-5" />
                                 <span className="text-sm">Quiz</span>
+                            </TabsTrigger>
+                            <TabsTrigger 
+                                value="leaderboard" 
+                                className="flex flex-col items-center gap-2 py-4 px-6 data-[state=active]:bg-gradient-to-br data-[state=active]:from-purple-500 data-[state=active]:to-pink-600 data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:shadow-purple-200/50 rounded-lg font-medium transition-all"
+                            >
+                                <TrendingUp className="h-5 w-5" />
+                                <span className="text-sm">Leaderboard</span>
                             </TabsTrigger>
                         </TabsList>
                     </div>
@@ -175,18 +184,11 @@ const Home: React.FC = () => {
                                     </CardContent>
                                 </Card>
 
-                                <Card className="border-0 bg-gradient-to-br from-blue-50 to-indigo-50 shadow-lg shadow-blue-100/50">
-                                    <CardHeader className="pb-3">
-                                        <CardTitle className="text-lg text-purple-800 flex items-center gap-2">
-                                            <Target className="h-5 w-5" />
-                                            Accuracy
-                                        </CardTitle>
-                                    </CardHeader>
-                                    <CardContent>
-                                        <div className="text-3xl font-bold text-purple-900 mb-1">89%</div>
-                                        <div className="text-sm text-purple-600">Average Score</div>
-                                    </CardContent>
-                                </Card>
+                                {/* Study Session Tracker */}
+                                <StudySessionTracker 
+                                    lessonId={selectedLesson} 
+                                    activityType="lesson"
+                                />
                             </div>
 
                             <LessonNavigation 
@@ -503,6 +505,42 @@ const Home: React.FC = () => {
                                     </CardContent>
                                 </Card>
                             </div>
+                        </div>
+                    </TabsContent>
+                    <TabsContent value="leaderboard" className="space-y-8">
+                        <div className="max-w-6xl mx-auto">
+                            <div className="text-center mb-12">
+                                <h3 className="text-3xl font-bold mb-4 bg-gradient-to-r from-purple-800 to-pink-800 bg-clip-text text-transparent">
+                                    Study Time Leaderboard
+                                </h3>
+                                <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+                                    See how you rank among your fellow Latin students. Track your progress and compete for the top spots!
+                                </p>
+                            </div>
+
+                            <Leaderboard currentUserId={session?.user?.id} />
+
+                            {!session && (
+                                <div className="mt-8 flex justify-center">
+                                    <Card className="border-0 bg-gradient-to-br from-purple-50 to-pink-50 shadow-lg shadow-purple-100/50">
+                                        <CardContent className="p-8 text-center">
+                                            <div className="text-purple-500 mb-4">
+                                                <TrendingUp className="h-12 w-12 mx-auto" />
+                                            </div>
+                                            <h3 className="text-lg font-semibold text-purple-900 mb-2">Join the Competition!</h3>
+                                            <p className="text-purple-700 mb-4">
+                                                Sign in to track your study time and appear on the leaderboard
+                                            </p>
+                                            <Button 
+                                                onClick={() => window.location.href = '/auth/signin'}
+                                                className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700"
+                                            >
+                                                Sign In to Compete
+                                            </Button>
+                                        </CardContent>
+                                    </Card>
+                                </div>
+                            )}
                         </div>
                     </TabsContent>
                 </Tabs>
