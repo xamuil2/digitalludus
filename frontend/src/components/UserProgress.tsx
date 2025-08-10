@@ -18,10 +18,6 @@ interface UserStats {
   quizzesTaken: number;
 }
 
-interface UserProgressProps {
-  compact?: boolean;
-}
-
 export default function UserProgress(): React.ReactElement {
   const { data: session, status } = useSession();
   const [isLoading, setIsLoading] = useState(false);

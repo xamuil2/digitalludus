@@ -1,9 +1,9 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { BookOpen, Brain, CheckCircle, Trophy, Clock, Target, Sparkles, Lock, Play } from 'lucide-react';
+import { BookOpen, CheckCircle, Trophy, Sparkles, Lock, Play } from 'lucide-react';
 import { useRouter } from 'next/router';
-import { getAllLessons, type Lesson } from '@/data/lessons';
+import { getAllLessons } from '@/data/lessons';
 
 interface LessonNavigationProps {
   selectedLesson: number;

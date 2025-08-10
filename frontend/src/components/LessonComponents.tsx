@@ -1,30 +1,16 @@
 import React, { useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Progress } from '@/components/ui/progress';
 import { Badge } from '@/components/ui/badge';
 import { 
   BookOpen, 
   Brain, 
-  CheckCircle, 
-  PenTool, 
-  Target, 
-  Trophy,
-  Clock,
-  FileText,
-  Languages,
-  BookOpenCheck,
-  Lightbulb,
-  Sparkles,
-  Globe,
-  ArrowRight,
-  Star,
   Eye,
   EyeOff,
   MessageCircle,
   ChevronDown
 } from 'lucide-react';
-import { type Lesson, type LessonSection } from '@/data/lessons';
+import { type Lesson } from '@/data/lessons';
 import VocabularyDriller from '@/components/VocabularyDriller';
 import { WordTooltip } from '@/components/WordTooltip';
 import { lookupWord } from '@/lib/vocabularyLookup';

@@ -1,10 +1,10 @@
-import { useMemo, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Badge } from '@/components/ui/badge';
-import { User, Send, Loader2, MessageCircle, Sparkles } from 'lucide-react';
+import { User, Send, Loader2, Sparkles } from 'lucide-react';
 
 interface Message {
   id: string;

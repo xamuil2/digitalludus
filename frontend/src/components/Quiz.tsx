@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
 import { CheckCircle, XCircle, Trophy, BookOpen, ArrowRight } from 'lucide-react';
-import { getQuizByLesson, type QuizQuestion } from '@/data/quiz';
+import { getQuizByLesson } from '@/data/quiz';
 import { getAllLessons } from '@/data/lessons';
 
 interface QuizProps {
