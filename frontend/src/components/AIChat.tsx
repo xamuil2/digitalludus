@@ -1,10 +1,10 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Badge } from '@/components/ui/badge';
-import { User, Send, Loader2, MessageCircle, Sparkles } from 'lucide-react';
+import { User, Send, Loader2, Sparkles } from 'lucide-react';
 
 interface Message {
   id: string;
@@ -30,6 +30,19 @@ export default function MagisterChat({ lesson, context, compact = false }: Magis
   ]);
   const [inputMessage, setInputMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [liveHtml, setLiveHtml] = useState<string | null>(null);
+  const assistantContentRef = useRef<string>('');
+
+  const extractLatestHtmlBlock = (text: string): string | null => {
+    // Find the last fenced ```html ... ``` block
+    const regex = /```html\n([\s\S]*?)```/gi;
+    let match: RegExpExecArray | null = null;
+    let last: string | null = null;
+    while ((match = regex.exec(text)) !== null) {
+      last = match[1];
+    }
+    return last;
+  };
 
   const sendMessage = async () => {
     if (!inputMessage.trim() || isLoading) return;
@@ -41,12 +54,18 @@ export default function MagisterChat({ lesson, context, compact = false }: Magis
       timestamp: new Date()
     };
 
-    setMessages(prev => [...prev, userMessage]);
+    setMessages(prev => [...prev, userMessage, {
+      id: (Date.now() + 1).toString(),
+      role: 'assistant',
+      content: '',
+      timestamp: new Date()
+    }]);
+    assistantContentRef.current = '';
     setInputMessage('');
     setIsLoading(true);
 
     try {
-      const response = await fetch('/api/ai-tutor', {
+      const response = await fetch('/api/ai-tutor-stream', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -58,28 +77,91 @@ export default function MagisterChat({ lesson, context, compact = false }: Magis
         })
       });
 
-      const data = await response.json();
+      if (!response.ok) {
+        let errorText = 'Failed to start stream';
+        try {
+          const err = await response.json();
+          errorText = err?.message || errorText;
+        } catch {}
+        throw new Error(errorText);
+      }
 
-      if (response.ok) {
-        const assistantMessage: Message = {
-          id: (Date.now() + 1).toString(),
-          role: 'assistant',
-          content: data.response,
-          timestamp: new Date()
-        };
-        setMessages(prev => [...prev, assistantMessage]);
-      } else {
-        throw new Error(data.message || 'Failed to get response');
+      if (!response.body) {
+        throw new Error('No response body');
+      }
+
+      const reader = response.body.getReader();
+      const decoder = new TextDecoder();
+      let buffer = '';
+
+      const appendToken = (token: string) => {
+        setMessages(prev => {
+          const updated = [...prev];
+          // Append to the last assistant message (we created a placeholder)
+          for (let i = updated.length - 1; i >= 0; i--) {
+            if (updated[i].role === 'assistant') {
+              updated[i] = {
+                ...updated[i],
+                content: (updated[i].content || '') + token,
+              };
+              break;
+            }
+          }
+          return updated;
+        });
+
+        // Update live preview if we have a full HTML block
+        assistantContentRef.current += token;
+        setLiveHtml((prev) => {
+          const html = extractLatestHtmlBlock(assistantContentRef.current);
+          return html ?? prev;
+        });
+      };
+
+      while (true) {
+        const { value, done } = await reader.read();
+        if (done) break;
+        buffer += decoder.decode(value, { stream: true });
+
+        // SSE messages are separated by double newlines
+        const parts = buffer.split('\n\n');
+        buffer = parts.pop() || '';
+
+        for (const part of parts) {
+          const lines = part.split('\n');
+          for (const line of lines) {
+            if (!line.startsWith('data:')) continue;
+            const data = line.slice(5).trim();
+            if (data === '[DONE]') {
+              break;
+            }
+            try {
+              const payload = JSON.parse(data);
+              if (payload?.type === 'token' && typeof payload.text === 'string') {
+                appendToken(payload.text);
+              }
+            } catch {
+              // ignore malformed lines
+            }
+          }
+        }
       }
     } catch (error) {
       console.error('Error sending message:', error);
-      const errorMessage: Message = {
-        id: (Date.now() + 1).toString(),
-        role: 'assistant',
-        content: 'Apologies, but I encountered an issue. Please try asking your question again.',
-        timestamp: new Date()
-      };
-      setMessages(prev => [...prev, errorMessage]);
+      // Replace the last assistant placeholder with error text
+      setMessages(prev => {
+        const updated = [...prev];
+        for (let i = updated.length - 1; i >= 0; i--) {
+          if (updated[i].role === 'assistant') {
+            updated[i] = {
+              ...updated[i],
+              content: 'Apologies, but I encountered an issue. Please try again.',
+            };
+            break;
+          }
+        }
+        return updated;
+      });
     } finally {
       setIsLoading(false);
     }
@@ -194,6 +276,36 @@ export default function MagisterChat({ lesson, context, compact = false }: Magis
             )}
           </div>
         </ScrollArea>
+
+        {liveHtml && (
+          <div className="px-4 pb-4">
+            <div className="flex items-center justify-between mb-2">
+              <p className="text-sm font-medium text-slate-700">Canvas Preview</p>
+              <div className="flex gap-2">
+                <Button
+                  variant="secondary"
+                  className="h-8 px-3"
+                  onClick={() => {
+                    const html = liveHtml || '';
+                    const url = 'data:text/html;charset=utf-8,' + encodeURIComponent(html);
+                    window.open(url, '_blank');
+                  }}
+                >
+                  Open in new tab
+                </Button>
+              </div>
+            </div>
+            <div className="border border-amber-200 rounded-md overflow-hidden bg-white">
+              <iframe
+                title="AI Canvas Preview"
+                sandbox="allow-forms allow-modals allow-pointer-lock allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
+                className="w-full"
+                style={{ height: compact ? 280 : 420 }}
+                srcDoc={liveHtml}
+              />
+            </div>
+          </div>
+        )}
         
         <div className="p-4 border-t border-amber-200/50 bg-gradient-to-r from-amber-50/50 to-orange-50/50">
           <div className="flex gap-2">
