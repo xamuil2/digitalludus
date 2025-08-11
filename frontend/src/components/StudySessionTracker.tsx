@@ -142,48 +142,42 @@ export default function StudySessionTracker({
 
   if (!session?.user) {
     return (
-      <Card className="border-0 bg-gradient-to-r from-amber-50 to-orange-50 shadow-lg shadow-amber-100/50">
-        <CardContent className="p-4 text-center">
-          <Clock className="h-8 w-8 text-amber-600 mx-auto mb-2" />
-          <p className="text-amber-700 text-sm">Sign in to track your study time!</p>
+      <Card className="glass-effect shadow-roman border-roman-gold/20">
+        <CardHeader className="pb-4">
+          <CardTitle className="text-lg text-roman-red flex items-center gap-3 font-classical">
+            <div className="p-2 bg-roman-gradient rounded-lg">
+              <Clock className="h-5 w-5 text-white" />
+            </div>
+            Study Timer
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="text-4xl font-classical font-bold text-roman-red mb-2">0:00</div>
+          <div className="text-sm text-muted-foreground font-classical">Sign in to track study time</div>
         </CardContent>
       </Card>
     );
   }
 
   return (
-    <Card className="border-0 bg-gradient-to-r from-green-50 to-emerald-50 shadow-lg shadow-green-100/50">
-      <CardHeader className="pb-3">
-        <CardTitle className="text-lg text-green-800 flex items-center gap-2">
-          <Clock className="h-5 w-5" />
+    <Card className="glass-effect shadow-roman border-roman-gold/20">
+      <CardHeader className="pb-4">
+        <CardTitle className="text-lg text-roman-red flex items-center gap-3 font-classical">
+          <div className="p-2 bg-roman-gradient rounded-lg">
+            <Clock className="h-5 w-5 text-white" />
+          </div>
           Study Timer
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
         {/* Current Session Display */}
         <div className="text-center">
-          <div className="text-3xl font-bold text-green-900 mb-1">
+          <div className="text-4xl font-classical font-bold text-roman-red mb-2">
             {formatTime(sessionTime)}
           </div>
-          <div className="text-sm text-green-600">
+          <div className="text-sm text-muted-foreground font-classical">
             {isStudying ? 'Studying now...' : currentSessionId ? 'Paused' : 'Ready to study'}
           </div>
-        </div>
-
-        {/* Status Badge */}
-        <div className="flex justify-center">
-          <Badge 
-            variant={isStudying ? "default" : "secondary"}
-            className={`${
-              isStudying 
-                ? 'bg-green-600 text-white' 
-                : currentSessionId 
-                  ? 'bg-yellow-500 text-white'
-                  : 'bg-gray-500 text-white'
-            }`}
-          >
-            {isStudying ? 'Active' : currentSessionId ? 'Paused' : 'Inactive'}
-          </Badge>
         </div>
 
         {/* Control Buttons */}
@@ -191,7 +185,7 @@ export default function StudySessionTracker({
           {!currentSessionId ? (
             <Button 
               onClick={startStudySession}
-              className="bg-green-600 hover:bg-green-700 text-white"
+              className="bg-roman-gradient hover:shadow-roman text-white font-classical"
               size="sm"
             >
               <Play className="h-4 w-4 mr-2" />
@@ -204,7 +198,7 @@ export default function StudySessionTracker({
                   onClick={pauseStudySession}
                   variant="outline"
                   size="sm"
-                  className="border-yellow-500 text-yellow-700 hover:bg-yellow-50"
+                  className="border-roman-gold text-roman-gold hover:bg-roman-gold/10 font-classical"
                 >
                   <Pause className="h-4 w-4 mr-2" />
                   Pause
@@ -212,7 +206,7 @@ export default function StudySessionTracker({
               ) : (
                 <Button 
                   onClick={resumeStudySession}
-                  className="bg-blue-600 hover:bg-blue-700 text-white"
+                  className="bg-roman-gradient hover:shadow-roman text-white font-classical"
                   size="sm"
                 >
                   <Play className="h-4 w-4 mr-2" />
@@ -223,27 +217,24 @@ export default function StudySessionTracker({
                 onClick={endStudySession}
                 variant="outline"
                 size="sm"
-                className="border-red-500 text-red-700 hover:bg-red-50"
+                className="border-roman-red text-roman-red hover:bg-roman-red/10 font-classical"
               >
                 <Square className="h-4 w-4 mr-2" />
-                End Session
+                End
               </Button>
             </>
           )}
         </div>
 
-        {/* Total Study Time */}
-        <div className="pt-3 border-t border-green-200 text-center">
-          <div className="text-sm text-green-600 mb-1">Total Study Time</div>
-          <div className="text-xl font-semibold text-green-800">
-            {Math.floor(totalStudyTime / 60)}h {totalStudyTime % 60}m
+        {/* Total Study Time - compact format */}
+        {totalStudyTime > 0 && (
+          <div className="pt-3 border-t border-roman-gold/20 text-center">
+            <div className="text-xs text-roman-black/60 mb-1 font-classical">Total Study Time</div>
+            <div className="text-lg font-classical font-semibold text-roman-gold">
+              {Math.floor(totalStudyTime / 60)}h {totalStudyTime % 60}m
+            </div>
           </div>
-        </div>
-
-        {/* Activity Info */}
-        <div className="text-xs text-green-600 text-center">
-          Lesson {lessonId} • {activityType}
-        </div>
+        )}
       </CardContent>
     </Card>
   );

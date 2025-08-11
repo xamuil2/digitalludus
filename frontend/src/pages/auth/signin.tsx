@@ -56,23 +56,38 @@ export default function SignIn() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-indigo-50/40 flex items-center justify-center p-4">
-      <div className="w-full max-w-md space-y-6">
-        {/* Header */}
-        <div className="text-center">
-          <Link href="/" className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 mb-6">
-            <ArrowLeft className="h-4 w-4" />
-            Back to DigitalLudus
+    <div className="min-h-screen bg-marble ancient-texture flex items-center justify-center p-6">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute inset-0 bg-gradient-to-br from-roman-red/10 via-transparent to-roman-gold/10"></div>
+      </div>
+      
+      <div className="w-full max-w-md relative z-10">
+        {/* Back to Home */}
+        <div className="mb-6">
+          <Link href="/">
+            <Button
+              variant="ghost"
+              className="text-roman-red hover:bg-roman-gold/10 hover:text-roman-gold font-classical"
+            >
+              <ArrowLeft className="mr-2 h-4 w-4" />
+              Back to Home
+            </Button>
           </Link>
-          <h1 className="text-3xl font-bold text-slate-900 mb-2">Welcome Back</h1>
-          <p className="text-slate-600">Sign in to continue your Latin learning journey</p>
         </div>
 
-        <Card className="border-0 shadow-xl shadow-slate-200/50">
-          <CardHeader className="space-y-1">
-            <CardTitle className="text-2xl text-center">Sign In</CardTitle>
-            <CardDescription className="text-center">
-              Choose your preferred sign-in method
+        <Card className="glass-effect shadow-roman border-roman-gold/20">
+          <CardHeader className="text-center space-y-1 pb-6">
+            <div className="flex justify-center mb-4">
+              <div className="p-3 bg-roman-gradient rounded-lg shadow-roman">
+                <LogIn className="h-6 w-6 text-white" />
+              </div>
+            </div>
+            <CardTitle className="text-2xl font-classical font-bold text-roman-red">
+              Welcome Back
+            </CardTitle>
+            <CardDescription className="text-muted-foreground">
+              Sign in to your account to continue your Latin studies
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">

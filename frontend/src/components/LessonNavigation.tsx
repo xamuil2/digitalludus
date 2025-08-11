@@ -1,7 +1,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { BookOpen, CheckCircle, Trophy, Sparkles, Lock, Play } from 'lucide-react';
+import { BookOpen, CheckCircle, Trophy, Crown, Lock, Play } from 'lucide-react';
 import { useRouter } from 'next/router';
 import { getAllLessons } from '@/data/lessons';
 
@@ -22,19 +22,19 @@ export default function LessonNavigation({ selectedLesson, onLessonSelect }: Les
   return (
     <div className="space-y-8">
       <div className="text-center">
-        <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-100 to-indigo-100 text-blue-700 px-4 py-2 rounded-full text-sm font-medium mb-4 border border-blue-200/50">
-          <Sparkles className="h-4 w-4" />
-          Your Learning Journey
+        <div className="inline-flex items-center gap-2 bg-gold-gradient text-white px-6 py-3 rounded-full text-sm font-classical font-medium mb-6 shadow-gold">
+          <Crown className="h-5 w-5" />
+          Your Classical Learning Journey
         </div>
-        <h2 className="text-3xl font-bold mb-4 bg-gradient-to-r from-slate-900 via-blue-800 to-indigo-800 bg-clip-text text-transparent">
+        <h2 className="text-4xl font-classical font-bold mb-6 text-roman-red">
           Course Progress
         </h2>
-        <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-          Master Latin fundamentals with structured lessons and practice. Each lesson builds upon the previous ones.
+        <p className="text-lg text-roman-black max-w-3xl mx-auto leading-relaxed">
+          Master Latin fundamentals with structured lessons and practice. Each lesson builds upon the previous ones in the ancient tradition of Roman education.
         </p>
       </div>
       
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
         {lessons.map((lesson) => {
           const isLocked = lesson.id > 2; // For now, lock lessons after 2
           const isCompleted = false; // We'll implement completion tracking later
@@ -43,39 +43,39 @@ export default function LessonNavigation({ selectedLesson, onLessonSelect }: Les
           return (
             <Card 
               key={lesson.id} 
-              className={`group cursor-pointer transition-all duration-300 border-0 shadow-lg hover:shadow-xl hover:-translate-y-1 overflow-hidden ${
+              className={`group cursor-pointer transition-all duration-300 glass-effect hover:shadow-roman hover:-translate-y-2 overflow-hidden ${
                 isCurrent 
-                  ? 'ring-2 ring-blue-400 shadow-blue-200/50 shadow-xl' 
+                  ? 'ring-2 ring-roman-gold shadow-gold border-roman-gold/40' 
                   : isCompleted
-                    ? 'bg-gradient-to-br from-emerald-50 to-teal-50 shadow-emerald-100/50'
+                    ? 'border-roman-gold/30 shadow-gold/50'
                     : isLocked 
-                      ? 'bg-gradient-to-br from-slate-50 to-slate-100 opacity-60'
-                      : 'bg-gradient-to-br from-white to-slate-50 shadow-slate-200/50 hover:shadow-blue-200/50'
+                      ? 'opacity-60 border-roman-red/20'
+                      : 'border-roman-gold/20 hover:border-roman-gold/40'
               }`}
               onClick={() => !isLocked && handleLessonClick(lesson.id)}
             >
               {/* Gradient accent */}
-              <div className={`h-1 w-full ${
+              <div className={`h-2 w-full ${
                 isCurrent 
-                  ? 'bg-gradient-to-r from-blue-400 to-indigo-500' 
+                  ? 'bg-roman-gradient' 
                   : isCompleted
-                    ? 'bg-gradient-to-r from-emerald-400 to-teal-500'
+                    ? 'bg-gold-gradient'
                     : isLocked
-                      ? 'bg-gradient-to-r from-slate-300 to-slate-400'
-                      : 'bg-gradient-to-r from-blue-400 to-indigo-500'
+                      ? 'bg-gradient-to-r from-roman-red/30 to-roman-red/50'
+                      : 'bg-roman-gradient'
               }`}></div>
               
               <CardHeader className="pb-4">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
-                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center transition-all group-hover:scale-110 ${
+                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center transition-all group-hover:scale-110 shadow-roman ${
                       isCompleted 
-                        ? 'bg-gradient-to-br from-emerald-100 to-emerald-200 text-emerald-600' 
+                        ? 'bg-gold-gradient text-white' 
                         : isLocked 
-                          ? 'bg-gradient-to-br from-slate-100 to-slate-200 text-slate-400'
+                          ? 'bg-gradient-to-br from-roman-marble to-roman-cream text-roman-black/40'
                           : isCurrent
-                            ? 'bg-gradient-to-br from-blue-100 to-blue-200 text-blue-600'
-                            : 'bg-gradient-to-br from-purple-100 to-purple-200 text-purple-600'
+                            ? 'bg-roman-gradient text-white'
+                            : 'bg-gradient-to-br from-roman-cream to-roman-marble text-roman-red'
                     }`}>
                       {isCompleted ? (
                         <CheckCircle className="h-6 w-6" />
@@ -88,13 +88,13 @@ export default function LessonNavigation({ selectedLesson, onLessonSelect }: Les
                       )}
                     </div>
                     <div className="text-left">
-                      <CardTitle className={`text-lg font-bold ${
-                        isLocked ? 'text-slate-400' : 'text-slate-800'
+                      <CardTitle className={`text-lg font-classical font-bold ${
+                        isLocked ? 'text-roman-black/40' : 'text-roman-red'
                       }`}>
                         {lesson.title}
                       </CardTitle>
-                      <CardDescription className={`text-sm ${
-                        isLocked ? 'text-slate-300' : 'text-slate-600'
+                      <CardDescription className={`text-sm font-classical ${
+                        isLocked ? 'text-roman-black/30' : 'text-muted-foreground'
                       }`}>
                         Lesson {lesson.id}
                       </CardDescription>
@@ -103,17 +103,17 @@ export default function LessonNavigation({ selectedLesson, onLessonSelect }: Les
                   
                   <div className="flex flex-col items-end gap-2">
                     {isCurrent && (
-                      <Badge className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white border-0 shadow-sm">
+                      <Badge className="bg-roman-gradient text-white border-none shadow-roman font-classical">
                         Current
                       </Badge>
                     )}
                     {isCompleted && (
-                      <Badge className="bg-gradient-to-r from-emerald-500 to-teal-600 text-white border-0 shadow-sm">
+                      <Badge className="bg-gold-gradient text-white border-none shadow-gold font-classical">
                         Complete
                       </Badge>
                     )}
                     {isLocked && (
-                      <Badge variant="secondary" className="bg-slate-200 text-slate-500 border-slate-300">
+                      <Badge variant="secondary" className="bg-roman-marble text-roman-black/50 border-roman-gold/20 font-classical">
                         Locked
                       </Badge>
                     )}
@@ -124,49 +124,49 @@ export default function LessonNavigation({ selectedLesson, onLessonSelect }: Les
               <CardContent className="pt-0 space-y-4">
                 {/* Progress indicators */}
                 <div className="grid grid-cols-3 gap-4 text-center">
-                  <div className={`${isLocked ? 'text-slate-400' : 'text-slate-600'}`}>
-                    <div className={`text-lg font-bold ${
-                      isLocked ? 'text-slate-400' : 'text-emerald-600'
+                  <div className={`${isLocked ? 'text-roman-black/40' : 'text-roman-black'}`}>
+                    <div className={`text-lg font-classical font-bold ${
+                      isLocked ? 'text-roman-black/40' : 'text-roman-gold'
                     }`}>
                       {lesson.vocabulary.length}
                     </div>
-                    <div className="text-xs">Words</div>
+                    <div className="text-xs font-classical">Words</div>
                   </div>
-                  <div className={`${isLocked ? 'text-slate-400' : 'text-slate-600'}`}>
-                    <div className={`text-lg font-bold ${
-                      isLocked ? 'text-slate-400' : 'text-blue-600'
+                  <div className={`${isLocked ? 'text-roman-black/40' : 'text-roman-black'}`}>
+                    <div className={`text-lg font-classical font-bold ${
+                      isLocked ? 'text-roman-black/40' : 'text-roman-red'
                     }`}>
                       {lesson.keyConcepts.length}
                     </div>
-                    <div className="text-xs">Grammar</div>
+                    <div className="text-xs font-classical">Grammar</div>
                   </div>
-                  <div className={`${isLocked ? 'text-slate-400' : 'text-slate-600'}`}>
-                    <div className={`text-lg font-bold ${
-                      isLocked ? 'text-slate-400' : 'text-purple-600'
+                  <div className={`${isLocked ? 'text-roman-black/40' : 'text-roman-black'}`}>
+                    <div className={`text-lg font-classical font-bold ${
+                      isLocked ? 'text-roman-black/40' : 'text-roman-gold'
                     }`}>
                       {lesson.estimatedTime}m
                     </div>
-                    <div className="text-xs">Time</div>
+                    <div className="text-xs font-classical">Time</div>
                   </div>
                 </div>
 
                 {/* Description */}
-                <p className={`text-sm leading-relaxed ${
-                  isLocked ? 'text-slate-400' : 'text-slate-600'
+                <p className={`text-sm leading-relaxed font-classical ${
+                  isLocked ? 'text-roman-black/40' : 'text-roman-black'
                 }`}>
                   {lesson.description}
                 </p>
 
                 {/* Action button */}
                 <Button 
-                  className={`w-full transition-all ${
+                  className={`w-full transition-all font-classical ${
                     isLocked 
-                      ? 'bg-slate-200 text-slate-400 cursor-not-allowed' 
+                      ? 'bg-roman-marble text-roman-black/40 cursor-not-allowed border border-roman-gold/20' 
                       : isCurrent
-                        ? 'bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white shadow-lg hover:shadow-xl'
+                        ? 'bg-roman-gradient hover:shadow-roman text-white shadow-roman'
                         : isCompleted
-                          ? 'bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white shadow-lg hover:shadow-xl'
-                          : 'bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white shadow-lg hover:shadow-xl'
+                          ? 'bg-gold-gradient hover:shadow-gold text-white shadow-gold'
+                          : 'bg-roman-gradient hover:shadow-roman text-white shadow-roman'
                   }`}
                   disabled={isLocked}
                   size="sm"
@@ -200,30 +200,30 @@ export default function LessonNavigation({ selectedLesson, onLessonSelect }: Les
       </div>
 
       {/* Overall progress summary */}
-      <Card className="border-0 bg-gradient-to-br from-indigo-50 to-purple-50 shadow-lg shadow-indigo-100/50">
-        <CardHeader className="text-center">
-          <CardTitle className="text-xl text-indigo-800 flex items-center justify-center gap-2">
+      <Card className="glass-effect shadow-roman border-roman-gold/20 bg-gradient-to-br from-roman-cream to-roman-marble">
+        <CardHeader className="text-center bg-gradient-to-r from-roman-marble to-roman-cream border-b border-roman-gold/20">
+          <CardTitle className="text-xl text-roman-red flex items-center justify-center gap-2 font-classical">
             <Trophy className="h-6 w-6" />
             Your Progress
           </CardTitle>
         </CardHeader>
-        <CardContent>
+        <CardContent className="p-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             <div>
-              <div className="text-2xl font-bold text-indigo-900 mb-1">1</div>
-              <div className="text-sm text-indigo-600">Lessons Started</div>
+              <div className="text-2xl font-classical font-bold text-roman-red mb-1">1</div>
+              <div className="text-sm text-roman-black font-classical">Lessons Started</div>
             </div>
             <div>
-              <div className="text-2xl font-bold text-emerald-900 mb-1">0</div>
-              <div className="text-sm text-emerald-600">Lessons Complete</div>
+              <div className="text-2xl font-classical font-bold text-roman-gold mb-1">0</div>
+              <div className="text-sm text-roman-black font-classical">Lessons Complete</div>
             </div>
             <div>
-              <div className="text-2xl font-bold text-purple-900 mb-1">45</div>
-              <div className="text-sm text-purple-600">Words Learned</div>
+              <div className="text-2xl font-classical font-bold text-roman-red mb-1">45</div>
+              <div className="text-sm text-roman-black font-classical">Words Learned</div>
             </div>
             <div>
-              <div className="text-2xl font-bold text-amber-900 mb-1">89%</div>
-              <div className="text-sm text-amber-600">Average Score</div>
+              <div className="text-2xl font-classical font-bold text-roman-gold mb-1">89%</div>
+              <div className="text-sm text-roman-black font-classical">Average Score</div>
             </div>
           </div>
         </CardContent>

@@ -72,13 +72,13 @@ export default function UserProgress(): React.ReactElement {
 
   if (showLoading) {
     return (
-      <Card className="border-0 bg-gradient-to-r from-slate-50 to-slate-100 shadow-lg shadow-slate-200/50">
+      <Card className="glass-effect shadow-roman border-roman-gold/20">
         <CardContent className="p-6">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 bg-slate-200 rounded-full animate-pulse"></div>
+            <div className="w-12 h-12 bg-roman-marble rounded-full animate-pulse"></div>
             <div className="flex-1">
-              <div className="h-5 bg-slate-200 rounded animate-pulse mb-2"></div>
-              <div className="h-4 bg-slate-200 rounded animate-pulse w-2/3"></div>
+              <div className="h-5 bg-roman-marble rounded animate-pulse mb-2"></div>
+              <div className="h-4 bg-roman-marble rounded animate-pulse w-2/3"></div>
             </div>
           </div>
         </CardContent>
@@ -90,11 +90,11 @@ export default function UserProgress(): React.ReactElement {
     const displayName = userStats?.username || userStats?.name || session.user.name || 'Student';
     
     return (
-      <Card className="border-0 bg-gradient-to-r from-blue-50 via-indigo-50 to-purple-50 shadow-xl shadow-blue-200/50">
+      <Card className="glass-effect shadow-roman border-roman-gold/20 bg-gradient-to-r from-roman-cream to-roman-marble">
         <CardContent className="p-6">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full flex items-center justify-center overflow-hidden">
+              <div className="w-12 h-12 bg-roman-gradient rounded-full flex items-center justify-center overflow-hidden shadow-roman">
                 {session.user.image ? (
                   <img 
                     src={session.user.image} 
@@ -106,38 +106,38 @@ export default function UserProgress(): React.ReactElement {
                 )}
               </div>
               <div>
-                <h3 className="text-xl font-semibold text-slate-800">
+                <h3 className="text-xl font-classical font-semibold text-roman-red">
                   Welcome back, {displayName}!
                 </h3>
-                <p className="text-slate-600">{session.user.email}</p>
+                <p className="text-roman-black/70 font-classical">{session.user.email}</p>
               </div>
             </div>
             
             <div className="flex items-center gap-6">
               <div className="flex items-center gap-4">
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-blue-900">
+                  <div className="text-2xl font-classical font-bold text-roman-red">
                     {userStats?.lessonsCompleted || 0}
                   </div>
-                  <div className="text-sm text-blue-600">Lessons</div>
+                  <div className="text-sm text-roman-black font-classical">Lessons</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-green-900">
+                  <div className="text-2xl font-classical font-bold text-roman-gold">
                     {userStats?.averageScore ? `${Math.round(userStats.averageScore)}%` : '0%'}
                   </div>
-                  <div className="text-sm text-green-600">Average</div>
+                  <div className="text-sm text-roman-black font-classical">Average</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-purple-900">
+                  <div className="text-2xl font-classical font-bold text-roman-red">
                     {userStats?.currentStreak || 0}
                   </div>
-                  <div className="text-sm text-purple-600">Streak</div>
+                  <div className="text-sm text-roman-black font-classical">Streak</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-amber-900">
+                  <div className="text-2xl font-classical font-bold text-roman-gold">
                     {Math.floor((userStats?.totalStudyTime || 0) / 60)}h
                   </div>
-                  <div className="text-sm text-amber-600">Study Time</div>
+                  <div className="text-sm text-roman-black font-classical">Study Time</div>
                 </div>
               </div>
               
@@ -146,7 +146,7 @@ export default function UserProgress(): React.ReactElement {
                 disabled={isLoading}
                 variant="outline"
                 size="sm"
-                className="bg-white/80 border-slate-300 hover:bg-slate-50 hover:border-slate-400"
+                className="glass-effect border-roman-gold/30 text-roman-red hover:bg-roman-gold/10 hover:border-roman-gold font-classical"
               >
                 <LogOut className="h-4 w-4 mr-2" />
                 {isLoading ? 'Signing out...' : 'Sign out'}
@@ -159,32 +159,32 @@ export default function UserProgress(): React.ReactElement {
   }
 
   return (
-    <Card className="border-0 bg-gradient-to-r from-amber-50 via-orange-50 to-yellow-50 shadow-xl shadow-amber-200/50">
+    <Card className="glass-effect shadow-gold border-roman-gold/20 bg-gradient-to-r from-roman-marble to-roman-cream">
       <CardContent className="p-6">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 bg-gradient-to-br from-amber-500 to-orange-600 rounded-full flex items-center justify-center">
+            <div className="w-12 h-12 bg-gold-gradient rounded-full flex items-center justify-center shadow-gold">
               <Star className="h-6 w-6 text-white" />
             </div>
             <div>
-              <h3 className="text-xl font-semibold text-slate-800">Save Your Progress</h3>
-              <p className="text-slate-600">Sign in to track your learning journey</p>
+              <h3 className="text-xl font-classical font-semibold text-roman-red">Save Your Progress</h3>
+              <p className="text-roman-black/70 font-classical">Sign in to track your learning journey</p>
             </div>
           </div>
           
           <div className="flex items-center gap-3">
-            <div className="hidden md:flex items-center gap-4 text-sm text-amber-700 mr-4">
+            <div className="hidden md:flex items-center gap-4 text-sm text-roman-black mr-4">
               <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-amber-400 rounded-full"></div>
-                Track progress
+                <div className="w-2 h-2 bg-roman-gold rounded-full"></div>
+                <span className="font-classical">Track progress</span>
               </div>
               <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-amber-400 rounded-full"></div>
-                Save scores
+                <div className="w-2 h-2 bg-roman-gold rounded-full"></div>
+                <span className="font-classical">Save scores</span>
               </div>
               <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-amber-400 rounded-full"></div>
-                Join leaderboard
+                <div className="w-2 h-2 bg-roman-gold rounded-full"></div>
+                <span className="font-classical">Join leaderboard</span>
               </div>
             </div>
             
@@ -193,7 +193,7 @@ export default function UserProgress(): React.ReactElement {
                 <Button
                   onClick={() => handleSignIn('google')}
                   disabled={isLoading}
-                  className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white shadow-lg"
+                  className="bg-roman-gradient hover:shadow-roman text-white shadow-roman font-classical"
                 >
                   <LogIn className="h-4 w-4 mr-2" />
                   {isLoading ? 'Loading...' : 'Sign in with Google'}
@@ -203,7 +203,7 @@ export default function UserProgress(): React.ReactElement {
                   onClick={() => handleSignIn('email')}
                   disabled={isLoading}
                   variant="outline"
-                  className="bg-white/80 border-amber-200 hover:bg-amber-50 hover:border-amber-300"
+                  className="glass-effect border-roman-gold/30 text-roman-red hover:bg-roman-gold/10 hover:border-roman-gold font-classical"
                 >
                   <LogIn className="h-4 w-4 mr-2" />
                   {isLoading ? 'Loading...' : 'Email Sign In'}
