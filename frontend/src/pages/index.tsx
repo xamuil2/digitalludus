@@ -81,7 +81,7 @@ const Home: React.FC = () => {
                             </span>
                         </h2>
                         <p className="text-xl text-muted-foreground leading-relaxed mb-12 max-w-3xl mx-auto font-medium">
-                            Transform your Latin studies with our comprehensive digital companion to the <strong className="text-roman-gold">Cambridge</strong> textbook.
+                            Transform your Latin studies with our comprehensive digital companion to the <strong className="text-roman-gold">Cambridge Latin</strong> textbook.
                             Experience immersive lessons, interactive exercises, and intelligent practice tools designed for serious learners.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-6 justify-center">

@@ -62,9 +62,7 @@ const About: React.FC = () => {
               About DigitalLudus
             </h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto font-classical">
-              Most of this is filler text. So you can ignore it. Actual project description to come.
-              <br />
-              Democratizing classical education through innovative technology and accessible learning platforms.
+              ( TLDR: Learning Latin is broken. Our goal is to fix it. )
             </p>
           </div>
 
@@ -75,15 +73,13 @@ const About: React.FC = () => {
                 <div className="p-2 bg-roman-gradient rounded-lg shadow-roman">
                   <Target className="h-6 w-6 text-white" />
                 </div>
-                Our Mission
+                Mission Statement
               </CardTitle>
             </CardHeader>
             <CardContent className="text-lg text-roman-black leading-relaxed">
               <p>
-                DigitalLudus is dedicated to making Latin education accessible to everyone, regardless of background or 
-                geographic location. We believe that classical languages and Roman culture should not be confined to 
-                elite institutions but should be available to all curious minds seeking to understand the foundations 
-                of Western civilization.
+                Our mission is to integrate modern technology tools into an ancient language, to democratize access and package a
+                complete digital experience for learning Latin and Roman culture.
               </p>
             </CardContent>
           </Card>
@@ -158,13 +154,18 @@ const About: React.FC = () => {
                 <div className="p-2 bg-roman-gradient rounded-lg shadow-roman">
                   <Heart className="h-6 w-6 text-white" />
                 </div>
-                Created with Passion
+                I sing of arms and two Exonians...
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-6">
-              <p className="text-roman-black text-lg leading-relaxed">
-                DigitalLudus was born from a simple belief: that the beauty and wisdom of Latin literature 
-                should be accessible to everyone. Our team combines expertise in classical studies, modern 
+              <p className="text-roman-black text-xl leading-relaxed">
+                DigitalLudus is dedicated to making Latin education accessible to everyone, regardless of background or geographic location. 
+                We believe that classical languages and Roman culture should not be confined to elite institutions but should be available to 
+                all curious minds seeking to understand the foundations of Western civilization.
+                <br></br>
+                <br></br>
+                The beauty and wisdom of Latin literature 
+                should be free. Our team combines expertise in classical studies, modern 
                 pedagogy, and cutting-edge technology to create an unparalleled learning experience.
               </p>
               
@@ -217,6 +218,40 @@ const About: React.FC = () => {
                   Contact Us
                 </Button>
               </div>
+            </CardContent>
+          </Card>
+
+          {/* Licensing & Attribution */}
+          <Card className="glass-effect shadow-roman border-roman-gold/20">
+            <CardHeader>
+              <CardTitle className="text-xl font-classical text-roman-red flex items-center gap-3">
+                <div className="p-2 bg-roman-gradient rounded-lg shadow-roman">
+                  <BookOpen className="h-5 w-5 text-white" />
+                </div>
+                Licensing & Attribution
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="bg-gradient-to-r from-roman-cream/50 to-roman-marble/30 p-4 rounded-lg border border-roman-gold/20">
+                <h4 className="font-classical font-semibold text-roman-red mb-2">Educational Platform</h4>
+                <p className="text-roman-black text-sm">
+                  DigitalLudus is an educational platform that provides interactive tools and features 
+                  for Latin learning. The platform is open source under the MIT License.
+                </p>
+              </div>
+              
+              <div className="bg-gradient-to-r from-roman-marble/50 to-roman-cream/30 p-4 rounded-lg border border-roman-gold/20">
+                <h4 className="font-classical font-semibold text-roman-gold mb-2">Content Attribution</h4>
+                <p className="text-roman-black text-sm">
+                  Educational content is based on the Cambridge Latin Course and other classical sources. 
+                  Original textbook materials remain under their respective copyrights. This platform 
+                  serves as a supplementary educational tool under fair use provisions.
+                </p>
+              </div>
+
+              <p className="text-roman-black/70 text-sm font-classical">
+                For questions about content usage or licensing, please contact the development team.
+              </p>
             </CardContent>
           </Card>
 
