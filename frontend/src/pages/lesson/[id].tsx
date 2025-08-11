@@ -230,52 +230,52 @@ export default function LessonPage() {
           <div className="lg:col-span-3">
             <Tabs defaultValue="intro" className="space-y-8">
               <div className="flex justify-center">
-                <TabsList className="glass-effect p-3 h-auto shadow-gold border border-roman-gold/20 min-w-full max-w-5xl">
+                <TabsList className="glass-effect p-3 h-auto shadow-gold border border-roman-gold/20 w-full">
                   <TabsTrigger 
                     value="intro" 
-                    className="flex flex-col items-center gap-2 py-4 px-6 data-[state=active]:bg-roman-gradient data-[state=active]:text-white data-[state=active]:shadow-roman rounded-lg font-classical transition-all min-w-[120px]"
+                    className="flex flex-col items-center gap-2 py-4 px-4 data-[state=active]:bg-roman-gradient data-[state=active]:text-white data-[state=active]:shadow-roman rounded-lg font-classical transition-all flex-1 min-w-0"
                   >
                     <Flag className="h-5 w-5" />
                     <span className="text-sm">Intro</span>
                   </TabsTrigger>
                   <TabsTrigger 
                     value="reading" 
-                    className="flex flex-col items-center gap-2 py-4 px-6 data-[state=active]:bg-gold-gradient data-[state=active]:text-white data-[state=active]:shadow-gold rounded-lg font-classical transition-all min-w-[120px]"
+                    className="flex flex-col items-center gap-2 py-4 px-4 data-[state=active]:bg-gold-gradient data-[state=active]:text-white data-[state=active]:shadow-gold rounded-lg font-classical transition-all flex-1 min-w-0"
                   >
                     <BookOpen className="h-5 w-5" />
                     <span className="text-sm">Reading</span>
                   </TabsTrigger>
                   <TabsTrigger 
                     value="vocabulary" 
-                    className="flex flex-col items-center gap-2 py-4 px-6 data-[state=active]:bg-roman-gradient data-[state=active]:text-white data-[state=active]:shadow-roman rounded-lg font-classical transition-all min-w-[120px]"
+                    className="flex flex-col items-center gap-2 py-4 px-4 data-[state=active]:bg-roman-gradient data-[state=active]:text-white data-[state=active]:shadow-roman rounded-lg font-classical transition-all flex-1 min-w-0"
                   >
                     <Brain className="h-5 w-5" />
                     <span className="text-sm">Vocabulary</span>
                   </TabsTrigger>
                   <TabsTrigger 
                     value="grammar" 
-                    className="flex flex-col items-center gap-2 py-4 px-6 data-[state=active]:bg-gold-gradient data-[state=active]:text-white data-[state=active]:shadow-gold rounded-lg font-classical transition-all min-w-[120px]"
+                    className="flex flex-col items-center gap-2 py-4 px-4 data-[state=active]:bg-gold-gradient data-[state=active]:text-white data-[state=active]:shadow-gold rounded-lg font-classical transition-all flex-1 min-w-0"
                   >
                     <PenTool className="h-5 w-5" />
                     <span className="text-sm">Grammar</span>
                   </TabsTrigger>
                   <TabsTrigger 
                     value="practice" 
-                    className="flex flex-col items-center gap-2 py-4 px-6 data-[state=active]:bg-roman-gradient data-[state=active]:text-white data-[state=active]:shadow-roman rounded-lg font-classical transition-all min-w-[120px]"
+                    className="flex flex-col items-center gap-2 py-4 px-4 data-[state=active]:bg-roman-gradient data-[state=active]:text-white data-[state=active]:shadow-roman rounded-lg font-classical transition-all flex-1 min-w-0"
                   >
                     <Trophy className="h-5 w-5" />
                     <span className="text-sm">Practice</span>
                   </TabsTrigger>
                   <TabsTrigger 
                     value="quiz" 
-                    className="flex flex-col items-center gap-2 py-4 px-6 data-[state=active]:bg-gold-gradient data-[state=active]:text-white data-[state=active]:shadow-gold rounded-lg font-classical transition-all min-w-[120px]"
+                    className="flex flex-col items-center gap-2 py-4 px-4 data-[state=active]:bg-gold-gradient data-[state=active]:text-white data-[state=active]:shadow-gold rounded-lg font-classical transition-all flex-1 min-w-0"
                   >
                     <CheckCircle className="h-5 w-5" />
                     <span className="text-sm">Quiz</span>
                   </TabsTrigger>
                   <TabsTrigger 
                     value="ai-tutor" 
-                    className="flex flex-col items-center gap-2 py-4 px-6 data-[state=active]:bg-roman-gradient data-[state=active]:text-white data-[state=active]:shadow-roman rounded-lg font-classical transition-all min-w-[120px]"
+                    className="flex flex-col items-center gap-2 py-4 px-4 data-[state=active]:bg-roman-gradient data-[state=active]:text-white data-[state=active]:shadow-roman rounded-lg font-classical transition-all flex-1 min-w-0"
                   >
                     <MessageCircle className="h-5 w-5" />
                     <span className="text-sm">Magister</span>
@@ -283,153 +283,155 @@ export default function LessonPage() {
                 </TabsList>
               </div>
 
-              <div className="w-full min-h-[600px]">
-                <TabsContent value="intro" className="space-y-8 w-full">
-                  <Card className="glass-effect shadow-roman border-roman-gold/20 overflow-hidden">
-                  <CardHeader className="bg-gradient-to-r from-roman-cream to-roman-marble border-b border-roman-gold/20 pb-6">
-                    <div className="flex items-center gap-4">
-                      <div className="w-16 h-16 bg-roman-gradient rounded-2xl flex items-center justify-center shadow-roman">
-                        <Flag className="h-8 w-8 text-white" />
+              <div className="w-full">
+                <div className="min-h-[800px] max-w-full">
+                  <TabsContent value="intro" className="space-y-8 m-0">
+                    <Card className="glass-effect shadow-roman border-roman-gold/20 overflow-hidden">
+                    <CardHeader className="bg-gradient-to-r from-roman-cream to-roman-marble border-b border-roman-gold/20 pb-6">
+                      <div className="flex items-center gap-4">
+                        <div className="w-16 h-16 bg-roman-gradient rounded-2xl flex items-center justify-center shadow-roman">
+                          <Flag className="h-8 w-8 text-white" />
+                        </div>
+                        <div>
+                          <CardTitle className="text-3xl font-classical font-bold text-roman-red">
+                            {lesson.title}
+                          </CardTitle>
+                          <CardDescription className="text-lg text-muted-foreground mt-2 font-classical">
+                            Lesson {lesson.id}
+                          </CardDescription>
+                        </div>
                       </div>
-                      <div>
-                        <CardTitle className="text-3xl font-classical font-bold text-roman-red">
-                          {lesson.title}
-                        </CardTitle>
-                        <CardDescription className="text-lg text-muted-foreground mt-2 font-classical">
-                          Lesson {lesson.id}
-                        </CardDescription>
-                      </div>
-                    </div>
-                  </CardHeader>
-                  <CardContent className="p-8 space-y-8">
-                    {/* Lesson Objectives */}
-                    <div className="bg-gradient-to-br from-roman-cream/50 to-roman-marble/30 p-6 rounded-xl border border-roman-gold/20">
-                      <h3 className="text-xl font-classical font-bold text-roman-red mb-4 flex items-center gap-2">
-                        <Target className="h-6 w-6" />
-                        Learning Objectives
-                      </h3>
-                      <div className="grid gap-3 md:grid-cols-2">
-                        {lesson.objectives.map((objective, index) => (
-                          <div key={index} className="flex items-start gap-3">
-                            <div className="w-6 h-6 bg-gold-gradient text-white text-sm font-classical font-bold rounded-full flex items-center justify-center mt-0.5 flex-shrink-0 shadow-gold">
-                              {index + 1}
-                            </div>
-                            <span className="text-roman-black leading-relaxed">{objective}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Cultural Context */}
-                    {lesson.culturalNotes && lesson.culturalNotes.length > 0 && (
-                      <div className="bg-gradient-to-br from-roman-marble/50 to-roman-cream/30 p-6 rounded-xl border border-roman-gold/20">
-                        <h3 className="text-xl font-classical font-bold text-roman-gold mb-4 flex items-center gap-2">
-                          <Globe className="h-6 w-6" />
-                          Cultural Context
+                    </CardHeader>
+                    <CardContent className="p-8 space-y-8">
+                      {/* Lesson Objectives */}
+                      <div className="bg-gradient-to-br from-roman-cream/50 to-roman-marble/30 p-6 rounded-xl border border-roman-gold/20">
+                        <h3 className="text-xl font-classical font-bold text-roman-red mb-4 flex items-center gap-2">
+                          <Target className="h-6 w-6" />
+                          Learning Objectives
                         </h3>
-                        <div className="space-y-3">
-                          {lesson.culturalNotes.map((note, index) => (
+                        <div className="grid gap-3 md:grid-cols-2">
+                          {lesson.objectives.map((objective, index) => (
                             <div key={index} className="flex items-start gap-3">
-                              <div className="w-2 h-2 bg-roman-gold rounded-full mt-2"></div>
-                              <p className="text-roman-black leading-relaxed">{note}</p>
+                              <div className="w-6 h-6 bg-gold-gradient text-white text-sm font-classical font-bold rounded-full flex items-center justify-center mt-0.5 flex-shrink-0 shadow-gold">
+                                {index + 1}
+                              </div>
+                              <span className="text-roman-black leading-relaxed">{objective}</span>
                             </div>
                           ))}
                         </div>
                       </div>
-                    )}
 
-                    {/* Quick Preview */}
-                    <div className="grid gap-6 md:grid-cols-3">
-                      <div className="glass-effect shadow-roman border-roman-gold/20 p-6 rounded-xl text-center">
-                        <div className="w-12 h-12 bg-roman-gradient rounded-xl flex items-center justify-center mx-auto mb-3 shadow-roman">
-                          <Brain className="h-6 w-6 text-white" />
+                      {/* Cultural Context */}
+                      {lesson.culturalNotes && lesson.culturalNotes.length > 0 && (
+                        <div className="bg-gradient-to-br from-roman-marble/50 to-roman-cream/30 p-6 rounded-xl border border-roman-gold/20">
+                          <h3 className="text-xl font-classical font-bold text-roman-gold mb-4 flex items-center gap-2">
+                            <Globe className="h-6 w-6" />
+                            Cultural Context
+                          </h3>
+                          <div className="space-y-3">
+                            {lesson.culturalNotes.map((note, index) => (
+                              <div key={index} className="flex items-start gap-3">
+                                <div className="w-2 h-2 bg-roman-gold rounded-full mt-2"></div>
+                                <p className="text-roman-black leading-relaxed">{note}</p>
+                              </div>
+                            ))}
+                          </div>
                         </div>
-                        <div className="text-2xl font-classical font-bold text-roman-red mb-1">{lesson.vocabulary.length}</div>
-                        <div className="text-sm text-muted-foreground font-classical">New Vocabulary</div>
-                      </div>
-                      <div className="glass-effect shadow-gold border-roman-gold/20 p-6 rounded-xl text-center">
-                        <div className="w-12 h-12 bg-gold-gradient rounded-xl flex items-center justify-center mx-auto mb-3 shadow-gold">
-                          <PenTool className="h-6 w-6 text-white" />
+                      )}
+
+                      {/* Quick Preview */}
+                      <div className="grid gap-6 md:grid-cols-3">
+                        <div className="glass-effect shadow-roman border-roman-gold/20 p-6 rounded-xl text-center">
+                          <div className="w-12 h-12 bg-roman-gradient rounded-xl flex items-center justify-center mx-auto mb-3 shadow-roman">
+                            <Brain className="h-6 w-6 text-white" />
+                          </div>
+                          <div className="text-2xl font-classical font-bold text-roman-red mb-1">{lesson.vocabulary.length}</div>
+                          <div className="text-sm text-muted-foreground font-classical">New Vocabulary</div>
                         </div>
-                        <div className="text-2xl font-classical font-bold text-roman-gold mb-1">{lesson.keyConcepts.length}</div>
-                        <div className="text-sm text-muted-foreground font-classical">Grammar Concepts</div>
-                      </div>
-                      <div className="glass-effect shadow-roman border-roman-gold/20 p-6 rounded-xl text-center">
-                        <div className="w-12 h-12 bg-roman-gradient rounded-xl flex items-center justify-center mx-auto mb-3 shadow-roman">
-                          <Trophy className="h-6 w-6 text-white" />
+                        <div className="glass-effect shadow-gold border-roman-gold/20 p-6 rounded-xl text-center">
+                          <div className="w-12 h-12 bg-gold-gradient rounded-xl flex items-center justify-center mx-auto mb-3 shadow-gold">
+                            <PenTool className="h-6 w-6 text-white" />
+                          </div>
+                          <div className="text-2xl font-classical font-bold text-roman-gold mb-1">{lesson.keyConcepts.length}</div>
+                          <div className="text-sm text-muted-foreground font-classical">Grammar Concepts</div>
                         </div>
-                        <div className="text-2xl font-classical font-bold text-roman-red mb-1">{lesson.practiceExercises.length}</div>
-                        <div className="text-sm text-muted-foreground font-classical">Practice Sets</div>
+                        <div className="glass-effect shadow-roman border-roman-gold/20 p-6 rounded-xl text-center">
+                          <div className="w-12 h-12 bg-roman-gradient rounded-xl flex items-center justify-center mx-auto mb-3 shadow-roman">
+                            <Trophy className="h-6 w-6 text-white" />
+                          </div>
+                          <div className="text-2xl font-classical font-bold text-roman-red mb-1">{lesson.practiceExercises.length}</div>
+                          <div className="text-sm text-muted-foreground font-classical">Practice Sets</div>
+                        </div>
                       </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </TabsContent>
+                    </CardContent>
+                  </Card>
+                </TabsContent>
 
-              <TabsContent value="reading" className="space-y-8 w-full">
-                <ProsePassage lesson={lesson} />
-              </TabsContent>
+                <TabsContent value="reading" className="space-y-8 m-0">
+                  <ProsePassage lesson={lesson} />
+                </TabsContent>
 
-              <TabsContent value="vocabulary" className="space-y-8 w-full">
-                <VocabularySection lesson={lesson} />
-              </TabsContent>
+                <TabsContent value="vocabulary" className="space-y-8 m-0">
+                  <VocabularySection lesson={lesson} />
+                </TabsContent>
 
-              <TabsContent value="grammar" className="space-y-8 w-full">
-                <GrammarSection lesson={lesson} />
-              </TabsContent>
+                <TabsContent value="grammar" className="space-y-8 m-0">
+                  <GrammarSection lesson={lesson} />
+                </TabsContent>
 
-              <TabsContent value="practice" className="space-y-8 w-full">
-                <PracticeSection lesson={lesson} />
-              </TabsContent>
+                <TabsContent value="practice" className="space-y-8 m-0">
+                  <PracticeSection lesson={lesson} />
+                </TabsContent>
 
-              <TabsContent value="quiz" className="space-y-8 w-full">
-                <Card className="glass-effect shadow-roman border-roman-gold/20 overflow-hidden">
-                  <CardHeader className="bg-gradient-to-r from-roman-cream to-roman-marble border-b border-roman-gold/20 pb-6">
-                    <CardTitle className="text-2xl font-classical font-bold text-roman-red flex items-center gap-3">
-                      <div className="p-2 bg-gold-gradient rounded-lg shadow-gold">
-                        <CheckCircle className="h-6 w-6 text-white" />
+                <TabsContent value="quiz" className="space-y-8 m-0">
+                  <Card className="glass-effect shadow-roman border-roman-gold/20 overflow-hidden">
+                    <CardHeader className="bg-gradient-to-r from-roman-cream to-roman-marble border-b border-roman-gold/20 pb-6">
+                      <CardTitle className="text-2xl font-classical font-bold text-roman-red flex items-center gap-3">
+                        <div className="p-2 bg-gold-gradient rounded-lg shadow-gold">
+                          <CheckCircle className="h-6 w-6 text-white" />
+                        </div>
+                        Lesson {lesson.id} Quiz
+                      </CardTitle>
+                      <CardDescription className="text-muted-foreground text-base font-classical">
+                        Test your understanding of this lesson's concepts
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent className="p-8">
+                      <div className="flex justify-center">
+                        <Quiz selectedLesson={lesson.id} />
                       </div>
-                      Lesson {lesson.id} Quiz
-                    </CardTitle>
-                    <CardDescription className="text-muted-foreground text-base font-classical">
-                      Test your understanding of this lesson's concepts
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent className="p-8">
-                    <div className="flex justify-center">
-                      <Quiz selectedLesson={lesson.id} />
-                    </div>
-                  </CardContent>
-                </Card>
-              </TabsContent>
+                    </CardContent>
+                  </Card>
+                </TabsContent>
 
-              <TabsContent value="ai-tutor" className="space-y-8 w-full">
-                <Card className="glass-effect shadow-gold border-roman-gold/20 overflow-hidden">
-                  <CardHeader className="bg-gradient-to-r from-roman-marble to-roman-cream border-b border-roman-gold/20 pb-6">
-                    <CardTitle className="text-2xl font-classical font-bold text-roman-gold flex items-center gap-3">
-                      <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-roman-gold">
-                        <img 
-                          src="/magister-marcellus.svg" 
-                          alt="Magister Marcellus" 
-                          className="w-full h-full object-cover"
+                <TabsContent value="ai-tutor" className="space-y-8 m-0">
+                  <Card className="glass-effect shadow-gold border-roman-gold/20 overflow-hidden">
+                    <CardHeader className="bg-gradient-to-r from-roman-marble to-roman-cream border-b border-roman-gold/20 pb-6">
+                      <CardTitle className="text-2xl font-classical font-bold text-roman-gold flex items-center gap-3">
+                        <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-roman-gold">
+                          <img 
+                            src="/magister-marcellus.svg" 
+                            alt="Magister Marcellus" 
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                        Magister Marcellus
+                      </CardTitle>
+                      <CardDescription className="text-muted-foreground text-base font-classical">
+                        Your wise Latin tutor is here to help with Lesson {lesson.id}
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent className="p-8">
+                      <div className="flex justify-center">
+                        <MagisterChat 
+                          lesson={lesson.id} 
+                          context={`Lesson ${lesson.id}: ${lesson.title}. Topics: ${lesson.keyConcepts.join(', ')}`}
                         />
                       </div>
-                      Magister Marcellus
-                    </CardTitle>
-                    <CardDescription className="text-muted-foreground text-base font-classical">
-                      Your wise Latin tutor is here to help with Lesson {lesson.id}
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent className="p-8">
-                    <div className="flex justify-center">
-                      <MagisterChat 
-                        lesson={lesson.id} 
-                        context={`Lesson ${lesson.id}: ${lesson.title}. Topics: ${lesson.keyConcepts.join(', ')}`}
-                      />
-                    </div>
-                  </CardContent>
-                </Card>
-              </TabsContent>
+                    </CardContent>
+                  </Card>
+                </TabsContent>
+                </div>
               </div>
             </Tabs>
           </div>

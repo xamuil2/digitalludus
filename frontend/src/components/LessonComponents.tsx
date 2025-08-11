@@ -8,15 +8,18 @@ import {
   Eye,
   EyeOff,
   MessageCircle,
-  ChevronDown
+  ChevronDown,
+  X
 } from 'lucide-react';
-import { type Lesson } from '@/data/lessons';
+import { type Lesson, type VocabWord } from '@/data/lessons';
 import VocabularyDriller from '@/components/VocabularyDriller';
-import { WordTooltip } from '@/components/WordTooltip';
 import { lookupWord } from '@/lib/vocabularyLookup';
 
 // Function to render Latin text with clickable words
-function renderLatinTextWithTooltips(text: string): React.ReactNode {
+function renderLatinTextWithClickableWords(
+  text: string, 
+  onWordClick: (word: string, definition: VocabWord | undefined) => void
+): React.ReactNode {
   // Split text into words while preserving punctuation and spaces
   const parts = text.split(/(\s+|[.,;:!?"()[\]{}])/);
   
@@ -26,13 +29,22 @@ function renderLatinTextWithTooltips(text: string): React.ReactNode {
       return <span key={index}>{part}</span>;
     }
     
-    // If it's a word, check for definition
+    // If it's a word, check for definition and make it clickable
     if (part.trim()) {
       const definition = lookupWord(part);
       return (
-        <WordTooltip key={index} word={part} definition={definition}>
+        <span
+          key={index}
+          className={`${
+            definition 
+              ? 'cursor-pointer hover:bg-roman-gold/20 hover:text-roman-red hover:underline decoration-roman-gold decoration-2 underline-offset-2 transition-all duration-200 rounded-sm px-1 py-0.5' 
+              : ''
+          }`}
+          onClick={() => definition && onWordClick(part, definition)}
+          title={definition ? 'Click for definition' : undefined}
+        >
           {part}
-        </WordTooltip>
+        </span>
       );
     }
     
@@ -43,9 +55,29 @@ function renderLatinTextWithTooltips(text: string): React.ReactNode {
 // Component for displaying the prose passage as continuous text
 export function ProsePassage({ lesson }: { lesson: Lesson }) {
   const [showTranslation, setShowTranslation] = useState(false);
+  const [selectedWords, setSelectedWords] = useState<Array<{ word: string; definition: VocabWord }>>([]);
 
   const toggleTranslation = () => {
     setShowTranslation(!showTranslation);
+  };
+
+  const handleWordClick = (word: string, definition: VocabWord | undefined) => {
+    if (!definition) return;
+    
+    // Check if word is already selected
+    const existingIndex = selectedWords.findIndex(item => item.word === word);
+    
+    if (existingIndex >= 0) {
+      // Remove if already selected
+      setSelectedWords(prev => prev.filter((_, index) => index !== existingIndex));
+    } else {
+      // Add new word definition
+      setSelectedWords(prev => [...prev, { word, definition }]);
+    }
+  };
+
+  const clearAllDefinitions = () => {
+    setSelectedWords([]);
   };
 
   // Combine all Latin sentences into one continuous text
@@ -88,14 +120,98 @@ export function ProsePassage({ lesson }: { lesson: Lesson }) {
           <div className="absolute -left-4 top-0 w-1 h-full bg-gold-gradient rounded-full"></div>
           <div className="glass-effect p-8 rounded-xl border border-roman-gold/20 shadow-roman">
             <div className="font-classical text-xl leading-relaxed text-roman-black tracking-wide">
-              {renderLatinTextWithTooltips(latinText)}
+              {renderLatinTextWithClickableWords(latinText, handleWordClick)}
             </div>
             <div className="mt-4 text-sm text-muted-foreground flex items-center gap-2 font-classical">
               <div className="w-2 h-2 bg-roman-gold rounded-full"></div>
-              Click on any word to see its definition
+              Click on any word to see its definition below
             </div>
           </div>
         </div>
+
+        {/* Word Definitions Section */}
+        {selectedWords.length > 0 && (
+          <div className="relative">
+            <div className="absolute -left-4 top-0 w-1 h-full bg-roman-gradient rounded-full"></div>
+            <div className="glass-effect p-8 rounded-xl border border-roman-gold/20 shadow-gold">
+              <div className="flex items-center justify-between mb-6">
+                <div className="flex items-center gap-3">
+                  <div className="p-2 bg-roman-gradient rounded-lg shadow-roman">
+                    <Brain className="h-5 w-5 text-white" />
+                  </div>
+                  <span className="font-classical font-semibold text-roman-red text-lg">
+                    Word Definitions ({selectedWords.length})
+                  </span>
+                </div>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={clearAllDefinitions}
+                  className="glass-effect border-roman-gold/30 hover:bg-roman-gold/10 hover:border-roman-gold font-classical"
+                >
+                  <X className="h-4 w-4 mr-2" />
+                  Clear All
+                </Button>
+              </div>
+              
+              <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+                {selectedWords.map((item, index) => (
+                  <div
+                    key={`${item.word}-${index}`}
+                    className="group relative glass-effect rounded-xl border border-roman-gold/20 p-6 shadow-gold"
+                  >
+                    {/* Gradient corner accent */}
+                    <div className="absolute top-0 right-0 w-8 h-8 bg-gold-gradient rounded-bl-lg rounded-tr-xl opacity-80 shadow-gold"></div>
+                    
+                    {/* Remove button */}
+                    <button
+                      onClick={() => setSelectedWords(prev => prev.filter((_, i) => i !== index))}
+                      className="absolute top-2 right-2 w-6 h-6 bg-roman-red/80 hover:bg-roman-red text-white rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110 z-10"
+                    >
+                      <X className="h-3 w-3" />
+                    </button>
+                    
+                    <div className="flex items-center justify-between mb-3">
+                      <span className="font-classical font-bold text-xl text-roman-red group-hover:text-roman-gold transition-colors">
+                        {item.definition.latin}
+                      </span>
+                      <Badge 
+                        variant="outline" 
+                        className="text-xs bg-roman-cream/80 border-roman-gold/30 text-roman-black px-2 py-1 font-classical"
+                      >
+                        {item.definition.partOfSpeech}
+                      </Badge>
+                    </div>
+
+                    {item.definition.principalParts && (
+                      <div className="text-xs text-muted-foreground mb-3 font-classical bg-roman-marble/50 px-3 py-2 rounded-lg border border-roman-gold/20">
+                        {item.definition.principalParts}
+                      </div>
+                    )}
+
+                    <div className="font-medium text-roman-black mb-3">
+                      {item.definition.english}
+                    </div>
+
+                    {item.definition.etymology && (
+                      <div className="bg-gradient-to-br from-roman-cream/50 to-roman-marble/30 border border-roman-gold/20 rounded-lg p-3 mb-2">
+                        <span className="text-xs font-classical font-semibold text-roman-gold">Etymology: </span>
+                        <span className="text-xs text-roman-black">{item.definition.etymology}</span>
+                      </div>
+                    )}
+                    
+                    {item.definition.notes && (
+                      <div className="bg-gradient-to-br from-roman-marble/50 to-roman-cream/30 border border-roman-gold/20 rounded-lg p-3">
+                        <span className="text-xs font-classical font-semibold text-roman-red">Notes: </span>
+                        <span className="text-xs text-roman-black">{item.definition.notes}</span>
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* Translation */}
         {showTranslation && lesson.prosePassage.fullTranslation && (
