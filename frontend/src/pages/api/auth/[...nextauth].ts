@@ -13,6 +13,7 @@ export const authOptions: NextAuthOptions = {
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID ?? '',
       clientSecret: process.env.GOOGLE_CLIENT_SECRET ?? '',
+      allowDangerousEmailAccountLinking: true,
     }),
     CredentialsProvider({
       name: 'credentials',
@@ -102,6 +103,16 @@ export const authOptions: NextAuthOptions = {
                 email: user.email!,
                 name: user.name || '',
                 image: user.image || '',
+                emailVerified: new Date(),
+              }
+            });
+          } else {
+            // User exists - update their info with Google data if needed
+            await prisma.user.update({
+              where: { email: user.email! },
+              data: {
+                name: user.name || existingUser.name,
+                image: user.image || existingUser.image,
                 emailVerified: new Date(),
               }
             });
