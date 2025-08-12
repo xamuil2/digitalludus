@@ -83,7 +83,7 @@ const Home: React.FC = () => {
                         </div>
                         <div className="rounded-xl px-3 py-2 inline-block">
                           <h2 className="text-6xl md:text-7xl font-classical font-bold mb-8 leading-tight">
-                              <span className="text-crimson">Master Latin</span>
+                              <span className="text-roman-black">Master Latin</span>
                               <br />
                               <span className="text-roman-black">with</span>
                               <br />
@@ -141,7 +141,7 @@ const Home: React.FC = () => {
                             </TabsTrigger>
                             <TabsTrigger 
                                 value="vocabulary" 
-                                className="flex flex-col items-center gap-2 py-4 px-8 data-[state=active]:bg-roman-gradient data-[state=active]:text-white data-[state=active]:shadow-roman rounded-lg font-classical transition-all"
+                                className="flex flex-col items-center gap-2 py-4 px-8 data-[state=active]:bg-crimson data-[state=active]:text-white data-[state=active]:shadow-roman rounded-lg font-classical transition-all"
                             >
                                 <Brain className="h-6 w-6" />
                                 <span>Vocabulary</span>
@@ -187,10 +187,10 @@ const Home: React.FC = () => {
                                     </CardContent>
                                 </Card>
 
-                                <Card className="glass-effect shadow-gold border-roman-gold/20">
+                                <Card className="glass-effect shadow-roman border-roman-gold/20">
                                     <CardHeader className="pb-4">
-                                        <CardTitle className="text-lg text-roman-gold flex items-center gap-3 font-classical">
-                                            <div className="p-2 bg-gold-gradient rounded-lg">
+                                        <CardTitle className="text-lg text-roman-red flex items-center gap-3 font-classical">
+                                            <div className="p-2 bg-roman-gradient rounded-lg">
                                                 <Brain className="h-5 w-5 text-white" />
                                             </div>
                                             Vocabulary
