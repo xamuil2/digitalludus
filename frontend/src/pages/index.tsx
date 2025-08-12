@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import Image from 'next/image';
 import { useSession } from 'next-auth/react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -123,6 +124,31 @@ const Home: React.FC = () => {
             {/* Imperial Tabs */}
             <main className="container mx-auto px-6 py-16">
                 <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-12">
+                    {/* Partners Section */}
+                    <div className="glass-effect shadow-roman border border-roman-gold/20 rounded-xl p-8 md:p-12">
+                        <div className="text-center mb-6">
+                            <h3 className="text-lg md:text-xl font-classical font-semibold text-roman-red">
+                                Our partners are from:
+                            </h3>
+                        </div>
+                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-8 md:gap-10 items-center">
+                            <div className="relative mx-auto w-48 aspect-square md:w-56">
+                                <Image src="/Andover.png" alt="Phillips Academy Andover" fill className="object-contain" sizes="(max-width: 768px) 11rem, 14rem" />
+                            </div>
+                            <div className="relative mx-auto w-30 aspect-square md:w-40">
+                                <Image src="/Exeter.png" alt="Phillips Exeter Academy" fill className="object-contain" sizes="(max-width: 768px) 11rem, 14rem" />
+                            </div>
+                            <div className="relative mx-auto w-44 aspect-square md:w-56">
+                                <Image src="/SPS.png" alt="St. Paul's School" fill className="object-contain" sizes="(max-width: 768px) 11rem, 14rem" />
+                            </div>
+                            <div className="relative mx-auto w-40 aspect-square md:w-48">
+                                <Image src="/Taft.png" alt="The Taft School" fill className="object-contain" sizes="(max-width: 768px) 10rem, 12rem" />
+                            </div>
+                            <div className="relative mx-auto w-44 aspect-square md:w-56">
+                                <Image src="/Lawrenceville.png" alt="The Lawrenceville School" fill className="object-contain" sizes="(max-width: 768px) 11rem, 14rem" />
+                            </div>
+                        </div>
+                    </div>
                     <div className="flex justify-center">
                         <TabsList className="glass-effect p-2 h-auto shadow-gold border border-roman-gold/20">
                             <TabsTrigger 
