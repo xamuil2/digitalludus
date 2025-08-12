@@ -1198,24 +1198,386 @@ export const lesson2Template: Lesson = {
   ]
 };
 
-// Lesson 3 - Coming Soon
+// Lesson 3 - Stage 3: in foro  
 export const lesson3Template: Lesson = {
   id: 3,
-  title: "Coming Soon",
-  subtitle: "Future Lesson", 
-  description: "This lesson is not yet available",
-  pageNumbers: [],
-  introductoryNote: { content: "Coming soon..." },
-  prosePassage: { title: "", context: "", sentences: [] },
-  vocabulary: [],
-  keyConcepts: [],
-  practiceExercises: [],
-  objectives: [],
-  culturalNotes: [],
+  title: "Stage 3 - in foro",
+  subtitle: "In the Forum",
+  description: "Explore the Roman forum through stories of daily life; learn about the three declensions and practice case recognition",
+  pageNumbers: [1, 2, 3, 4, 5],
+  
+  introductoryNote: {
+    content: `In this lesson, you will explore the Roman forum through four interconnected stories featuring Caecilius and various tradespeople. You'll learn about the three main declensions (noun families) in Latin and practice distinguishing between nominative and accusative cases. The stories introduce you to the vibrant commercial and social life of ancient Pompeii.`
+  },
+  
+  prosePassage: {
+    title: "Four Stories from the Forum",
+    context: "Follow Caecilius through his day in the forum of Pompeii, meeting a painter (pictor), barber (tonsor), and slave-dealer (venalicius). Each story demonstrates different aspects of Roman commercial and social life.",
+    sentences: [
+      // Story 1: in foro
+      { id: "3-prose-1", latin: "Caecilius non est in villa.", english: "Caecilius is not in the house.", order: 1 },
+      { id: "3-prose-2", latin: "Caecilius in foro negotium agit.", english: "Caecilius is doing business in the forum.", order: 2 },
+      { id: "3-prose-3", latin: "Caecilius est argentarius.", english: "Caecilius is a banker.", order: 3 },
+      { id: "3-prose-4", latin: "argentarius pecuniam numerat.", english: "The banker counts money.", order: 4 },
+      { id: "3-prose-5", latin: "Caecilius forum circumspectat.", english: "Caecilius looks around the forum.", order: 5 },
+      { id: "3-prose-6", latin: "ecce! pictor in foro ambulat.", english: "Look! A painter is walking in the forum.", order: 6 },
+      { id: "3-prose-7", latin: "pictor est Celer.", english: "The painter is Celer.", order: 7 },
+      { id: "3-prose-8", latin: "Celer Caecilium salutat.", english: "Celer greets Caecilius.", order: 8 },
+      { id: "3-prose-9", latin: "ecce! tonsor quoque est in foro.", english: "Look! A barber is also in the forum.", order: 9 },
+      { id: "3-prose-10", latin: "tonsor est Pantagathus.", english: "The barber is Pantagathus.", order: 10 },
+      { id: "3-prose-11", latin: "Caecilius tonsorem videt.", english: "Caecilius sees the barber.", order: 11 },
+      { id: "3-prose-12", latin: "\"salve!\" Caecilius tonsorem salutat.", english: "\"Hello!\" Caecilius greets the barber.", order: 12 },
+      { id: "3-prose-13", latin: "\"salve!\" Pantagathus respondet.", english: "\"Hello!\" Pantagathus replies.", order: 13 },
+      { id: "3-prose-14", latin: "ecce! venalicius forum intrat.", english: "Look! A slave-dealer enters the forum.", order: 14 },
+      { id: "3-prose-15", latin: "venalicius est Syphax.", english: "The slave-dealer is Syphax.", order: 15 },
+      { id: "3-prose-16", latin: "venalicius mercatorem exspectat.", english: "The slave-dealer waits for a merchant.", order: 16 },
+      { id: "3-prose-17", latin: "mercator non venit.", english: "The merchant does not come.", order: 17 },
+      { id: "3-prose-18", latin: "Syphax est iratus.", english: "Syphax is angry.", order: 18 },
+      { id: "3-prose-19", latin: "Syphax mercatorem vituperat.", english: "Syphax criticizes the merchant.", order: 19 },
+      
+      // Story 2: pictor  
+      { id: "3-prose-20", latin: "pictor ad villam venit.", english: "The painter comes to the house.", order: 20 },
+      { id: "3-prose-21", latin: "pictor est Celer.", english: "The painter is Celer.", order: 21 },
+      { id: "3-prose-22", latin: "Celer ianuam pulsat.", english: "Celer knocks on the door.", order: 22 },
+      { id: "3-prose-23", latin: "Clemens pictorem non audit.", english: "Clemens does not hear the painter.", order: 23 },
+      { id: "3-prose-24", latin: "servus est in horto.", english: "The slave is in the garden.", order: 24 },
+      { id: "3-prose-25", latin: "Celer clamat.", english: "Celer shouts.", order: 25 },
+      { id: "3-prose-26", latin: "canis Celerem audit et latrat.", english: "The dog hears Celer and barks.", order: 26 },
+      { id: "3-prose-27", latin: "Quintus canem audit.", english: "Quintus hears the dog.", order: 27 },
+      { id: "3-prose-28", latin: "Quintus ad ianuam venit.", english: "Quintus comes to the door.", order: 28 },
+      { id: "3-prose-29", latin: "filius ianuam aperit.", english: "The son opens the door.", order: 29 },
+      { id: "3-prose-30", latin: "Celer Quintum salutat et villam intrat.", english: "Celer greets Quintus and enters the house.", order: 30 },
+      { id: "3-prose-31", latin: "Metella est in culina.", english: "Metella is in the kitchen.", order: 31 },
+      { id: "3-prose-32", latin: "Quintus matrem vocat.", english: "Quintus calls his mother.", order: 32 },
+      { id: "3-prose-33", latin: "Metella atrium intrat.", english: "Metella enters the atrium.", order: 33 },
+      { id: "3-prose-34", latin: "pictor Metellam salutat.", english: "The painter greets Metella.", order: 34 },
+      { id: "3-prose-35", latin: "Metella pictorem ad triclinium ducit.", english: "Metella leads the painter to the dining room.", order: 35 },
+      { id: "3-prose-36", latin: "Celer in triclinio laborat.", english: "Celer works in the dining room.", order: 36 },
+      { id: "3-prose-37", latin: "Celer picturam pingit.", english: "Celer paints a picture.", order: 37 },
+      { id: "3-prose-38", latin: "magnus leo est in pictura.", english: "A large lion is in the picture.", order: 38 },
+      { id: "3-prose-39", latin: "Hercules quoque est in pictura.", english: "Hercules is also in the picture.", order: 39 },
+      { id: "3-prose-40", latin: "leo Herculem ferociter petit.", english: "The lion fiercely attacks Hercules.", order: 40 },
+      { id: "3-prose-41", latin: "Hercules magnum fustem tenet et leonem verberat.", english: "Hercules holds a large club and strikes the lion.", order: 41 },
+      { id: "3-prose-42", latin: "Hercules est fortis.", english: "Hercules is brave.", order: 42 },
+      { id: "3-prose-43", latin: "Caecilius ad villam revenit et triclinium intrat.", english: "Caecilius returns to the house and enters the dining room.", order: 43 },
+      { id: "3-prose-44", latin: "Caecilius picturam intente spectat et picturam laudat.", english: "Caecilius looks intently at the picture and praises the picture.", order: 44 }
+    ],
+    fullTranslation: "Caecilius is not in the house. Caecilius is doing business in the forum. Caecilius is a banker. The banker counts money. Caecilius looks around the forum. Look! A painter is walking in the forum. The painter is Celer. Celer greets Caecilius. Look! A barber is also in the forum. The barber is Pantagathus. Caecilius sees the barber. \"Hello!\" Caecilius greets the barber. \"Hello!\" Pantagathus replies. Look! A slave-dealer enters the forum. The slave-dealer is Syphax. The slave-dealer waits for a merchant. The merchant does not come. Syphax is angry. Syphax criticizes the merchant. The painter comes to the house. The painter is Celer. Celer knocks on the door. Clemens does not hear the painter. The slave is in the garden. Celer shouts. The dog hears Celer and barks. Quintus hears the dog. Quintus comes to the door. The son opens the door. Celer greets Quintus and enters the house. Metella is in the kitchen. Quintus calls his mother. Metella enters the atrium. The painter greets Metella. Metella leads the painter to the dining room. Celer works in the dining room. Celer paints a picture. A large lion is in the picture. Hercules is also in the picture. The lion fiercely attacks Hercules. Hercules holds a large club and strikes the lion. Hercules is brave. Caecilius returns to the house and enters the dining room. Caecilius looks intently at the picture and praises the picture."
+  },
+  
+  vocabulary: [
+    // From "in foro"
+    { id: "3-vocab-1", latin: "fōrum", principalParts: "fōrum, -ī", english: "forum, marketplace", partOfSpeech: "noun", lesson: 3, difficulty: "easy" },
+    { id: "3-vocab-2", latin: "negōtium agit", principalParts: "negōtium agere", english: "is working, is doing business", partOfSpeech: "verb phrase", lesson: 3, difficulty: "medium" },
+    { id: "3-vocab-3", latin: "ecce", principalParts: "ecce", english: "see, look", partOfSpeech: "interjection", lesson: 3, difficulty: "easy" },
+    { id: "3-vocab-4", latin: "pictor", principalParts: "pictor, pictōris", english: "painter, artist", partOfSpeech: "noun", lesson: 3, difficulty: "easy" },
+    { id: "3-vocab-5", latin: "ambulat", principalParts: "ambulāre", english: "is walking", partOfSpeech: "verb", lesson: 3, difficulty: "easy" },
+    { id: "3-vocab-6", latin: "tonsor", principalParts: "tonsor, tonsōris", english: "barber", partOfSpeech: "noun", lesson: 3, difficulty: "easy" },
+    { id: "3-vocab-7", latin: "venālicius", principalParts: "venālicius, -ī", english: "slave-dealer", partOfSpeech: "noun", lesson: 3, difficulty: "medium" },
+    { id: "3-vocab-8", latin: "nōn venit", principalParts: "venīre", english: "does not come", partOfSpeech: "verb phrase", lesson: 3, difficulty: "easy" },
+    { id: "3-vocab-9", latin: "vituperat", principalParts: "vituperāre", english: "criticizes, blames", partOfSpeech: "verb", lesson: 3, difficulty: "medium" },
+    
+    // From "pictor"  
+    { id: "3-vocab-10", latin: "ad villam", principalParts: "ad + acc.", english: "to the house", partOfSpeech: "prepositional phrase", lesson: 3, difficulty: "easy" },
+    { id: "3-vocab-11", latin: "ianuam", principalParts: "ianua, -ae", english: "door", partOfSpeech: "noun", lesson: 3, difficulty: "easy" },
+    { id: "3-vocab-12", latin: "pulsat", principalParts: "pulsāre", english: "knocks on/at", partOfSpeech: "verb", lesson: 3, difficulty: "easy" },
+    { id: "3-vocab-13", latin: "aperit", principalParts: "aperīre", english: "opens", partOfSpeech: "verb", lesson: 3, difficulty: "easy" },
+    { id: "3-vocab-14", latin: "vocat", principalParts: "vocāre", english: "calls", partOfSpeech: "verb", lesson: 3, difficulty: "easy" },
+    { id: "3-vocab-15", latin: "dūcit", principalParts: "dūcere", english: "leads", partOfSpeech: "verb", lesson: 3, difficulty: "medium" },
+    { id: "3-vocab-16", latin: "pictūram", principalParts: "pictūra, -ae", english: "picture", partOfSpeech: "noun", lesson: 3, difficulty: "easy" },
+    { id: "3-vocab-17", latin: "pingit", principalParts: "pingere", english: "paints", partOfSpeech: "verb", lesson: 3, difficulty: "medium" },
+    { id: "3-vocab-18", latin: "magnus", principalParts: "magnus, -a, -um", english: "big, large", partOfSpeech: "adjective", lesson: 3, difficulty: "easy" },
+    { id: "3-vocab-19", latin: "leō", principalParts: "leō, leōnis", english: "lion", partOfSpeech: "noun", lesson: 3, difficulty: "easy" },
+    { id: "3-vocab-20", latin: "ferōciter", principalParts: "ferōciter", english: "fiercely", partOfSpeech: "adverb", lesson: 3, difficulty: "medium" },
+    { id: "3-vocab-21", latin: "petit", principalParts: "petere", english: "heads for, attacks", partOfSpeech: "verb", lesson: 3, difficulty: "medium" },
+    { id: "3-vocab-22", latin: "fustem", principalParts: "fustis, -is", english: "club", partOfSpeech: "noun", lesson: 3, difficulty: "medium" },
+    { id: "3-vocab-23", latin: "tenet", principalParts: "tenēre", english: "is holding", partOfSpeech: "verb", lesson: 3, difficulty: "easy" },
+    { id: "3-vocab-24", latin: "verberat", principalParts: "verberāre", english: "is striking", partOfSpeech: "verb", lesson: 3, difficulty: "medium" },
+    { id: "3-vocab-25", latin: "fortis", principalParts: "fortis, -e", english: "brave, strong", partOfSpeech: "adjective", lesson: 3, difficulty: "easy" },
+    { id: "3-vocab-26", latin: "revenit", principalParts: "revenīre", english: "returns", partOfSpeech: "verb", lesson: 3, difficulty: "easy" },
+    { id: "3-vocab-27", latin: "intentē", principalParts: "intentē", english: "intently", partOfSpeech: "adverb", lesson: 3, difficulty: "medium" },
+    
+    // From "tonsor"
+    { id: "3-vocab-28", latin: "taberna", principalParts: "taberna, -ae", english: "shop", partOfSpeech: "noun", lesson: 3, difficulty: "easy" },
+    { id: "3-vocab-29", latin: "inquit", principalParts: "inquit", english: "says", partOfSpeech: "verb", lesson: 3, difficulty: "medium" },
+    { id: "3-vocab-30", latin: "occupātus", principalParts: "occupātus, -a, -um", english: "busy", partOfSpeech: "adjective", lesson: 3, difficulty: "easy" },
+    { id: "3-vocab-31", latin: "senex", principalParts: "senex, senis", english: "old man", partOfSpeech: "noun", lesson: 3, difficulty: "easy" },
+    { id: "3-vocab-32", latin: "sellā", principalParts: "sella, -ae", english: "chair", partOfSpeech: "noun", lesson: 3, difficulty: "easy" },
+    { id: "3-vocab-33", latin: "novāculam", principalParts: "novācula, -ae", english: "razor", partOfSpeech: "noun", lesson: 3, difficulty: "medium" },
+    { id: "3-vocab-34", latin: "barbam", principalParts: "barba, -ae", english: "beard", partOfSpeech: "noun", lesson: 3, difficulty: "easy" },
+    { id: "3-vocab-35", latin: "tondet", principalParts: "tondēre", english: "is trimming", partOfSpeech: "verb", lesson: 3, difficulty: "medium" },
+    { id: "3-vocab-36", latin: "poēta", principalParts: "poēta, -ae", english: "poet", partOfSpeech: "noun", lesson: 3, difficulty: "easy" },
+    { id: "3-vocab-37", latin: "versum", principalParts: "versus, -ūs", english: "a line, a verse", partOfSpeech: "noun", lesson: 3, difficulty: "medium" },
+    { id: "3-vocab-38", latin: "recitat", principalParts: "recitāre", english: "recites", partOfSpeech: "verb", lesson: 3, difficulty: "medium" },
+    { id: "3-vocab-39", latin: "rīdet", principalParts: "rīdēre", english: "laughs, smiles", partOfSpeech: "verb", lesson: 3, difficulty: "easy" },
+    { id: "3-vocab-40", latin: "sed", principalParts: "sed", english: "but", partOfSpeech: "conjunction", lesson: 3, difficulty: "easy" },
+    { id: "3-vocab-41", latin: "scurrīlis", principalParts: "scurrīlis, -e", english: "obscene, dirty", partOfSpeech: "adjective", lesson: 3, difficulty: "hard" },
+    { id: "3-vocab-42", latin: "perterritus", principalParts: "perterritus, -a, -um", english: "terrified", partOfSpeech: "adjective", lesson: 3, difficulty: "medium" },
+    { id: "3-vocab-43", latin: "secat", principalParts: "secāre", english: "cuts", partOfSpeech: "verb", lesson: 3, difficulty: "medium" },
+    { id: "3-vocab-44", latin: "multus", principalParts: "multus, -a, -um", english: "much", partOfSpeech: "adjective", lesson: 3, difficulty: "easy" },
+    { id: "3-vocab-45", latin: "sanguis", principalParts: "sanguis, sanguinis", english: "blood", partOfSpeech: "noun", lesson: 3, difficulty: "medium" },
+    { id: "3-vocab-46", latin: "fluit", principalParts: "fluere", english: "flows", partOfSpeech: "verb", lesson: 3, difficulty: "medium" },
+    
+    // From "venalicius"
+    { id: "3-vocab-47", latin: "ad portum", principalParts: "ad + acc.", english: "to the harbor", partOfSpeech: "prepositional phrase", lesson: 3, difficulty: "easy" },
+    { id: "3-vocab-48", latin: "nāvem Syriam", principalParts: "nāvis Syria", english: "Syrian ship", partOfSpeech: "noun phrase", lesson: 3, difficulty: "medium" },
+    { id: "3-vocab-49", latin: "prope", principalParts: "prope + acc.", english: "near", partOfSpeech: "preposition", lesson: 3, difficulty: "easy" },
+    { id: "3-vocab-50", latin: "quaerit", principalParts: "quaerere", english: "is searching for, is looking for", partOfSpeech: "verb", lesson: 3, difficulty: "medium" },
+    { id: "3-vocab-51", latin: "habet", principalParts: "habēre", english: "has", partOfSpeech: "verb", lesson: 3, difficulty: "easy" },
+    { id: "3-vocab-52", latin: "contentus", principalParts: "contentus, -a, -um", english: "satisfied", partOfSpeech: "adjective", lesson: 3, difficulty: "medium" },
+    { id: "3-vocab-53", latin: "emit", principalParts: "emere", english: "buys", partOfSpeech: "verb", lesson: 3, difficulty: "medium" },
+    { id: "3-vocab-54", latin: "bonum", principalParts: "bonus, -a, -um", english: "good", partOfSpeech: "adjective", lesson: 3, difficulty: "easy" },
+    { id: "3-vocab-55", latin: "pulchra", principalParts: "pulcher, -chra, -chrum", english: "beautiful", partOfSpeech: "adjective", lesson: 3, difficulty: "easy" },
+    { id: "3-vocab-56", latin: "linguam Latīnam", principalParts: "lingua Latīna", english: "Latin language", partOfSpeech: "noun phrase", lesson: 3, difficulty: "medium" },
+    { id: "3-vocab-57", latin: "discit", principalParts: "discere", english: "is learning", partOfSpeech: "verb", lesson: 3, difficulty: "medium" },
+    { id: "3-vocab-58", latin: "docta", principalParts: "doctus, -a, -um", english: "skillful, good at her job", partOfSpeech: "adjective", lesson: 3, difficulty: "medium" },
+    { id: "3-vocab-59", latin: "satis", principalParts: "satis", english: "enough", partOfSpeech: "adverb", lesson: 3, difficulty: "easy" },
+    { id: "3-vocab-60", latin: "eheu", principalParts: "eheu", english: "alas, oh dear", partOfSpeech: "interjection", lesson: 3, difficulty: "easy" }
+  ],
+  
+  keyConcepts: [
+    {
+      id: "3-concept-1",
+      title: "First Declension Nouns",
+      explanation: "First declension nouns are mostly feminine and have -a in the nominative singular and -am in the accusative singular. Examples include ancilla, taberna, Metella.",
+      examples: [
+        { latin: "Metella", english: "Metella (nominative)", notes: "subject form" },
+        { latin: "Metellam", english: "Metella (accusative)", notes: "direct object form" },
+        { latin: "ancilla", english: "slave-girl (nominative)", notes: "subject form" },
+        { latin: "ancillam", english: "slave-girl (accusative)", notes: "direct object form" },
+        { latin: "taberna", english: "shop (nominative)", notes: "subject form" },
+        { latin: "tabernam", english: "shop (accusative)", notes: "direct object form" }
+      ],
+      rules: [
+        "Nominative ending: -a",
+        "Accusative ending: -am", 
+        "Most first declension nouns are feminine",
+        "Some masculine nouns like pictor also exist"
+      ]
+    },
+    {
+      id: "3-concept-2",
+      title: "Second Declension Nouns",
+      explanation: "Second declension nouns are mostly masculine and have various nominative endings but -um in the accusative singular. Examples include Caecilius, servus, amicus.",
+      examples: [
+        { latin: "Caecilius", english: "Caecilius (nominative)", notes: "subject form" },
+        { latin: "Caecilium", english: "Caecilius (accusative)", notes: "direct object form" },
+        { latin: "servus", english: "slave (nominative)", notes: "subject form" },
+        { latin: "servum", english: "slave (accusative)", notes: "direct object form" },
+        { latin: "amīcus", english: "friend (nominative)", notes: "subject form" },
+        { latin: "amīcum", english: "friend (accusative)", notes: "direct object form" }
+      ],
+      rules: [
+        "Nominative endings vary (-us, -ius, -er)",
+        "Accusative ending: -um",
+        "Most second declension nouns are masculine",
+        "Some neuter nouns also exist"
+      ]
+    },
+    {
+      id: "3-concept-3", 
+      title: "Third Declension Nouns",
+      explanation: "Third declension nouns have various nominative forms but nearly always end in -em in the accusative singular. Examples include mercator, leo, senex, canis.",
+      examples: [
+        { latin: "mercātor", english: "merchant (nominative)", notes: "subject form" },
+        { latin: "mercātōrem", english: "merchant (accusative)", notes: "direct object form" },
+        { latin: "leō", english: "lion (nominative)", notes: "subject form" },
+        { latin: "leōnem", english: "lion (accusative)", notes: "direct object form" },
+        { latin: "senex", english: "old man (nominative)", notes: "subject form" },
+        { latin: "senem", english: "old man (accusative)", notes: "direct object form" },
+        { latin: "canis", english: "dog (nominative)", notes: "subject form" },
+        { latin: "canem", english: "dog (accusative)", notes: "direct object form" }
+      ],
+      rules: [
+        "Nominative endings vary greatly",
+        "Accusative ending: -em (almost always)",
+        "Can be masculine, feminine, or neuter",
+        "Must learn nominative and genitive forms"
+      ]
+    },
+    {
+      id: "3-concept-4",
+      title: "Word Order and Emphasis",
+      explanation: "Latin word order is flexible because case endings show grammatical relationships. However, certain patterns create emphasis and style. The verb often comes at the end of a sentence or clause.",
+      examples: [
+        { latin: "Caecilius pictūram laudat.", english: "Caecilius praises the picture.", notes: "Subject-Object-Verb order" },
+        { latin: "pictūram Caecilius laudat.", english: "Caecilius praises the picture.", notes: "Object first for emphasis" },
+        { latin: "laudat Caecilius pictūram.", english: "Caecilius praises the picture.", notes: "Verb first for emphasis" }
+      ],
+      rules: [
+        "Case endings show grammatical function, not word order",
+        "Verb typically comes at the end",
+        "Unusual word order creates emphasis",
+        "Context helps determine meaning"
+      ]
+    }
+  ],
+  
+  practiceExercises: [
+    {
+      id: "3-exercise-1",
+      type: "latin-to-english",
+      title: "3A - Complete the Sentences", 
+      sentences: [
+        {
+          id: "3a-1",
+          source: "mercator e villa ambulat.",
+          target: "The merchant walks out of the house.",
+          hints: ["e = out of", "ambulat = walks"]
+        },
+        {
+          id: "3a-2", 
+          source: "servus ad hortum venit.",
+          target: "The slave comes to the garden.",
+          hints: ["ad = to", "venit = comes"]
+        },
+        {
+          id: "3a-3",
+          source: "coquus ad culinam revenit.",
+          target: "The cook returns to the kitchen.", 
+          hints: ["revenit = returns", "culinam = kitchen (acc.)"]
+        },
+        {
+          id: "3a-4",
+          source: "Syphax servum ad villam ducit.",
+          target: "Syphax leads the slave to the house.",
+          hints: ["ducit = leads", "servum = slave (acc.)"]
+        },
+        {
+          id: "3a-5",
+          source: "Clemens cibum ad Caecilium portat.",
+          target: "Clemens carries food to Caecilius.",
+          hints: ["cibum = food (acc.)", "portat = carries"]
+        }
+      ]
+    },
+    {
+      id: "3-exercise-2",
+      type: "english-to-latin",
+      title: "3B - Choose the Right Case",
+      sentences: [
+        {
+          id: "3b-1",
+          source: "The friend praises the slave.",
+          target: "amicus servum laudat.",
+          hints: ["amicus = friend (nom.)", "servum = slave (acc.)"]
+        },
+        {
+          id: "3b-2",
+          source: "The old man enters the shop.",
+          target: "senex tabernam intrat.",
+          hints: ["senex = old man (nom.)", "tabernam = shop (acc.)"]
+        },
+        {
+          id: "3b-3",
+          source: "The master tastes the food.",
+          target: "dominus cibum gustat.",
+          hints: ["dominus = master (nom.)", "cibum = food (acc.)"]
+        },
+        {
+          id: "3b-4",
+          source: "The merchant greets Metella.",
+          target: "mercator Metellam salutat.",
+          hints: ["mercator = merchant (nom.)", "Metellam = Metella (acc.)"]
+        },
+        {
+          id: "3b-5",
+          source: "The slave-dealer sees the barber.",
+          target: "venalicius tonsorem videt.",
+          hints: ["venalicius = slave-dealer (nom.)", "tonsorem = barber (acc.)"]
+        },
+        {
+          id: "3b-6",
+          source: "The poet recites a verse.",
+          target: "poeta versum recitat.",
+          hints: ["poeta = poet (nom.)", "versum = verse (acc.)"]
+        },
+        {
+          id: "3b-7",
+          source: "The old man walks in the forum.",
+          target: "senex in foro ambulat.",
+          hints: ["senex = old man (nom.)", "in foro = in the forum"]
+        },
+        {
+          id: "3b-8",
+          source: "The slave-girl leads the painter to the atrium.",
+          target: "ancilla pictorem ad atrium ducit.",
+          hints: ["ancilla = slave-girl (nom.)", "pictorem = painter (acc.)"]
+        }
+      ]
+    }
+  ],
+  
+  objectives: [
+    "Learn vocabulary related to Roman forum life and professions",
+    "Understand the three main declensions of Latin nouns",
+    "Practice distinguishing between nominative and accusative cases",
+    "Recognize different word order patterns in Latin",
+    "Translate sentences with increasing complexity",
+    "Explore Roman commercial and social culture"
+  ],
+  
+  culturalNotes: [
+    "The Town of Pompeii: Pompeii was built on volcanic rock about five miles south of Mount Vesuvius. It covered 163 acres and was surrounded by a wall with eleven towers and eight gates. The town was divided into neat blocks by straight streets, with high paved sidewalks to keep pedestrians away from traffic and garbage.",
+    "The Roman Forum: The forum was the center of business, government, and religion. It was a large open space with covered colonnades on three sides. Here people conducted business, held political meetings, and participated in religious ceremonies. Various shops and services surrounded the forum area.",
+    "Roman Professions: The stories introduce various Roman professions: argentarius (banker), pictor (painter), tonsor (barber), and venalicius (slave-dealer). These reflect the diverse commercial life of Roman towns. Bankers like Caecilius were wealthy and important members of society.",
+    "Roman Entertainment: Pompeii had two theaters and an amphitheater. The large theater held 5,000 people for popular shows, while the smaller roofed theater was used for concerts. The amphitheater hosted gladiatorial combats and wild animal hunts, and could seat all of Pompeii's inhabitants plus visitors."
+  ],
+  
   difficulty: "beginner" as const,
-  prerequisiteSkills: [],
-  estimatedTime: 30,
-  sections: []
+  prerequisiteSkills: [
+    "Basic understanding of nominative and accusative cases",
+    "Familiarity with Latin sentence structure",
+    "Knowledge of basic Latin vocabulary",
+    "Understanding of subject and direct object concepts"
+  ],
+  
+  estimatedTime: 45,
+  
+  sections: [
+    {
+      id: "intro",
+      title: "Introduction", 
+      content: "Explore the Roman forum through stories of daily life and learn about the three declensions.",
+      type: "intro",
+      order: 1
+    },
+    {
+      id: "prose",
+      title: "Stories from the Forum",
+      content: "Follow Caecilius through his encounters with various tradespeople in Pompeii",
+      type: "prose",
+      order: 2
+    },
+    {
+      id: "vocabulary-section",
+      title: "New Vocabulary",
+      content: "Learn words for professions, places, and actions in the Roman world",
+      type: "vocabulary", 
+      order: 3
+    },
+    {
+      id: "grammar-section",
+      title: "Grammar: The Three Declensions",
+      content: "Master the first, second, and third declensions of Latin nouns",
+      type: "grammar",
+      order: 4
+    },
+    {
+      id: "exercises-section",
+      title: "Practice Exercises",
+      content: "Practice case recognition and translation with forum stories",
+      type: "exercises",
+      order: 5
+    },
+    {
+      id: "culture-section",
+      title: "Cultural Context",
+      content: "Learn about the town of Pompeii and Roman commercial life",
+      type: "culture",
+      order: 6
+    }
+  ]
 };
 
 // Updated lessons array with our template
