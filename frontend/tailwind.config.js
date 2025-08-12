@@ -8,6 +8,21 @@ module.exports = {
   ],
   theme: {
   	extend: {
+			keyframes: {
+				'fade-in-up': {
+					'0%': { opacity: '0', transform: 'translateY(8px)' },
+					'100%': { opacity: '1', transform: 'translateY(0)' }
+				},
+				'button-bounce': {
+					'0%, 100%': { transform: 'translateY(0)' },
+					'40%': { transform: 'translateY(-2px)' },
+					'60%': { transform: 'translateY(0)' }
+				}
+			},
+			animation: {
+				'fade-in-up': 'fade-in-up 500ms ease-out both',
+				'button-bounce': 'button-bounce 400ms ease-out'
+			},
   		colors: {
   			border: 'hsl(var(--border))',
   			input: 'hsl(var(--input))',

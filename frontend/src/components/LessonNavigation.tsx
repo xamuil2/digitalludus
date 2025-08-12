@@ -22,7 +22,7 @@ export default function LessonNavigation({ selectedLesson, onLessonSelect }: Les
   return (
     <div className="space-y-8">
       <div className="text-center">
-        <div className="inline-flex items-center gap-2 bg-gold-gradient text-white px-6 py-3 rounded-full text-sm font-classical font-medium mb-6 shadow-gold">
+        <div className="inline-flex items-center gap-2 bg-crimson text-white px-6 py-3 rounded-full text-sm font-classical font-medium mb-6 shadow-crimson">
           <Crown className="h-5 w-5" />
           Your Classical Learning Journey
         </div>
@@ -43,7 +43,7 @@ export default function LessonNavigation({ selectedLesson, onLessonSelect }: Les
           return (
             <Card 
               key={lesson.id} 
-              className={`group cursor-pointer transition-all duration-300 glass-effect hover:shadow-roman hover:-translate-y-2 overflow-hidden ${
+              className={`group cursor-pointer transition-all duration-300 glass-effect hover:shadow-roman hover:-translate-y-2 overflow-hidden h-full flex flex-col ${
                 isCurrent 
                   ? 'ring-2 ring-roman-gold shadow-gold border-roman-gold/40' 
                   : isCompleted
@@ -57,25 +57,25 @@ export default function LessonNavigation({ selectedLesson, onLessonSelect }: Les
               {/* Gradient accent */}
               <div className={`h-2 w-full ${
                 isCurrent 
-                  ? 'bg-roman-gradient' 
+                  ? 'bg-crimson' 
                   : isCompleted
-                    ? 'bg-gold-gradient'
+                    ? 'bg-crimson'
                     : isLocked
-                      ? 'bg-gradient-to-r from-roman-red/30 to-roman-red/50'
-                      : 'bg-roman-gradient'
+                      ? 'bg-gradient-to-r from-red-900/20 to-red-900/40'
+                      : 'bg-crimson'
               }`}></div>
               
               <CardHeader className="pb-4">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
-                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center transition-all group-hover:scale-110 shadow-roman ${
+                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center transition-all group-hover:scale-110 shadow-crimson ${
                       isCompleted 
-                        ? 'bg-gold-gradient text-white' 
+                        ? 'bg-crimson text-white' 
                         : isLocked 
-                          ? 'bg-gradient-to-br from-roman-marble to-roman-cream text-roman-black/40'
+                          ? 'bg-gradient-to-br from-white to-neutral-100 text-neutral-400'
                           : isCurrent
-                            ? 'bg-roman-gradient text-white'
-                            : 'bg-gradient-to-br from-roman-cream to-roman-marble text-roman-red'
+                            ? 'bg-crimson text-white'
+                            : 'bg-gradient-to-br from-neutral-50 to-white text-crimson'
                     }`}>
                       {isCompleted ? (
                         <CheckCircle className="h-6 w-6" />
@@ -103,12 +103,12 @@ export default function LessonNavigation({ selectedLesson, onLessonSelect }: Les
                   
                   <div className="flex flex-col items-end gap-2">
                     {isCurrent && (
-                      <Badge className="bg-roman-gradient text-white border-none shadow-roman font-classical">
+                      <Badge className="bg-crimson text-white border-none shadow-crimson font-classical">
                         Current
                       </Badge>
                     )}
                     {isCompleted && (
-                      <Badge className="bg-gold-gradient text-white border-none shadow-gold font-classical">
+                      <Badge className="bg-crimson text-white border-none font-classical">
                         Complete
                       </Badge>
                     )}
@@ -121,7 +121,7 @@ export default function LessonNavigation({ selectedLesson, onLessonSelect }: Les
                 </div>
               </CardHeader>
               
-              <CardContent className="pt-0 space-y-4">
+              <CardContent className="pt-0 space-y-4 flex flex-col grow">
                 {/* Progress indicators */}
                 <div className="grid grid-cols-3 gap-4 text-center">
                   <div className={`${isLocked ? 'text-roman-black/40' : 'text-roman-black'}`}>
@@ -159,17 +159,245 @@ export default function LessonNavigation({ selectedLesson, onLessonSelect }: Les
 
                 {/* Action button */}
                 <Button 
-                  className={`w-full transition-all font-classical ${
+                  className={`w-full transition-all font-classical mt-auto ${
                     isLocked 
-                      ? 'bg-roman-marble text-roman-black/40 cursor-not-allowed border border-roman-gold/20' 
-                      : isCurrent
-                        ? 'bg-roman-gradient hover:shadow-roman text-white shadow-roman'
-                        : isCompleted
-                          ? 'bg-gold-gradient hover:shadow-gold text-white shadow-gold'
-                          : 'bg-roman-gradient hover:shadow-roman text-white shadow-roman'
+                      ? 'bg-white text-neutral-400 cursor-not-allowed border border-neutral-200' 
+                      : 'bg-crimson hover:shadow-crimson text-white shadow-crimson'
                   }`}
                   disabled={isLocked}
                   size="sm"
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  mt-auto
                 >
                   {isLocked ? (
                     <>

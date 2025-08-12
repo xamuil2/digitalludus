@@ -2,67 +2,67 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=Work+Sans:wght@300;400;500;600;700&display=swap');
 
 @layer base {
   :root {
-    /* Roman Empire Inspired Palette */
-    --roman-red: 0 100% 27%;        /* Deep crimson */
-    --roman-red-light: 0 73% 41%;   /* Lighter red */
-    --roman-red-dark: 20 100% 20%;  /* Dark burgundy */
-    --roman-gold: 43 77% 52%;       /* Imperial gold */
-    --roman-gold-light: 48 89% 70%; /* Light gold */
-    --roman-gold-dark: 38 100% 35%; /* Deep gold */
-    --roman-black: 0 0% 10%;        /* Rich black */
-    --roman-charcoal: 0 0% 17%;     /* Charcoal */
-    --roman-white: 0 0% 98%;        /* Pure white */
-    --roman-cream: 60 29% 94%;      /* Cream */
-    --roman-marble: 240 9% 98%;     /* Marble white */
-    --roman-stone: 0 0% 90%;        /* Stone gray */
-    
-    /* UI Variables mapped to Roman palette */
-    --background: var(--roman-marble);
-    --foreground: var(--roman-black);
-    --card: var(--roman-white);
-    --card-foreground: var(--roman-black);
-    --popover: var(--roman-white);
-    --popover-foreground: var(--roman-black);
-    --primary: var(--roman-red);
-    --primary-foreground: var(--roman-white);
-    --secondary: var(--roman-cream);
-    --secondary-foreground: var(--roman-black);
-    --muted: var(--roman-stone);
-    --muted-foreground: var(--roman-charcoal);
-    --accent: var(--roman-gold);
-    --accent-foreground: var(--roman-black);
-    --destructive: var(--roman-red-light);
-    --destructive-foreground: var(--roman-white);
-    --border: var(--roman-stone);
-    --input: var(--roman-cream);
-    --ring: var(--roman-gold);
+    /* Harvard-inspired palette — crimson, black, white */
+    /* Crimson (Harvard primary: #A51C30) */
+    --crimson: 348 71% 38%;
+    --crimson-600: 348 71% 38%;
+    --crimson-700: 350 77% 30%;
+    --crimson-500: 348 71% 46%;
+
+    /* Neutrals */
+    --ink: 0 0% 12%;
+    --ink-2: 0 0% 20%;
+    --paper: 0 0% 100%;
+    --paper-2: 0 0% 98%;
+    --border-neutral: 0 0% 88%;
+
+    /* UI tokens */
+    --background: var(--paper);
+    --foreground: var(--ink);
+    --card: var(--paper);
+    --card-foreground: var(--ink);
+    --popover: var(--paper);
+    --popover-foreground: var(--ink);
+    --primary: var(--crimson-600);
+    --primary-foreground: 0 0% 100%;
+    --secondary: var(--paper-2);
+    --secondary-foreground: var(--ink);
+    --muted: var(--paper-2);
+    --muted-foreground: var(--ink-2);
+    --accent: var(--crimson-500);
+    --accent-foreground: 0 0% 100%;
+    --destructive: var(--crimson-700);
+    --destructive-foreground: 0 0% 100%;
+    --border: var(--border-neutral);
+    --input: var(--paper);
+    --ring: var(--crimson-600);
     --radius: 0.5rem;
   }
 
   .dark {
-    --background: var(--roman-black);
-    --foreground: var(--roman-white);
-    --card: var(--roman-charcoal);
-    --card-foreground: var(--roman-white);
-    --popover: var(--roman-charcoal);
-    --popover-foreground: var(--roman-white);
-    --primary: var(--roman-red-light);
-    --primary-foreground: var(--roman-white);
-    --secondary: var(--roman-charcoal);
-    --secondary-foreground: var(--roman-white);
-    --muted: var(--roman-charcoal);
-    --muted-foreground: var(--roman-stone);
-    --accent: var(--roman-gold-light);
-    --accent-foreground: var(--roman-black);
-    --destructive: var(--roman-red);
-    --destructive-foreground: var(--roman-white);
-    --border: var(--roman-charcoal);
-    --input: var(--roman-charcoal);
-    --ring: var(--roman-gold);
+    --background: 0 0% 6%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 10%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 10%;
+    --popover-foreground: 0 0% 98%;
+    --primary: var(--crimson-500);
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 13%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 13%;
+    --muted-foreground: 0 0% 75%;
+    --accent: var(--crimson-500);
+    --accent-foreground: 0 0% 100%;
+    --destructive: var(--crimson-700);
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 20%;
+    --input: 0 0% 13%;
+    --ring: var(--crimson-500);
   }
 }
 
@@ -72,13 +72,16 @@
   }
   
   body {
-    background: linear-gradient(135deg, hsl(var(--roman-marble)) 0%, hsl(var(--roman-cream)) 100%);
+    background: hsl(var(--background));
     color: hsl(var(--foreground));
     margin: 0;
     padding: 0;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     line-height: 1.6;
     min-height: 100vh;
+    opacity: 0;
+    transform: translateY(8px);
+    animation: page-fade-in 500ms ease-out forwards;
   }
   
   a {
@@ -88,9 +91,9 @@
   
   h1, h2, h3, h4, h5, h6 {
     margin: 0;
-    font-family: 'Cinzel', serif;
-    font-weight: 600;
-    letter-spacing: -0.02em;
+    font-family: 'Crimson Text', Georgia, serif;
+    font-weight: 700;
+    letter-spacing: -0.01em;
   }
   
   ul {
@@ -103,68 +106,85 @@
   }
 }
 
-/* Classical Design Components */
+/* Components & Utilities */
 @layer components {
-  .font-classical {
-    font-family: 'Cinzel', serif;
+  .font-serif-harvard { font-family: 'Crimson Text', Georgia, serif; }
+  .font-sans-harvard { font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+
+  .bg-crimson { background-color: hsl(var(--crimson-600)); }
+  .text-crimson { color: hsl(var(--crimson-600)); }
+
+  .shadow-crimson {
+    box-shadow: 0 8px 28px hsla(348, 71%, 38%, 0.18);
   }
-  
-  .bg-roman-gradient {
-    background: linear-gradient(135deg, hsl(var(--roman-red)) 0%, hsl(var(--roman-red-dark)) 100%);
+
+  /* Scroll reveal utility */
+  .reveal-on-scroll { opacity: 0; transform: translateY(10px); transition: opacity 500ms ease, transform 500ms ease; }
+  .reveal-on-scroll.is-visible { opacity: 1; transform: translateY(0); }
+
+  /* Glass card without gold accents */
+  .glass-effect {
+    backdrop-filter: blur(16px);
+    background: hsla(0, 0%, 100%, 0.85);
+    border: 1px solid hsl(var(--border));
   }
-  
-  .bg-gold-gradient {
-    background: linear-gradient(135deg, hsl(var(--roman-gold)) 0%, hsl(var(--roman-gold-dark)) 100%);
+
+  /* Back-compat aliases to remove gold while keeping components working */
+  .bg-roman-gradient { background-color: hsl(var(--crimson-600)); }
+  .shadow-roman { box-shadow: 0 8px 28px hsla(348, 71%, 38%, 0.18); }
+  .text-roman-red { color: hsl(var(--crimson-600)); }
+  .text-roman-black { color: hsl(var(--foreground)); }
+  .bg-gold-gradient { background-color: #111111; }
+  .shadow-gold { box-shadow: 0 8px 28px rgba(0,0,0,0.25); }
+  .text-roman-gold { color: hsl(var(--crimson-600)); }
+  .border-roman-gold { border-color: hsl(var(--border)); }
+
+  /* Cursor-following crimson spotlight behind hero */
+  .cursor-crimson-spotlight {
+    position: relative;
+    isolation: isolate;
   }
-  
-  .bg-marble {
-    background: linear-gradient(135deg, hsl(var(--roman-white)) 0%, hsl(var(--roman-cream)) 50%, hsl(var(--roman-marble)) 100%);
-  }
-  
-  .shadow-roman {
-    box-shadow: 0 8px 32px hsla(var(--roman-red), 0.15);
-  }
-  
-  .shadow-gold {
-    box-shadow: 0 8px 32px hsla(var(--roman-gold), 0.25);
-  }
-  
-  .text-roman-red {
-    color: hsl(var(--roman-red));
-  }
-  
-  .text-roman-gold {
-    color: hsl(var(--roman-gold));
-  }
-  
-  .text-roman-black {
-    color: hsl(var(--roman-black));
-  }
-  
-  .border-roman-gold {
-    border-color: hsl(var(--roman-gold));
-  }
-  
-  /* Ancient texture overlay */
-  .ancient-texture::before {
-    content: '';
+  .cursor-crimson-spotlight::before {
+    content: "";
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: 
-      radial-gradient(circle at 25% 25%, hsla(var(--roman-gold), 0.08) 0%, transparent 50%),
-      radial-gradient(circle at 75% 75%, hsla(var(--roman-red), 0.03) 0%, transparent 50%);
+    inset: -10%;
+    background: radial-gradient(600px circle at var(--mx, 50%) var(--my, 30%), hsla(348,71%,38%,0.12), hsla(0,0%,100%,0) 60%);
     pointer-events: none;
     z-index: -1;
+    transition: 150ms ease;
   }
-  
-  .glass-effect {
-    backdrop-filter: blur(20px);
-    background: hsla(var(--roman-white), 0.85);
-    border: 1px solid hsla(var(--roman-gold), 0.2);
+  .cursor-crimson-spotlight::after {
+    content: "";
+    position: absolute;
+    inset: -10%;
+    background: radial-gradient(140px circle at var(--mx, 50%) var(--my, 30%), hsla(348,71%,38%,0.28), hsla(348,71%,38%,0.12) 40%, transparent 60%);
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0;
+    transform: scale(0.8);
+    transform-origin: var(--mx, 50%) var(--my, 30%);
   }
+  .cursor-crimson-spotlight.rippling::after {
+    animation: crimson-ripple 700ms ease-out forwards;
+  }
+}
+
+/* Animations */
+@keyframes page-fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes button-bounce {
+  0%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-2px); }
+  60% { transform: translateY(0); }
+}
+
+@keyframes crimson-ripple {
+  0% { opacity: 0.35; transform: scale(0.7); }
+  50% { opacity: 0.2; transform: scale(1.15); }
+  100% { opacity: 0; transform: scale(1.6); }
 }
 
 /* Enhanced scrollbar */
@@ -173,14 +193,14 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: hsl(var(--roman-marble));
+  background: hsl(var(--secondary));
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, hsl(var(--roman-gold)) 0%, hsl(var(--roman-gold-dark)) 100%);
+  background: hsl(var(--crimson-600));
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(135deg, hsl(var(--roman-red)) 0%, hsl(var(--roman-red-dark)) 100%);
+  background: hsl(var(--crimson-700));
 }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useSession } from 'next-auth/react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -61,34 +61,46 @@ const Home: React.FC = () => {
 
             {/* Imperial Hero Section with Darker Banner */}
                         {/* Imperial Hero Section with Darker Banner */}
-            <section className="relative overflow-hidden py-20 bg-gradient-to-b from-gray-100 to-white border-b border-gray-200">
-                {/* Subtle darker banner around top half - positioned BEHIND content */}
-                <div className="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-black/12 via-black/6 to-transparent pointer-events-none z-0"></div>
-                <div className="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-r from-roman-red/10 via-roman-gold/8 to-roman-red/10 pointer-events-none z-0"></div>
+            <section
+              className="relative overflow-hidden py-20 bg-gradient-to-b from-gray-100 to-white cursor-crimson-spotlight"
+              onMouseMove={(e) => {
+                const target = e.currentTarget as HTMLDivElement;
+                const rect = target.getBoundingClientRect();
+                const mx = ((e.clientX - rect.left) / rect.width) * 100;
+                const my = ((e.clientY - rect.top) / rect.height) * 100;
+                target.style.setProperty('--mx', `${mx}%`);
+                target.style.setProperty('--my', `${my}%`);
+              }}
+              onMouseEnter={(e) => e.currentTarget.classList.add('rippling')}
+              onAnimationEnd={(e) => e.currentTarget.classList.remove('rippling')}
+            >
+                {/* Background overlays removed to avoid mid-band color divide */}
                 <div className="container mx-auto px-6 relative z-10">
-                    <div className="text-center max-w-5xl mx-auto">
-                        <div className="inline-flex items-center gap-3 bg-gold-gradient text-white px-6 py-3 rounded-full text-sm font-classical font-medium mb-8 shadow-gold">
+                    <div className="text-center max-w-5xl mx-auto flex flex-col items-center">
+                        <div className="inline-flex items-center gap-3 bg-crimson text-white px-6 py-3 rounded-full text-sm font-classical font-medium mb-8 shadow-crimson">
                             <Crown className="h-5 w-5" />
                             Modern Digital Learning Experience
                         </div>
-                        <h2 className="text-6xl md:text-7xl font-classical font-bold mb-8 leading-tight">
-                            <span className="text-roman-red">Master Latin</span>
-                            <br />
-                            <span className="text-roman-black">with</span>
-                            <br />
-                            <span className="bg-gradient-to-r from-yellow-600 via-yellow-400 to-yellow-600 bg-clip-text text-transparent font-extrabold tracking-tight">
-                                Interactive Excellence
-                            </span>
-                        </h2>
-                        <p className="text-xl text-muted-foreground leading-relaxed mb-12 max-w-3xl mx-auto font-medium">
-                            Transform your Latin studies with our comprehensive digital companion to the <strong className="text-roman-gold">Cambridge Latin</strong> textbook.
+                        <div className="rounded-xl px-3 py-2 inline-block">
+                          <h2 className="text-6xl md:text-7xl font-classical font-bold mb-8 leading-tight">
+                              <span className="text-crimson">Master Latin</span>
+                              <br />
+                              <span className="text-roman-black">with</span>
+                              <br />
+                              <span className="text-crimson font-extrabold tracking-tight">
+                                  Interactive Excellence
+                              </span>
+                          </h2>
+                        </div>
+                        <p className="text-xl text-neutral-800 leading-relaxed mb-12 max-w-3xl mx-auto font-medium">
+                            Transform your Latin studies with our comprehensive digital companion to the <strong className="text-crimson">Cambridge Latin</strong> textbook.
                             Experience immersive lessons, interactive exercises, and intelligent practice tools designed for serious learners.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-6 justify-center">
                             <a href="/lesson/1" className="inline-block">
                                 <Button 
                                     size="lg" 
-                                    className="bg-roman-gradient hover:shadow-roman text-white px-10 py-6 text-lg font-classical font-semibold shadow-roman transition-all duration-300 group border-none"
+                                    className="bg-crimson hover:bg-crimson/90 text-white px-10 py-6 text-lg font-classical font-semibold shadow-crimson transition-all duration-300 group border-none"
                                 >
                                     Start Learning Now
                                     <ArrowRight className="ml-3 h-6 w-6 group-hover:translate-x-1 transition-transform" />
@@ -97,7 +109,7 @@ const Home: React.FC = () => {
                             <Button 
                                 variant="outline" 
                                 size="lg"
-                                className="glass-effect border-roman-gold text-roman-red hover:bg-roman-gold/10 px-10 py-6 text-lg font-classical font-semibold shadow-gold transition-all duration-300"
+                                className="glass-effect border border-neutral-200 text-crimson hover:bg-neutral-100 px-10 py-6 text-lg font-classical font-semibold transition-all duration-300"
                                 onClick={() => setActiveTab('textbook')}
                             >
                                 <Scroll className="mr-3 h-6 w-6" />
@@ -122,7 +134,7 @@ const Home: React.FC = () => {
                             </TabsTrigger>
                             <TabsTrigger 
                                 value="textbook" 
-                                className="flex flex-col items-center gap-2 py-4 px-8 data-[state=active]:bg-gold-gradient data-[state=active]:text-white data-[state=active]:shadow-gold rounded-lg font-classical transition-all"
+                                className="flex flex-col items-center gap-2 py-4 px-8 data-[state=active]:bg-crimson data-[state=active]:text-white rounded-lg font-classical transition-all"
                             >
                                 <Scroll className="h-6 w-6" />
                                 <span>Textbook</span>
@@ -136,7 +148,7 @@ const Home: React.FC = () => {
                             </TabsTrigger>
                             <TabsTrigger 
                                 value="quiz" 
-                                className="flex flex-col items-center gap-2 py-4 px-8 data-[state=active]:bg-gold-gradient data-[state=active]:text-white data-[state=active]:shadow-gold rounded-lg font-classical transition-all"
+                                className="flex flex-col items-center gap-2 py-4 px-8 data-[state=active]:bg-crimson data-[state=active]:text-white rounded-lg font-classical transition-all"
                             >
                                 <Trophy className="h-6 w-6" />
                                 <span>Quiz</span>
