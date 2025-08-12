@@ -1,10 +1,8 @@
 import { useRef, useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
+import { Card, CardContent } from '@/components/ui/card';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { Badge } from '@/components/ui/badge';
-import { User, Send, Loader2, Sparkles } from 'lucide-react';
+import { User, Send, Loader2 } from 'lucide-react';
 
 interface Message {
   id: string;
@@ -32,6 +30,7 @@ export default function MagisterChat({ lesson, context, compact = false }: Magis
   const [isLoading, setIsLoading] = useState(false);
   const [liveHtml, setLiveHtml] = useState<string | null>(null);
   const assistantContentRef = useRef<string>('');
+  const textareaRef = useRef<HTMLTextAreaElement | null>(null);
 
   const extractLatestHtmlBlock = (text: string): string | null => {
     // Find the last fenced ```html ... ``` block
@@ -167,42 +166,25 @@ export default function MagisterChat({ lesson, context, compact = false }: Magis
     }
   };
 
-  const handleKeyPress = (e: React.KeyboardEvent) => {
+  const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
       sendMessage();
     }
   };
 
+  const handleInputResize = () => {
+    const el = textareaRef.current;
+    if (!el) return;
+    el.style.height = 'auto';
+    const next = Math.min(el.scrollHeight, 200);
+    el.style.height = `${next}px`;
+  };
+
   return (
-    <Card className={`w-full ${compact ? 'max-w-md' : 'max-w-2xl'} border-0 bg-white/80 backdrop-blur-sm shadow-xl shadow-slate-200/50`}>
-      <CardHeader className="bg-gradient-to-r from-amber-50 to-orange-50 border-b border-amber-100/50">
-        <CardTitle className="flex items-center gap-3 text-xl">
-          <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-amber-200">
-            <img 
-              src="/magister-marcellus.svg" 
-              alt="Magister Marcellus" 
-              className="w-full h-full object-cover"
-            />
-          </div>
-          <div>
-            <div className="flex items-center gap-2">
-              Magister Marcellus
-              <Badge variant="secondary" className="bg-amber-100 text-amber-800 border-amber-200">
-                <Sparkles className="h-3 w-3 mr-1" />
-                Online
-              </Badge>
-            </div>
-            {lesson && (
-              <p className="text-sm text-slate-600 font-normal mt-1">
-                Lesson {lesson} Tutor
-              </p>
-            )}
-          </div>
-        </CardTitle>
-      </CardHeader>
+    <Card className={`w-full ${compact ? 'max-w-md' : 'max-w-2xl'} border bg-white shadow-sm`}>
       <CardContent className="p-0">
-        <ScrollArea className={`${compact ? 'h-64' : 'h-96'} p-4`}>
+        <ScrollArea className={`${compact ? 'h-64' : 'h-96'} p-6 bg-neutral-50`}>
           <div className="space-y-4">
             {messages.map((message) => (
               <div
@@ -212,42 +194,28 @@ export default function MagisterChat({ lesson, context, compact = false }: Magis
                 }`}
               >
                 <div
-                  className={`flex gap-3 max-w-[80%] ${
+                  className={`flex gap-3 max-w-[700px] ${
                     message.role === 'user' ? 'flex-row-reverse' : 'flex-row'
                   }`}
                 >
-                  <div
-                    className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
-                      message.role === 'user'
-                        ? 'bg-gradient-to-br from-blue-500 to-indigo-600'
-                        : 'border-2 border-amber-200 overflow-hidden'
-                    }`}
-                  >
+                  <div className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 border border-slate-300 bg-white text-slate-700">
                     {message.role === 'user' ? (
-                      <User className="h-4 w-4 text-white" />
+                      <User className="h-4 w-4" />
                     ) : (
-                      <img 
-                        src="/magister-marcellus.svg" 
-                        alt="Magister Marcellus" 
-                        className="w-full h-full object-cover"
-                      />
+                      <span className="text-xs font-medium">M</span>
                     )}
                   </div>
                   <div
-                    className={`p-3 rounded-lg shadow-sm ${
+                    className={`px-4 py-3 rounded-2xl border ${
                       message.role === 'user'
-                        ? 'bg-gradient-to-br from-blue-500 to-indigo-600 text-white'
-                        : 'bg-gradient-to-br from-amber-50 to-orange-50 text-slate-800 border border-amber-200'
+                        ? 'bg-white text-slate-900'
+                        : 'bg-neutral-50 text-slate-900'
                     }`}
                   >
                     <p className="text-sm leading-relaxed whitespace-pre-wrap">
                       {message.content}
                     </p>
-                    <p
-                      className={`text-xs mt-2 ${
-                        message.role === 'user' ? 'text-blue-100' : 'text-slate-500'
-                      }`}
-                    >
+                    <p className="text-xs mt-2 text-slate-500">
                       {message.timestamp.toLocaleTimeString([], {
                         hour: '2-digit',
                         minute: '2-digit'
@@ -259,17 +227,13 @@ export default function MagisterChat({ lesson, context, compact = false }: Magis
             ))}
             {isLoading && (
               <div className="flex gap-3 justify-start">
-                <div className="w-8 h-8 rounded-full border-2 border-amber-200 overflow-hidden flex items-center justify-center flex-shrink-0">
-                  <img 
-                    src="/magister-marcellus.svg" 
-                    alt="Magister Marcellus" 
-                    className="w-full h-full object-cover"
-                  />
+                <div className="w-8 h-8 rounded-full border border-slate-300 bg-white flex items-center justify-center flex-shrink-0 text-slate-700">
+                  <span className="text-xs font-medium">M</span>
                 </div>
-                <div className="p-3 rounded-lg bg-gradient-to-br from-amber-50 to-orange-50 border border-amber-200">
+                <div className="px-4 py-3 rounded-2xl border bg-neutral-50">
                   <div className="flex items-center gap-2">
-                    <Loader2 className="h-4 w-4 animate-spin text-amber-600" />
-                    <span className="text-sm text-amber-700">Magister is thinking...</span>
+                    <Loader2 className="h-4 w-4 animate-spin text-slate-700" />
+                    <span className="text-sm text-slate-700">Thinking…</span>
                   </div>
                 </div>
               </div>
@@ -283,8 +247,7 @@ export default function MagisterChat({ lesson, context, compact = false }: Magis
               <p className="text-sm font-medium text-slate-700">Canvas Preview</p>
               <div className="flex gap-2">
                 <Button
-                  variant="secondary"
-                  className="h-8 px-3"
+                  className="h-8 px-3 bg-black hover:bg-neutral-900 text-white"
                   onClick={() => {
                     const html = liveHtml || '';
                     const url = 'data:text/html;charset=utf-8,' + encodeURIComponent(html);
@@ -295,7 +258,7 @@ export default function MagisterChat({ lesson, context, compact = false }: Magis
                 </Button>
               </div>
             </div>
-            <div className="border border-amber-200 rounded-md overflow-hidden bg-white">
+            <div className="border border-slate-200 rounded-md overflow-hidden bg-white">
               <iframe
                 title="AI Canvas Preview"
                 sandbox="allow-forms allow-modals allow-pointer-lock allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
@@ -307,20 +270,28 @@ export default function MagisterChat({ lesson, context, compact = false }: Magis
           </div>
         )}
         
-        <div className="p-4 border-t border-amber-200/50 bg-gradient-to-r from-amber-50/50 to-orange-50/50">
-          <div className="flex gap-2">
-            <Input
-              placeholder="Ask Magister Marcellus about Latin grammar, vocabulary, or culture..."
-              value={inputMessage}
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setInputMessage(e.target.value)}
-              onKeyPress={handleKeyPress}
-              className="flex-1 bg-white/80 border-amber-200 focus:border-amber-400 focus:ring-amber-200"
-              disabled={isLoading}
-            />
+        <div className="p-4 border-t border-slate-200 bg-white">
+          <div className="flex items-end gap-2">
+            <div className="flex-1">
+              <textarea
+                placeholder="Message Magister Marcellus"
+                value={inputMessage}
+                onChange={(e) => setInputMessage(e.target.value)}
+                onKeyDown={handleKeyDown}
+                onInput={handleInputResize}
+                rows={1}
+                ref={textareaRef}
+                className="w-full max-h-52 overflow-auto resize-none rounded-2xl border border-slate-300 bg-white px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-black"
+                disabled={isLoading}
+              />
+              <div className="mt-1 text-[11px] text-slate-500">
+                Press Enter to send • Shift+Enter for new line
+              </div>
+            </div>
             <Button
               onClick={sendMessage}
               disabled={!inputMessage.trim() || isLoading}
-              className="bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-700 hover:to-orange-700 text-white shadow-lg px-4"
+              className="bg-black hover:bg-neutral-900 text-white shadow px-4 rounded-xl"
             >
               {isLoading ? (
                 <Loader2 className="h-4 w-4 animate-spin" />
