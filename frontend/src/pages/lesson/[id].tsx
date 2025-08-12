@@ -283,10 +283,10 @@ export default function LessonPage() {
                   </TabsTrigger>
                   <TabsTrigger 
                     value="ai-tutor" 
-                    className="flex flex-col items-center gap-2 py-4 px-4 data-[state=active]:bg-roman-gradient data-[state=active]:text-white data-[state=active]:shadow-roman rounded-lg font-classical transition-all flex-1 min-w-0"
+                    className="flex flex-col items-center gap-1 sm:gap-2 py-2 sm:py-4 px-2 sm:px-4 data-[state=active]:bg-roman-gradient data-[state=active]:text-white data-[state=active]:shadow-roman rounded-lg font-classical transition-all flex-1 min-w-0 touch-manipulation active:scale-95"
                   >
-                    <MessageCircle className="h-5 w-5" />
-                    <span className="text-sm">Magister</span>
+                    <MessageCircle className="h-4 w-4 sm:h-5 sm:w-5" />
+                    <span className="text-xs sm:text-sm">Magister</span>
                   </TabsTrigger>
                 </TabsList>
               </div>
