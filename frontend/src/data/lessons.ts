@@ -882,21 +882,21 @@ N.B.: A possessive genitive usually follows the noun it modifies.`,
   ]
 };
 
-// Lesson 2 - A Girl of Sicily
+// Lesson 2 - Stage 2: mercator
 export const lesson2Template: Lesson = {
   id: 2,
-  title: "Ludus - Lesson 2",
-  subtitle: "A Girl of Sicily",
-  description: "Person, number, and voice; 1st conjugation present active indicative; the verb 'to be'",
-  pageNumbers: [7, 8, 9, 10],
+  title: "Stage 2 - mercator",
+  subtitle: "The Merchant",
+  description: "Nominative and accusative cases; nouns and their forms; Latin word order",
+  pageNumbers: [1, 2, 3, 4],
   
   introductoryNote: {
-    content: `This lesson introduces the fundamental concepts of Latin verbs, including person, number, and voice. You will learn the first conjugation of verbs in the present active indicative, as well as the irregular but essential verb "to be" (sum, esse). The prose passage tells the story of a young girl in Sicily and her daily life.`
+    content: `In this lesson, you will learn about the different forms of Latin nouns called cases. You'll discover how the nominative case is used for subjects and the accusative case for direct objects. The story follows a merchant who visits Caecilius, leading to a dinner scene in the triclinium with various characters.`
   },
   
   prosePassage: {
-    title: "mercator et in triclinio",
-    context: "A merchant visits Caecilius; later, a dinner scene in the triclinium unfolds with Grumio, Clemens, and an ancilla.",
+    title: "mercator and in triclinio",
+    context: "A merchant visits Caecilius the banker. In the first story 'mercator', we see the merchant's arrival and Caecilius's business. In 'in triclinio', we witness a dinner scene where Grumio the cook serves peacock and an ancilla entertains the guests.",
     sentences: [
       { id: "2-prose-1", latin: "amicus Caecilium visitat.", order: 1 },
       { id: "2-prose-2", latin: "amicus est mercator.", order: 2 },
@@ -990,275 +990,171 @@ export const lesson2Template: Lesson = {
     { id: "2-vocab-37", latin: "magnifice", english: "magnificently, in style", partOfSpeech: "adverb", lesson: 2, difficulty: "easy" },
     { id: "2-vocab-38", latin: "cenat", english: "eats dinner, dines", partOfSpeech: "verb", lesson: 2, difficulty: "easy" },
     { id: "2-vocab-39", latin: "spectat", english: "looks at", partOfSpeech: "verb", lesson: 2, difficulty: "easy" },
-    { id: "2-vocab-40", latin: "laetissimus", english: "very happy", partOfSpeech: "adjective", lesson: 2, difficulty: "easy" }
+    { id: "2-vocab-40", latin: "laetissimus", english: "very happy", partOfSpeech: "adjective", lesson: 2, difficulty: "easy" },
+    { id: "2-vocab-41", latin: "bibit", english: "drinks", partOfSpeech: "verb", lesson: 2, difficulty: "easy" },
+    { id: "2-vocab-42", latin: "surgit", english: "gets up, rises", partOfSpeech: "verb", lesson: 2, difficulty: "easy" },
+    { id: "2-vocab-43", latin: "exit", english: "goes out, leaves", partOfSpeech: "verb", lesson: 2, difficulty: "easy" },
+    { id: "2-vocab-44", latin: "clamat", english: "shouts", partOfSpeech: "verb", lesson: 2, difficulty: "easy" },
+    { id: "2-vocab-45", latin: "mensa", english: "table", partOfSpeech: "noun", lesson: 2, difficulty: "easy" },
+    { id: "2-vocab-46", latin: "cibus", english: "food", partOfSpeech: "noun", lesson: 2, difficulty: "easy" }
   ],
   
   keyConcepts: [
     {
       id: "2-concept-1",
-      title: "Verbs - Person, Number, and Voice",
-      explanation: "Latin verbs change their endings to agree with the person and number of the subject. The three persons are 1st (I, we), 2nd (you), and 3rd (he, she, it, they). Each person can be singular (only one person or thing) or plural (two or more). Voice refers to whether a verb shows an action or activity being done by the subject (active voice) or being done to the subject (passive voice).",
+      title: "Nouns and Their Forms",
+      explanation: "Words like Metella, Caecilius, and mercator are known as nouns. They often indicate people or animals (e.g. ancilla, canis), places (e.g. villa, hortus), and things (e.g. cena, cibus). You have now met two forms of the same noun: Metella – Metellam, Caecilius – Caecilium, mercator – mercatorem.",
       examples: [
-        { latin: "ambulat", english: "he/she walks", notes: "3rd person singular active" },
-        { latin: "ambulant", english: "they walk", notes: "3rd person plural active" }
+        { latin: "Metella – Metellam", english: "Metella (subject) – Metella (object)", notes: "Same person, different grammatical function" },
+        { latin: "Caecilius – Caecilium", english: "Caecilius (subject) – Caecilius (object)", notes: "Masculine name with different endings" },
+        { latin: "mercator – mercatorem", english: "merchant (subject) – merchant (object)", notes: "Third declension noun" }
       ],
       rules: [
-        "Latin verbs change endings to show person and number",
-        "Active voice shows the subject doing the action",
-        "Passive voice shows action being done to the subject"
+        "Nouns indicate people, animals, places, and things",
+        "The same noun can have different forms depending on its function",
+        "Learn to recognize both nominative and accusative forms"
       ]
     },
     {
-      id: "2-concept-2", 
-      title: "First Conjugation - Present Active Indicative",
-      explanation: "The first group of Latin verbs follows the amō pattern. All other verbs of the first conjugation follow their present active in this way. For first conjugation verbs, these endings are added to the present stem, which always ends in -a.",
+      id: "2-concept-2",
+      title: "Nominative and Accusative Cases",
+      explanation: "The different forms are known as the nominative case and the accusative case. The nominative case is used when the noun is the subject (doing the action), and the accusative case is used when the noun is the direct object (receiving the action).",
       examples: [
-        { latin: "amō", english: "I love, am loving, do love", notes: "1st person singular" },
-        { latin: "amās", english: "you love, are loving, do love", notes: "2nd person singular" },
-        { latin: "amat", english: "he, she, it loves, is loving, does love", notes: "3rd person singular" }
+        { latin: "Metella Grumionem laudat.", english: "Metella praises Grumio.", notes: "Metella (nominative) does the action; Grumionem (accusative) receives it" },
+        { latin: "amicus Metellam salutat.", english: "The friend greets Metella.", notes: "amicus (nominative) does the action; Metellam (accusative) receives it" }
       ],
       rules: [
-        "First conjugation verbs have present stems ending in -a",
-        "Personal endings are added to the stem: -ō, -s, -t, -mus, -tis, -nt",
-        "The present tense can be translated three ways in English"
+        "Nominative case: used for subjects (who/what does the action)",
+        "Accusative case: used for direct objects (who/what receives the action)",
+        "Different cases have different endings"
       ],
       charts: [
         {
-          title: "Present Active - First Conjugation (amō, love)",
-          headers: ["Person", "Singular", "Plural"],
+          title: "Case Examples",
+          headers: ["Function", "Nominative", "Accusative"],
           rows: [
-            ["1st", "amō, I love, am loving, do love", "amāmus, we love, are loving, do love"],
-            ["2nd", "amās, you love, are loving, do love", "amātis, you love, are loving, do love"],
-            ["3rd", "amat, he, she, it loves, is loving, does love", "amant, they love, are loving, do love"]
-          ]
-        },
-        {
-          title: "Personal Endings for Present Active",
-          headers: ["Person", "Singular", "Plural"],
-          rows: [
-            ["1st", "-ō", "-mus"],
-            ["2nd", "-s", "-tis"], 
-            ["3rd", "-t", "-nt"]
+            ["Subject/Object", "Metella", "Metellam"],
+            ["Subject/Object", "Caecilius", "Caecilium"],
+            ["Subject/Object", "mercator", "mercatorem"]
           ]
         }
       ]
     },
     {
       id: "2-concept-3",
-      title: "The Verb 'to be' (sum, esse)",
-      explanation: "The verb 'to be' in Latin, as in English, is irregular, so its forms must be learned as a special set. The present infinitive is esse, meaning 'to be'.",
+      title: "Latin Word Order",
+      explanation: "Notice the difference in word order between Latin and English. Latin word order is more flexible than English because the case endings show the grammatical function of words. The verb often comes at the end of the sentence in Latin.",
       examples: [
-        { latin: "sum", english: "I am", notes: "1st person singular" },
-        { latin: "es", english: "you are", notes: "2nd person singular" },
-        { latin: "est", english: "he, she, it is", notes: "3rd person singular" }
+        { latin: "coquus culinam intrat.", english: "The cook enters the kitchen.", notes: "Subject - Object - Verb order" },
+        { latin: "Clemens vinum portat.", english: "Clemens carries the wine.", notes: "Subject - Object - Verb order" },
+        { latin: "Metella Grumionem laudat.", english: "Metella praises Grumio.", notes: "Subject - Object - Verb order" }
       ],
       rules: [
-        "Sum is irregular and must be memorized",
-        "Forms do not follow the regular conjugation patterns",
-        "Essential for forming many Latin constructions"
-      ],
-      charts: [
-        {
-          title: "Present Active of sum, be",
-          headers: ["Person", "Singular", "Plural"],
-          rows: [
-            ["1st", "sum, I am", "sumus, we are"],
-            ["2nd", "es, you are", "estis, you are"],
-            ["3rd", "est, he, she, it is", "sunt, they are"]
-          ]
-        }
-      ]
-    },
-    {
-      id: "2-concept-4",
-      title: "Indicative and Infinitive Moods",
-      explanation: "Verbs like amō, habitō, laudō, etc. are said to be in the indicative mood, which is used to state what the speaker or writer regards as fact. There are also finite forms because they have definite person and number. The infinitive is made with the preposition to: to walk, to join, to see. In Latin, the present active infinitive of first conjugation verbs like amō adds the ending -re to the present stem.",
-      examples: [
-        { latin: "amāre", english: "to love", notes: "present active infinitive" },
-        { latin: "ambulāre", english: "to walk", notes: "present active infinitive" },
-        { latin: "laudāre", english: "to praise", notes: "present active infinitive" }
-      ],
-      rules: [
-        "Indicative mood states facts",
-        "Infinitive forms use 'to' in English",
-        "First conjugation infinitives add -re to the stem"
-      ]
-    },
-    {
-      id: "2-concept-5",
-      title: "Principal Parts",
-      explanation: "The present infinitive is given along with the first person singular present active indicative in the vocabulary listing of any verb, e.g., laudō, laudāre, and it is always important to learn these two forms along with the meaning. These forms provide crucial information about the verb and its forms. Most verbs have a total of four principal parts.",
-      examples: [
-        { latin: "laudō, laudāre", english: "I praise, to praise", notes: "1st and 2nd principal parts" },
-        { latin: "amō, amāre", english: "I love, to love", notes: "1st and 2nd principal parts" },
-        { latin: "esse", english: "to be", notes: "irregular infinitive of sum" }
-      ],
-      rules: [
-        "Learn both the 1st person singular and infinitive forms",
-        "These provide the foundation for all other verb forms",
-        "Principal parts are essential for vocabulary memorization"
+        "Latin word order is flexible due to case endings",
+        "Verbs often come at the end of sentences",
+        "Subject-Object-Verb is a common pattern",
+        "Case endings, not word order, show grammatical function"
       ]
     }
   ],
   
+  
   practiceExercises: [
     {
-      id: "2-exercise-1",
+      id: "2-exercise-1", 
       type: "latin-to-english",
       title: "2A - Latin to English Translation",
       sentences: [
         {
           id: "2a-1",
-          source: "Puella sum. Nautae sunt.",
-          target: "I am a girl. They are sailors.",
-          hints: ["sum = I am", "sunt = they are"]
+          source: "amicus Caecilium visitat.",
+          target: "A friend visits Caecilius.",
+          hints: ["amicus = friend", "visitat = visits"]
         },
         {
-          id: "2a-2",
-          source: "Cūr pecūniam nautae spectās?",
-          target: "Why are you looking at the sailor's money?",
-          hints: ["cūr = why", "spectās = you are looking at"]
+          id: "2a-2", 
+          source: "mercator villam intrat.",
+          target: "The merchant enters the house.",
+          hints: ["mercator = merchant", "intrat = enters"]
         },
         {
-          id: "2a-3", 
-          source: "Terram bonam amās quod es agricola.",
-          target: "You love good land because you are a farmer.",
-          hints: ["amās = you love", "es = you are"]
+          id: "2a-3",
+          source: "Caecilius pecuniam numerat.",
+          target: "Caecilius counts the money.",
+          hints: ["pecuniam = money (accusative)", "numerat = counts"]
         },
         {
           id: "2a-4",
-          source: "Multās terrās spectant sed parvam īnsulam agricolae nōn amant.",
-          target: "They look at many lands but the farmers do not love the small island.",
-          hints: ["spectant = they look at", "amant = they love"]
+          source: "Clemens mercatorem salutat.",
+          target: "Clemens greets the merchant.",
+          hints: ["mercatorem = merchant (accusative)", "salutat = greets"]
         },
         {
           id: "2a-5",
-          source: "Fīliae nautārum sumus.",
-          target: "We are daughters of sailors.",
-          hints: ["sumus = we are", "fīliae = daughters"]
-        },
-        {
-          id: "2a-6",
-          source: "Ambulātis et longam fābulam bene narrātis.",
-          target: "You walk and tell a long story well.",
-          hints: ["ambulātis = you walk", "narrātis = you tell"]
-        },
-        {
-          id: "2a-7",
-          source: "Nauta pecūniam nōn habet, sed vīta nautae est bona.",
-          target: "The sailor does not have money, but the sailor's life is good.",
-          hints: ["habet = he has", "est = is"]
-        },
-        {
-          id: "2a-8",
-          source: "Cūr epistulās fīliae portātis?",
-          target: "Why are you carrying the daughter's letters?",
-          hints: ["portātis = you are carrying", "epistulās = letters"]
-        },
-        {
-          id: "2a-9",
-          source: "Saepe ambulant et multās silvās vident.",
-          target: "They often walk and see many forests.",
-          hints: ["ambulant = they walk", "vident = they see"]
-        },
-        {
-          id: "2a-10",
-          source: "Vītam puellae bonae laudāmus.",
-          target: "We praise the life of the good girl.",
-          hints: ["laudāmus = we praise", "bonae = good (feminine)"]
+          source: "Grumio cenam parat.",
+          target: "Grumio prepares dinner.",
+          hints: ["cenam = dinner (accusative)", "parat = prepares"]
         }
       ]
     },
     {
       id: "2-exercise-2",
-      type: "english-to-latin",
+      type: "english-to-latin", 
       title: "2B - English to Latin Translation",
       sentences: [
         {
           id: "2b-1",
-          source: "She often carries the inhabitants' letters.",
-          target: "Saepe epistulās incolarum portat.",
-          hints: ["portat = she carries", "incolarum = of the inhabitants"]
+          source: "The slave enters the kitchen.",
+          target: "servus culinam intrat.",
+          hints: ["servus = slave", "culinam = kitchen (accusative)"]
         },
         {
           id: "2b-2",
-          source: "You are the daughter of the sailor.",
-          target: "Fīlia nautae es.",
-          hints: ["es = you are", "fīlia = daughter"]
+          source: "Metella greets the friend.",
+          target: "Metella amicum salutat.",
+          hints: ["amicum = friend (accusative)", "salutat = greets"]
         },
         {
-          id: "2b-3",
-          source: "He does not see (his) daughters.",
-          target: "Fīliās nōn videt.",
-          hints: ["videt = he sees", "fīliās = daughters (accusative)"]
+          id: "2b-3", 
+          source: "The merchant prepares the wine.",
+          target: "mercator vinum parat.",
+          hints: ["vinum = wine (accusative)", "parat = prepares"]
         },
         {
           id: "2b-4",
-          source: "The life of the sailor is also good.",
-          target: "Vīta nautae quoque bona est.",
-          hints: ["quoque = also", "bona = good"]
+          source: "Caecilius praises the slave-girl.",
+          target: "Caecilius ancillam laudat.",
+          hints: ["ancillam = slave-girl (accusative)", "laudat = praises"]
         },
         {
           id: "2b-5",
-          source: "Why are we waiting for the farmers?",
-          target: "Cūr agricolās exspectāmus?",
-          hints: ["exspectāmus = we wait for", "agricolās = farmers (accusative)"]
-        },
-        {
-          id: "2b-6",
-          source: "I walk well, they see well, but he does not write well.",
-          target: "Bene ambulō, bene vident, sed nōn bene scrībit.",
-          hints: ["ambulō = I walk", "vident = they see", "scrībit = he writes"]
-        },
-        {
-          id: "2b-7",
-          source: "You are many but not large.",
-          target: "Multae estis sed nōn magnae.",
-          hints: ["estis = you are (plural)", "multae = many (feminine)"]
-        },
-        {
-          id: "2b-8",
-          source: "Why are they looking at the money?",
-          target: "Cūr pecūniam spectant?",
-          hints: ["spectant = they are looking at", "pecūniam = money (accusative)"]
-        },
-        {
-          id: "2b-9",
-          source: "There is a long (and) large island.",
-          target: "Longa magnaque īnsula est.",
-          hints: ["est = there is", "-que = and"]
-        },
-        {
-          id: "2b-10",
-          source: "They are telling the story well.",
-          target: "Fābulam bene narrant.",
-          hints: ["narrant = they are telling", "fābulam = story (accusative)"]
+          source: "The cook tastes the peacock.",
+          target: "coquus pavonem gustat.",
+          hints: ["pavonem = peacock (accusative)", "gustat = tastes"]
         }
       ]
     }
   ],
   
   objectives: [
-    "Understand the concepts of person, number, and voice in Latin verbs",
-    "Learn the present active indicative forms of first conjugation verbs",
-    "Master the irregular present forms of sum (to be)",
-    "Distinguish between indicative and infinitive moods", 
-    "Memorize essential vocabulary for daily life and activities",
-    "Practice translation skills with increasingly complex sentences"
+    "Understand the difference between nominative and accusative cases",
+    "Recognize subjects and direct objects in Latin sentences",
+    "Learn vocabulary related to Roman household and business",
+    "Practice Latin word order patterns",
+    "Translate sentences using case recognition"
   ],
   
   culturalNotes: [
-    "Roman girls from farming families often learned to read and write, which was relatively uncommon in the ancient world",
-    "Letter writing was an important form of communication in the Roman world, as travel was difficult and dangerous",
-    "Sicily was known as the 'granary of Rome' due to its fertile agricultural land"
+    "Daily Life in Pompeii: The day began early for Caecilius and the members of his household. He would usually get up at dawn. His slaves were up even earlier, sweeping, dusting, and polishing. It did not take Caecilius long to dress. The first garment that he put on was his tunica, a tunic similar to a short-sleeved shirt, then his toga, a very large piece of woolen cloth arranged in folds, and finally his shoes, which were rather like modern sandals.",
+    "Roman Dining: The meal began with a first course of light dishes to whet the appetite. Eggs, fish, and cooked and raw vegetables were often served. Then came the main course in which a variety of meat dishes with different sauces and vegetables would be offered. Finally, the dessert was brought in, consisting of fruit, nuts, cheese, and sweet dishes. Roman dinners were said to run 'ab ovo usque ad mala' (from eggs to apples).",
+    "The Triclinium: Three couches were arranged around a mensa or circular table which, though small, was very elegantly carved and decorated. Each couch had places for three people. The diners reclined on the couches, leaning on their left elbow and taking food from the table with their right hand. The food was cut up by a slave before being served, and diners ate it with their fingers or a spoon. Forks were not used by the Romans."
   ],
   
-  difficulty: "beginner",
+  difficulty: "beginner" as const,
   prerequisiteSkills: [
-    "Basic first declension noun endings",
-    "Present tense verb forms",
-    "Basic sentence structure",
-    "Nominative and accusative cases"
+    "Basic noun endings",
+    "Simple verb forms", 
+    "Understanding of Latin sentence structure"
   ],
   
   estimatedTime: 40,
@@ -1267,212 +1163,59 @@ export const lesson2Template: Lesson = {
     {
       id: "intro",
       title: "Introduction",
-      content: "Learn about the dative case, indirect objects, and Latin word order through stories of women and sailors.",
+      content: "Learn about nominative and accusative cases through the story of a merchant visiting Caecilius.",
       type: "intro",
       order: 1
     },
     {
       id: "prose",
-      title: "Fēmina et Nauta",
-      content: "The woman and the sailor - a story about relationships and the dative case",
+      title: "mercator and in triclinio",
+      content: "Read about a merchant's visit and a dinner in the triclinium",
       type: "prose", 
       order: 2
     },
     {
       id: "vocabulary-section",
       title: "New Vocabulary",
-      content: "Key verbs, nouns, and adjectives for Lesson 3",
+      content: "Key words for household activities and people",
       type: "vocabulary",
       order: 3
     },
     {
       id: "grammar-section", 
-      title: "Grammar: Dative Case",
-      content: "Understanding the dative case and its uses",
+      title: "Grammar: Cases and Word Order",
+      content: "Understanding nominative and accusative cases",
       type: "grammar",
       order: 4
     },
     {
       id: "exercises-section",
       title: "Practice Exercises", 
-      content: "Translation practice with dative constructions",
+      content: "Translation practice with case recognition",
       type: "exercises",
       order: 5
     }
   ]
 };
 
-// Lesson 3 - The Girl's Story
-const lesson3Template: Lesson = {
+// Lesson 3 - Coming Soon
+export const lesson3Template: Lesson = {
   id: 3,
-  title: "The Girl's Story",
-  subtitle: "Dative Case and Indirect Objects",
-  description: "Learn about the dative case, indirect objects, and Latin word order through stories of women and sailors.",
-  pageNumbers: [11, 12, 13],
-  
-  introductoryNote: {
-    content: `In this lesson, we will learn about the dative case, which is used for indirect objects and with certain special adjectives. We will also explore Latin word order principles and expand our vocabulary with new verbs and adjectives. The stories feature women and sailors, introducing themes of work, beauty, and relationships in ancient contexts.`
-  },
-  
-  prosePassage: {
-    title: "Fēmina et Nauta (The Woman and the Sailor)",
-    context: "A story about a woman who owns good lands and forests, and her relationship with farmers and a sailor",
-    sentences: [
-      { id: "3-prose-1", latin: "Fēmina terrās bonās et magnam silvam habet.", english: "The woman has good lands and a large forest.", order: 1 },
-      { id: "3-prose-2", latin: "Agricolae terram bonam amant.", english: "The farmers love the good land.", order: 2 },
-      { id: "3-prose-3", latin: "Terrae fēminae agricolīs grātae sunt quod bonae sunt.", english: "The woman's lands are pleasing to the farmers because they are good.", order: 3 },
-      { id: "3-prose-4", latin: "Fēmina est bona, sed agricolae fēminam nōn amant.", english: "The woman is good, but the farmers do not love the woman.", order: 4 },
-      { id: "3-prose-5", latin: "Terrās fēminae amant sed nōn occupant.", english: "They love the woman's lands but do not occupy them.", order: 5 },
-      { id: "3-prose-6", latin: "Fēmina nautam videt et amat.", english: "The woman sees a sailor and loves him.", order: 6 },
-      { id: "3-prose-7", latin: "Nauta fēminam pulchram videt; fēmina nautae quoque grāta est.", english: "The sailor sees the beautiful woman; the woman is also pleasing to the sailor.", order: 7 },
-      { id: "3-prose-8", latin: "Fēmina nautam vocat.", english: "The woman calls the sailor.", order: 8 },
-      { id: "3-prose-9", latin: "Nauta et fēmina ambulant.", english: "The sailor and woman walk.", order: 9 },
-      { id: "3-prose-10", latin: "Fēmina nautae multās epistulās dat quod nautam amat.", english: "The woman gives many letters to the sailor because she loves the sailor.", order: 10 },
-      { id: "3-prose-11", latin: "Nauta quoque fēminae epistulās dat.", english: "The sailor also gives letters to the woman.", order: 11 },
-      { id: "3-prose-12", latin: "Hodiē nauta labōrat.", english: "Today the sailor works.", order: 12 },
-      { id: "3-prose-13", latin: "Fēmina quoque labōrat et nautam exspectat.", english: "The woman also works and waits for the sailor.", order: 13 },
-      { id: "3-prose-14", latin: "Fēmina nautae quoque terram et pecūniam dat, sed nauta fēminam, nōn pecūniam, amat.", english: "The woman also gives land and money to the sailor, but the sailor loves the woman, not the money.", order: 14 },
-      { id: "3-prose-15", latin: "\"Vīta perīculōsa est,\" inquit, \"sed mihi grāta est quod fēminam bonam amō.\"", english: "\"Life is dangerous,\" he says, \"but it is pleasing to me because I love a good woman.\"", order: 15 }
-    ],
-    fullTranslation: "The woman has good lands and a large forest. The farmers love the good land. The woman's lands are pleasing to the farmers because they are good. The woman is good, but the farmers do not love the woman. They love the woman's lands but do not occupy them. The woman sees a sailor and loves him. The sailor sees the beautiful woman; the woman is also pleasing to the sailor. The woman calls the sailor. The sailor and woman walk. The woman gives many letters to the sailor because she loves the sailor. The sailor also gives letters to the woman. Today the sailor works. The woman also works and waits for the sailor. The woman also gives land and money to the sailor, but the sailor loves the woman, not the money. \"Life is dangerous,\" he says, \"but it is pleasing to me because I love a good woman.\""
-  },
-  
-  vocabulary: [
-    { id: "clamo-3", latin: "clāmō", principalParts: "clāmō, clāmāre", english: "shout", partOfSpeech: "verb", lesson: 3, difficulty: "easy" },
-    { id: "do-3", latin: "dō", principalParts: "dō, dare", english: "give", partOfSpeech: "verb", lesson: 3, difficulty: "easy" },
-    { id: "laboro-3", latin: "labōrō", principalParts: "labōrō, labōrāre", english: "work, toil", partOfSpeech: "verb", lesson: 3, difficulty: "easy" },
-    { id: "monstro-3", latin: "mōnstrō", principalParts: "mōnstrō, mōnstrāre", english: "show, display", partOfSpeech: "verb", lesson: 3, difficulty: "easy" },
-    { id: "neco-3", latin: "necō", principalParts: "necō, necāre", english: "kill", partOfSpeech: "verb", lesson: 3, difficulty: "medium" },
-    { id: "occupo-3", latin: "occupō", principalParts: "occupō, occupāre", english: "seize, capture", partOfSpeech: "verb", lesson: 3, difficulty: "medium" },
-    { id: "pugno-3", latin: "pugnō", principalParts: "pugnō, pugnāre", english: "fight", partOfSpeech: "verb", lesson: 3, difficulty: "easy" },
-    { id: "servo-3", latin: "servō", principalParts: "servō, servāre", english: "save, preserve", partOfSpeech: "verb", lesson: 3, difficulty: "easy" },
-    { id: "supero-3", latin: "superō", principalParts: "superō, superāre", english: "defeat, conquer, overcome, surpass, win", partOfSpeech: "verb", lesson: 3, difficulty: "medium" },
-    { id: "voco-3", latin: "vocō", principalParts: "vocō, vocāre", english: "call, summon", partOfSpeech: "verb", lesson: 3, difficulty: "easy" },
-    { id: "femina-3", latin: "fēmina", principalParts: "fēmina, fēminae, f.", english: "woman", partOfSpeech: "noun", lesson: 3, difficulty: "easy" },
-    { id: "mihi-3", latin: "mihi", english: "to me, for me", partOfSpeech: "pronoun", lesson: 3, difficulty: "easy", notes: "Dative case" },
-    { id: "grata-3", latin: "grāta", english: "pleasing (to)", partOfSpeech: "adjective", lesson: 3, difficulty: "medium", notes: "Takes dative case" },
-    { id: "propinqua-3", latin: "propinqua", english: "near (to), nearby", partOfSpeech: "adjective", lesson: 3, difficulty: "medium", notes: "Takes dative case" },
-    { id: "pulchra-3", latin: "pulchra", english: "beautiful, handsome", partOfSpeech: "adjective", lesson: 3, difficulty: "easy" },
-    { id: "hodie-3", latin: "hodiē", english: "today", partOfSpeech: "adverb", lesson: 3, difficulty: "easy" },
-    { id: "ibi-3", latin: "ibī", english: "there, in that place", partOfSpeech: "adverb", lesson: 3, difficulty: "easy" },
-    { id: "nunc-3", latin: "nunc", english: "now", partOfSpeech: "adverb", lesson: 3, difficulty: "easy" }
-  ],
-  
-  keyConcepts: [
-    {
-      id: "dative-case",
-      title: "Dative Case",
-      explanation: "The dative case is used for indirect objects and with certain special adjectives. For first declension nouns, the dative endings are -ae (singular) and -īs (plural).",
-      examples: [
-        { latin: "Nautae pecūniam damus.", english: "We give money to the sailor.", notes: "Nautae is dative indirect object" },
-        { latin: "Puellae fābulās narrātis.", english: "You tell stories to the girl.", notes: "Puellae is dative indirect object" },
-        { latin: "Fēminīs terram damus.", english: "We give the women land.", notes: "Fēminīs is dative plural" }
-      ],
-      rules: [
-        "The dative case is used for indirect objects of verbs of giving, showing, and telling",
-        "First declension dative singular ending: -ae",
-        "First declension dative plural ending: -īs",
-        "Dative indirect objects usually precede direct objects in Latin word order"
-      ]
-    },
-    {
-      id: "dative-special-adjectives",
-      title: "Dative with Special Adjectives",
-      explanation: "Certain adjectives meaning 'dear, near, pleasing' can take the dative case.",
-      examples: [
-        { latin: "Vīta est nautīs grāta.", english: "Life is pleasing to sailors.", notes: "grāta takes dative nautīs" },
-        { latin: "Puella est silvae propinqua.", english: "The girl is near the forest.", notes: "propinqua takes dative silvae" }
-      ],
-      rules: [
-        "Special adjectives can govern the dative case",
-        "The adjective agrees with its subject, but governs a dependent noun in the dative",
-        "Dative nouns with special adjectives usually precede the adjective"
-      ]
-    }
-  ],
-  
-  practiceExercises: [
-    {
-      id: "latin-to-english-3",
-      type: "latin-to-english",
-      title: "3A - Latin to English Translation",
-      sentences: [
-        { id: "3a-1", source: "Hodiē agricolae pecūniam nōn dās.", target: "Today you do not give money to the farmer.", hints: ["hodiē = today", "dās = you give"] },
-        { id: "3a-2", source: "Ibī pugnant et nautam servant.", target: "There they fight and save the sailor.", hints: ["ibī = there", "servant = they save"] },
-        { id: "3a-3", source: "Fēminās amō quod mihi pecūniam saepe dant.", target: "I love the women because they often give money to me.", hints: ["mihi = to me", "saepe = often"] },
-        { id: "3a-4", source: "Cūr agricolīs epistulam fēminae mōnstrās?", target: "Why do you show the woman's letter to the farmers?", hints: ["Cūr = why", "mōnstrās = you show"] },
-        { id: "3a-5", source: "Īnsulae sunt terrae propinquae.", target: "The islands are near the lands.", hints: ["propinquae = near"] }
-      ]
-    },
-    {
-      id: "english-to-latin-3",
-      type: "english-to-latin", 
-      title: "3B - English to Latin Translation",
-      sentences: [
-        { id: "3b-1", source: "Life is pleasing because they often give money to me.", target: "Vīta grāta est quod mihi pecūniam saepe dant.", hints: ["grāta = pleasing", "mihi = to me"] },
-        { id: "3b-2", source: "The women are near the farmer's land.", target: "Fēminae terrae agricolae propinquae sunt.", hints: ["propinquae = near"] },
-        { id: "3b-3", source: "There you are saving the land but you are not fighting.", target: "Ibī terram servās sed nōn pugnās.", hints: ["ibī = there", "servās = you save"] },
-        { id: "3b-4", source: "We are seizing the large forests and the small island.", target: "Magnās silvās et parvam īnsulam occupāmus.", hints: ["occupāmus = we seize"] },
-        { id: "3b-5", source: "Now they are shouting and calling the farmers.", target: "Nunc clāmant et agricolās vocant.", hints: ["nunc = now", "clāmant = they shout"] }
-      ]
-    }
-  ],
-  
+  title: "Coming Soon",
+  subtitle: "Future Lesson", 
+  description: "This lesson is not yet available",
+  pageNumbers: [],
+  introductoryNote: { content: "Coming soon..." },
+  prosePassage: { title: "", context: "", sentences: [] },
+  vocabulary: [],
+  keyConcepts: [],
+  practiceExercises: [],
+  objectives: [],
   culturalNotes: [],
-  
-  difficulty: "beginner",
-  estimatedTime: 45,
-  objectives: [
-    "Master the dative case endings",
-    "Understand dative indirect objects", 
-    "Learn dative with special adjectives",
-    "Practice Latin word order rules",
-    "Expand vocabulary with new verbs and adjectives"
-  ],
-  prerequisiteSkills: [
-    "Basic first declension noun endings",
-    "Present tense verb forms",
-    "Basic sentence structure",
-    "Nominative and accusative cases"
-  ],
-  
-  sections: [
-    {
-      id: "intro",
-      title: "Introduction",
-      content: "Learn about the dative case, indirect objects, and Latin word order through stories of women and sailors.",
-      type: "intro",
-      order: 1
-    },
-    {
-      id: "prose",
-      title: "Fēmina et Nauta",
-      content: "The woman and the sailor - a story about relationships and the dative case",
-      type: "prose", 
-      order: 2
-    },
-    {
-      id: "vocabulary-section",
-      title: "New Vocabulary",
-      content: "Key verbs, nouns, and adjectives for Lesson 3",
-      type: "vocabulary",
-      order: 3
-    },
-    {
-      id: "grammar-section", 
-      title: "Grammar: Dative Case",
-      content: "Understanding the dative case and its uses",
-      type: "grammar",
-      order: 4
-    },
-    {
-      id: "exercises-section",
-      title: "Practice Exercises", 
-      content: "Translation practice with dative constructions",
-      type: "exercises",
-      order: 5
-    }
-  ]
+  difficulty: "beginner" as const,
+  prerequisiteSkills: [],
+  estimatedTime: 30,
+  sections: []
 };
 
 // Updated lessons array with our template
