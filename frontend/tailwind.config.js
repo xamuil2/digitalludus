@@ -8,6 +8,11 @@ module.exports = {
   ],
   theme: {
   	extend: {
+			zIndex: {
+				'999': '999',
+				'9999': '9999',
+				'99999': '99999'
+			},
 			keyframes: {
 				'fade-in-up': {
 					'0%': { opacity: '0', transform: 'translateY(8px)' },

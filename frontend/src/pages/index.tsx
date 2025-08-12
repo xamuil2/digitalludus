@@ -133,10 +133,10 @@ const Home: React.FC = () => {
                         </div>
                         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-8 md:gap-10 items-center">
                             <div className="relative mx-auto w-33 aspect-square md:w-36">
-                                <Image src="/Andover.png" alt="Phillips Academy Andover" fill className="object-contain" sizes="(max-width: 768px) 11rem, 14rem" />
-                            </div>
-                            <div className="relative mx-auto w-33 aspect-square md:w-36">
                                 <Image src="/Exeter.png" alt="Phillips Exeter Academy" fill className="object-contain" sizes="(max-width: 768px) 11rem, 14rem" />
+                            </div>
+                             <div className="relative mx-auto w-33 aspect-square md:w-36">
+                                <Image src="/Andover.png" alt="Phillips Academy Andover" fill className="object-contain" sizes="(max-width: 768px) 11rem, 14rem" />
                             </div>
                             <div className="relative mx-auto w-44 aspect-square md:w-56">
                                 <Image src="/SPS.png" alt="St. Paul's School" fill className="object-contain" sizes="(max-width: 768px) 11rem, 14rem" />

@@ -204,3 +204,61 @@
 ::-webkit-scrollbar-thumb:hover {
   background: hsl(var(--crimson-700));
 }
+
+/* Floating AI Chat - FORCE fixed positioning */
+.magister-chat-fixed {
+  position: fixed !important;
+  bottom: 1.5rem !important;
+  right: 1.5rem !important;
+  z-index: 9999999 !important;
+  pointer-events: auto !important;
+  transform: translate3d(0, 0, 0) !important;
+  isolation: isolate !important;
+  contain: layout style paint !important;
+}
+
+/* Override ALL possible parent positioning */
+body .magister-chat-fixed,
+html .magister-chat-fixed,
+#__next .magister-chat-fixed,
+* .magister-chat-fixed {
+  position: fixed !important;
+  bottom: 1.5rem !important;
+  right: 1.5rem !important;
+  z-index: 9999999 !important;
+  transform: translate3d(0, 0, 0) !important;
+}
+
+/* Floating AI Chat - Always visible and sticky */
+.floating-ai-chat {
+  position: fixed !important;
+  bottom: 24px !important;
+  right: 24px !important;
+  z-index: 99999 !important;
+  pointer-events: auto !important;
+  transform: translate3d(0, 0, 0) !important; /* Force hardware acceleration */
+  will-change: transform !important;
+}
+
+/* Ensure floating widget stays on top of everything and doesn't move */
+.floating-ai-chat * {
+  pointer-events: auto !important;
+}
+
+/* Additional specificity to override any other positioning */
+div.floating-ai-chat {
+  position: fixed !important;
+  bottom: 24px !important;
+  right: 24px !important;
+  transform: translate3d(0, 0, 0) !important;
+}
+
+/* Override any parent containers that might affect positioning */
+body .floating-ai-chat,
+html .floating-ai-chat,
+#__next .floating-ai-chat {
+  position: fixed !important;
+  bottom: 24px !important;
+  right: 24px !important;
+  z-index: 99999 !important;
+}

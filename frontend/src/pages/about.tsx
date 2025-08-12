@@ -158,7 +158,7 @@ const About: React.FC = () => {
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-6">
-              <p className="text-roman-black text-xl leading-relaxed">
+              <p className="text-roman-black text-lg leading-relaxed">
                 DigitalLudus is dedicated to making Latin education accessible to everyone, regardless of background or geographic location. 
                 We believe that classical languages and Roman culture should not be confined to elite institutions but should be available to 
                 all curious minds seeking to understand the foundations of Western civilization.

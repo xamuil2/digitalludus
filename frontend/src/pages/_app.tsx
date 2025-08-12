@@ -3,6 +3,7 @@ import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import { SessionProvider } from 'next-auth/react'
 import { useEffect } from 'react'
+import FloatingAIChat from '@/components/FloatingAIChat'
 
 export default function App({ 
   Component, 
@@ -48,6 +49,7 @@ export default function App({
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
       </Head>
       <Component {...pageProps} />
+      <FloatingAIChat />
     </SessionProvider>
   )
 }
