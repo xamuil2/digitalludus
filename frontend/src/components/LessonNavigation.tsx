@@ -36,7 +36,7 @@ export default function LessonNavigation({ selectedLesson, onLessonSelect }: Les
       
       <div className="grid gap-4 sm:gap-6 lg:gap-8 grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
         {lessons.map((lesson) => {
-          const isLocked = lesson.title === "Coming Soon" || lesson.id > 3; // Lock placeholder lessons and lessons beyond 3
+          const isLocked = lesson.title === "Coming Soon" || lesson.id > 4; // Lock placeholder lessons and lessons beyond 4
           const isCompleted = false; // We'll implement completion tracking later
           const isCurrent = selectedLesson === lesson.id;
           

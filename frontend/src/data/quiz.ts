@@ -260,6 +260,208 @@ export const quizData: QuizQuestion[] = [
     lesson: 3,
     difficulty: 'easy',
     category: 'vocabulary'
+  },
+
+  // Lesson 4 Questions
+  {
+    id: '4-1',
+    question: 'What does "ego" mean?',
+    options: ['you', 'I', 'he', 'we'],
+    correctAnswer: 1,
+    explanation: 'Ego is the first person singular pronoun meaning "I". It is often omitted in Latin since the verb ending shows the person.',
+    lesson: 4,
+    difficulty: 'easy',
+    category: 'vocabulary'
+  },
+  {
+    id: '4-2',
+    question: 'What does "tu" mean?',
+    options: ['I', 'you (singular)', 'he', 'you (plural)'],
+    correctAnswer: 1,
+    explanation: 'Tu is the second person singular pronoun meaning "you" (when speaking to one person).',
+    lesson: 4,
+    difficulty: 'easy',
+    category: 'vocabulary'
+  },
+  {
+    id: '4-3',
+    question: 'Translate: "ego sum mercator"',
+    options: ['You are a merchant', 'I am a merchant', 'He is a merchant', 'We are merchants'],
+    correctAnswer: 1,
+    explanation: 'Ego = I, sum = am, mercator = merchant. "I am a merchant."',
+    lesson: 4,
+    difficulty: 'easy',
+    category: 'translation'
+  },
+  {
+    id: '4-4',
+    question: 'What question word means "who"?',
+    options: ['quid', 'quis', 'cur', 'ubi'],
+    correctAnswer: 1,
+    explanation: 'Quis means "who" (for people). Quid = what, cur = why, ubi = where.',
+    lesson: 4,
+    difficulty: 'easy',
+    category: 'vocabulary'
+  },
+  {
+    id: '4-5',
+    question: 'What question word means "what"?',
+    options: ['quis', 'quid', 'cur', 'ubi'],
+    correctAnswer: 1,
+    explanation: 'Quid means "what" (for things or actions). Quis = who, cur = why, ubi = where.',
+    lesson: 4,
+    difficulty: 'easy',
+    category: 'vocabulary'
+  },
+  {
+    id: '4-6',
+    question: 'Translate: "quis es tu?"',
+    options: ['What are you?', 'Who are you?', 'Where are you?', 'Why are you?'],
+    correctAnswer: 1,
+    explanation: 'Quis = who, es = you are, tu = you (for emphasis). "Who are you?"',
+    lesson: 4,
+    difficulty: 'medium',
+    category: 'translation'
+  },
+  {
+    id: '4-7',
+    question: 'What verb ending is used for "I" (first person singular)?',
+    options: ['-s', '-t', '-o', '-nt'],
+    correctAnswer: 2,
+    explanation: 'First person singular verbs end in -o. For example: ego amo = I love, ego habeo = I have.',
+    lesson: 4,
+    difficulty: 'medium',
+    category: 'grammar'
+  },
+  {
+    id: '4-8',
+    question: 'What verb ending is used for "you" (second person singular)?',
+    options: ['-o', '-s', '-t', '-nt'],
+    correctAnswer: 1,
+    explanation: 'Second person singular verbs end in -s. For example: tu amas = you love, tu habes = you have.',
+    lesson: 4,
+    difficulty: 'medium',
+    category: 'grammar'
+  },
+  {
+    id: '4-9',
+    question: 'Translate: "cur tu pecuniam quaeris?"',
+    options: ['Why do you look for money?', 'What money do you want?', 'Where is your money?', 'Who has the money?'],
+    correctAnswer: 0,
+    explanation: 'Cur = why, tu = you, pecuniam = money (accusative), quaeris = you look for/seek.',
+    lesson: 4,
+    difficulty: 'medium',
+    category: 'translation'
+  },
+  {
+    id: '4-10',
+    question: 'What does "anulus" mean?',
+    options: ['money', 'seal', 'ring', 'wax tablet'],
+    correctAnswer: 2,
+    explanation: 'Anulus means "ring". In Roman times, rings often had seals (signum) for making legal documents.',
+    lesson: 4,
+    difficulty: 'easy',
+    category: 'vocabulary'
+  },
+  {
+    id: '4-11',
+    question: 'What does "iudex" mean?',
+    options: ['witness', 'lawyer', 'judge', 'merchant'],
+    correctAnswer: 2,
+    explanation: 'Iudex means "judge". In Roman courts, the judge (iudex) heard cases and made decisions.',
+    lesson: 4,
+    difficulty: 'easy',
+    category: 'vocabulary'
+  },
+  {
+    id: '4-12',
+    question: 'Translate: "tu es mendax"',
+    options: ['You are honest', 'You are a liar', 'You are a witness', 'You are a judge'],
+    correctAnswer: 1,
+    explanation: 'Tu = you, es = are, mendax = liar. "You are a liar." This accusation appears in the Hermogenes court case.',
+    lesson: 4,
+    difficulty: 'medium',
+    category: 'translation'
+  },
+  {
+    id: '4-13',
+    question: 'What possessive adjective means "my"?',
+    options: ['tuus', 'meus', 'suus', 'noster'],
+    correctAnswer: 1,
+    explanation: 'Meus, mea, meum means "my" or "mine". It must agree with the noun in gender, number, and case.',
+    lesson: 4,
+    difficulty: 'easy',
+    category: 'vocabulary'
+  },
+  {
+    id: '4-14',
+    question: 'What possessive adjective means "your"?',
+    options: ['meus', 'tuus', 'suus', 'vester'],
+    correctAnswer: 1,
+    explanation: 'Tuus, tua, tuum means "your" or "yours" (singular). It must agree with the noun it modifies.',
+    lesson: 4,
+    difficulty: 'easy',
+    category: 'vocabulary'
+  },
+  {
+    id: '4-15',
+    question: 'Translate: "amicus meus est testis"',
+    options: ['My friend is a witness', 'Your friend is a witness', 'His friend is a witness', 'Our friend is a witness'],
+    correctAnswer: 0,
+    explanation: 'Amicus = friend, meus = my (masculine nominative), est = is, testis = witness.',
+    lesson: 4,
+    difficulty: 'medium',
+    category: 'translation'
+  },
+  {
+    id: '4-16',
+    question: 'What does "convinco" mean?',
+    options: ['I accuse', 'I prove', 'I convict', 'I hide'],
+    correctAnswer: 2,
+    explanation: 'Convinco means "I convict" or "I find guilty". The judge uses this word at the end of the Hermogenes trial.',
+    lesson: 4,
+    difficulty: 'medium',
+    category: 'vocabulary'
+  },
+  {
+    id: '4-17',
+    question: 'In Latin, when do you typically use "ego" or "tu"?',
+    options: ['Always with verbs', 'Only in questions', 'For emphasis or clarity', 'Never - they are forbidden'],
+    correctAnswer: 2,
+    explanation: 'Ego and tu are usually omitted since verb endings show the person. Use them for emphasis or clarity.',
+    lesson: 4,
+    difficulty: 'medium',
+    category: 'grammar'
+  },
+  {
+    id: '4-18',
+    question: 'What does "ubi" mean?',
+    options: ['who', 'what', 'why', 'where'],
+    correctAnswer: 3,
+    explanation: 'Ubi means "where". Example: "ubi est anulus?" = "Where is the ring?"',
+    lesson: 4,
+    difficulty: 'easy',
+    category: 'vocabulary'
+  },
+  {
+    id: '4-19',
+    question: 'Translate: "ego Hermogenem convinco"',
+    options: ['I accuse Hermogenes', 'I convict Hermogenes', 'I defend Hermogenes', 'I question Hermogenes'],
+    correctAnswer: 1,
+    explanation: 'Ego = I, Hermogenem = Hermogenes (accusative), convinco = I convict. This is the judge\'s final pronouncement.',
+    lesson: 4,
+    difficulty: 'hard',
+    category: 'translation'
+  },
+  {
+    id: '4-20',
+    question: 'What was Hermogenes\' profession?',
+    options: ['banker', 'judge', 'Greek merchant', 'witness'],
+    correctAnswer: 2,
+    explanation: 'Hermogenes was a mercator Graecus (Greek merchant) who sought a loan from Caecilius but failed to repay it.',
+    lesson: 4,
+    difficulty: 'easy',
+    category: 'culture'
   }
 ];
 

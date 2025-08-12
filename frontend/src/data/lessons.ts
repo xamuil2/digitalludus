@@ -1580,12 +1580,439 @@ export const lesson3Template: Lesson = {
   ]
 };
 
+// Lesson 4 - Stage 4: Hermogenes
+export const lesson4Template: Lesson = {
+  id: 4,
+  title: "Stage 4 - Hermogenes",
+  subtitle: "First and Second Person Verbs",
+  description: "Learn about ego and tu (I and you) verb forms; explore Roman legal proceedings and the forum",
+  pageNumbers: [1, 2, 3, 4, 5, 6],
+  
+  introductoryNote: {
+    content: `In this lesson, you will learn about first and second person verb forms using ego (I) and tu (you). The stories focus on Hermogenes, a Greek merchant who borrows money from Caecilius and the subsequent legal case when he fails to repay. You'll explore the Roman forum and legal system while mastering personal pronouns and verb conjugations.`
+  },
+  
+  prosePassage: {
+    title: "Hermogenes and in basilica",
+    context: "Follow the story of Hermogenes, a Greek merchant who requests a loan from Caecilius, and the dramatic court case that follows when the loan is not repaid. Learn about Roman business practices and legal procedures.",
+    sentences: [
+      // Introduction - Character identities
+      { id: "4-prose-1", latin: "ego sum coquus.", english: "I am a cook.", order: 1 },
+      { id: "4-prose-2", latin: "ego cenam coquo.", english: "I cook dinner.", order: 2 },
+      { id: "4-prose-3", latin: "ego sum argentarius.", english: "I am a banker.", order: 3 },
+      { id: "4-prose-4", latin: "ego pecuniam teneo.", english: "I hold money.", order: 4 },
+      { id: "4-prose-5", latin: "ego sum tonsor.", english: "I am a barber.", order: 5 },
+      { id: "4-prose-6", latin: "ego barbam tondeo.", english: "I trim a beard.", order: 6 },
+      { id: "4-prose-7", latin: "ego sum venalicius.", english: "I am a slave-dealer.", order: 7 },
+      { id: "4-prose-8", latin: "ego servum vendo.", english: "I sell a slave.", order: 8 },
+      { id: "4-prose-9", latin: "ego sum poeta.", english: "I am a poet.", order: 9 },
+      { id: "4-prose-10", latin: "ego versum recito.", english: "I recite a verse.", order: 10 },
+      { id: "4-prose-11", latin: "ego sum pictor.", english: "I am a painter.", order: 11 },
+      { id: "4-prose-12", latin: "ego leonem pingo.", english: "I paint a lion.", order: 12 },
+      
+      // Dialogue with Quintus
+      { id: "4-prose-13", latin: "quid tu coquis?", english: "What are you cooking?", order: 13 },
+      { id: "4-prose-14", latin: "ego cenam coquo.", english: "I cook dinner.", order: 14 },
+      { id: "4-prose-15", latin: "quid tu tenes?", english: "What are you holding?", order: 15 },
+      { id: "4-prose-16", latin: "ego pecuniam teneo.", english: "I hold money.", order: 16 },
+      { id: "4-prose-17", latin: "quid tu tondes?", english: "What are you trimming?", order: 17 },
+      { id: "4-prose-18", latin: "ego barbam tondeo.", english: "I trim a beard.", order: 18 },
+      { id: "4-prose-19", latin: "quid tu vendis?", english: "What are you selling?", order: 19 },
+      { id: "4-prose-20", latin: "ego servum vendo.", english: "I sell a slave.", order: 20 },
+      { id: "4-prose-21", latin: "quid tu recitas?", english: "What are you reciting?", order: 21 },
+      { id: "4-prose-22", latin: "ego versum recito.", english: "I recite a verse.", order: 22 },
+      { id: "4-prose-23", latin: "quid tu pingis?", english: "What are you painting?", order: 23 },
+      { id: "4-prose-24", latin: "ego leonem pingo.", english: "I paint a lion.", order: 24 },
+      
+      // Identity questions
+      { id: "4-prose-25", latin: "quis es tu?", english: "Who are you?", order: 25 },
+      { id: "4-prose-26", latin: "ego sum Melissa.", english: "I am Melissa.", order: 26 },
+      { id: "4-prose-27", latin: "ego sum Syphax.", english: "I am Syphax.", order: 27 },
+      { id: "4-prose-28", latin: "ego sum Pantagathus.", english: "I am Pantagathus.", order: 28 },
+      
+      // Story 1: Hermogenes
+      { id: "4-prose-29", latin: "Caecilius est in foro.", english: "Caecilius is in the forum.", order: 29 },
+      { id: "4-prose-30", latin: "Caecilius in foro argentariam habet.", english: "Caecilius has a banker's stall in the forum.", order: 30 },
+      { id: "4-prose-31", latin: "Hermogenes ad forum venit.", english: "Hermogenes comes to the forum.", order: 31 },
+      { id: "4-prose-32", latin: "Hermogenes est mercator Graecus.", english: "Hermogenes is a Greek merchant.", order: 32 },
+      { id: "4-prose-33", latin: "mercator navem habet.", english: "The merchant has a ship.", order: 33 },
+      { id: "4-prose-34", latin: "mercator Caecilium salutat.", english: "The merchant greets Caecilius.", order: 34 },
+      { id: "4-prose-35", latin: "\"ego sum mercator Graecus,\" inquit Hermogenes.", english: "\"I am a Greek merchant,\" says Hermogenes.", order: 35 },
+      { id: "4-prose-36", latin: "\"ego sum mercator probus.\"", english: "\"I am an honest merchant.\"", order: 36 },
+      { id: "4-prose-37", latin: "\"ego pecuniam quaero.\"", english: "\"I am looking for money.\"", order: 37 },
+      { id: "4-prose-38", latin: "\"cur tu pecuniam quaeris?\" inquit Caecilius.", english: "\"Why are you looking for money?\" says Caecilius.", order: 38 },
+      { id: "4-prose-39", latin: "\"tu navem habes.\"", english: "\"You have a ship.\"", order: 39 },
+      { id: "4-prose-40", latin: "\"sed navis non adest,\" respondet Hermogenes.", english: "\"But the ship is not here,\" replies Hermogenes.", order: 40 },
+      { id: "4-prose-41", latin: "\"navis est in Graecia.\"", english: "\"The ship is in Greece.\"", order: 41 },
+      { id: "4-prose-42", latin: "\"ego pecuniam non habeo.\"", english: "\"I do not have money.\"", order: 42 },
+      { id: "4-prose-43", latin: "\"ego tamen sum probus.\"", english: "\"However, I am honest.\"", order: 43 },
+      { id: "4-prose-44", latin: "\"ego semper pecuniam reddo.\"", english: "\"I always give back money.\"", order: 44 },
+      { id: "4-prose-45", latin: "\"ecce!\" inquit Caecilius.", english: "\"Look!\" says Caecilius.", order: 45 },
+      { id: "4-prose-46", latin: "\"ego ceram habeo. tu anulum habes?\"", english: "\"I have a wax tablet. Do you have a ring?\"", order: 46 },
+      { id: "4-prose-47", latin: "\"ego anulum habeo,\" respondet Hermogenes.", english: "\"I have a ring,\" replies Hermogenes.", order: 47 },
+      { id: "4-prose-48", latin: "\"anulus signum habet.\"", english: "\"The ring has a seal.\"", order: 48 },
+      { id: "4-prose-49", latin: "\"ecce! ego signum in cera imprimo.\"", english: "\"Look! I press the seal into the wax.\"", order: 49 },
+      { id: "4-prose-50", latin: "Caecilius pecuniam tradit.", english: "Caecilius hands over the money.", order: 50 },
+      { id: "4-prose-51", latin: "mercator pecuniam capit et e foro currit.", english: "The merchant takes the money and runs from the forum.", order: 51 },
+      { id: "4-prose-52", latin: "eheu! Hermogenes non revenit.", english: "Alas! Hermogenes does not return.", order: 52 },
+      { id: "4-prose-53", latin: "mercator pecuniam non reddit.", english: "The merchant does not give back the money.", order: 53 },
+      { id: "4-prose-54", latin: "Caecilius Hermogenem ad basilicam vocat.", english: "Caecilius summons Hermogenes to the law court.", order: 54 },
+      
+      // Story 2: in basilica
+      { id: "4-prose-55", latin: "iudex basilicam intrat.", english: "The judge enters the law court.", order: 55 },
+      { id: "4-prose-56", latin: "\"quis es tu?\" inquit iudex.", english: "\"Who are you?\" says the judge.", order: 56 },
+      { id: "4-prose-57", latin: "\"ego sum Lucius Caecilius Iucundus,\" respondet Caecilius.", english: "\"I am Lucius Caecilius Iucundus,\" replies Caecilius.", order: 57 },
+      { id: "4-prose-58", latin: "\"tu es Pompeianus?\"", english: "\"Are you a Pompeian?\"", order: 58 },
+      { id: "4-prose-59", latin: "\"ego sum Pompeianus.\"", english: "\"I am a Pompeian.\"", order: 59 },
+      { id: "4-prose-60", latin: "\"quid tu in urbe agis?\"", english: "\"What do you do in the city?\"", order: 60 },
+      { id: "4-prose-61", latin: "\"ego cotidie ad forum venio. ego sum argentarius.\"", english: "\"I come to the forum daily. I am a banker.\"", order: 61 },
+      { id: "4-prose-62", latin: "\"cur tu hodie ad basilicam venis?\"", english: "\"Why do you come to the law court today?\"", order: 62 },
+      { id: "4-prose-63", latin: "\"Hermogenes multam pecuniam debet.\"", english: "\"Hermogenes owes a lot of money.\"", order: 63 },
+      { id: "4-prose-64", latin: "\"Hermogenes pecuniam non reddit.\"", english: "\"Hermogenes does not give back the money.\"", order: 64 },
+      { id: "4-prose-65", latin: "\"Caecilius est mendax!\" inquit Hermogenes.", english: "\"Caecilius is a liar!\" says Hermogenes.", order: 65 },
+      { id: "4-prose-66", latin: "\"quis es tu?\" inquit iudex.", english: "\"Who are you?\" says the judge.", order: 66 },
+      { id: "4-prose-67", latin: "\"ego sum Hermogenes.\"", english: "\"I am Hermogenes.\"", order: 67 },
+      { id: "4-prose-68", latin: "\"Hermogenes, quid tu in urbe agis?\"", english: "\"Hermogenes, what do you do in the city?\"", order: 68 },
+      { id: "4-prose-69", latin: "\"ego pecuniam non debeo. amicus meus est testis.\"", english: "\"I do not owe money. My friend is a witness.\"", order: 69 },
+      { id: "4-prose-70", latin: "\"ego sum testis,\" inquit amicus.", english: "\"I am a witness,\" says the friend.", order: 70 },
+      { id: "4-prose-71", latin: "\"Hermogenes pecuniam non debet.\"", english: "\"Hermogenes does not owe money.\"", order: 71 },
+      { id: "4-prose-72", latin: "\"Caecilius est mendax.\"", english: "\"Caecilius is a liar.\"", order: 72 },
+      { id: "4-prose-73", latin: "\"tu, Hermogenes, es mendax,\" inquit Caecilius.", english: "\"You, Hermogenes, are a liar,\" says Caecilius.", order: 73 },
+      { id: "4-prose-74", latin: "\"amicus tuus quoque est mendax.\"", english: "\"Your friend is also a liar.\"", order: 74 },
+      { id: "4-prose-75", latin: "\"tu pecuniam non reddis...\"", english: "\"You do not give back the money...\"", order: 75 },
+      { id: "4-prose-76", latin: "\"satis!\" inquit iudex.", english: "\"Enough!\" says the judge.", order: 76 },
+      { id: "4-prose-77", latin: "\"tu Hermogenem accusas, sed tu rem non probas.\"", english: "\"You accuse Hermogenes, but you do not prove the case.\"", order: 77 },
+      { id: "4-prose-78", latin: "\"ego ceram habeo,\" inquit Caecilius.", english: "\"I have the wax tablet,\" says Caecilius.", order: 78 },
+      { id: "4-prose-79", latin: "\"tu signum in cera vides.\"", english: "\"You see the seal in the wax.\"", order: 79 },
+      { id: "4-prose-80", latin: "\"eheu!\" inquit Hermogenes.", english: "\"Alas!\" says Hermogenes.", order: 80 },
+      { id: "4-prose-81", latin: "\"Hermogenes, tu anulum habes?\" inquit iudex.", english: "\"Hermogenes, do you have a ring?\" says the judge.", order: 81 },
+      { id: "4-prose-82", latin: "\"ecce! Hermogenes anulum celat,\" inquit Caecilius.", english: "\"Look! Hermogenes is hiding the ring,\" says Caecilius.", order: 82 },
+      { id: "4-prose-83", latin: "\"ubi est anulus?\" inquit iudex.", english: "\"Where is the ring?\" says the judge.", order: 83 },
+      { id: "4-prose-84", latin: "\"ecce! anulus rem probat.\"", english: "\"Look! The ring proves the case.\"", order: 84 },
+      { id: "4-prose-85", latin: "\"ego Hermogenem convinco.\"", english: "\"I convict Hermogenes.\"", order: 85 }
+    ],
+    fullTranslation: "I am a cook. I cook dinner. I am a banker. I hold money. I am a barber. I trim a beard. I am a slave-dealer. I sell a slave. I am a poet. I recite a verse. I am a painter. I paint a lion. What are you cooking? I cook dinner. What are you holding? I hold money. What are you trimming? I trim a beard. What are you selling? I sell a slave. What are you reciting? I recite a verse. What are you painting? I paint a lion. Who are you? I am Melissa. I am Syphax. I am Pantagathus. Caecilius is in the forum. Caecilius has a banker's stall in the forum. Hermogenes comes to the forum. Hermogenes is a Greek merchant. The merchant has a ship. The merchant greets Caecilius. \"I am a Greek merchant,\" says Hermogenes. \"I am an honest merchant.\" \"I am looking for money.\" \"Why are you looking for money?\" says Caecilius. \"You have a ship.\" \"But the ship is not here,\" replies Hermogenes. \"The ship is in Greece.\" \"I do not have money.\" \"However, I am honest.\" \"I always give back money.\" \"Look!\" says Caecilius. \"I have a wax tablet. Do you have a ring?\" \"I have a ring,\" replies Hermogenes. \"The ring has a seal.\" \"Look! I press the seal into the wax.\" Caecilius hands over the money. The merchant takes the money and runs from the forum. Alas! Hermogenes does not return. The merchant does not give back the money. Caecilius summons Hermogenes to the law court. The judge enters the law court. \"Who are you?\" says the judge. \"I am Lucius Caecilius Iucundus,\" replies Caecilius. \"Are you a Pompeian?\" \"I am a Pompeian.\" \"What do you do in the city?\" \"I come to the forum daily. I am a banker.\" \"Why do you come to the law court today?\" \"Hermogenes owes a lot of money.\" \"Hermogenes does not give back the money.\" \"Caecilius is a liar!\" says Hermogenes. \"Who are you?\" says the judge. \"I am Hermogenes.\" \"Hermogenes, what do you do in the city?\" \"I do not owe money. My friend is a witness.\" \"I am a witness,\" says the friend. \"Hermogenes does not owe money.\" \"Caecilius is a liar.\" \"You, Hermogenes, are a liar,\" says Caecilius. \"Your friend is also a liar.\" \"You do not give back the money...\" \"Enough!\" says the judge. \"You accuse Hermogenes, but you do not prove the case.\" \"I have the wax tablet,\" says Caecilius. \"You see the seal in the wax.\" \"Alas!\" says Hermogenes. \"Hermogenes, do you have a ring?\" says the judge. \"Look! Hermogenes is hiding the ring,\" says Caecilius. \"Where is the ring?\" says the judge. \"Look! The ring proves the case.\" \"I convict Hermogenes.\""
+  },
+  
+  vocabulary: [
+    // Personal pronouns and basic verbs
+    { id: "4-vocab-1", latin: "ego", principalParts: "ego", english: "I", partOfSpeech: "pronoun", lesson: 4, difficulty: "easy" },
+    { id: "4-vocab-2", latin: "tu", principalParts: "tu", english: "you (singular)", partOfSpeech: "pronoun", lesson: 4, difficulty: "easy" },
+    { id: "4-vocab-3", latin: "quid", principalParts: "quid", english: "what", partOfSpeech: "pronoun", lesson: 4, difficulty: "easy" },
+    { id: "4-vocab-4", latin: "quis", principalParts: "quis", english: "who", partOfSpeech: "pronoun", lesson: 4, difficulty: "easy" },
+    { id: "4-vocab-5", latin: "cur", principalParts: "cur", english: "why", partOfSpeech: "adverb", lesson: 4, difficulty: "easy" },
+    { id: "4-vocab-6", latin: "ubi", principalParts: "ubi", english: "where", partOfSpeech: "adverb", lesson: 4, difficulty: "easy" },
+    
+    // From Hermogenes story
+    { id: "4-vocab-7", latin: "argentaria", principalParts: "argentaria, -ae", english: "banker's stall", partOfSpeech: "noun", lesson: 4, difficulty: "medium" },
+    { id: "4-vocab-8", latin: "Graecus", principalParts: "Graecus, -a, -um", english: "Greek", partOfSpeech: "adjective", lesson: 4, difficulty: "easy" },
+    { id: "4-vocab-9", latin: "probus", principalParts: "probus, -a, -um", english: "honest", partOfSpeech: "adjective", lesson: 4, difficulty: "medium" },
+    { id: "4-vocab-10", latin: "quaero", principalParts: "quaero, quaerere", english: "I look for, I seek", partOfSpeech: "verb", lesson: 4, difficulty: "medium" },
+    { id: "4-vocab-11", latin: "non adest", principalParts: "adesse", english: "is not here", partOfSpeech: "verb phrase", lesson: 4, difficulty: "medium" },
+    { id: "4-vocab-12", latin: "in Graecia", principalParts: "in + abl.", english: "in Greece", partOfSpeech: "prepositional phrase", lesson: 4, difficulty: "easy" },
+    { id: "4-vocab-13", latin: "tamen", principalParts: "tamen", english: "however", partOfSpeech: "adverb", lesson: 4, difficulty: "medium" },
+    { id: "4-vocab-14", latin: "semper", principalParts: "semper", english: "always", partOfSpeech: "adverb", lesson: 4, difficulty: "easy" },
+    { id: "4-vocab-15", latin: "reddo", principalParts: "reddo, reddere", english: "I give back", partOfSpeech: "verb", lesson: 4, difficulty: "medium" },
+    { id: "4-vocab-16", latin: "cera", principalParts: "cera, -ae", english: "wax tablet", partOfSpeech: "noun", lesson: 4, difficulty: "medium" },
+    { id: "4-vocab-17", latin: "anulus", principalParts: "anulus, -i", english: "ring", partOfSpeech: "noun", lesson: 4, difficulty: "easy" },
+    { id: "4-vocab-18", latin: "signum", principalParts: "signum, -i", english: "seal, sign", partOfSpeech: "noun", lesson: 4, difficulty: "medium" },
+    { id: "4-vocab-19", latin: "imprimo", principalParts: "imprimo, imprimere", english: "I press", partOfSpeech: "verb", lesson: 4, difficulty: "medium" },
+    { id: "4-vocab-20", latin: "trado", principalParts: "trado, tradere", english: "I hand over", partOfSpeech: "verb", lesson: 4, difficulty: "medium" },
+    { id: "4-vocab-21", latin: "capio", principalParts: "capio, capere", english: "I take", partOfSpeech: "verb", lesson: 4, difficulty: "medium" },
+    { id: "4-vocab-22", latin: "curro", principalParts: "curro, currere", english: "I run", partOfSpeech: "verb", lesson: 4, difficulty: "easy" },
+    { id: "4-vocab-23", latin: "ad basilicam", principalParts: "ad + acc.", english: "to the law court", partOfSpeech: "prepositional phrase", lesson: 4, difficulty: "medium" },
+    
+    // From in basilica story
+    { id: "4-vocab-24", latin: "iudex", principalParts: "iudex, iudicis", english: "judge", partOfSpeech: "noun", lesson: 4, difficulty: "medium" },
+    { id: "4-vocab-25", latin: "Pompeianus", principalParts: "Pompeianus, -a, -um", english: "Pompeian, citizen of Pompeii", partOfSpeech: "adjective", lesson: 4, difficulty: "medium" },
+    { id: "4-vocab-26", latin: "in urbe", principalParts: "in + abl.", english: "in the city", partOfSpeech: "prepositional phrase", lesson: 4, difficulty: "easy" },
+    { id: "4-vocab-27", latin: "ago", principalParts: "ago, agere", english: "I do", partOfSpeech: "verb", lesson: 4, difficulty: "medium" },
+    { id: "4-vocab-28", latin: "cotidie", principalParts: "cotidie", english: "every day", partOfSpeech: "adverb", lesson: 4, difficulty: "medium" },
+    { id: "4-vocab-29", latin: "hodie", principalParts: "hodie", english: "today", partOfSpeech: "adverb", lesson: 4, difficulty: "easy" },
+    { id: "4-vocab-30", latin: "debeo", principalParts: "debeo, debere", english: "I owe", partOfSpeech: "verb", lesson: 4, difficulty: "medium" },
+    { id: "4-vocab-31", latin: "mendax", principalParts: "mendax, mendacis", english: "liar", partOfSpeech: "noun", lesson: 4, difficulty: "medium" },
+    { id: "4-vocab-32", latin: "meus", principalParts: "meus, -a, -um", english: "my, mine", partOfSpeech: "adjective", lesson: 4, difficulty: "easy" },
+    { id: "4-vocab-33", latin: "testis", principalParts: "testis, -is", english: "witness", partOfSpeech: "noun", lesson: 4, difficulty: "medium" },
+    { id: "4-vocab-34", latin: "tuus", principalParts: "tuus, -a, -um", english: "your", partOfSpeech: "adjective", lesson: 4, difficulty: "easy" },
+    { id: "4-vocab-35", latin: "accuso", principalParts: "accuso, accusare", english: "I accuse", partOfSpeech: "verb", lesson: 4, difficulty: "medium" },
+    { id: "4-vocab-36", latin: "rem probo", principalParts: "rem probare", english: "I prove the case", partOfSpeech: "verb phrase", lesson: 4, difficulty: "hard" },
+    { id: "4-vocab-37", latin: "celo", principalParts: "celo, celare", english: "I hide", partOfSpeech: "verb", lesson: 4, difficulty: "medium" },
+    { id: "4-vocab-38", latin: "convinco", principalParts: "convinco, convincere", english: "I convict, I find guilty", partOfSpeech: "verb", lesson: 4, difficulty: "hard" },
+    { id: "4-vocab-39", latin: "satis", principalParts: "satis", english: "enough", partOfSpeech: "adverb", lesson: 4, difficulty: "easy" },
+    
+    // Additional vocabulary from the exercises
+    { id: "4-vocab-40", latin: "disco", principalParts: "disco, discere", english: "I depart, I leave", partOfSpeech: "verb", lesson: 4, difficulty: "medium" },
+    { id: "4-vocab-41", latin: "e taberna", principalParts: "e + abl.", english: "from the inn", partOfSpeech: "prepositional phrase", lesson: 4, difficulty: "medium" },
+    { id: "4-vocab-42", latin: "ebrius", principalParts: "ebrius, -a, -um", english: "drunk", partOfSpeech: "adjective", lesson: 4, difficulty: "medium" },
+    { id: "4-vocab-43", latin: "ita vero", principalParts: "ita vero", english: "yes", partOfSpeech: "phrase", lesson: 4, difficulty: "easy" },
+    { id: "4-vocab-44", latin: "multus", principalParts: "multus, -a, -um", english: "much, many", partOfSpeech: "adjective", lesson: 4, difficulty: "easy" },
+    { id: "4-vocab-45", latin: "vendo", principalParts: "vendo, vendere", english: "I sell", partOfSpeech: "verb", lesson: 4, difficulty: "easy" }
+  ],
+  
+  keyConcepts: [
+    {
+      id: "4-concept-1",
+      title: "First and Second Person Verbs",
+      explanation: "In Stage 4, you learn about first person (ego = I) and second person (tu = you) verb forms. Notice how the verb endings change: -o for 'I', -s for 'you', and -t for 'he/she/it'.",
+      examples: [
+        { latin: "ego ambulo", english: "I walk", notes: "first person singular" },
+        { latin: "tu ambulas", english: "you walk", notes: "second person singular" },
+        { latin: "ancilla ambulat", english: "the slave-girl walks", notes: "third person singular" },
+        { latin: "ego sum", english: "I am", notes: "first person of 'to be'" },
+        { latin: "tu es", english: "you are", notes: "second person of 'to be'" },
+        { latin: "servus est", english: "the slave is", notes: "third person of 'to be'" }
+      ],
+      rules: [
+        "First person (I): verb ends in -o",
+        "Second person (you): verb ends in -s", 
+        "Third person (he/she/it): verb ends in -t",
+        "ego and tu are often omitted since the verb ending shows the person"
+      ]
+    },
+    {
+      id: "4-concept-2",
+      title: "Personal Pronouns",
+      explanation: "ego (I) and tu (you) are personal pronouns. They are often omitted in Latin because the verb ending already shows who is doing the action. Use them for emphasis or clarity.",
+      examples: [
+        { latin: "ego sum coquus", english: "I am a cook", notes: "ego used for emphasis" },
+        { latin: "sum coquus", english: "I am a cook", notes: "ego omitted, ending shows person" },
+        { latin: "quis es tu?", english: "Who are you?", notes: "tu used for clarity in question" },
+        { latin: "es mendax", english: "You are a liar", notes: "tu omitted, ending shows person" }
+      ],
+      rules: [
+        "ego = I (first person singular)",
+        "tu = you (second person singular)",
+        "Usually omitted unless needed for emphasis",
+        "Verb endings already show the person"
+      ]
+    },
+    {
+      id: "4-concept-3", 
+      title: "Question Words",
+      explanation: "Stage 4 introduces important question words: quis (who), quid (what), cur (why), and ubi (where). These help form questions and gather information.",
+      examples: [
+        { latin: "quis es tu?", english: "Who are you?", notes: "asking for identity" },
+        { latin: "quid tu agis?", english: "What are you doing?", notes: "asking for action" },
+        { latin: "cur tu venis?", english: "Why are you coming?", notes: "asking for reason" },
+        { latin: "ubi est anulus?", english: "Where is the ring?", notes: "asking for location" }
+      ],
+      rules: [
+        "quis = who (person)",
+        "quid = what (thing or action)",
+        "cur = why (reason)",
+        "ubi = where (location)"
+      ]
+    },
+    {
+      id: "4-concept-4",
+      title: "Possessive Adjectives",
+      explanation: "meus (my) and tuus (your) are possessive adjectives that show ownership. They agree with the noun they describe in gender, number, and case.",
+      examples: [
+        { latin: "amicus meus", english: "my friend", notes: "masculine nominative" },
+        { latin: "amicus tuus", english: "your friend", notes: "masculine nominative" },
+        { latin: "villa mea", english: "my house", notes: "feminine nominative" },
+        { latin: "villam tuam", english: "your house", notes: "feminine accusative" }
+      ],
+      rules: [
+        "meus, mea, meum = my, mine",
+        "tuus, tua, tuum = your, yours",
+        "Must agree with the noun in gender, number, and case",
+        "Often placed after the noun"
+      ]
+    }
+  ],
+  
+  practiceExercises: [
+    {
+      id: "4-exercise-1",
+      type: "latin-to-english",
+      title: "4A - Personal Pronouns and Verbs",
+      sentences: [
+        {
+          id: "4a-1",
+          source: "ego sum mercator Graecus.",
+          target: "I am a Greek merchant.",
+          hints: ["ego = I", "Graecus = Greek"]
+        },
+        {
+          id: "4a-2",
+          source: "tu es venalicius probus.",
+          target: "You are an honest slave-dealer.",
+          hints: ["tu = you", "probus = honest"]
+        },
+        {
+          id: "4a-3",
+          source: "ego pecuniam quaero.",
+          target: "I am looking for money.",
+          hints: ["quaero = I look for", "pecuniam = money (acc.)"]
+        },
+        {
+          id: "4a-4",
+          source: "quid tu in urbe agis?",
+          target: "What do you do in the city?",
+          hints: ["quid = what", "agis = you do"]
+        },
+        {
+          id: "4a-5",
+          source: "cur tu ad basilicam venis?",
+          target: "Why do you come to the law court?",
+          hints: ["cur = why", "venis = you come"]
+        },
+        {
+          id: "4a-6",
+          source: "ego anulum habeo.",
+          target: "I have a ring.",
+          hints: ["habeo = I have", "anulum = ring (acc.)"]
+        },
+        {
+          id: "4a-7",
+          source: "tu rem non probas.",
+          target: "You do not prove the case.",
+          hints: ["probas = you prove", "rem = case (acc.)"]
+        },
+        {
+          id: "4a-8",
+          source: "ego Hermogenem convinco.",
+          target: "I convict Hermogenes.",
+          hints: ["convinco = I convict", "Hermogenem = Hermogenes (acc.)"]
+        }
+      ]
+    },
+    {
+      id: "4-exercise-2",
+      type: "english-to-latin",
+      title: "4B - Questions and Responses",
+      sentences: [
+        {
+          id: "4b-1",
+          source: "Who are you?",
+          target: "quis es tu?",
+          hints: ["quis = who", "es = you are"]
+        },
+        {
+          id: "4b-2",
+          source: "I am a judge.",
+          target: "ego sum iudex.",
+          hints: ["ego = I", "iudex = judge"]
+        },
+        {
+          id: "4b-3",
+          source: "What are you selling?",
+          target: "quid tu vendis?",
+          hints: ["quid = what", "vendis = you sell"]
+        },
+        {
+          id: "4b-4",
+          source: "I sell slaves.",
+          target: "ego servos vendo.",
+          hints: ["vendo = I sell", "servos = slaves (acc.)"]
+        },
+        {
+          id: "4b-5",
+          source: "Why do you accuse me?",
+          target: "cur tu me accusas?",
+          hints: ["cur = why", "accusas = you accuse", "me = me"]
+        },
+        {
+          id: "4b-6",
+          source: "You are a liar.",
+          target: "tu es mendax.",
+          hints: ["tu = you", "mendax = liar"]
+        },
+        {
+          id: "4b-7",
+          source: "Where is my ring?",
+          target: "ubi est anulus meus?",
+          hints: ["ubi = where", "meus = my"]
+        },
+        {
+          id: "4b-8",
+          source: "Your friend is hiding the money.",
+          target: "amicus tuus pecuniam celat.",
+          hints: ["tuus = your", "celat = is hiding"]
+        }
+      ]
+    }
+  ],
+  
+  objectives: [
+    "Master first and second person verb forms (ego/tu)",
+    "Learn question words: quis, quid, cur, ubi",
+    "Understand possessive adjectives: meus, tuus",
+    "Practice legal and commercial vocabulary",
+    "Explore Roman business and legal practices",
+    "Translate increasingly complex dialogues"
+  ],
+  
+  culturalNotes: [
+    "The Roman Forum: The forum was the heart of commercial, administrative, and religious life in Pompeii. It was a large open space (156 x 42 yards) surrounded by colonnades and important buildings. The forum was a pedestrian area protected by barriers to keep out wheeled traffic.",
+    "Roman Business Practices: Roman merchants like Hermogenes often traveled long distances for trade. Credit and loans were common, with bankers like Caecilius providing financial services. Wax tablets (cera) and seal rings (anulus) were used to create legal documents and contracts.",
+    "Roman Legal System: The basilica was the courthouse where legal disputes were settled. Judges (iudices) heard cases and made decisions. Evidence like sealed documents was crucial for proving cases. Witnesses (testes) played important roles in legal proceedings.",
+    "Roman Identity: Roman citizens were proud of their citizenship and city affiliation. Being 'Pompeianus' (a citizen of Pompeii) was an important part of one's identity. Full names like 'Lucius Caecilius Iucundus' showed family heritage and status."
+  ],
+  
+  difficulty: "beginner" as const,
+  prerequisiteSkills: [
+    "Understanding of nominative and accusative cases",
+    "Basic Latin sentence structure",
+    "Third person verb forms (-t endings)",
+    "Fundamental vocabulary from Stages 1-3"
+  ],
+  
+  estimatedTime: 50,
+  
+  sections: [
+    {
+      id: "intro",
+      title: "Introduction",
+      content: "Learn about first and second person verbs through character introductions and dialogues.",
+      type: "intro",
+      order: 1
+    },
+    {
+      id: "prose",
+      title: "Hermogenes and the Court Case",
+      content: "Follow the dramatic story of a Greek merchant and a legal dispute in Roman Pompeii",
+      type: "prose",
+      order: 2
+    },
+    {
+      id: "vocabulary-section", 
+      title: "New Vocabulary",
+      content: "Legal terms, question words, and personal pronouns",
+      type: "vocabulary",
+      order: 3
+    },
+    {
+      id: "grammar-section",
+      title: "Grammar: Personal Pronouns and Verb Forms",
+      content: "Master ego/tu and first/second person verb endings",
+      type: "grammar",
+      order: 4
+    },
+    {
+      id: "exercises-section",
+      title: "Practice Exercises",
+      content: "Practice questions, responses, and legal dialogues",
+      type: "exercises",
+      order: 5
+    },
+    {
+      id: "culture-section",
+      title: "Cultural Context",
+      content: "Explore the Roman forum, business practices, and legal system",
+      type: "culture",
+      order: 6
+    }
+  ]
+};
+
 // Updated lessons array with our template
 export const lessonsData: Lesson[] = [
   lesson1Template,
   lesson2Template,
-  lesson3Template
-  // We'll add more lessons later
+  lesson3Template,
+  lesson4Template
 ];
 
 export function getLessonById(id: number): Lesson | undefined {
