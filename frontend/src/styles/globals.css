@@ -71,6 +71,10 @@
     border-color: hsl(var(--border));
   }
   
+  html {
+    overflow-x: hidden;
+  }
+  
   body {
     background: hsl(var(--background));
     color: hsl(var(--foreground));
@@ -79,6 +83,8 @@
     font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     line-height: 1.6;
     min-height: 100vh;
+    width: 100%;
+    overflow-x: hidden;
     opacity: 0;
     transform: translateY(8px);
     animation: page-fade-in 500ms ease-out forwards;

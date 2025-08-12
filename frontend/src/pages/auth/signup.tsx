@@ -101,33 +101,33 @@ export default function SignUp() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-indigo-50/40 flex items-center justify-center p-4">
-      <div className="w-full max-w-md space-y-6">
+      <div className="w-full max-w-sm sm:max-w-md space-y-4 sm:space-y-6">
         {/* Header */}
         <div className="text-center">
-          <Link href="/" className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 mb-6">
-            <ArrowLeft className="h-4 w-4" />
+          <Link href="/" className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 mb-4 sm:mb-6 text-sm sm:text-base touch-manipulation active:scale-95">
+            <ArrowLeft className="h-3 w-3 sm:h-4 sm:w-4" />
             Back to DigitalLudus
           </Link>
-          <h1 className="text-3xl font-bold text-slate-900 mb-2">Join DigitalLudus</h1>
-          <p className="text-slate-600">Create your account and start learning Latin today</p>
+          <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-2">Join DigitalLudus</h1>
+          <p className="text-slate-600 text-sm sm:text-base">Create your account and start learning Latin today</p>
         </div>
 
         <Card className="border-0 shadow-xl shadow-slate-200/50">
-          <CardHeader className="space-y-1">
-            <CardTitle className="text-2xl text-center">Create Account</CardTitle>
-            <CardDescription className="text-center">
+          <CardHeader className="space-y-1 px-4 sm:px-6 py-4 sm:py-6">
+            <CardTitle className="text-xl sm:text-2xl text-center">Create Account</CardTitle>
+            <CardDescription className="text-center text-sm sm:text-base">
               Sign up to track your progress and join the community
             </CardDescription>
           </CardHeader>
-          <CardContent className="space-y-4">
+          <CardContent className="space-y-3 sm:space-y-4 px-4 sm:px-6 pb-4 sm:pb-6">
             {/* Google Sign Up */}
             <Button
               onClick={handleGoogleSignUp}
               disabled={isLoading}
-              className="w-full bg-white hover:bg-gray-50 text-gray-900 border border-gray-300"
+              className="w-full bg-white hover:bg-gray-50 text-gray-900 border border-gray-300 touch-manipulation active:scale-95 h-10 sm:h-11"
               size="lg"
             >
-              <svg className="h-5 w-5 mr-2" viewBox="0 0 24 24">
+              <svg className="h-4 w-4 sm:h-5 sm:w-5 mr-2" viewBox="0 0 24 24">
                 <path
                   fill="currentColor"
                   d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
@@ -145,7 +145,7 @@ export default function SignUp() {
                   d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
                 />
               </svg>
-              Continue with Google
+              <span className="text-sm sm:text-base">Continue with Google</span>
             </Button>
 
             <div className="relative">
@@ -158,9 +158,9 @@ export default function SignUp() {
             </div>
 
             {/* Registration Form */}
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="name">Full Name</Label>
+                <Label htmlFor="name" className="text-sm sm:text-base">Full Name</Label>
                 <div className="relative">
                   <User className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
                   <Input
@@ -170,14 +170,14 @@ export default function SignUp() {
                     value={formData.name}
                     onChange={handleInputChange}
                     placeholder="John Doe"
-                    className="pl-10"
+                    className="pl-10 text-sm sm:text-base h-10 sm:h-11"
                     required
                   />
                 </div>
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="email">Email</Label>
+                <Label htmlFor="email" className="text-sm sm:text-base">Email</Label>
                 <div className="relative">
                   <Mail className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
                   <Input
@@ -187,14 +187,14 @@ export default function SignUp() {
                     value={formData.email}
                     onChange={handleInputChange}
                     placeholder="john@example.com"
-                    className="pl-10"
+                    className="pl-10 text-sm sm:text-base h-10 sm:h-11"
                     required
                   />
                 </div>
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="username">Username (Optional)</Label>
+                <Label htmlFor="username" className="text-sm sm:text-base">Username (Optional)</Label>
                 <div className="relative">
                   <AtSign className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
                   <Input
@@ -204,7 +204,7 @@ export default function SignUp() {
                     value={formData.username}
                     onChange={handleInputChange}
                     placeholder="johndoe"
-                    className="pl-10"
+                    className="pl-10 text-sm sm:text-base h-10 sm:h-11"
                   />
                 </div>
                 <p className="text-xs text-muted-foreground">
@@ -213,7 +213,7 @@ export default function SignUp() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="password">Password</Label>
+                <Label htmlFor="password" className="text-sm sm:text-base">Password</Label>
                 <div className="relative">
                   <Input
                     id="password"
@@ -222,13 +222,13 @@ export default function SignUp() {
                     value={formData.password}
                     onChange={handleInputChange}
                     placeholder="Create a password"
-                    className="pr-10"
+                    className="pr-10 text-sm sm:text-base h-10 sm:h-11"
                     required
                   />
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-3 top-3 text-muted-foreground hover:text-foreground"
+                    className="absolute right-3 top-3 text-muted-foreground hover:text-foreground touch-manipulation"
                   >
                     {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
                   </button>
@@ -236,7 +236,7 @@ export default function SignUp() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="confirmPassword">Confirm Password</Label>
+                <Label htmlFor="confirmPassword" className="text-sm sm:text-base">Confirm Password</Label>
                 <div className="relative">
                   <Input
                     id="confirmPassword"
@@ -245,13 +245,13 @@ export default function SignUp() {
                     value={formData.confirmPassword}
                     onChange={handleInputChange}
                     placeholder="Confirm your password"
-                    className="pr-10"
+                    className="pr-10 text-sm sm:text-base h-10 sm:h-11"
                     required
                   />
                   <button
                     type="button"
                     onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                    className="absolute right-3 top-3 text-muted-foreground hover:text-foreground"
+                    className="absolute right-3 top-3 text-muted-foreground hover:text-foreground touch-manipulation"
                   >
                     {showConfirmPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
                   </button>
@@ -260,22 +260,22 @@ export default function SignUp() {
 
               {error && (
                 <Alert variant="destructive">
-                  <AlertDescription>{error}</AlertDescription>
+                  <AlertDescription className="text-sm">{error}</AlertDescription>
                 </Alert>
               )}
 
               <Button
                 type="submit"
                 disabled={isLoading}
-                className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700"
+                className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 touch-manipulation active:scale-95 h-10 sm:h-11"
                 size="lg"
               >
                 <UserPlus className="h-4 w-4 mr-2" />
-                {isLoading ? 'Creating Account...' : 'Create Account'}
+                <span className="text-sm sm:text-base">{isLoading ? 'Creating Account...' : 'Create Account'}</span>
               </Button>
             </form>
 
-            <div className="text-center text-sm">
+            <div className="text-center text-xs sm:text-sm">
               <span className="text-muted-foreground">Already have an account? </span>
               <Link href="/auth/signin" className="text-blue-600 hover:text-blue-700 font-medium">
                 Sign in

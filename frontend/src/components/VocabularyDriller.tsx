@@ -159,12 +159,12 @@ export default function VocabularyDriller({
   if (!currentWord && !sessionComplete) {
     return (
       <Card className="w-full max-w-2xl">
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Brain className="h-5 w-5" />
+        <CardHeader className="px-4 sm:px-6 py-4 sm:py-6">
+          <CardTitle className="flex items-center gap-2 text-lg sm:text-xl">
+            <Brain className="h-4 w-4 sm:h-5 sm:w-5" />
             Vocabulary Driller
           </CardTitle>
-          <CardDescription>
+          <CardDescription className="text-sm sm:text-base">
             {sessionWords.length === 0 ? 
               `No vocabulary words found for lesson ${currentLesson}` :
               'Loading vocabulary...'
@@ -172,8 +172,8 @@ export default function VocabularyDriller({
           </CardDescription>
         </CardHeader>
         {allowLessonSelection && (
-          <CardContent>
-            <div className="space-y-4">
+          <CardContent className="px-4 sm:px-6 pb-4 sm:pb-6">
+            <div className="space-y-3 sm:space-y-4">
               <div>
                 <label className="text-sm font-medium text-slate-700 mb-2 block">
                   Select Lesson
@@ -182,7 +182,7 @@ export default function VocabularyDriller({
                   value={currentLesson.toString()} 
                   onValueChange={(value) => setCurrentLesson(parseInt(value))}
                 >
-                  <SelectTrigger className="w-full">
+                  <SelectTrigger className="w-full h-10 sm:h-11">
                     <SelectValue placeholder="Choose a lesson" />
                   </SelectTrigger>
                   <SelectContent>
@@ -209,43 +209,46 @@ export default function VocabularyDriller({
     
     return (
       <Card className="w-full max-w-2xl">
-        <CardHeader>
+        <CardHeader className="px-4 sm:px-6 py-4 sm:py-6">
           <div className="text-center">
-            <div className={`w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center ${
+            <div className={`w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-3 sm:mb-4 rounded-full flex items-center justify-center ${
               isExcellent ? 'bg-gradient-to-br from-yellow-100 to-yellow-200' :
               isGood ? 'bg-gradient-to-br from-green-100 to-green-200' :
               'bg-gradient-to-br from-blue-100 to-blue-200'
             }`}>
               {isExcellent ? (
-                <Trophy className="h-8 w-8 text-yellow-600" />
+                <Trophy className="h-6 w-6 sm:h-8 sm:w-8 text-yellow-600" />
               ) : isGood ? (
-                <Star className="h-8 w-8 text-green-600" />
+                <Star className="h-6 w-6 sm:h-8 sm:w-8 text-green-600" />
               ) : (
-                <CheckCircle className="h-8 w-8 text-blue-600" />
+                <CheckCircle className="h-6 w-6 sm:h-8 sm:w-8 text-blue-600" />
               )}
             </div>
-            <CardTitle className="text-2xl mb-2">
+            <CardTitle className="text-lg sm:text-xl lg:text-2xl mb-2">
               {isExcellent ? 'Excellent Work!' : isGood ? 'Well Done!' : 'Session Complete!'}
             </CardTitle>
-            <CardDescription className="text-lg">
+            <CardDescription className="text-base sm:text-lg">
               You scored {score.correct} out of {sessionWords.length} ({percentage}%)
             </CardDescription>
           </div>
         </CardHeader>
-        <CardContent className="space-y-6">
-          <div className="grid grid-cols-2 gap-4 text-center">
-            <div className="p-4 bg-slate-50 rounded-lg">
-              <div className="text-2xl font-bold text-slate-800">{percentage}%</div>
-              <div className="text-sm text-slate-600">Accuracy</div>
+        <CardContent className="space-y-4 sm:space-y-6 px-4 sm:px-6 pb-4 sm:pb-6">
+          <div className="grid grid-cols-2 gap-3 sm:gap-4 text-center">
+            <div className="p-3 sm:p-4 bg-slate-50 rounded-lg">
+              <div className="text-xl sm:text-2xl font-bold text-slate-800">{percentage}%</div>
+              <div className="text-xs sm:text-sm text-slate-600">Accuracy</div>
             </div>
-            <div className="p-4 bg-slate-50 rounded-lg">
-              <div className="text-2xl font-bold text-slate-800">{bestStreak}</div>
-              <div className="text-sm text-slate-600">Best Streak</div>
+            <div className="p-3 sm:p-4 bg-slate-50 rounded-lg">
+              <div className="text-xl sm:text-2xl font-bold text-slate-800">{bestStreak}</div>
+              <div className="text-xs sm:text-sm text-slate-600">Best Streak</div>
             </div>
           </div>
           
-          <div className="flex gap-4 justify-center">
-            <Button onClick={startNewSession} className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
+            <Button 
+              onClick={startNewSession} 
+              className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 w-full sm:w-auto touch-manipulation active:scale-95"
+            >
               <RotateCcw className="h-4 w-4 mr-2" />
               Practice Again
             </Button>
@@ -259,6 +262,7 @@ export default function VocabularyDriller({
                   }
                 }}
                 disabled={!availableLessons.find(l => l.id === currentLesson + 1)}
+                className="w-full sm:w-auto touch-manipulation active:scale-95"
               >
                 Next Lesson
               </Button>
@@ -266,7 +270,7 @@ export default function VocabularyDriller({
           </div>
           
           {allowLessonSelection && (
-            <div className="pt-4 border-t">
+            <div className="pt-3 sm:pt-4 border-t">
               <label className="text-sm font-medium text-slate-700 mb-2 block">
                 Change Lesson
               </label>
@@ -274,7 +278,7 @@ export default function VocabularyDriller({
                 value={currentLesson.toString()} 
                 onValueChange={(value) => setCurrentLesson(parseInt(value))}
               >
-                <SelectTrigger className="w-full">
+                <SelectTrigger className="w-full h-10 sm:h-11">
                   <SelectValue placeholder="Choose a lesson" />
                 </SelectTrigger>
                 <SelectContent>
@@ -294,18 +298,18 @@ export default function VocabularyDriller({
 
   return (
     <Card className="w-full max-w-2xl">
-      <CardHeader>
-        <div className="flex items-center justify-between">
-          <div>
-            <CardTitle className="flex items-center gap-2">
-              <Brain className="h-5 w-5" />
-              Vocabulary Driller - {getLessonLabel()}
+      <CardHeader className="px-4 sm:px-6 py-4 sm:py-6">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-0">
+          <div className="flex-1 min-w-0">
+            <CardTitle className="flex items-center gap-2 text-lg sm:text-xl truncate">
+              <Brain className="h-4 w-4 sm:h-5 sm:w-5 flex-shrink-0" />
+              <span className="truncate">Vocabulary Driller - {getLessonLabel()}</span>
             </CardTitle>
-            <CardDescription>
+            <CardDescription className="text-sm sm:text-base">
               {mode === 'latin-to-english' ? 'Latin → English' : 'English → Latin'}
             </CardDescription>
           </div>
-          <div className="text-right">
+          <div className="text-right flex-shrink-0">
             <div className="text-sm text-muted-foreground">
               Score: {score.correct}/{score.total}
             </div>
@@ -319,15 +323,15 @@ export default function VocabularyDriller({
             )}
           </div>
         </div>
-        <div className="space-y-2">
+        <div className="space-y-2 sm:space-y-3">
           <Progress value={progress} className="w-full" />
           {allowLessonSelection && (
-            <div className="flex items-center gap-2">
+            <div className="flex flex-col xs:flex-row items-start xs:items-center gap-2">
               <Select 
                 value={currentLesson.toString()} 
                 onValueChange={(value) => setCurrentLesson(parseInt(value))}
               >
-                <SelectTrigger className="w-32">
+                <SelectTrigger className="w-full xs:w-32 h-10">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -338,23 +342,23 @@ export default function VocabularyDriller({
                   ))}
                 </SelectContent>
               </Select>
-              <Badge variant="outline" className="text-xs">
+              <Badge variant="outline" className="text-xs self-start xs:self-auto">
                 {sessionWords.length} words
               </Badge>
             </div>
           )}
         </div>
       </CardHeader>
-      <CardContent className="space-y-6">
+      <CardContent className="space-y-4 sm:space-y-6 px-4 sm:px-6 pb-4 sm:pb-6">
         <div className="text-center">
           <div className="text-sm text-muted-foreground mb-2">
             {currentWord.partOfSpeech}
           </div>
-          <div className="text-3xl font-bold mb-4">
+          <div className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4 break-words">
             {mode === 'latin-to-english' ? currentWord.latin : currentWord.english}
           </div>
           {showAnswer && (
-            <div className="text-xl text-muted-foreground bg-slate-50 p-4 rounded-lg">
+            <div className="text-lg sm:text-xl text-muted-foreground bg-slate-50 p-3 sm:p-4 rounded-lg">
               {mode === 'latin-to-english' ? currentWord.english : currentWord.latin}
               {currentWord.principalParts && mode === 'latin-to-english' && (
                 <div className="text-sm text-slate-500 mt-2 italic">
@@ -365,17 +369,20 @@ export default function VocabularyDriller({
           )}
         </div>
 
-        <div className="flex justify-center gap-4">
+        <div className="flex justify-center gap-3 sm:gap-4">
           {!showAnswer ? (
-            <Button onClick={() => setShowAnswer(true)} className="w-32">
+            <Button 
+              onClick={() => setShowAnswer(true)} 
+              className="w-full xs:w-32 touch-manipulation active:scale-95"
+            >
               Show Answer
             </Button>
           ) : (
-            <div className="flex gap-4">
+            <div className="flex flex-col xs:flex-row gap-3 xs:gap-4 w-full xs:w-auto">
               <Button 
                 onClick={handleCorrect} 
                 variant="default" 
-                className="w-32 bg-green-600 hover:bg-green-700"
+                className="w-full xs:w-32 bg-green-600 hover:bg-green-700 touch-manipulation active:scale-95"
               >
                 <CheckCircle className="h-4 w-4 mr-2" />
                 Correct
@@ -383,7 +390,7 @@ export default function VocabularyDriller({
               <Button 
                 onClick={handleIncorrect} 
                 variant="destructive" 
-                className="w-32"
+                className="w-full xs:w-32 touch-manipulation active:scale-95"
               >
                 <XCircle className="h-4 w-4 mr-2" />
                 Incorrect
@@ -393,7 +400,12 @@ export default function VocabularyDriller({
         </div>
 
         <div className="flex justify-center gap-2">
-          <Button variant="outline" onClick={toggleMode} size="sm">
+          <Button 
+            variant="outline" 
+            onClick={toggleMode} 
+            size="sm"
+            className="touch-manipulation active:scale-95"
+          >
             Switch Mode
           </Button>
           <Button variant="outline" onClick={resetSession} size="sm">

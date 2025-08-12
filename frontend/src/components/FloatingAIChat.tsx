@@ -192,19 +192,20 @@ export default function FloatingAIChat({ lesson, context }: FloatingAIChatProps)
       <div 
         style={{
           position: 'fixed',
-          bottom: '24px',
-          right: '24px',
+          bottom: '16px',
+          right: '16px',
           zIndex: 2147483647,
           isolation: 'isolate',
           transform: 'translate3d(0, 0, 0)',
           willChange: 'transform',
         }}
+        className="sm:bottom-6 sm:right-6"
       >
         <Button
           onClick={() => setIsOpen(true)}
-          className="w-14 h-14 rounded-full bg-roman-gradient hover:shadow-roman text-white shadow-lg hover:scale-105 transition-all duration-200 border-2 border-roman-gold/30 backdrop-blur-sm"
+          className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-roman-gradient hover:shadow-roman text-white shadow-lg hover:scale-105 transition-all duration-200 border-2 border-roman-gold/30 backdrop-blur-sm touch-manipulation active:scale-95"
         >
-          <MessageCircle className="h-6 w-6" />
+          <MessageCircle className="h-5 w-5 sm:h-6 sm:w-6" />
         </Button>
       </div>,
       document.documentElement
@@ -216,17 +217,18 @@ export default function FloatingAIChat({ lesson, context }: FloatingAIChatProps)
     <div 
       style={{
         position: 'fixed',
-        bottom: '24px',
-        right: '24px',
+        bottom: '16px',
+        right: '16px',
         zIndex: 2147483647,
         isolation: 'isolate',
         transform: 'translate3d(0, 0, 0)',
         willChange: 'transform',
       }}
+      className="sm:bottom-6 sm:right-6"
     >
-      <Card className={`w-96 border-roman-gold/20 shadow-xl transition-all duration-300 ${isMinimized ? 'h-16' : 'h-[500px]'} glass-effect backdrop-blur-lg`}>
+      <Card className={`w-80 sm:w-96 border-roman-gold/20 shadow-xl transition-all duration-300 ${isMinimized ? 'h-12 sm:h-16' : 'h-96 sm:h-[500px]'} glass-effect backdrop-blur-lg`}>
         {/* Header */}
-        <CardHeader className="pb-3 bg-gradient-to-r from-roman-cream to-roman-marble border-b border-roman-gold/20">
+        <CardHeader className="pb-2 sm:pb-3 bg-gradient-to-r from-roman-cream to-roman-marble border-b border-roman-gold/20 px-3 sm:px-6 py-2 sm:py-4">
           <div className="flex items-center justify-between">
             <CardTitle className="text-lg font-classical text-roman-red flex items-center gap-2">
               <div className="w-8 h-8 rounded-full overflow-hidden border-2 border-roman-gold">

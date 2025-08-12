@@ -19,60 +19,63 @@ export default function PDFReader({ pdfUrl, currentPage = 1, onPageChange }: PDF
 
   return (
     <Card className="w-full">
-      <CardHeader>
-        <div className="flex items-center justify-between">
+      <CardHeader className="px-4 sm:px-6 py-4">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-0">
           <div>
-            <CardTitle>Cambridge Textbook</CardTitle>
-            <CardDescription>Page {currentPage} • {zoom}% zoom</CardDescription>
+            <CardTitle className="text-lg sm:text-xl">Cambridge Textbook</CardTitle>
+            <CardDescription className="text-sm">Page {currentPage} • {zoom}% zoom</CardDescription>
           </div>
-          <div className="flex items-center gap-2">
-            <Button variant="outline" size="icon" onClick={handleZoomOut}>
-              <ZoomOut className="h-4 w-4" />
+          <div className="flex items-center gap-1 sm:gap-2 overflow-x-auto pb-2 sm:pb-0">
+            <Button variant="outline" size="icon" onClick={handleZoomOut} className="touch-manipulation active:scale-95 flex-shrink-0 h-8 w-8 sm:h-10 sm:w-10">
+              <ZoomOut className="h-3 w-3 sm:h-4 sm:w-4" />
             </Button>
-            <Button variant="outline" size="icon" onClick={handleZoomIn}>
-              <ZoomIn className="h-4 w-4" />
+            <Button variant="outline" size="icon" onClick={handleZoomIn} className="touch-manipulation active:scale-95 flex-shrink-0 h-8 w-8 sm:h-10 sm:w-10">
+              <ZoomIn className="h-3 w-3 sm:h-4 sm:w-4" />
             </Button>
-            <Button variant="outline" size="icon" onClick={handleRotate}>
-              <RotateCw className="h-4 w-4" />
+            <Button variant="outline" size="icon" onClick={handleRotate} className="touch-manipulation active:scale-95 flex-shrink-0 h-8 w-8 sm:h-10 sm:w-10">
+              <RotateCw className="h-3 w-3 sm:h-4 sm:w-4" />
             </Button>
-            <Button variant="outline" size="icon">
-              <Download className="h-4 w-4" />
+            <Button variant="outline" size="icon" className="touch-manipulation active:scale-95 flex-shrink-0 h-8 w-8 sm:h-10 sm:w-10">
+              <Download className="h-3 w-3 sm:h-4 sm:w-4" />
             </Button>
           </div>
         </div>
       </CardHeader>
-      <CardContent>
-        <div className="relative bg-gray-100 rounded-lg overflow-hidden" style={{ minHeight: '600px' }}>
+      <CardContent className="px-4 sm:px-6 pb-4 sm:pb-6">
+        <div className="relative bg-gray-100 rounded-lg overflow-hidden" style={{ minHeight: window.innerWidth < 640 ? '400px' : '600px' }}>
           <iframe
             src={pdfUrl}
             title="Ludus Textbook PDF"
             className="w-full h-full border-none"
             style={{
-              height: '600px',
+              height: window.innerWidth < 640 ? '400px' : '600px',
               transform: `scale(${zoom / 100}) rotate(${rotation}deg)`,
               transformOrigin: 'center center',
             }}
           />
-        </div>
-        <div className="flex items-center justify-between mt-4">
-          <Button 
-            variant="outline" 
-            onClick={() => onPageChange?.(Math.max(1, currentPage - 1))}
-            disabled={currentPage <= 1}
-          >
-            <ChevronLeft className="h-4 w-4 mr-2" />
-            Previous
-          </Button>
-          <span className="text-sm text-muted-foreground">
-            Page {currentPage}
-          </span>
-          <Button 
-            variant="outline" 
-            onClick={() => onPageChange?.(currentPage + 1)}
-          >
-            Next
-            <ChevronRight className="h-4 w-4 ml-2" />
-          </Button>
+          {/* Navigation Controls */}
+          <div className="absolute bottom-2 sm:bottom-4 left-1/2 transform -translate-x-1/2 flex items-center gap-2 bg-white/90 backdrop-blur-sm rounded-full px-3 sm:px-4 py-2 shadow-lg border">
+            <Button 
+              variant="ghost" 
+              size="sm" 
+              onClick={() => onPageChange?.(Math.max(1, currentPage - 1))}
+              disabled={currentPage <= 1}
+              className="touch-manipulation active:scale-95 h-8 w-8 p-0"
+            >
+              <ChevronLeft className="h-3 w-3 sm:h-4 sm:w-4" />
+            </Button>
+            <span className="text-xs sm:text-sm font-medium px-2">
+              Page {currentPage}
+            </span>
+            <Button 
+              variant="ghost" 
+              size="sm" 
+              onClick={() => onPageChange?.(currentPage + 1)}
+              className="touch-manipulation active:scale-95 h-8 w-8 p-0"
+            >
+              <ChevronRight className="h-3 w-3 sm:h-4 sm:w-4" />
+            </Button>
+          </div>
         </div>
       </CardContent>
     </Card>

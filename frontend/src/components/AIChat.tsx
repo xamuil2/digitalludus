@@ -182,40 +182,40 @@ export default function MagisterChat({ lesson, context, compact = false }: Magis
   };
 
   return (
-    <Card className={`w-full ${compact ? 'max-w-md' : 'max-w-2xl'} border bg-white shadow-sm`}>
+    <Card className={`w-full ${compact ? 'max-w-sm sm:max-w-md' : 'max-w-xl sm:max-w-2xl'} border bg-white shadow-sm`}>
       <CardContent className="p-0">
-        <ScrollArea className={`${compact ? 'h-64' : 'h-96'} p-6 bg-neutral-50`}>
-          <div className="space-y-4">
+        <ScrollArea className={`${compact ? 'h-48 sm:h-64' : 'h-64 sm:h-96'} p-3 sm:p-6 bg-neutral-50`}>
+          <div className="space-y-3 sm:space-y-4">
             {messages.map((message) => (
               <div
                 key={message.id}
-                className={`flex gap-3 ${
+                className={`flex gap-2 sm:gap-3 ${
                   message.role === 'user' ? 'justify-end' : 'justify-start'
                 }`}
               >
                 <div
-                  className={`flex gap-3 max-w-[700px] ${
+                  className={`flex gap-2 sm:gap-3 max-w-[280px] sm:max-w-[500px] lg:max-w-[700px] ${
                     message.role === 'user' ? 'flex-row-reverse' : 'flex-row'
                   }`}
                 >
-                  <div className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 border border-slate-300 bg-white text-slate-700">
+                  <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full flex items-center justify-center flex-shrink-0 border border-slate-300 bg-white text-slate-700">
                     {message.role === 'user' ? (
-                      <User className="h-4 w-4" />
+                      <User className="h-3 w-3 sm:h-4 sm:w-4" />
                     ) : (
                       <span className="text-xs font-medium">M</span>
                     )}
                   </div>
                   <div
-                    className={`px-4 py-3 rounded-2xl border ${
+                    className={`px-3 py-2 sm:px-4 sm:py-3 rounded-2xl border ${
                       message.role === 'user'
                         ? 'bg-white text-slate-900'
                         : 'bg-neutral-50 text-slate-900'
                     }`}
                   >
-                    <p className="text-sm leading-relaxed whitespace-pre-wrap">
+                    <p className="text-xs sm:text-sm leading-relaxed whitespace-pre-wrap break-words">
                       {message.content}
                     </p>
-                    <p className="text-xs mt-2 text-slate-500">
+                    <p className="text-xs mt-1 sm:mt-2 text-slate-500">
                       {message.timestamp.toLocaleTimeString([], {
                         hour: '2-digit',
                         minute: '2-digit'
@@ -226,14 +226,14 @@ export default function MagisterChat({ lesson, context, compact = false }: Magis
               </div>
             ))}
             {isLoading && (
-              <div className="flex gap-3 justify-start">
-                <div className="w-8 h-8 rounded-full border border-slate-300 bg-white flex items-center justify-center flex-shrink-0 text-slate-700">
+              <div className="flex gap-2 sm:gap-3 justify-start">
+                <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full border border-slate-300 bg-white flex items-center justify-center flex-shrink-0 text-slate-700">
                   <span className="text-xs font-medium">M</span>
                 </div>
-                <div className="px-4 py-3 rounded-2xl border bg-neutral-50">
+                <div className="px-3 py-2 sm:px-4 sm:py-3 rounded-2xl border bg-neutral-50">
                   <div className="flex items-center gap-2">
-                    <Loader2 className="h-4 w-4 animate-spin text-slate-700" />
-                    <span className="text-sm text-slate-700">Thinking…</span>
+                    <Loader2 className="h-3 w-3 sm:h-4 sm:w-4 animate-spin text-slate-700" />
+                    <span className="text-xs sm:text-sm text-slate-700">Thinking…</span>
                   </div>
                 </div>
               </div>
@@ -242,19 +242,20 @@ export default function MagisterChat({ lesson, context, compact = false }: Magis
         </ScrollArea>
 
         {liveHtml && (
-          <div className="px-4 pb-4">
+          <div className="px-3 sm:px-4 pb-3 sm:pb-4">
             <div className="flex items-center justify-between mb-2">
-              <p className="text-sm font-medium text-slate-700">Canvas Preview</p>
+              <p className="text-xs sm:text-sm font-medium text-slate-700">Canvas Preview</p>
               <div className="flex gap-2">
                 <Button
-                  className="h-8 px-3 bg-black hover:bg-neutral-900 text-white"
+                  className="h-6 sm:h-8 px-2 sm:px-3 bg-black hover:bg-neutral-900 text-white text-xs sm:text-sm touch-manipulation active:scale-95"
                   onClick={() => {
                     const html = liveHtml || '';
                     const url = 'data:text/html;charset=utf-8,' + encodeURIComponent(html);
                     window.open(url, '_blank');
                   }}
                 >
-                  Open in new tab
+                  <span className="hidden sm:inline">Open in new tab</span>
+                  <span className="sm:hidden">Open</span>
                 </Button>
               </div>
             </div>
@@ -263,14 +264,14 @@ export default function MagisterChat({ lesson, context, compact = false }: Magis
                 title="AI Canvas Preview"
                 sandbox="allow-forms allow-modals allow-pointer-lock allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
                 className="w-full"
-                style={{ height: compact ? 280 : 420 }}
+                style={{ height: compact ? (window.innerWidth < 640 ? 200 : 280) : (window.innerWidth < 640 ? 280 : 420) }}
                 srcDoc={liveHtml}
               />
             </div>
           </div>
         )}
         
-        <div className="p-4 border-t border-slate-200 bg-white">
+        <div className="p-3 sm:p-4 border-t border-slate-200 bg-white">
           <div className="flex items-end gap-2">
             <div className="flex-1">
               <textarea
@@ -281,22 +282,23 @@ export default function MagisterChat({ lesson, context, compact = false }: Magis
                 onInput={handleInputResize}
                 rows={1}
                 ref={textareaRef}
-                className="w-full max-h-52 overflow-auto resize-none rounded-2xl border border-slate-300 bg-white px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-black"
+                className="w-full max-h-32 sm:max-h-52 overflow-auto resize-none rounded-2xl border border-slate-300 bg-white px-3 py-2 sm:px-4 sm:py-3 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-black"
                 disabled={isLoading}
               />
-              <div className="mt-1 text-[11px] text-slate-500">
-                Press Enter to send • Shift+Enter for new line
+              <div className="mt-1 text-[10px] sm:text-[11px] text-slate-500">
+                <span className="hidden sm:inline">Press Enter to send • Shift+Enter for new line</span>
+                <span className="sm:hidden">Enter to send</span>
               </div>
             </div>
             <Button
               onClick={sendMessage}
               disabled={!inputMessage.trim() || isLoading}
-              className="bg-black hover:bg-neutral-900 text-white shadow px-4 rounded-xl"
+              className="bg-black hover:bg-neutral-900 text-white shadow px-3 sm:px-4 rounded-xl touch-manipulation active:scale-95 h-8 sm:h-10"
             >
               {isLoading ? (
-                <Loader2 className="h-4 w-4 animate-spin" />
+                <Loader2 className="h-3 w-3 sm:h-4 sm:w-4 animate-spin" />
               ) : (
-                <Send className="h-4 w-4" />
+                <Send className="h-3 w-3 sm:h-4 sm:w-4" />
               )}
             </Button>
           </div>

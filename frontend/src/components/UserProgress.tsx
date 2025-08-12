@@ -73,12 +73,12 @@ export default function UserProgress(): React.ReactElement {
   if (showLoading) {
     return (
       <Card className="glass-effect shadow-roman border-roman-gold/20">
-        <CardContent className="p-6">
-          <div className="flex items-center gap-4">
-            <div className="w-12 h-12 bg-roman-marble rounded-full animate-pulse"></div>
-            <div className="flex-1">
-              <div className="h-5 bg-roman-marble rounded animate-pulse mb-2"></div>
-              <div className="h-4 bg-roman-marble rounded animate-pulse w-2/3"></div>
+        <CardContent className="p-4 sm:p-6">
+          <div className="flex items-center gap-3 sm:gap-4">
+            <div className="w-10 h-10 sm:w-12 sm:h-12 bg-roman-marble rounded-full animate-pulse flex-shrink-0"></div>
+            <div className="flex-1 min-w-0">
+              <div className="h-4 sm:h-5 bg-roman-marble rounded animate-pulse mb-2"></div>
+              <div className="h-3 sm:h-4 bg-roman-marble rounded animate-pulse w-2/3"></div>
             </div>
           </div>
         </CardContent>
@@ -91,10 +91,10 @@ export default function UserProgress(): React.ReactElement {
     
     return (
       <Card className="glass-effect shadow-roman border-roman-gold/20 bg-gradient-to-r from-roman-cream to-roman-marble">
-        <CardContent className="p-6">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 bg-roman-gradient rounded-full flex items-center justify-center overflow-hidden shadow-roman">
+        <CardContent className="p-4 sm:p-6">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 sm:gap-0">
+            <div className="flex items-center gap-3 sm:gap-4">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-roman-gradient rounded-full flex items-center justify-center overflow-hidden shadow-roman flex-shrink-0">
                 {session.user.image ? (
                   <img 
                     src={session.user.image} 
@@ -102,42 +102,42 @@ export default function UserProgress(): React.ReactElement {
                     className="w-full h-full object-cover"
                   />
                 ) : (
-                  <User className="h-6 w-6 text-white" />
+                  <User className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
                 )}
               </div>
-              <div>
-                <h3 className="text-xl font-classical font-semibold text-roman-red">
+              <div className="min-w-0 flex-1">
+                <h3 className="text-lg sm:text-xl font-classical font-semibold text-roman-red truncate">
                   Welcome back, {displayName}!
                 </h3>
-                <p className="text-roman-black/70 font-classical">{session.user.email}</p>
+                <p className="text-roman-black/70 font-classical text-sm sm:text-base truncate">{session.user.email}</p>
               </div>
             </div>
             
-            <div className="flex items-center gap-6">
-              <div className="flex items-center gap-4">
+            <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
+              <div className="grid grid-cols-2 sm:flex sm:items-center gap-3 sm:gap-4 w-full sm:w-auto">
                 <div className="text-center">
-                  <div className="text-2xl font-classical font-bold text-roman-red">
+                  <div className="text-lg sm:text-2xl font-classical font-bold text-roman-red">
                     {userStats?.lessonsCompleted || 0}
                   </div>
-                  <div className="text-sm text-roman-black font-classical">Lessons</div>
+                  <div className="text-xs sm:text-sm text-roman-black font-classical">Lessons</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-classical font-bold text-roman-gold">
+                  <div className="text-lg sm:text-2xl font-classical font-bold text-roman-gold">
                     {userStats?.averageScore ? `${Math.round(userStats.averageScore)}%` : '0%'}
                   </div>
-                  <div className="text-sm text-roman-black font-classical">Average</div>
+                  <div className="text-xs sm:text-sm text-roman-black font-classical">Average</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-classical font-bold text-roman-red">
+                  <div className="text-lg sm:text-2xl font-classical font-bold text-roman-red">
                     {userStats?.currentStreak || 0}
                   </div>
-                  <div className="text-sm text-roman-black font-classical">Streak</div>
+                  <div className="text-xs sm:text-sm text-roman-black font-classical">Streak</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-classical font-bold text-roman-gold">
+                  <div className="text-lg sm:text-2xl font-classical font-bold text-roman-gold">
                     {Math.floor((userStats?.totalStudyTime || 0) / 60)}h
                   </div>
-                  <div className="text-sm text-roman-black font-classical">Study Time</div>
+                  <div className="text-xs sm:text-sm text-roman-black font-classical">Study Time</div>
                 </div>
               </div>
               
@@ -146,7 +146,7 @@ export default function UserProgress(): React.ReactElement {
                 disabled={isLoading}
                 variant="outline"
                 size="sm"
-                className="glass-effect border-roman-gold/30 text-roman-red hover:bg-roman-gold/10 hover:border-roman-gold font-classical"
+                className="glass-effect border-roman-gold/30 text-roman-red hover:bg-roman-gold/10 hover:border-roman-gold font-classical touch-manipulation active:scale-95 text-xs sm:text-sm w-full sm:w-auto"
               >
                 <LogOut className="h-4 w-4 mr-2" />
                 {isLoading ? 'Signing out...' : 'Sign out'}
@@ -172,8 +172,8 @@ export default function UserProgress(): React.ReactElement {
             </div>
           </div>
           
-          <div className="flex items-center gap-3">
-            <div className="hidden md:flex items-center gap-4 text-sm text-roman-black mr-4">
+          <div className="flex flex-col sm:flex-row sm:items-center gap-4">
+            <div className="hidden lg:flex items-center gap-4 text-xs sm:text-sm text-roman-black">
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 bg-roman-gold rounded-full"></div>
                 <span className="font-classical">Track progress</span>
@@ -188,27 +188,27 @@ export default function UserProgress(): React.ReactElement {
               </div>
             </div>
             
-            <div className="flex flex-col items-end gap-2">
-              <div className="flex items-center gap-3">
-                <Button
-                  onClick={() => handleSignIn('google')}
-                  disabled={isLoading}
-                  className="bg-roman-gradient hover:shadow-roman text-white shadow-roman font-classical"
-                >
-                  <LogIn className="h-4 w-4 mr-2" />
-                  {isLoading ? 'Loading...' : 'Sign in with Google'}
-                </Button>
-                
-                <Button
-                  onClick={() => handleSignIn('email')}
-                  disabled={isLoading}
-                  variant="outline"
-                  className="glass-effect border-roman-gold/30 text-roman-red hover:bg-roman-gold/10 hover:border-roman-gold font-classical"
-                >
-                  <LogIn className="h-4 w-4 mr-2" />
-                  {isLoading ? 'Loading...' : 'Email Sign In'}
-                </Button>
-              </div>
+            <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 w-full sm:w-auto">
+              <Button
+                onClick={() => handleSignIn('google')}
+                disabled={isLoading}
+                className="bg-roman-gradient hover:shadow-roman text-white shadow-roman font-classical text-xs sm:text-sm h-10 sm:h-11 touch-manipulation active:scale-95 w-full sm:w-auto"
+              >
+                <LogIn className="h-3 w-3 sm:h-4 sm:w-4 mr-2" />
+                <span className="hidden xs:inline">{isLoading ? 'Loading...' : 'Sign in with Google'}</span>
+                <span className="xs:hidden">{isLoading ? 'Loading...' : 'Google'}</span>
+              </Button>
+              
+              <Button
+                onClick={() => handleSignIn('email')}
+                disabled={isLoading}
+                variant="outline"
+                className="glass-effect border-roman-gold/30 text-roman-red hover:bg-roman-gold/10 hover:border-roman-gold font-classical text-xs sm:text-sm h-10 sm:h-11 touch-manipulation active:scale-95 w-full sm:w-auto"
+              >
+                <LogIn className="h-3 w-3 sm:h-4 sm:w-4 mr-2" />
+                <span className="hidden xs:inline">{isLoading ? 'Loading...' : 'Email Sign In'}</span>
+                <span className="xs:hidden">{isLoading ? 'Loading...' : 'Email'}</span>
+              </Button>
             </div>
           </div>
         </div>

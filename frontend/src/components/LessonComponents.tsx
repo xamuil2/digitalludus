@@ -37,11 +37,11 @@ function renderLatinTextWithClickableWords(
           key={index}
           className={`${
             definition 
-              ? 'cursor-pointer hover:bg-roman-gold/20 hover:text-roman-red hover:underline decoration-roman-gold decoration-2 underline-offset-2 transition-all duration-200 rounded-sm px-1 py-0.5' 
+              ? 'cursor-pointer hover:bg-roman-gold/20 hover:text-roman-red hover:underline decoration-roman-gold decoration-2 underline-offset-2 transition-all duration-200 rounded-sm px-1 py-0.5 touch-manipulation active:scale-95' 
               : ''
           }`}
           onClick={() => definition && onWordClick(part, definition)}
-          title={definition ? 'Click for definition' : undefined}
+          title={definition ? 'Tap for definition' : undefined}
         >
           {part}
         </span>
@@ -88,43 +88,43 @@ export function ProsePassage({ lesson }: { lesson: Lesson }) {
 
   return (
     <Card className="glass-effect shadow-roman border-roman-gold/20 overflow-hidden">
-      <CardHeader className="bg-gradient-to-r from-roman-cream to-roman-marble border-b border-roman-gold/20 pb-6">
-        <div className="flex items-center justify-between">
-          <div>
-            <CardTitle className="text-2xl font-classical font-bold text-roman-red flex items-center gap-3">
-              <div className="p-2 bg-gold-gradient rounded-lg shadow-gold">
-                <BookOpen className="h-6 w-6 text-white" />
+      <CardHeader className="bg-gradient-to-r from-roman-cream to-roman-marble border-b border-roman-gold/20 pb-4 sm:pb-6">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="flex-1 min-w-0">
+            <CardTitle className="text-xl sm:text-2xl font-classical font-bold text-roman-red flex items-center gap-2 sm:gap-3">
+              <div className="p-1.5 sm:p-2 bg-gold-gradient rounded-lg shadow-gold flex-shrink-0">
+                <BookOpen className="h-4 w-4 sm:h-6 sm:w-6 text-white" />
               </div>
-              {lesson.prosePassage.title || 'Reading Passage'}
+              <span className="truncate">{lesson.prosePassage.title || 'Reading Passage'}</span>
             </CardTitle>
             {lesson.prosePassage.context && (
-              <CardDescription className="mt-3 text-muted-foreground text-base font-classical">
+              <CardDescription className="mt-2 sm:mt-3 text-muted-foreground text-sm sm:text-base font-classical">
                 {lesson.prosePassage.context}
               </CardDescription>
             )}
           </div>
           <Button
             variant="outline"
-            size="lg"
+            size="sm"
             onClick={toggleTranslation}
-            className="glass-effect border-roman-gold/30 hover:bg-roman-gold/10 hover:border-roman-gold shadow-gold font-classical"
+            className="glass-effect border-roman-gold/30 hover:bg-roman-gold/10 hover:border-roman-gold shadow-gold font-classical w-full sm:w-auto flex-shrink-0"
           >
-            {showTranslation ? <EyeOff className="h-4 w-4 mr-2" /> : <Eye className="h-4 w-4 mr-2" />}
+            {showTranslation ? <EyeOff className="h-3 w-3 sm:h-4 sm:w-4 mr-2" /> : <Eye className="h-3 w-3 sm:h-4 sm:w-4 mr-2" />}
             {showTranslation ? 'Hide' : 'Show'} Translation
           </Button>
         </div>
       </CardHeader>
-      <CardContent className="p-8 space-y-8">
+      <CardContent className="p-4 sm:p-6 lg:p-8 space-y-6 sm:space-y-8">
         {/* Latin Text */}
         <div className="relative">
-          <div className="absolute -left-4 top-0 w-1 h-full bg-gold-gradient rounded-full"></div>
-          <div className="glass-effect p-8 rounded-xl border border-roman-gold/20 shadow-roman">
-            <div className="font-classical text-xl leading-relaxed text-roman-black tracking-wide">
+          <div className="absolute -left-2 sm:-left-4 top-0 w-0.5 sm:w-1 h-full bg-gold-gradient rounded-full"></div>
+          <div className="glass-effect p-4 sm:p-6 lg:p-8 rounded-xl border border-roman-gold/20 shadow-roman">
+            <div className="font-classical text-lg sm:text-xl leading-relaxed text-roman-black tracking-wide">
               {renderLatinTextWithClickableWords(latinText, handleWordClick)}
             </div>
-            <div className="mt-4 text-sm text-muted-foreground flex items-center gap-2 font-classical">
-              <div className="w-2 h-2 bg-roman-gold rounded-full"></div>
-              Click on any word to see its definition below
+            <div className="mt-3 sm:mt-4 text-xs sm:text-sm text-muted-foreground flex items-center gap-2 font-classical">
+              <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-roman-gold rounded-full flex-shrink-0"></div>
+              <span>Tap on any word to see its definition below</span>
             </div>
           </div>
         </div>
@@ -132,14 +132,14 @@ export function ProsePassage({ lesson }: { lesson: Lesson }) {
         {/* Word Definitions Section */}
         {selectedWords.length > 0 && (
           <div className="relative">
-            <div className="absolute -left-4 top-0 w-1 h-full bg-roman-gradient rounded-full"></div>
-            <div className="glass-effect p-8 rounded-xl border border-roman-gold/20 shadow-gold">
-              <div className="flex items-center justify-between mb-6">
-                <div className="flex items-center gap-3">
-                  <div className="p-2 bg-roman-gradient rounded-lg shadow-roman">
-                    <Brain className="h-5 w-5 text-white" />
+            <div className="absolute -left-2 sm:-left-4 top-0 w-0.5 sm:w-1 h-full bg-roman-gradient rounded-full"></div>
+            <div className="glass-effect p-4 sm:p-6 lg:p-8 rounded-xl border border-roman-gold/20 shadow-gold">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4 sm:mb-6">
+                <div className="flex items-center gap-2 sm:gap-3">
+                  <div className="p-1.5 sm:p-2 bg-roman-gradient rounded-lg shadow-roman flex-shrink-0">
+                    <Brain className="h-4 w-4 sm:h-5 sm:w-5 text-white" />
                   </div>
-                  <span className="font-classical font-semibold text-roman-red text-lg">
+                  <span className="font-classical font-semibold text-roman-red text-base sm:text-lg">
                     Word Definitions ({selectedWords.length})
                   </span>
                 </div>
@@ -147,37 +147,37 @@ export function ProsePassage({ lesson }: { lesson: Lesson }) {
                   variant="outline"
                   size="sm"
                   onClick={clearAllDefinitions}
-                  className="glass-effect border-roman-gold/30 hover:bg-roman-gold/10 hover:border-roman-gold font-classical"
+                  className="glass-effect border-roman-gold/30 hover:bg-roman-gold/10 hover:border-roman-gold font-classical w-full sm:w-auto"
                 >
-                  <X className="h-4 w-4 mr-2" />
+                  <X className="h-3 w-3 sm:h-4 sm:w-4 mr-2" />
                   Clear All
                 </Button>
               </div>
               
-              <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+              <div className="grid gap-3 sm:gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {selectedWords.map((item, index) => (
                   <div
                     key={`${item.word}-${index}`}
-                    className="group relative glass-effect rounded-xl border border-roman-gold/20 p-6 shadow-gold"
+                    className="group relative glass-effect rounded-xl border border-roman-gold/20 p-4 sm:p-6 shadow-gold"
                   >
                     {/* Gradient corner accent */}
-                    <div className="absolute top-0 right-0 w-8 h-8 bg-gold-gradient rounded-bl-lg rounded-tr-xl opacity-80 shadow-gold"></div>
+                    <div className="absolute top-0 right-0 w-6 h-6 sm:w-8 sm:h-8 bg-gold-gradient rounded-bl-lg rounded-tr-xl opacity-80 shadow-gold"></div>
                     
                     {/* Remove button */}
                     <button
                       onClick={() => setSelectedWords(prev => prev.filter((_, i) => i !== index))}
-                      className="absolute top-2 right-2 w-6 h-6 bg-roman-red/80 hover:bg-roman-red text-white rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110 z-10"
+                      className="absolute top-2 right-2 w-5 h-5 sm:w-6 sm:h-6 bg-roman-red/80 hover:bg-roman-red text-white rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110 z-10 touch-manipulation"
                     >
-                      <X className="h-3 w-3" />
+                      <X className="h-2.5 w-2.5 sm:h-3 sm:w-3" />
                     </button>
                     
-                    <div className="flex items-center justify-between mb-3">
-                      <span className="font-classical font-bold text-xl text-roman-red group-hover:text-roman-gold transition-colors">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 sm:gap-0 mb-3 pr-6 sm:pr-0">
+                      <span className="font-classical font-bold text-lg sm:text-xl text-roman-red group-hover:text-roman-gold transition-colors">
                         {item.definition.latin}
                       </span>
                       <Badge 
                         variant="outline" 
-                        className="text-xs bg-roman-cream/80 border-roman-gold/30 text-roman-black px-2 py-1 font-classical"
+                        className="text-xs bg-roman-cream/80 border-roman-gold/30 text-roman-black px-2 py-1 font-classical self-start sm:self-auto"
                       >
                         {item.definition.partOfSpeech}
                       </Badge>
@@ -189,7 +189,7 @@ export function ProsePassage({ lesson }: { lesson: Lesson }) {
                       </div>
                     )}
 
-                    <div className="font-medium text-roman-black mb-3">
+                    <div className="font-medium text-roman-black mb-3 text-sm sm:text-base">
                       {item.definition.english}
                     </div>
 
@@ -216,15 +216,15 @@ export function ProsePassage({ lesson }: { lesson: Lesson }) {
         {/* Translation */}
         {showTranslation && lesson.prosePassage.fullTranslation && (
           <div className="relative">
-            <div className="absolute -left-4 top-0 w-1 h-full bg-roman-gradient rounded-full"></div>
-            <div className="glass-effect p-8 rounded-xl border border-roman-gold/20 shadow-gold">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="p-2 bg-roman-gradient rounded-lg shadow-roman">
-                  <MessageCircle className="h-5 w-5 text-white" />
+            <div className="absolute -left-2 sm:-left-4 top-0 w-0.5 sm:w-1 h-full bg-roman-gradient rounded-full"></div>
+            <div className="glass-effect p-4 sm:p-6 lg:p-8 rounded-xl border border-roman-gold/20 shadow-gold">
+              <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+                <div className="p-1.5 sm:p-2 bg-roman-gradient rounded-lg shadow-roman flex-shrink-0">
+                  <MessageCircle className="h-4 w-4 sm:h-5 sm:w-5 text-white" />
                 </div>
-                <span className="font-classical font-semibold text-roman-red text-lg">English Translation</span>
+                <span className="font-classical font-semibold text-roman-red text-base sm:text-lg">English Translation</span>
               </div>
-              <p className="text-roman-black leading-relaxed text-lg font-medium">
+              <p className="text-roman-black leading-relaxed text-base sm:text-lg font-medium">
                 {lesson.prosePassage.fullTranslation}
               </p>
             </div>
@@ -241,37 +241,37 @@ export function VocabularySection({ lesson }: { lesson: Lesson }) {
 
   return (
     <Card className="glass-effect shadow-roman border-roman-gold/20 overflow-hidden">
-      <CardHeader className="bg-gradient-to-r from-roman-cream to-roman-marble border-b border-roman-gold/20 pb-6">
-        <CardTitle className="text-2xl font-classical font-bold text-roman-red flex items-center gap-3">
-          <div className="p-2 bg-roman-gradient rounded-lg shadow-roman">
-            <Brain className="h-6 w-6 text-white" />
+      <CardHeader className="bg-gradient-to-r from-roman-cream to-roman-marble border-b border-roman-gold/20 pb-4 sm:pb-6">
+        <CardTitle className="text-xl sm:text-2xl font-classical font-bold text-roman-red flex items-center gap-2 sm:gap-3">
+          <div className="p-1.5 sm:p-2 bg-roman-gradient rounded-lg shadow-roman flex-shrink-0">
+            <Brain className="h-4 w-4 sm:h-6 sm:w-6 text-white" />
           </div>
-          Vocabulary
+          <span>Vocabulary</span>
         </CardTitle>
-        <CardDescription className="text-muted-foreground text-base font-classical">
+        <CardDescription className="text-muted-foreground text-sm sm:text-base font-classical">
           New words introduced in this lesson ({lesson.vocabulary.length} words)
         </CardDescription>
       </CardHeader>
-      <CardContent className="p-8">
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+      <CardContent className="p-4 sm:p-6 lg:p-8">
+        <div className="grid gap-3 sm:gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {lesson.vocabulary.map((word) => (
             <div
               key={word.id}
-              className={`group relative glass-effect rounded-xl border border-roman-gold/20 p-6 cursor-pointer transition-all duration-300 hover:shadow-gold hover:-translate-y-1 hover:border-roman-gold/40 ${
+              className={`group relative glass-effect rounded-xl border border-roman-gold/20 p-4 sm:p-6 cursor-pointer transition-all duration-300 hover:shadow-gold hover:-translate-y-1 hover:border-roman-gold/40 touch-manipulation active:scale-95 ${
                 selectedWord === word.id ? 'ring-2 ring-roman-gold shadow-gold border-roman-gold/60' : ''
               }`}
               onClick={() => setSelectedWord(selectedWord === word.id ? null : word.id)}
             >
               {/* Gradient corner accent */}
-              <div className="absolute top-0 right-0 w-8 h-8 bg-gold-gradient rounded-bl-lg rounded-tr-xl opacity-80 shadow-gold"></div>
+              <div className="absolute top-0 right-0 w-6 h-6 sm:w-8 sm:h-8 bg-gold-gradient rounded-bl-lg rounded-tr-xl opacity-80 shadow-gold"></div>
               
-              <div className="flex items-center justify-between mb-3">
-                <span className="font-classical font-bold text-xl text-roman-red group-hover:text-roman-gold transition-colors">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 sm:gap-0 mb-3 pr-6 sm:pr-8">
+                <span className="font-classical font-bold text-lg sm:text-xl text-roman-red group-hover:text-roman-gold transition-colors">
                   {word.latin}
                 </span>
                 <Badge 
                   variant="outline" 
-                  className="text-xs bg-roman-cream/80 border-roman-gold/30 text-roman-black px-2 py-1 font-classical"
+                  className="text-xs bg-roman-cream/80 border-roman-gold/30 text-roman-black px-2 py-1 font-classical self-start sm:self-auto"
                 >
                   {word.partOfSpeech}
                 </Badge>
@@ -283,7 +283,7 @@ export function VocabularySection({ lesson }: { lesson: Lesson }) {
                 </div>
               )}
 
-              <div className="font-medium text-roman-black mb-3">
+              <div className="font-medium text-roman-black mb-3 text-sm sm:text-base">
                 {word.english}
               </div>
 
@@ -318,13 +318,13 @@ export function VocabularySection({ lesson }: { lesson: Lesson }) {
         </div>
         
         {/* Vocabulary Practice Section */}
-        <div className="mt-12 pt-8 border-t border-roman-gold/20">
-          <div className="text-center mb-8">
-            <h3 className="text-xl font-classical font-bold text-roman-red mb-2 flex items-center justify-center gap-2">
-              <Brain className="h-6 w-6 text-roman-gold" />
+        <div className="mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-roman-gold/20">
+          <div className="text-center mb-6 sm:mb-8">
+            <h3 className="text-lg sm:text-xl font-classical font-bold text-roman-red mb-2 flex items-center justify-center gap-2">
+              <Brain className="h-5 w-5 sm:h-6 sm:w-6 text-roman-gold" />
               Practice Vocabulary
             </h3>
-            <p className="text-muted-foreground font-classical">
+            <p className="text-muted-foreground font-classical text-sm sm:text-base">
               Test your knowledge with interactive vocabulary drills
             </p>
           </div>

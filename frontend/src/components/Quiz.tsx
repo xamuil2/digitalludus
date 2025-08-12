@@ -84,9 +84,9 @@ export default function Quiz({ selectedLesson = 1 }: QuizProps) {
   if (questions.length === 0) {
     return (
       <Card>
-        <CardHeader>
-          <CardTitle>Quiz</CardTitle>
-          <CardDescription>No quiz questions available for lesson {selectedLesson}</CardDescription>
+        <CardHeader className="px-4 sm:px-6 py-4 sm:py-6">
+          <CardTitle className="text-lg sm:text-xl">Quiz</CardTitle>
+          <CardDescription className="text-sm sm:text-base">No quiz questions available for lesson {selectedLesson}</CardDescription>
         </CardHeader>
       </Card>
     );
@@ -95,36 +95,43 @@ export default function Quiz({ selectedLesson = 1 }: QuizProps) {
   if (quizComplete) {
     return (
       <Card className="w-full max-w-2xl">
-        <CardHeader className="text-center">
-          <CardTitle className="flex items-center justify-center gap-2">
-            <Trophy className="h-6 w-6 text-yellow-500" />
+        <CardHeader className="text-center px-4 sm:px-6 py-4 sm:py-6">
+          <CardTitle className="flex items-center justify-center gap-2 text-lg sm:text-xl">
+            <Trophy className="h-5 w-5 sm:h-6 sm:w-6 text-yellow-500" />
             Quiz Complete!
           </CardTitle>
-          <CardDescription>Lesson {selectedLesson} Quiz Results</CardDescription>
+          <CardDescription className="text-sm sm:text-base">Lesson {selectedLesson} Quiz Results</CardDescription>
         </CardHeader>
-        <CardContent className="text-center space-y-6">
+        <CardContent className="text-center space-y-4 sm:space-y-6 px-4 sm:px-6 pb-4 sm:pb-6">
           <div>
-            <div className="text-4xl font-bold mb-2">{score}/{questions.length}</div>
-            <div className="text-2xl font-semibold text-muted-foreground">
+            <div className="text-3xl sm:text-4xl font-bold mb-2">{score}/{questions.length}</div>
+            <div className="text-xl sm:text-2xl font-semibold text-muted-foreground">
               {getScorePercentage()}%
             </div>
           </div>
-          <div className="text-lg">{getScoreMessage()}</div>
-          <div className="flex justify-center gap-4">
-            <Button onClick={resetQuiz} variant="outline">
+          <div className="text-base sm:text-lg px-4">{getScoreMessage()}</div>
+          <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
+            <Button 
+              onClick={resetQuiz} 
+              variant="outline"
+              className="w-full sm:w-auto touch-manipulation active:scale-95"
+            >
               <BookOpen className="h-4 w-4 mr-2" />
               Retake Quiz
             </Button>
             {getScorePercentage() >= 70 && nextLesson && (
-              <Button onClick={goToNextLesson} className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700">
+              <Button 
+                onClick={goToNextLesson} 
+                className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 w-full sm:w-auto touch-manipulation active:scale-95"
+              >
                 <ArrowRight className="h-4 w-4 mr-2" />
                 Next Lesson
               </Button>
             )}
           </div>
           {getScorePercentage() >= 70 && !nextLesson && (
-            <div className="text-center mt-4 p-4 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg border border-blue-200">
-              <p className="text-blue-800 font-medium">🎉 Congratulations! You've completed all available lessons!</p>
+            <div className="text-center mt-4 p-3 sm:p-4 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg border border-blue-200">
+              <p className="text-blue-800 font-medium text-sm sm:text-base">🎉 Congratulations! You've completed all available lessons!</p>
             </div>
           )}
         </CardContent>
@@ -134,15 +141,15 @@ export default function Quiz({ selectedLesson = 1 }: QuizProps) {
 
   return (
     <Card className="w-full max-w-2xl">
-      <CardHeader>
-        <div className="flex items-center justify-between">
-          <div>
-            <CardTitle>Lesson {selectedLesson} Quiz</CardTitle>
-            <CardDescription>
+      <CardHeader className="px-4 sm:px-6 py-4 sm:py-6">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-0">
+          <div className="flex-1 min-w-0">
+            <CardTitle className="text-lg sm:text-xl truncate">Lesson {selectedLesson} Quiz</CardTitle>
+            <CardDescription className="text-sm sm:text-base">
               Question {currentQuestionIndex + 1} of {questions.length}
             </CardDescription>
           </div>
-          <div className="text-right">
+          <div className="text-left sm:text-right flex-shrink-0">
             <div className="text-sm text-muted-foreground">
               Score: {score}/{currentQuestionIndex + (showResult ? 1 : 0)}
             </div>
@@ -150,12 +157,12 @@ export default function Quiz({ selectedLesson = 1 }: QuizProps) {
         </div>
         <Progress value={progress} className="w-full" />
       </CardHeader>
-      <CardContent className="space-y-6">
+      <CardContent className="space-y-4 sm:space-y-6 px-4 sm:px-6 pb-4 sm:pb-6">
         <div>
-          <h3 className="text-lg font-semibold mb-4">{currentQuestion.question}</h3>
-          <div className="space-y-2">
+          <h3 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 leading-relaxed">{currentQuestion.question}</h3>
+          <div className="space-y-2 sm:space-y-3">
             {currentQuestion.options.map((option, index) => {
-              let buttonClass = "w-full text-left justify-start h-auto p-4";
+              let buttonClass = "w-full text-left justify-start h-auto p-3 sm:p-4 text-sm sm:text-base";
               
               if (showResult) {
                 if (index === currentQuestion.correctAnswer) {
@@ -171,18 +178,18 @@ export default function Quiz({ selectedLesson = 1 }: QuizProps) {
                 <Button
                   key={index}
                   variant="outline"
-                  className={buttonClass}
+                  className={`${buttonClass} touch-manipulation active:scale-95`}
                   onClick={() => handleAnswerSelect(index)}
                   disabled={showResult}
                 >
-                  <div className="flex items-center">
-                    <span className="font-semibold mr-3">{String.fromCharCode(65 + index)}.</span>
-                    <span>{option}</span>
+                  <div className="flex items-center w-full">
+                    <span className="font-semibold mr-2 sm:mr-3 flex-shrink-0">{String.fromCharCode(65 + index)}.</span>
+                    <span className="flex-1 text-left break-words">{option}</span>
                     {showResult && index === currentQuestion.correctAnswer && (
-                      <CheckCircle className="h-4 w-4 ml-auto text-green-600" />
+                      <CheckCircle className="h-4 w-4 ml-2 text-green-600 flex-shrink-0" />
                     )}
                     {showResult && index === selectedAnswer && index !== currentQuestion.correctAnswer && (
-                      <XCircle className="h-4 w-4 ml-auto text-red-600" />
+                      <XCircle className="h-4 w-4 ml-2 text-red-600 flex-shrink-0" />
                     )}
                   </div>
                 </Button>
@@ -192,9 +199,9 @@ export default function Quiz({ selectedLesson = 1 }: QuizProps) {
         </div>
 
         {showResult && currentQuestion.explanation && (
-          <div className="bg-blue-50 p-4 rounded-lg">
-            <h4 className="font-semibold mb-2">Explanation:</h4>
-            <p className="text-sm">{currentQuestion.explanation}</p>
+          <div className="bg-blue-50 p-3 sm:p-4 rounded-lg">
+            <h4 className="font-semibold mb-2 text-sm sm:text-base">Explanation:</h4>
+            <p className="text-xs sm:text-sm leading-relaxed">{currentQuestion.explanation}</p>
           </div>
         )}
 
@@ -203,12 +210,15 @@ export default function Quiz({ selectedLesson = 1 }: QuizProps) {
             <Button 
               onClick={handleSubmitAnswer} 
               disabled={selectedAnswer === null}
-              className="w-32"
+              className="w-full xs:w-32 touch-manipulation active:scale-95"
             >
               Submit
             </Button>
           ) : (
-            <Button onClick={handleNextQuestion} className="w-32">
+            <Button 
+              onClick={handleNextQuestion} 
+              className="w-full xs:w-32 touch-manipulation active:scale-95"
+            >
               {currentQuestionIndex < questions.length - 1 ? 'Next' : 'Finish'}
             </Button>
           )}
