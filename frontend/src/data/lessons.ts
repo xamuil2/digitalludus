@@ -89,22 +89,16 @@ export interface Lesson {
   sections: LessonSection[];
 }
 
-// Lesson 1 - Extracted from Ludus pages 17-22
+// Lesson 1 - Stage 1: familia
 export const lesson1Template: Lesson = {
   id: 1,
-  title: "Ludus - Lesson 1",
-  subtitle: "The Latin Language",
-  description: "Introduction to Latin with first declension nouns, cases, and the story of Sicily",
-  pageNumbers: [17, 18, 19, 20, 21, 22],
+  title: "Stage 1 - familia",
+  subtitle: "The Family",
+  description: "Meet the family of Caecilius in Pompeii; learn basic Latin sentence structure and the verb 'est'",
+  pageNumbers: [1, 2, 3, 4, 5],
   
   introductoryNote: {
-    content: `Latin derives from what was once only one of many related languages spoken in Italy in the first half of the first millennium B.C. These Italic languages are considered one major branch, or family, of Proto-Indo-European, which is the root, or parent language of many still spoken today in Europe, Russia, the Middle East, India, and the Americas.
-
-The gradual spread of Rome's political and economic power in the Mediterranean world from circa 500 B.C. was the main cause of Latin prominence in antiquity and of its long history thereafter. Yet the importance and influence of Latin rests also on the literary creativity of the Romans themselves, who, while drawing inspiration from other ancient cultures (most notably that of the Greeks) fashioned their own corpus of remarkable works – epic and lyric poetry, history, oratory, and novels. As English today is spoken and written fluently by many who are neither natives of England nor descendants of those peoples, but have learned English as a second language, so many thousands within the Roman Empire and beyond spoke and wrote Latin, whether as a matter of practical necessity or as medium for the expression of ideas in speech, prose, and poetry.
-
-Latin as a living language, in the common sense of that expression, did not survive much beyond 500-600 A.D. By the time of the emperor Charlemagne (800 C.E.), a conscious program was required to restore the knowledge of Latin to a level sufficient for the reading and understanding of documents in that language, especially works pertaining to the Christian religion (in western Europe).
-
-In some sense, however, Latin survived through a kind of evolution. Like virtually every living language, its most frequent users was in oral communication. Oral languages tend to change in pronunciation and grammar over time, often to suit the needs of the speakers. Several modern European languages, such as French, Spanish, and Italian, are the results of this evolution. Pronunciation of words has changed, and, more important, the grammar of the oral forms of these languages has been considerably simplified, to the extent, in fact, that a speaker of French and a speaker of ancient Latin would be mutually unintelligible (as would be a speaker of modern English and one of Old English).`
+    content: `Welcome to Stage 1! You will meet the family (familia) of Lucius Caecilius Iucundus, a wealthy banker in ancient Pompeii. Learn about the members of his household and follow the adventures of Cerberus, the family dog, as he causes mischief in the kitchen. This lesson introduces basic Latin sentence structure and the locations within a Roman house.`
   },
   
   prosePassage: {
@@ -431,309 +425,144 @@ In some sense, however, Latin survived through a kind of evolution. Like virtual
   keyConcepts: [
     {
       id: "1-concept-1",
-      title: "Case",
-      explanation: `Latin nouns change their endings to show their function. The different types of forms produced by changing the endings are called "cases". Canis and canem are, in some sense, the same word (dog), but each is a different case. While this difference does not affect the basic meaning of the noun, it does affect the meaning of the sentence.
-
-(A Latin adjective must always be in the same case as the noun it modifies.)`,
+      title: "Basic Latin Word Order with 'est'",
+      explanation: `A Latin sentence containing the word 'est' often has the same order as English. The verb 'est' means 'is' and links the subject to a description or location.`,
       examples: [
         {
-          latin: "Canis fēlem īnsequitur.",
-          english: "The dog chases the cat.",
-          notes: "canis is subject, fēlem is direct object"
+          latin: "Metella est mater.",
+          english: "Metella is the mother.",
+          notes: "Same word order as English"
         },
         {
-          latin: "Fēlis canem īnsequitur.",
-          english: "The cat chases the dog.",
-          notes: "fēlis is subject, canem is direct object"
+          latin: "Canis est in via.",
+          english: "The dog is in the street.",
+          notes: "Subject + est + location"
         }
       ],
       rules: [
-        "Latin nouns change their endings to show their function",
-        "The ending of a word shows which noun is the subject and which the direct object",
-        "Order of words is unimportant in expressing the basic meaning of the sentence"
+        "Sentences with 'est' often follow English word order",
+        "'est' means 'is' and links subject to description or location",
+        "The pattern is: Subject + est + complement"
       ]
     },
     {
       id: "1-concept-2", 
-      title: "Number",
-      explanation: `Nouns and adjectives can refer to one thing or more than one thing. Of the two nouns dog and dogs, we say the first is singular in number and the second plural in number.
-
-(A Latin adjective must always be in the same number as the noun it modifies.)`,
+      title: "Different Latin Word Order",
+      explanation: `In other Latin sentences, the order is usually different from that of English. The verb often comes at the end of the sentence.`,
       examples: [
         {
-          latin: "Terra est magna.",
-          english: "The land is large.",
-          notes: "singular forms"
+          latin: "Canis in via dormit.",
+          english: "The dog is sleeping in the street.",
+          notes: "Subject + location + verb"
         },
         {
-          latin: "Terrae sunt magnae.",
-          english: "The lands are large.",
-          notes: "plural forms"
+          latin: "Servus in culina laborat.",
+          english: "The slave is working in the kitchen.",
+          notes: "Subject + location + verb"
         }
       ],
       rules: [
-        "Singular refers to one thing",
-        "Plural refers to more than one thing",
-        "Adjectives must match the number of the noun they modify"
+        "Latin often puts the verb at the end",
+        "Location phrases usually come before the verb",
+        "The pattern is often: Subject + location + verb"
       ]
     },
     {
       id: "1-concept-3",
-      title: "Nominative Case", 
-      explanation: `In Latin a subject or predicate noun or adjective is in the nominative case. Any adjective that modifies a subject or predicate noun must also be in the nominative case. In the Latin equivalent of The girl chases the cat, girl would have to be nominative in case and singular in number. In the Latin equivalent of The girls are strong, girls would have to be nominative in case and plural in number; strong would have to be nominative plural also, since it modifies girls (as a predicate adjective).
-
-In the first type of Latin nouns and adjectives we will encounter, the nominative singular and plural endings are -a and -ae, respectively. Thus, terra (land) is the nominative singular, and terrae (lands) is the nominative plural.`,
+      title: "Present Tense Verb Meanings",
+      explanation: `Latin present tense verbs can be translated in two ways in English. The context of the story will help you decide which translation gives the better sense.`,
       examples: [
         {
-          latin: "Terra est magna.",
-          english: "The land is large.",
-          notes: "terra is nominative singular subject"
+          latin: "Servus in culina laborat.",
+          english: "The slave works in the kitchen. / The slave is working in the kitchen.",
+          notes: "Both translations are possible"
         },
         {
-          latin: "Terrae sunt magnae.",
-          english: "The lands are large.",
-          notes: "terrae is nominative plural subject, magnae agrees"
+          latin: "Coquus dormit.",
+          english: "The cook sleeps. / The cook is sleeping.",
+          notes: "Choose based on context"
         }
       ],
       rules: [
-        "Subject nouns are in nominative case",
-        "Predicate nouns and adjectives are in nominative case", 
-        "Nominative singular ends in -a",
-        "Nominative plural ends in -ae"
+        "Latin present tense = English simple present OR present continuous",
+        "Choose the translation that fits the story context",
+        "Both 'works' and 'is working' are correct for 'laborat'"
       ]
     },
     {
       id: "1-concept-4",
-      title: "Adjective-Noun Agreement",
-      explanation: `Notice that in the first example above the (predicate) adjective magna is in the same case and number as the noun which it modifies. The same is true with adjectives modifying nouns directly. In the following sentence, magna must be in the nominative plural, magnae, in order to modify the noun terrae.
-
-This fundamental rule about the relation of adjectives to the nouns they modify is referred to as adjective-noun agreement.`,
+      title: "Family Vocabulary and Roman Names",
+      explanation: `Learn the basic family vocabulary and understand how Roman names work. Romans had multiple names showing family connections.`,
       examples: [
         {
-          latin: "Magnae terrae sunt bonae.",
-          english: "Large lands are good.",
-          notes: "magnae agrees with terrae in case, number, and gender"
+          latin: "Caecilius est pater.",
+          english: "Caecilius is the father.",
+          notes: "pater = father"
+        },
+        {
+          latin: "Metella est mater.",
+          english: "Metella is the mother.",
+          notes: "mater = mother"
+        },
+        {
+          latin: "Quintus est filius.",
+          english: "Quintus is the son.",
+          notes: "filius = son"
         }
       ],
       rules: [
-        "Adjectives must agree with their nouns in case, number, and gender",
-        "This agreement is maintained regardless of word order"
-      ]
-    },
-    {
-      id: "1-concept-5",
-      title: "Genitive Case",
-      explanation: `When a Latin noun is the possessor, it is in the genitive case. The singular and plural endings of this case are -ae and -ārum, respectively.
-
-N.B.: A possessive genitive usually follows the noun it modifies.`,
-      examples: [
-        {
-          latin: "terra agricolae",
-          english: "the land of the farmer, the farmer's land",
-          notes: "agricolae is genitive singular"
-        },
-        {
-          latin: "terra agricolārum", 
-          english: "the land of the farmers, the farmers' land",
-          notes: "agricolārum is genitive plural"
-        }
-      ],
-      rules: [
-        "Genitive case shows possession",
-        "Genitive singular ends in -ae", 
-        "Genitive plural ends in -ārum",
-        "Possessive genitive usually follows the noun it modifies"
-      ]
-    },
-    {
-      id: "1-concept-6",
-      title: "Accusative Case",
-      explanation: `A Latin noun that functions as the direct object must be in the accusative case. The singular and plural endings for this case are -am and -ās, respectively.`,
-      examples: [
-        {
-          latin: "Agricola terram habet.",
-          english: "The farmer has land.",
-          notes: "terram is accusative singular direct object"
-        },
-        {
-          latin: "Agricola terrās bonās habet.",
-          english: "The farmer has good lands.",
-          notes: "terrās is accusative plural, bonās agrees"
-        }
-      ],
-      rules: [
-        "Direct objects are in accusative case",
-        "Accusative singular ends in -am",
-        "Accusative plural ends in -ās"
-      ],
-      charts: [
-        {
-          title: "First Declension Endings",
-          headers: ["Case", "Singular", "Plural"],
-          rows: [
-            ["Nominative", "-a", "-ae"],
-            ["Genitive", "-ae", "-ārum"], 
-            ["Accusative", "-am", "-ās"]
-          ]
-        },
-        {
-          title: "Model: terra",
-          headers: ["Case", "Singular", "Plural"],
-          rows: [
-            ["NOM", "terra", "terrae"],
-            ["GEN", "terrae", "terrārum"],
-            ["ACC", "terram", "terrās"]
-          ]
-        }
-      ]
-    },
-    {
-      id: "1-concept-7",
-      title: "Three Notes about Verbs and Sentences",
-      explanation: `1) Verbs change their forms to agree with their subject in number. If the subject is singular, the verb has a singular form; if the subject is plural, the verb has a plural form.
-
-2) The standard order of words in a Latin sentence is subject-object-verb (SOV). Linking verbs, such as to be, can come between the subject and (predicate) adjective or noun, as in the examples directly above.
-
-3) When the verb est or sunt comes before its subject, then it has the sense of the English There is... or There are... Est īnsula. There is an island. (Such use of the verb to be in English is called the "expletive".)`,
-      examples: [
-        {
-          latin: "Terra est bona.",
-          english: "The land is good.",
-          notes: "Singular subject and verb"
-        },
-        {
-          latin: "Terrae sunt bonae.",
-          english: "The lands are good.", 
-          notes: "Plural subject and verb"
-        },
-        {
-          latin: "Terram videt.",
-          english: "She sees the land.",
-          notes: "SOV word order"
-        },
-        {
-          latin: "Est īnsula.",
-          english: "There is an island.",
-          notes: "Expletive use of est"
-        }
-      ],
-      rules: [
-        "Verbs agree with their subjects in number",
-        "Standard Latin word order is Subject-Object-Verb (SOV)",
-        "Est/sunt before the subject means 'there is/are'"
+        "pater = father, mater = mother, filius = son",
+        "servus = slave, coquus = cook, canis = dog",
+        "Roman names often indicated family relationships"
       ]
     }
   ],
-  
   practiceExercises: [
     {
       id: "1-practice-latin-english",
       type: "latin-to-english",
-      title: "1A Translate into English",
+      title: "Practice A - Complete and Translate",
       sentences: [
         {
           id: "1-l2e-1",
-          source: "Silva est magna.",
-          target: "The forest is large.",
-          hints: [],
-          notes: ""
+          source: "Quintus est in horto.",
+          target: "Quintus is in the garden.",
+          hints: ["Complete: _____ est in horto."],
+          notes: "Choose from: Quintus, Grumio, Caecilius, canis, mater, servus"
         },
         {
           id: "1-l2e-2", 
-          source: "Silva nōn est magna.",
-          target: "The forest is not large.",
-          hints: [],
+          source: "Canis est in via.",
+          target: "The dog is in the street.",
+          hints: ["Complete: _____ est in via."],
           notes: ""
         },
         {
           id: "1-l2e-3",
-          source: "Silvae nōn sunt magnae.",
-          target: "The forests are not large.",
-          hints: [],
+          source: "Grumio est in culina.",
+          target: "Grumio is in the kitchen.",
+          hints: ["Complete: _____ est in culina."],
           notes: ""
         },
         {
           id: "1-l2e-4",
-          source: "Sunt multae et parvae īnsulae.",
-          target: "There are many and small islands.",
-          hints: [],
+          source: "Caecilius est in tablino.",
+          target: "Caecilius is in the study.",
+          hints: ["Complete: _____ est in tablino."],
           notes: ""
         },
         {
           id: "1-l2e-5",
-          source: "Agricolae īnsulās saepe nōn amant.",
-          target: "Farmers often do not love islands.",
-          hints: [],
+          source: "Mater est in atrio.",
+          target: "Mother is in the atrium.",
+          hints: ["Complete: _____ est in atrio."],
           notes: ""
         },
         {
           id: "1-l2e-6",
-          source: "Īncola magnam silvam quoque habet.",
-          target: "The inhabitant also has a large forest.",
-          hints: [],
-          notes: ""
-        },
-        {
-          id: "1-l2e-7",
-          source: "Agricolae silvās amant, sed silvae parvae sunt.",
-          target: "Farmers love forests, but the forests are small.",
-          hints: [],
-          notes: ""
-        },
-        {
-          id: "1-l2e-8",
-          source: "Puellae terram nōn laudant quod terra silvam nōn habet.",
-          target: "The girls do not praise the land because the land does not have a forest.",
-          hints: [],
-          notes: ""
-        },
-        {
-          id: "1-l2e-9",
-          source: "Īnsulās amant. Īnsulae magnae sunt.",
-          target: "They love islands. The islands are large.",
-          hints: [],
-          notes: ""
-        },
-        {
-          id: "1-l2e-10",
-          source: "Īnsulās amant et īnsulae magnae sunt.",
-          target: "They love islands and the islands are large.",
-          hints: [],
-          notes: ""
-        },
-        {
-          id: "1-l2e-11",
-          source: "Īnsulās amant quod īnsulae sunt magnae.",
-          target: "They love islands because the islands are large.",
-          hints: [],
-          notes: ""
-        },
-        {
-          id: "1-l2e-12",
-          source: "Terra īncolae est magna et bona.",
-          target: "The land of the inhabitant is large and good.",
-          hints: [],
-          notes: ""
-        },
-        {
-          id: "1-l2e-13",
-          source: "Magnās īnsulīs nautārum videt.",
-          target: "She sees the large islands of the sailors.",
-          hints: [],
-          notes: ""
-        },
-        {
-          id: "1-l2e-14",
-          source: "Multās et bonās silvās vident.",
-          target: "They see many and good forests.",
-          hints: [],
-          notes: ""
-        },
-        {
-          id: "1-l2e-15",
-          source: "Vītam agricolārum laudant sed vītam perīculōsam nōn amant.",
-          target: "They praise the life of farmers but do not love a dangerous life.",
-          hints: [],
+          source: "Servus est in triclinio.",
+          target: "The slave is in the dining room.",
+          hints: ["Complete: _____ est in triclinio."],
           notes: ""
         }
       ]
@@ -741,76 +570,48 @@ N.B.: A possessive genitive usually follows the noun it modifies.`,
     {
       id: "1-practice-english-latin",
       type: "english-to-latin",
-      title: "1B Write in Latin",
+      title: "Practice B - Complete with Location",
       sentences: [
         {
           id: "1-e2l-1",
-          source: "The land is large.",
-          target: "Terra est magna.",
-          hints: ["Remember: nominative case for subject", "Use est for 'is'"],
-          notes: ""
+          source: "Clemens in via laborat.",
+          target: "Clemens works in the street.",
+          hints: ["Complete: Clemens _____ laborat."],
+          notes: "Choose from: in via, in horto, in atrio, in tablino, in culina, in triclinio"
         },
         {
           id: "1-e2l-2",
-          source: "There are small islands.",
-          target: "Sunt parvae īnsulae.",
-          hints: ["Use sunt for 'there are'", "Adjective must agree with noun"],
+          source: "Caecilius in tablino scribit.",
+          target: "Caecilius writes in the study.",
+          hints: ["Complete: Caecilius _____ scribit."],
           notes: ""
         },
         {
           id: "1-e2l-3",
-          source: "The land of a farmer is large and good.",
-          target: "Terra agricolae est magna et bona.",
-          hints: ["Genitive case for 'of a farmer'", "Multiple adjectives with et"],
+          source: "Canis in via latrat.",
+          target: "The dog barks in the street.",
+          hints: ["Complete: canis _____ latrat."],
           notes: ""
         },
         {
           id: "1-e2l-4",
-          source: "The lives of the girls are good.",
-          target: "Vītae puellārum sunt bonae.",
-          hints: ["Plural subject and verb", "Genitive plural for 'of the girls'"],
+          source: "Metella in atrio stat.",
+          target: "Metella stands in the atrium.",
+          hints: ["Complete: Metella _____ stat."],
           notes: ""
         },
         {
           id: "1-e2l-5",
-          source: "He does not have many (and) small islands.",
-          target: "Multās et parvās īnsulās nōn habet.",
-          hints: ["Accusative case for direct object", "Use nōn for negation"],
+          source: "Coquus est in culina.",
+          target: "The cook is in the kitchen.",
+          hints: ["Complete: coquus est _____."],
           notes: ""
         },
         {
           id: "1-e2l-6",
-          source: "The inhabitant has little land because the island has many forests.",
-          target: "Īncola parvam terram habet quod īnsula multās silvās habet.",
-          hints: ["Use quod for 'because'", "Accusative for direct objects"],
-          notes: ""
-        },
-        {
-          id: "1-e2l-7",
-          source: "The islands are many but small.",
-          target: "Īnsulae sunt multae sed parvae.",
-          hints: ["Use sed for 'but'", "Predicate adjectives in nominative"],
-          notes: ""
-        },
-        {
-          id: "1-e2l-8",
-          source: "She sees the inhabitant's island.",
-          target: "Īnsulam īncolae videt.",
-          hints: ["Genitive for possession", "Accusative for direct object"],
-          notes: ""
-        },
-        {
-          id: "1-e2l-9",
-          source: "They often praise the farmer because they love the land.",
-          target: "Agricolam saepe laudant quod terram amant.",
-          hints: ["Use saepe for 'often'", "Use quod for 'because'"],
-          notes: ""
-        },
-        {
-          id: "1-e2l-10",
-          source: "The life of girls is good.",
-          target: "Vīta puellārum est bona.",
-          hints: ["Singular 'life'", "Genitive plural for 'of girls'"],
+          source: "Quintus est in triclinio.",
+          target: "Quintus is in the dining room.",
+          hints: ["Complete: Quintus est _____."],
           notes: ""
         }
       ]
@@ -818,24 +619,29 @@ N.B.: A possessive genitive usually follows the noun it modifies.`,
   ],
   
   objectives: [
-    "Understand the concept of grammatical case in Latin",
-    "Learn the nominative, genitive, and accusative cases of first declension nouns",
-    "Master first declension noun endings (-a, -ae, -am, -ās, -ae, -ārum)", 
-    "Understand adjective-noun agreement in case, number, and gender",
-    "Learn basic Latin sentence structure (Subject-Object-Verb)",
-    "Recognize and use common first declension vocabulary",
-    "Translate simple Latin sentences with first declension nouns and adjectives",
-    "Understand the difference between singular and plural forms",
-    "Learn basic Latin verbs (est, sunt, habet, amant, laudant, vident)",
-    "Practice reading connected Latin prose about Sicily"
+    "Meet the family of Caecilius: pater, mater, filius, servus, coquus, canis",
+    "Learn the locations in a Roman house: tablinum, atrium, triclinium, hortus, culina, via",
+    "Understand basic Latin sentence structure with 'est' (is)",
+    "Learn that Latin word order can differ from English",
+    "Practice verbs: est, scribit, sedet, laborat, dormit, intrat, stat, latrat",
+    "Follow the story of Cerberus the dog and his kitchen adventure",
+    "Understand present tense verbs can be translated two ways in English",
+    "Learn basic Latin family and household vocabulary",
+    "Practice completing sentences with appropriate words",
+    "Read connected Latin prose about a Roman family in Pompeii"
   ],
   
   culturalNotes: [
-    "Sicily was an important island in the ancient Mediterranean world",
-    "Roman farmers (agricolae) were crucial to the empire's food supply", 
-    "The Latin language evolved from spoken dialects in ancient Italy",
-    "Latin became the language of administration, literature, and education throughout the Roman Empire",
-    "The phrase 'terra incognita' (unknown land) was used on ancient maps for unexplored regions"
+    "Caecilius: Lucius Caecilius Iucundus was a real wealthy banker in first-century Pompeii",
+    "Roman Names: Caecilius had three names - Lucius (personal), Caecilius (clan), Iucundus (family)",
+    "Business: Caecilius was an auctioneer, tax collector, farmer, moneylender, and cloth dealer", 
+    "Roman Citizens: Only Roman citizens had three names; slaves had just one name",
+    "Metella: Roman wives had important roles managing households and supervising slaves",
+    "Roman Houses: Wealthy Romans lived in houses with atrium, tablinum, triclinium, and peristylium",
+    "Pompeii: A town of about 10,000 people at the foot of Mount Vesuvius",
+    "Slaves: Had no legal rights and were considered property of their masters",
+    "Roman Women: Had more freedom than women in Greece or the Near East",
+    "House Layout: Roman houses came right to the street with few windows facing outward"
   ],
   
   difficulty: "beginner",
@@ -878,6 +684,13 @@ N.B.: A possessive genitive usually follows the noun it modifies.`,
       content: "practiceExercises", // References the practiceExercises field
       type: "exercises",
       order: 5
+    },
+    {
+      id: "1-culture",
+      title: "Cultural Background",
+      content: "culturalNotes", // References the culturalNotes field
+      type: "culture",
+      order: 6
     }
   ]
 };

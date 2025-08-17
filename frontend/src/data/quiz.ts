@@ -13,85 +13,103 @@ export const quizData: QuizQuestion[] = [
   // Lesson 1 Questions
   {
     id: '1-1',
-    question: 'What is the nominative singular of "puella"?',
-    options: ['puella', 'puellam', 'puellae', 'puellarum'],
-    correctAnswer: 0,
-    explanation: 'The nominative singular is the basic dictionary form of the noun, used for the subject of a sentence.',
+    question: 'What does "pater" mean?',
+    options: ['mother', 'father', 'son', 'slave'],
+    correctAnswer: 1,
+    explanation: 'Pater means "father". Caecilius est pater = Caecilius is the father.',
     lesson: 1,
     difficulty: 'easy',
-    category: 'grammar'
+    category: 'vocabulary'
   },
   {
     id: '1-2',
-    question: 'Which case is used for the direct object in Latin?',
-    options: ['Nominative', 'Accusative', 'Genitive', 'Dative'],
-    correctAnswer: 1,
-    explanation: 'The accusative case is used for direct objects - the thing being acted upon by the verb.',
+    question: 'Translate: "Metella est mater"',
+    options: ['Metella is the mother', 'Metella is the daughter', 'Metella is the slave', 'Metella is angry'],
+    correctAnswer: 0,
+    explanation: 'Metella est mater = Metella is the mother. Mater means "mother".',
     lesson: 1,
-    difficulty: 'medium',
-    category: 'grammar'
+    difficulty: 'easy',
+    category: 'translation'
   },
   {
     id: '1-3',
-    question: 'What does "aqua" mean in English?',
-    options: ['earth', 'water', 'forest', 'gate'],
+    question: 'What does "canis" mean?',
+    options: ['cat', 'dog', 'horse', 'bird'],
     correctAnswer: 1,
-    explanation: 'Aqua is a first declension feminine noun meaning "water". Think of English words like "aquatic" and "aquarium".',
+    explanation: 'Canis means "dog". Cerberus est canis = Cerberus is the dog.',
     lesson: 1,
     difficulty: 'easy',
     category: 'vocabulary'
   },
   {
     id: '1-4',
-    question: 'Translate: "Agricola in villa habitat"',
-    options: ['The farmer lives in the house', 'The farmer works in the field', 'The girl lives in the house', 'The farmer loves the house'],
+    question: 'Translate: "coquus in culina laborat"',
+    options: ['The cook works in the kitchen', 'The cook sleeps in the kitchen', 'The slave works in the garden', 'The cook is angry'],
     correctAnswer: 0,
-    explanation: 'Agricola (nominative) = farmer/subject, villa (ablative) = in the house, habitat = he lives/dwells.',
+    explanation: 'Coquus = cook, in culina = in the kitchen, laborat = works. "The cook works in the kitchen."',
     lesson: 1,
     difficulty: 'medium',
     category: 'translation'
   },
   {
     id: '1-5',
-    question: 'Which of these is a first declension noun?',
-    options: ['servus', 'dominus', 'puella', 'amicus'],
+    question: 'What does "dormit" mean?',
+    options: ['works', 'sits', 'sleeps', 'enters'],
     correctAnswer: 2,
-    explanation: 'Puella is first declension (ends in -a). The others (servus, dominus, amicus) are second declension nouns ending in -us.',
+    explanation: 'Dormit means "sleeps" or "is sleeping". Canis in via dormit = The dog sleeps in the street.',
     lesson: 1,
-    difficulty: 'medium',
-    category: 'grammar'
+    difficulty: 'easy',
+    category: 'vocabulary'
   },
   {
     id: '1-6',
-    question: 'What is the accusative singular of "silva"?',
-    options: ['silva', 'silvam', 'silvae', 'silvarum'],
-    correctAnswer: 1,
-    explanation: 'First declension accusative singular endings are -am. So silva → silvam.',
+    question: 'Which room is the "tablinum"?',
+    options: ['kitchen', 'dining room', 'study', 'garden'],
+    correctAnswer: 2,
+    explanation: 'Tablinum is the study or office where business was conducted in a Roman house.',
     lesson: 1,
     difficulty: 'medium',
-    category: 'grammar'
+    category: 'culture'
   },
-  
-  // Additional Lesson 1 Questions
   {
     id: '1-7',
-    question: 'What is the genitive singular of "porta" (gate)?',
-    options: ['porta', 'portam', 'portae', 'portarum'],
-    correctAnswer: 2,
-    explanation: 'First declension genitive singular endings are -ae. So porta → portae.',
-    lesson: 1,
-    difficulty: 'medium',
-    category: 'grammar'
-  },
-  {
-    id: '1-8',
-    question: 'Translate: "Puella aquam portat"',
-    options: ['The girl carries water', 'The girl drinks water', 'The water carries the girl', 'The girl loves water'],
-    correctAnswer: 0,
-    explanation: 'Puella (nominative) = girl (subject), aquam (accusative) = water (object), portat = carries.',
+    question: 'Translate: "Cerberus intrat"',
+    options: ['Cerberus exits', 'Cerberus enters', 'Cerberus barks', 'Cerberus jumps'],
+    correctAnswer: 1,
+    explanation: 'Intrat means "enters". This is when Cerberus enters the kitchen and causes trouble.',
     lesson: 1,
     difficulty: 'easy',
     category: 'translation'
+  },
+  {
+    id: '1-8',
+    question: 'What does "iratus" mean?',
+    options: ['happy', 'angry', 'tired', 'hungry'],
+    correctAnswer: 1,
+    explanation: 'Iratus means "angry". Coquus est iratus = The cook is angry (when he finds Cerberus in the kitchen).',
+    lesson: 1,
+    difficulty: 'easy',
+    category: 'vocabulary'
+  },
+  {
+    id: '1-9',
+    question: 'What does Grumio shout when he sees Cerberus?',
+    options: ['salve!', 'pestis! furcifer!', 'ave!', 'vale!'],
+    correctAnswer: 1,
+    explanation: '"Pestis! furcifer!" means "Pest! Scoundrel!" - Grumio\'s angry exclamation when Cerberus wakes him up.',
+    lesson: 1,
+    difficulty: 'medium',
+    category: 'culture'
+  },
+  {
+    id: '1-10',
+    question: 'In which room does Grumio work?',
+    options: ['atrium', 'tablinum', 'culina', 'hortus'],
+    correctAnswer: 2,
+    explanation: 'Grumio works in the culina (kitchen) because he is the coquus (cook).',
+    lesson: 1,
+    difficulty: 'easy',
+    category: 'vocabulary'
   },
 
   // Lesson 2 Questions
