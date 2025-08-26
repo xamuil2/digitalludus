@@ -178,7 +178,7 @@ Write out each sentence, choosing the noun that correctly completes the sentence
 
 ### D
 
-Translate into English:
+Translate into English:w
 
 **amicus**
 
