@@ -503,6 +503,10 @@ export function GrammarSection({ lesson }: { lesson: Lesson }) {
 export function PracticeSection({ lesson }: { lesson: Lesson }) {
   const [selectedExercise, setSelectedExercise] = useState(0);
   const [revealedAnswers, setRevealedAnswers] = useState<Set<string>>(new Set());
+  const [sentenceAnswers, setSentenceAnswers] = useState<Record<string, string>>({});
+  const [sentenceResults, setSentenceResults] = useState<Record<string, boolean | undefined>>({});
+  const [translationAnswers, setTranslationAnswers] = useState<Record<string, string>>({});
+  const [translationResults, setTranslationResults] = useState<Record<string, boolean | undefined>>({});
 
   const toggleAnswer = (sentenceId: string) => {
     const newRevealed = new Set(revealedAnswers);
@@ -512,6 +516,98 @@ export function PracticeSection({ lesson }: { lesson: Lesson }) {
       newRevealed.add(sentenceId);
     }
     setRevealedAnswers(newRevealed);
+  };
+
+  const checkAnswer = (sentenceId: string) => {
+    const currentExercise = lesson.practiceExercises[selectedExercise];
+    const sentence = currentExercise.sentences.find(s => s.id === sentenceId);
+    const userAnswer = sentenceAnswers[sentenceId];
+    
+    if (sentence && userAnswer) {
+      const isCorrect = userAnswer === sentence.correctAnswer;
+      setSentenceResults(prev => ({ ...prev, [sentenceId]: isCorrect }));
+      
+      if (isCorrect) {
+        // Mark as correct and keep the answer
+        // The word is effectively "used up" from the word bank
+      } else {
+        // Return the word to the word bank by clearing the answer
+        setSentenceAnswers(prev => ({ ...prev, [sentenceId]: '' }));
+        // Clear the result so user can try again
+        setSentenceResults(prev => ({ ...prev, [sentenceId]: undefined }));
+      }
+    }
+  };
+
+  const checkTranslation = (sentenceId: string) => {
+    const currentExercise = lesson.practiceExercises[selectedExercise];
+    const sentence = currentExercise.sentences.find(s => s.id === sentenceId);
+    const userTranslation = translationAnswers[sentenceId];
+    
+    if (sentence && userTranslation && sentence.translation) {
+      // Simple case-insensitive comparison for now
+      const isCorrect = userTranslation.toLowerCase().trim() === sentence.translation.toLowerCase().trim();
+      setTranslationResults(prev => ({ ...prev, [sentenceId]: isCorrect }));
+      
+      // Always set the result, don't clear it for incorrect answers
+      // This ensures the feedback section always appears
+    }
+  };
+
+  const handleDrop = (sentenceId: string, e: React.DragEvent) => {
+    e.preventDefault();
+    const word = e.dataTransfer.getData('text/plain');
+    setSentenceAnswers(prev => ({ ...prev, [sentenceId]: word }));
+  };
+
+  const handleDragOver = (e: React.DragEvent) => {
+    e.preventDefault();
+  };
+
+  const getAvailableWords = () => {
+    const currentExercise = lesson.practiceExercises[selectedExercise];
+    if (currentExercise.type !== 'fill-in-blank' || !currentExercise.wordBank) {
+      return [];
+    }
+    
+    // Get all used words
+    const usedWords = Object.values(sentenceAnswers).filter(word => word);
+    
+    // Return words that haven't been used yet
+    return currentExercise.wordBank.filter(word => !usedWords.includes(word));
+  };
+
+  const highlightDifferences = (userAnswer: string, correctAnswer: string) => {
+    const userWords = userAnswer.toLowerCase().trim().split(/\s+/);
+    const correctWords = correctAnswer.toLowerCase().trim().split(/\s+/);
+    
+    const result: React.ReactNode[] = [];
+    const maxLength = Math.max(userWords.length, correctWords.length);
+    
+    for (let i = 0; i < maxLength; i++) {
+      const userWord = userWords[i] || '';
+      const correctWord = correctWords[i] || '';
+      
+      if (i > 0) result.push(' ');
+      
+      if (userWord === correctWord) {
+        // Words match exactly
+        result.push(<span key={i} className="text-green-700 font-medium">{correctWord}</span>);
+      } else if (userWord && correctWord) {
+        // Both words exist but are different
+        result.push(<span key={i} className="text-red-700 line-through">{userWord}</span>);
+        result.push(' ');
+        result.push(<span key={i + '-correct'} className="text-red-700 font-medium">{correctWord}</span>);
+      } else if (userWord && !correctWord) {
+        // User has extra word
+        result.push(<span key={i} className="text-red-700 line-through">{userWord}</span>);
+      } else if (!userWord && correctWord) {
+        // User is missing word
+        result.push(<span key={i} className="text-red-700 font-medium">{correctWord}</span>);
+      }
+    }
+    
+    return result;
   };
 
   return (
@@ -535,11 +631,19 @@ export function PracticeSection({ lesson }: { lesson: Lesson }) {
                 →
                 <span className="text-sm ml-2">English</span>
               </>
-            ) : (
+            ) : exercise.type === 'english-to-latin' ? (
               <>
                 <span className="text-sm mr-2">English</span>
                 →
                 <span className="font-classical text-sm ml-2">Latin</span>
+              </>
+            ) : exercise.type === 'translation-only' ? (
+              <>
+                <span className="font-classical text-sm">Practice C</span>
+              </>
+            ) : (
+              <>
+                <span className="font-classical text-sm">{exercise.title.includes('Practice A') ? 'Practice A' : 'Practice B'}</span>
               </>
             )}
           </Button>
@@ -559,6 +663,23 @@ export function PracticeSection({ lesson }: { lesson: Lesson }) {
             <CardDescription className="text-muted-foreground text-base font-classical">
               {lesson.practiceExercises[selectedExercise].sentences.length} sentences to practice
             </CardDescription>
+            {lesson.practiceExercises[selectedExercise].type === 'fill-in-blank' && lesson.practiceExercises[selectedExercise].description && (
+              <div className="text-roman-black text-base font-classical mt-2">
+                {lesson.practiceExercises[selectedExercise].description}
+              </div>
+            )}
+            {lesson.practiceExercises[selectedExercise].type === 'fill-in-blank' && lesson.practiceExercises[selectedExercise].example && (
+              <div className="bg-gradient-to-br from-roman-cream/60 to-roman-marble/40 p-4 rounded-lg border border-roman-gold/20 mt-4">
+                <div className="text-sm font-classical font-semibold text-roman-gold mb-2 flex items-center gap-2">
+                  📝 Example:
+                </div>
+                <div className="space-y-2 text-roman-black font-classical">
+                  <div><span className="font-medium">Incomplete:</span> {lesson.practiceExercises[selectedExercise].example?.incomplete}</div>
+                  <div><span className="font-medium">Complete:</span> {lesson.practiceExercises[selectedExercise].example?.complete}</div>
+                  <div><span className="font-medium">Translation:</span> {lesson.practiceExercises[selectedExercise].example?.translation}</div>
+                </div>
+              </div>
+            )}
           </CardHeader>
           <CardContent className="p-8">
             <div className="space-y-6">
@@ -577,7 +698,11 @@ export function PracticeSection({ lesson }: { lesson: Lesson }) {
                       {/* Source Text */}
                       <div className="bg-gradient-to-br from-roman-marble/50 to-roman-cream/30 p-4 rounded-lg border border-roman-gold/20">
                         <div className="font-medium text-lg text-roman-black leading-relaxed font-classical">
-                          {sentence.source}
+                          {lesson.practiceExercises[selectedExercise].type === 'fill-in-blank' 
+                            ? sentence.incomplete 
+                            : lesson.practiceExercises[selectedExercise].type === 'translation-only'
+                            ? sentence.latin
+                            : sentence.source}
                         </div>
                       </div>
 
@@ -595,6 +720,152 @@ export function PracticeSection({ lesson }: { lesson: Lesson }) {
                               </li>
                             ))}
                           </ul>
+                        </div>
+                      )}
+
+                      {/* Fill in the Blank Exercise - ONLY for fill-in-blank type */}
+                      {lesson.practiceExercises[selectedExercise].type === 'fill-in-blank' && (
+                        <div className="space-y-4">
+                          {/* Word Bank */}
+                          <div className="bg-gradient-to-br from-roman-cream/60 to-roman-marble/40 p-4 rounded-lg border border-roman-gold/20">
+                            <div className="text-sm font-classical font-semibold text-roman-gold mb-3 flex items-center gap-2">
+                              📚 Word Bank:
+                            </div>
+                            <div className="flex flex-wrap gap-2">
+                              {getAvailableWords().map((word, wordIndex) => (
+                                <div
+                                  key={wordIndex}
+                                  className="px-3 py-2 bg-white border-2 border-roman-gold/30 rounded-lg text-roman-black font-classical font-medium cursor-pointer hover:bg-roman-gold/10 hover:border-roman-gold transition-all shadow-sm"
+                                  draggable
+                                  onDragStart={(e) => e.dataTransfer.setData('text/plain', word)}
+                                >
+                                  {word}
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+
+                          {/* Answer Input */}
+                          <div className="bg-gradient-to-br from-roman-marble/50 to-roman-cream/30 p-4 rounded-lg border border-roman-gold/20">
+                            <div className="text-sm font-classical font-semibold text-roman-gold mb-3 flex items-center gap-2">
+                              ✏️ Your Answer:
+                            </div>
+                            <div className="flex items-center gap-3">
+                              <div 
+                                className="flex-1 min-h-[48px] bg-white border-2 border-roman-gold/30 rounded-lg p-3 flex items-center justify-center text-roman-black font-classical font-medium"
+                                onDrop={(e) => handleDrop(sentence.id, e)}
+                                onDragOver={handleDragOver}
+                                style={{ 
+                                  borderColor: sentenceAnswers[sentence.id] ? '#d97706' : '#fbbf24',
+                                  backgroundColor: sentenceAnswers[sentence.id] ? '#fef3c7' : '#ffffff'
+                                }}
+                              >
+                                {sentenceAnswers[sentence.id] || 'Drop word here'}
+                              </div>
+                              <Button
+                                variant="outline"
+                                onClick={() => checkAnswer(sentence.id)}
+                                disabled={!sentenceAnswers[sentence.id]}
+                                className="glass-effect border-roman-gold/30 hover:bg-roman-gold/10 hover:border-roman-gold shadow-gold transition-all font-classical"
+                              >
+                                Check
+                              </Button>
+                            </div>
+                          </div>
+
+                          {/* Feedback */}
+                          {sentenceResults[sentence.id] !== undefined && (
+                            <div className={`p-4 rounded-lg border-2 transition-all duration-300 ${
+                              sentenceResults[sentence.id] 
+                                ? 'bg-green-50 border-green-200 text-green-800' 
+                                : 'bg-red-50 border-red-200 text-red-800'
+                            }`}>
+                              <div className="flex items-center gap-2 font-classical font-semibold">
+                                {sentenceResults[sentence.id] ? (
+                                  <>
+                                    <span className="text-green-600">✅ Correct!</span>
+                                  </>
+                                ) : (
+                                  <>
+                                    <span className="text-red-600">❌ Incorrect</span>
+                                  </>
+                                )}
+                              </div>
+                              {!sentenceResults[sentence.id] && (
+                                <div className="mt-2 text-sm">
+                                  <span className="text-red-700">
+                                    <span className="font-medium">Correct answer:</span> {sentence.correctAnswer}
+                                  </span>
+                                </div>
+                              )}
+                            </div>
+                          )}
+                        </div>
+                      )}
+
+
+
+                      {/* Translation-Only Exercise */}
+                      {lesson.practiceExercises[selectedExercise].type === 'translation-only' && (
+                        <div className="space-y-4">
+                          {/* Latin Text Display */}
+                          
+
+                          {/* Translation Input */}
+                          <div className="bg-gradient-to-br from-roman-marble/50 to-roman-cream/30 p-4 rounded-lg border border-roman-gold/20">
+                            <div className="text-sm font-classical font-semibold text-roman-gold mb-3 flex items-center gap-2">
+                              🌐 Translate to English:
+                            </div>
+                            <div className="flex items-center gap-3">
+                              <input
+                                type="text"
+                                placeholder="Type your English translation here..."
+                                value={translationAnswers[sentence.id] || ''}
+                                onChange={(e) => setTranslationAnswers(prev => ({ ...prev, [sentence.id]: e.target.value }))}
+                                className="flex-1 px-3 py-2 bg-white border-2 border-roman-gold/30 rounded-lg text-roman-black font-classical font-medium focus:outline-none focus:border-roman-gold transition-all"
+                              />
+                              <Button
+                                variant="outline"
+                                onClick={() => checkTranslation(sentence.id)}
+                                disabled={!translationAnswers[sentence.id]}
+                                className="glass-effect border-roman-gold/30 hover:bg-roman-gold/10 hover:border-roman-gold shadow-gold transition-all font-classical"
+                              >
+                                Check
+                              </Button>
+                            </div>
+                          </div>
+
+                          {/* Translation Feedback */}
+                          {translationResults[sentence.id] !== undefined && (
+                            <div className={`p-4 rounded-lg border-2 transition-all duration-300 ${
+                              translationResults[sentence.id] 
+                                ? 'bg-green-50 border-green-200 text-green-800' 
+                                : 'bg-red-50 border-red-200 text-red-800'
+                            }`}>
+                              <div className="flex items-center gap-2 font-classical font-semibold">
+                                {translationResults[sentence.id] ? (
+                                  <>
+                                    <span className="text-green-600">✅ Correct Translation!</span>
+                                  </>
+                                ) : (
+                                  <>
+                                    <span className="text-red-600">❌ Incorrect Translation</span>
+                                  </>
+                                )}
+                              </div>
+                              {!translationResults[sentence.id] && sentence.translation && (
+                                <div className="mt-2 text-sm">
+                                  <span className="text-red-700">
+                                    <span className="font-medium">Your answer:</span> {translationAnswers[sentence.id]}
+                                  </span>
+                                  <br />
+                                  <span className="text-red-700">
+                                    <span className="font-medium">Correct answer:</span> {highlightDifferences(translationAnswers[sentence.id], sentence.translation)}
+                                  </span>
+                                </div>
+                              )}
+                            </div>
+                          )}
                         </div>
                       )}
 
@@ -624,7 +895,19 @@ export function PracticeSection({ lesson }: { lesson: Lesson }) {
                             <div className="w-2 h-2 bg-roman-gold rounded-full"></div>
                             <span className="font-classical font-semibold text-roman-red">Answer:</span>
                           </div>
-                          <div className="font-medium text-roman-black text-lg mb-2 font-classical">{sentence.target}</div>
+                          {lesson.practiceExercises[selectedExercise].type === 'fill-in-blank' ? (
+                            <>
+                              <div className="font-medium text-roman-black text-lg mb-2 font-classical">{sentence.complete}</div>
+                              <div className="font-medium text-roman-black text-base mb-2 font-classical">{sentence.translation}</div>
+                            </>
+                          ) : lesson.practiceExercises[selectedExercise].type === 'translation-only' ? (
+                            <>
+                              <div className="font-medium text-roman-black text-lg mb-2 font-classical">{sentence.latin}</div>
+                              <div className="font-medium text-roman-black text-base mb-2 font-classical">{sentence.translation}</div>
+                            </>
+                          ) : (
+                            <div className="font-medium text-roman-black text-lg mb-2 font-classical">{sentence.target}</div>
+                          )}
                           {sentence.notes && (
                             <div className="text-sm text-roman-black bg-roman-marble/50 p-3 rounded-lg border border-roman-gold/20 font-classical">
                               <strong>Note:</strong> {sentence.notes}

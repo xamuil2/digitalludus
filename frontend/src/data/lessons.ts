@@ -37,14 +37,29 @@ export interface GrammarConcept {
 
 export interface PracticeExercise {
   id: string;
-  type: 'latin-to-english' | 'english-to-latin';
+  type: 'latin-to-english' | 'english-to-latin' | 'fill-in-blank' | 'translation-only';
   title: string;
+  description?: string;
+  example?: {
+    incomplete: string;
+    complete: string;
+    translation: string;
+  };
+  wordBank?: string[];
   sentences: {
     id: string;
-    source: string;
-    target: string;
+    source?: string;
+    target?: string;
+    incomplete?: string;
+    complete?: string;
+    latin?: string;
+    translation?: string;
+    blankIndex?: number;
+    correctAnswer?: string;
     hints?: string[];
     notes?: string;
+    userAnswer?: string;
+    isCorrect?: boolean;
   }[];
 }
 
@@ -470,7 +485,7 @@ export const lesson1Template: Lesson = {
     {
       id: "1-concept-3",
       title: "Present Tense Verb Meanings",
-      explanation: `Latin present tense verbs can be translated in two ways in English. The context of the story will help you decide which translation gives the better sense.`,
+      explanation: `Note that dormit and laborat in the sentences above can be translated in another way. For example: servus in culina laborat can mean "The slave works in the kitchen" as well as "The slave is working in the kitchen." The story will help you decide which translation gives the better sense.`,
       examples: [
         {
           latin: "Servus in culina laborat.",
@@ -484,135 +499,227 @@ export const lesson1Template: Lesson = {
         }
       ],
       rules: [
-        "Latin present tense = English simple present OR present continuous",
+        "Latin present tense verbs can be translated in two ways in English",
         "Choose the translation that fits the story context",
-        "Both 'works' and 'is working' are correct for 'laborat'"
-      ]
-    },
-    {
-      id: "1-concept-4",
-      title: "Family Vocabulary and Roman Names",
-      explanation: `Learn the basic family vocabulary and understand how Roman names work. Romans had multiple names showing family connections.`,
-      examples: [
-        {
-          latin: "Caecilius est pater.",
-          english: "Caecilius is the father.",
-          notes: "pater = father"
-        },
-        {
-          latin: "Metella est mater.",
-          english: "Metella is the mother.",
-          notes: "mater = mother"
-        },
-        {
-          latin: "Quintus est filius.",
-          english: "Quintus is the son.",
-          notes: "filius = son"
-        }
-      ],
-      rules: [
-        "pater = father, mater = mother, filius = son",
-        "servus = slave, coquus = cook, canis = dog",
-        "Roman names often indicated family relationships"
+        "Both simple present and present continuous are correct"
       ]
     }
   ],
   practiceExercises: [
     {
-      id: "1-practice-latin-english",
-      type: "latin-to-english",
+      id: "1-practice-a",
+      type: "fill-in-blank",
       title: "Practice A - Complete and Translate",
+      description: "Write out each Latin sentence, completing it with a suitable word or phrase from the box. Then translate the sentence. Use each word or phrase only once.",
+      example: {
+        incomplete: "….. est in horto.",
+        complete: "servus est in horto.",
+        translation: "The slave is in the garden."
+      },
+      wordBank: ["Quintus", "Grumio", "Caecilius", "canis", "mater", "servus"],
       sentences: [
         {
-          id: "1-l2e-1",
-          source: "Quintus est in horto.",
-          target: "Quintus is in the garden.",
-          hints: ["Complete: _____ est in horto."],
-          notes: "Choose from: Quintus, Grumio, Caecilius, canis, mater, servus"
+          id: "1-a-1",
+          incomplete: "….. est in horto.",
+          complete: "servus est in horto.",
+          translation: "The slave is in the garden.",
+          blankIndex: 0,
+          correctAnswer: "servus"
         },
         {
-          id: "1-l2e-2", 
-          source: "Canis est in via.",
-          target: "The dog is in the street.",
-          hints: ["Complete: _____ est in via."],
-          notes: ""
+          id: "1-a-2",
+          incomplete: "….. est in via.",
+          complete: "canis est in via.",
+          translation: "The dog is in the street.",
+          blankIndex: 0,
+          correctAnswer: "canis"
         },
         {
-          id: "1-l2e-3",
-          source: "Grumio est in culina.",
-          target: "Grumio is in the kitchen.",
-          hints: ["Complete: _____ est in culina."],
-          notes: ""
+          id: "1-a-3",
+          incomplete: "….. est in culina.",
+          complete: "Grumio est in culina.",
+          translation: "Grumio is in the kitchen.",
+          blankIndex: 0,
+          correctAnswer: "Grumio"
         },
         {
-          id: "1-l2e-4",
-          source: "Caecilius est in tablino.",
-          target: "Caecilius is in the study.",
-          hints: ["Complete: _____ est in tablino."],
-          notes: ""
+          id: "1-a-4",
+          incomplete: "….. est in tablino.",
+          complete: "Caecilius est in tablino.",
+          translation: "Caecilius is in the study.",
+          blankIndex: 0,
+          correctAnswer: "Caecilius"
         },
         {
-          id: "1-l2e-5",
-          source: "Mater est in atrio.",
-          target: "Mother is in the atrium.",
-          hints: ["Complete: _____ est in atrio."],
-          notes: ""
+          id: "1-a-5",
+          incomplete: "….. est in atrio.",
+          complete: "mater est in atrio.",
+          translation: "Mother is in the atrium.",
+          blankIndex: 0,
+          correctAnswer: "mater"
         },
         {
-          id: "1-l2e-6",
-          source: "Servus est in triclinio.",
-          target: "The slave is in the dining room.",
-          hints: ["Complete: _____ est in triclinio."],
-          notes: ""
+          id: "1-a-6",
+          incomplete: "….. est in triclinio.",
+          complete: "Quintus est in triclinio.",
+          translation: "Quintus is in the dining room.",
+          blankIndex: 0,
+          correctAnswer: "Quintus"
         }
       ]
     },
     {
-      id: "1-practice-english-latin",
-      type: "english-to-latin",
+      id: "1-practice-b",
+      type: "fill-in-blank",
       title: "Practice B - Complete with Location",
+      description: "Write out each Latin sentence, completing it with a suitable word or phrase from the box. Then translate the sentence. Use each phrase only once.",
+      wordBank: ["in via", "in horto", "in atrio", "in tablino", "in culina", "in triclinio"],
       sentences: [
         {
-          id: "1-e2l-1",
-          source: "Clemens in via laborat.",
-          target: "Clemens works in the street.",
-          hints: ["Complete: Clemens _____ laborat."],
-          notes: "Choose from: in via, in horto, in atrio, in tablino, in culina, in triclinio"
+          id: "1-b-1",
+          incomplete: "Clemens ….. laborat.",
+          complete: "Clemens in horto laborat.",
+          translation: "Clemens works in the garden.",
+          blankIndex: 1,
+          correctAnswer: "in horto"
         },
         {
-          id: "1-e2l-2",
-          source: "Caecilius in tablino scribit.",
-          target: "Caecilius writes in the study.",
-          hints: ["Complete: Caecilius _____ scribit."],
-          notes: ""
+          id: "1-b-2",
+          incomplete: "Caecilius ….. scribit.",
+          complete: "Caecilius in tablino scribit.",
+          translation: "Caecilius writes in the study.",
+          blankIndex: 1,
+          correctAnswer: "in tablino"
         },
         {
-          id: "1-e2l-3",
-          source: "Canis in via latrat.",
-          target: "The dog barks in the street.",
-          hints: ["Complete: canis _____ latrat."],
-          notes: ""
+          id: "1-b-3",
+          incomplete: "canis ….. latrat.",
+          complete: "canis in via latrat.",
+          translation: "The dog barks in the street.",
+          blankIndex: 1,
+          correctAnswer: "in via"
         },
         {
-          id: "1-e2l-4",
-          source: "Metella in atrio stat.",
-          target: "Metella stands in the atrium.",
-          hints: ["Complete: Metella _____ stat."],
-          notes: ""
+          id: "1-b-4",
+          incomplete: "Metella ….. stat.",
+          complete: "Metella in atrio stat.",
+          translation: "Metella stands in the atrium.",
+          blankIndex: 1,
+          correctAnswer: "in atrio"
         },
         {
-          id: "1-e2l-5",
-          source: "Coquus est in culina.",
-          target: "The cook is in the kitchen.",
-          hints: ["Complete: coquus est _____."],
-          notes: ""
+          id: "1-b-5",
+          incomplete: "coquus est …..",
+          complete: "coquus est in culina.",
+          translation: "The cook is in the kitchen.",
+          blankIndex: 2,
+          correctAnswer: "in culina"
         },
         {
-          id: "1-e2l-6",
-          source: "Quintus est in triclinio.",
-          target: "Quintus is in the dining room.",
-          hints: ["Complete: Quintus est _____."],
-          notes: ""
+          id: "1-b-6",
+          incomplete: "Quintus est …..",
+          complete: "Quintus est in triclinio.",
+          translation: "Quintus is in the dining room.",
+          blankIndex: 2,
+          correctAnswer: "in triclinio"
+        }
+      ]
+    },
+    {
+      id: "1-practice-c",
+      type: "translation-only",
+      title: "Practice C - Translate Sentences",
+      description: "Translate each Latin sentence into English. These are the basic sentences from the lesson.",
+      sentences: [
+        {
+          id: "1-c-1",
+          latin: "Caecilius est pater.",
+          translation: "Caecilius is the father."
+        },
+        {
+          id: "1-c-2",
+          latin: "Metella est mater.",
+          translation: "Metella is the mother."
+        },
+        {
+          id: "1-c-3",
+          latin: "Quintus est filius.",
+          translation: "Quintus is the son."
+        },
+        {
+          id: "1-c-4",
+          latin: "Clemens est servus.",
+          translation: "Clemens is the slave."
+        },
+        {
+          id: "1-c-5",
+          latin: "Grumio est coquus.",
+          translation: "Grumio is the cook."
+        },
+        {
+          id: "1-c-6",
+          latin: "Cerberus est canis.",
+          translation: "Cerberus is the dog."
+        },
+        {
+          id: "1-c-7",
+          latin: "Caecilius est in tablino.",
+          translation: "Caecilius is in the study."
+        },
+        {
+          id: "1-c-8",
+          latin: "Metella est in atrio.",
+          translation: "Metella is in the atrium."
+        },
+        {
+          id: "1-c-9",
+          latin: "Quintus est in triclinio.",
+          translation: "Quintus is in the dining room."
+        },
+        {
+          id: "1-c-10",
+          latin: "Clemens est in horto.",
+          translation: "Clemens is in the garden."
+        },
+        {
+          id: "1-c-11",
+          latin: "Grumio est in culina.",
+          translation: "Grumio is in the kitchen."
+        },
+        {
+          id: "1-c-12",
+          latin: "Cerberus est in via.",
+          translation: "Cerberus is in the street."
+        },
+        {
+          id: "1-c-13",
+          latin: "pater est in tablino. pater in tablino scribit.",
+          translation: "The father is in the study. The father writes in the study."
+        },
+        {
+          id: "1-c-14",
+          latin: "mater est in atrio. mater in atrio sedet.",
+          translation: "The mother is in the atrium. The mother sits in the atrium."
+        },
+        {
+          id: "1-c-15",
+          latin: "filius est in triclinio. filius in triclinio bibit.",
+          translation: "The son is in the dining room. The son drinks in the dining room."
+        },
+        {
+          id: "1-c-16",
+          latin: "servus est in horto. servus in horto laborat.",
+          translation: "The slave is in the garden. The slave works in the garden."
+        },
+        {
+          id: "1-c-17",
+          latin: "coquus est in culina. coquus in culina laborat.",
+          translation: "The cook is in the kitchen. The cook works in the kitchen."
+        },
+        {
+          id: "1-c-18",
+          latin: "canis est in via. canis in via dormit.",
+          translation: "The dog is in the street. The dog sleeps in the street."
         }
       ]
     }
