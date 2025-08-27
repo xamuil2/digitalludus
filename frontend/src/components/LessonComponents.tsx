@@ -15,35 +15,105 @@ import { type Lesson, type VocabWord } from '@/data/lessons';
 import VocabularyDriller from '@/components/VocabularyDriller';
 import { lookupWord } from '@/lib/vocabularyLookup';
 
-// Function to render Latin text with clickable words
+// Function to render Latin text with clickable words and interlinear definitions
 function renderLatinTextWithClickableWords(
   text: string, 
-  onWordClick: (word: string, definition: VocabWord | undefined) => void
+  onWordClick: (word: string, definition: VocabWord | undefined, wordIndex: number) => void,
+  interlinearWords: Map<number, VocabWord>
 ): React.ReactNode {
   // Split text into words while preserving punctuation and spaces
   const parts = text.split(/(\s+|[.,;:!?"()[\]{}])/);
   
+  // Pre-calculate word positions to ensure consistency
+  const wordPositions: Array<{ part: string; index: number; isWord: boolean }> = [];
+  let wordIndex = 0;
+  
+  parts.forEach((part, index) => {
+    if (part.trim()) {
+      wordPositions.push({ part, index, isWord: true });
+      wordIndex++;
+    } else {
+      wordPositions.push({ part, index, isWord: false });
+    }
+  });
+  
+  // Calculate which lines need spacing and how much
+  const linesWithDefinitions = new Map<number, number>(); // line -> number of definitions
+  let currentLine = 0;
+  
+  parts.forEach((part, index) => {
+    if (/^\s+$/.test(part) || /^[.,;:!?"()[\]{}]+$/.test(part)) {
+      if (part.includes('\n') || part.length > 1) {
+        currentLine++;
+      }
+    } else if (part.trim()) {
+      const wordPosition = wordPositions.find(wp => wp.part === part && wp.isWord);
+      const currentWordIndex = wordPosition ? wordPositions.indexOf(wordPosition) : -1;
+      
+      if (interlinearWords.has(currentWordIndex)) {
+        const currentCount = linesWithDefinitions.get(currentLine) || 0;
+        linesWithDefinitions.set(currentLine, currentCount + 1);
+      }
+    }
+  });
+  
+  // Reset line counter for rendering
+  currentLine = 0;
+  
   return parts.map((part, index) => {
     // If it's whitespace or punctuation, render as-is
     if (/^\s+$/.test(part) || /^[.,;:!?"()[\]{}]+$/.test(part)) {
+      // Check if this is a line break (multiple spaces or newlines)
+      if (part.includes('\n') || part.length > 1) {
+        currentLine++;
+      }
       return <span key={index}>{part}</span>;
     }
     
     // If it's a word, check for definition and make it clickable
     if (part.trim()) {
       const definition = lookupWord(part);
+      
+      // Find the word position for this part
+      const wordPosition = wordPositions.find(wp => wp.part === part && wp.isWord);
+      const currentWordIndex = wordPosition ? wordPositions.indexOf(wordPosition) : -1;
+      
+      const isInterlinear = interlinearWords.has(currentWordIndex);
+      
+      // Check if this line needs extra spacing for interlinear definitions
+      const needsExtraSpacing = isInterlinear && linesWithDefinitions.has(currentLine);
+      
       return (
-        <span
-          key={index}
-          className={`${
-            definition 
-              ? 'cursor-pointer hover:bg-roman-gold/20 hover:text-roman-red hover:underline decoration-roman-gold decoration-2 underline-offset-2 transition-all duration-200 rounded-sm px-1 py-0.5 touch-manipulation active:scale-95' 
-              : ''
-          }`}
-          onClick={() => definition && onWordClick(part, definition)}
-          title={definition ? 'Tap for definition' : undefined}
-        >
-          {part}
+        <span key={index} className="relative inline-block">
+          {/* Add top margin for interlinear spacing - creates space above the current line */}
+          {needsExtraSpacing && (
+            <div className="pt-10" /> // Reduced height to bring definitions closer
+          )}
+          
+          <span
+            className={`${
+              definition 
+                ? 'cursor-pointer hover:bg-roman-gold/20 hover:text-roman-red hover:underline decoration-roman-gold decoration-2 underline-offset-2 transition-all duration-200 rounded-sm px-1 py-0.5 touch-manipulation active:scale-95' 
+                : ''
+            }`}
+            onClick={() => definition && onWordClick(part, definition, currentWordIndex)}
+            title={definition ? 'Tap for definition' : undefined}
+          >
+            {part}
+          </span>
+          
+          {/* Interlinear definition - positioned within the created space */}
+          {isInterlinear && (
+            <div className="absolute top-0 left-0 ">
+              <div className="bg-white border border-roman-gold/30 rounded-lg shadow-lg px-2 py-1 text-xs font-sans text-roman-black whitespace-nowrap max-w-xs">
+                <div className="font-semibold text-roman-red truncate">{interlinearWords.get(currentWordIndex)?.english}</div>
+                <div className="text-roman-gold text-xs">{interlinearWords.get(currentWordIndex)?.partOfSpeech}</div>
+              </div>
+              {/* Arrow pointing down to word */}
+              <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-3 border-r-3 border-t-3 border-transparent border-t-white"></div>
+              <div className="absolute top-full left-1/2 transform -translate-x-1/2 translate-y-[-1px] w-0 h-0 border-l-3 border-r-3 border-t-3 border-transparent border-t-roman-gold/30"></div>
+            </div>
+          )}
         </span>
       );
     }
@@ -56,28 +126,42 @@ function renderLatinTextWithClickableWords(
 export function ProsePassage({ lesson }: { lesson: Lesson }) {
   const [showTranslation, setShowTranslation] = useState(false);
   const [selectedWords, setSelectedWords] = useState<Array<{ word: string; definition: VocabWord }>>([]);
+  const [interlinearWords, setInterlinearWords] = useState<Map<number, VocabWord>>(new Map());
+  const [displayMode, setDisplayMode] = useState<'interlinear' | 'bottom'>('interlinear');
 
   const toggleTranslation = () => {
     setShowTranslation(!showTranslation);
   };
 
-  const handleWordClick = (word: string, definition: VocabWord | undefined) => {
+  const handleWordClick = (word: string, definition: VocabWord | undefined, wordIndex: number) => {
     if (!definition) return;
     
-    // Check if word is already selected
-    const existingIndex = selectedWords.findIndex(item => item.word === word);
-    
-    if (existingIndex >= 0) {
-      // Remove if already selected
-      setSelectedWords(prev => prev.filter((_, index) => index !== existingIndex));
+    if (displayMode === 'interlinear') {
+      // Toggle interlinear display by word index (position)
+      const newInterlinearWords = new Map(interlinearWords);
+      if (newInterlinearWords.has(wordIndex)) {
+        newInterlinearWords.delete(wordIndex);
+      } else {
+        newInterlinearWords.set(wordIndex, definition);
+      }
+      setInterlinearWords(newInterlinearWords);
     } else {
-      // Add new word definition
-      setSelectedWords(prev => [...prev, { word, definition }]);
+      // Bottom display mode (original behavior)
+      const existingIndex = selectedWords.findIndex(item => item.word === word);
+      
+      if (existingIndex >= 0) {
+        // Remove if already selected
+        setSelectedWords(prev => prev.filter((_, index) => index !== existingIndex));
+      } else {
+        // Add new word definition
+        setSelectedWords(prev => [...prev, { word, definition }]);
+      }
     }
   };
 
   const clearAllDefinitions = () => {
     setSelectedWords([]);
+    setInterlinearWords(new Map());
   };
 
   // Combine all Latin sentences into one continuous text
@@ -103,15 +187,25 @@ export function ProsePassage({ lesson }: { lesson: Lesson }) {
               </CardDescription>
             )}
           </div>
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={toggleTranslation}
-            className="glass-effect border-roman-gold/30 hover:bg-roman-gold/10 hover:border-roman-gold shadow-gold font-classical w-full sm:w-auto flex-shrink-0"
-          >
-            {showTranslation ? <EyeOff className="h-3 w-3 sm:h-4 sm:w-4 mr-2" /> : <Eye className="h-3 w-3 sm:h-4 sm:w-4 mr-2" />}
-            {showTranslation ? 'Hide' : 'Show'} Translation
-          </Button>
+          <div className="flex gap-2">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => setDisplayMode(prev => prev === 'interlinear' ? 'bottom' : 'interlinear')}
+              className="glass-effect border-roman-gold/30 hover:bg-roman-gold/10 hover:border-roman-gold shadow-gold font-classical text-xs"
+            >
+              {displayMode === 'interlinear' ? 'Interlinear' : 'Bottom'} Mode
+            </Button>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={toggleTranslation}
+              className="glass-effect border-roman-gold/30 hover:bg-roman-gold/10 hover:border-roman-gold shadow-gold font-classical w-full sm:w-auto flex-shrink-0"
+            >
+              {showTranslation ? <EyeOff className="h-3 w-3 sm:h-4 sm:w-4 mr-2" /> : <Eye className="h-3 w-3 sm:h-4 sm:w-4 mr-2" />}
+              {showTranslation ? 'Hide' : 'Show'} Translation
+            </Button>
+          </div>
         </div>
       </CardHeader>
       <CardContent className="p-4 sm:p-6 lg:p-8 space-y-6 sm:space-y-8">
@@ -119,18 +213,38 @@ export function ProsePassage({ lesson }: { lesson: Lesson }) {
         <div className="relative">
           <div className="absolute -left-2 sm:-left-4 top-0 w-0.5 sm:w-1 h-full bg-gold-gradient rounded-full"></div>
           <div className="glass-effect p-4 sm:p-6 lg:p-8 rounded-xl border border-roman-gold/20 shadow-roman">
-            <div className="font-classical text-lg sm:text-xl leading-relaxed text-roman-black tracking-wide">
-              {renderLatinTextWithClickableWords(latinText, handleWordClick)}
+            <div className="font-classical text-lg sm:text-xl leading-relaxed text-roman-black tracking-wide relative" style={{ lineHeight: '2.5rem' }}>
+              {renderLatinTextWithClickableWords(latinText, handleWordClick, interlinearWords)}
             </div>
-            <div className="mt-3 sm:mt-4 text-xs sm:text-sm text-muted-foreground flex items-center gap-2 font-classical">
-              <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-roman-gold rounded-full flex-shrink-0"></div>
-              <span>Tap on any word to see its definition below</span>
-            </div>
+            {displayMode === 'interlinear' && (
+              <div className="mt-2 text-xs text-roman-gold/70 font-sans">
+                Interlinear mode active - definitions appear above words
+              </div>
+            )}
+                          <div className="mt-3 sm:mt-4 text-xs sm:text-sm text-muted-foreground flex items-center gap-2 font-classical">
+                <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-roman-gold rounded-full flex-shrink-0"></div>
+                <span>
+                  {displayMode === 'interlinear' 
+                    ? 'Tap on any word to see its definition above the text' 
+                    : 'Tap on any word to see its definition below'
+                  }
+                </span>
+                {displayMode === 'interlinear' && interlinearWords.size > 0 && (
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => setInterlinearWords(new Map())}
+                    className="ml-auto text-xs border-roman-gold/30 hover:bg-roman-gold/10 hover:border-roman-gold"
+                  >
+                    Clear Interlinear
+                  </Button>
+                )}
+              </div>
           </div>
         </div>
 
-        {/* Word Definitions Section */}
-        {selectedWords.length > 0 && (
+        {/* Word Definitions Section - Only show in bottom mode */}
+        {displayMode === 'bottom' && selectedWords.length > 0 && (
           <div className="relative">
             <div className="absolute -left-2 sm:-left-4 top-0 w-0.5 sm:w-1 h-full bg-roman-gradient rounded-full"></div>
             <div className="glass-effect p-4 sm:p-6 lg:p-8 rounded-xl border border-roman-gold/20 shadow-gold">
