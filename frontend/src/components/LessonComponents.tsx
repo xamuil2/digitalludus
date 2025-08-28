@@ -9,10 +9,12 @@ import {
   EyeOff,
   MessageCircle,
   ChevronDown,
-  X
+  X,
+  Highlighter
 } from 'lucide-react';
 import { type Lesson, type VocabWord } from '@/data/lessons';
 import VocabularyDriller from '@/components/VocabularyDriller';
+import GrammaticalHighlighter from '@/components/GrammaticalHighlighter';
 import { lookupWord } from '@/lib/vocabularyLookup';
 
 // Function to render Latin text with clickable words and interlinear definitions
@@ -127,7 +129,7 @@ export function ProsePassage({ lesson }: { lesson: Lesson }) {
   const [showTranslation, setShowTranslation] = useState(false);
   const [selectedWords, setSelectedWords] = useState<Array<{ word: string; definition: VocabWord }>>([]);
   const [interlinearWords, setInterlinearWords] = useState<Map<number, VocabWord>>(new Map());
-  const [displayMode, setDisplayMode] = useState<'interlinear' | 'bottom'>('interlinear');
+  const [displayMode, setDisplayMode] = useState<'interlinear' | 'bottom' | 'grammar'>('interlinear');
 
   const toggleTranslation = () => {
     setShowTranslation(!showTranslation);
@@ -145,7 +147,7 @@ export function ProsePassage({ lesson }: { lesson: Lesson }) {
         newInterlinearWords.set(wordIndex, definition);
       }
       setInterlinearWords(newInterlinearWords);
-    } else {
+    } else if (displayMode === 'bottom') {
       // Bottom display mode (original behavior)
       const existingIndex = selectedWords.findIndex(item => item.word === word);
       
@@ -157,11 +159,20 @@ export function ProsePassage({ lesson }: { lesson: Lesson }) {
         setSelectedWords(prev => [...prev, { word, definition }]);
       }
     }
+    // Grammar mode handled by GrammaticalHighlighter component
   };
 
   const clearAllDefinitions = () => {
     setSelectedWords([]);
     setInterlinearWords(new Map());
+  };
+
+  const cycleModes = () => {
+    setDisplayMode(prev => {
+      if (prev === 'interlinear') return 'bottom';
+      if (prev === 'bottom') return 'grammar';
+      return 'interlinear';
+    });
   };
 
   // Combine all Latin sentences into one continuous text
@@ -191,10 +202,13 @@ export function ProsePassage({ lesson }: { lesson: Lesson }) {
             <Button
               variant="outline"
               size="sm"
-              onClick={() => setDisplayMode(prev => prev === 'interlinear' ? 'bottom' : 'interlinear')}
+              onClick={cycleModes}
               className="glass-effect border-roman-gold/30 hover:bg-roman-gold/10 hover:border-roman-gold shadow-gold font-classical text-xs"
             >
-              {displayMode === 'interlinear' ? 'Interlinear' : 'Bottom'} Mode
+              {displayMode === 'interlinear' && <BookOpen className="h-3 w-3 mr-1" />}
+              {displayMode === 'bottom' && <ChevronDown className="h-3 w-3 mr-1" />}
+              {displayMode === 'grammar' && <Highlighter className="h-3 w-3 mr-1" />}
+              {displayMode === 'interlinear' ? 'Interlinear' : displayMode === 'bottom' ? 'Bottom' : 'Grammar'} Mode
             </Button>
             <Button
               variant="outline"
@@ -213,33 +227,53 @@ export function ProsePassage({ lesson }: { lesson: Lesson }) {
         <div className="relative">
           <div className="absolute -left-2 sm:-left-4 top-0 w-0.5 sm:w-1 h-full bg-gold-gradient rounded-full"></div>
           <div className="glass-effect p-4 sm:p-6 lg:p-8 rounded-xl border border-roman-gold/20 shadow-roman">
-            <div className="font-classical text-lg sm:text-xl leading-relaxed text-roman-black tracking-wide relative" style={{ lineHeight: '2.5rem' }}>
-              {renderLatinTextWithClickableWords(latinText, handleWordClick, interlinearWords)}
-            </div>
+            {displayMode === 'grammar' ? (
+              <GrammaticalHighlighter
+                text={latinText}
+                sentenceId={lesson.prosePassage.sentences[0]?.id} // Use first sentence for now, could be improved
+                grammaticalData={lesson.prosePassage.grammaticalData}
+                lessonId={lesson.id}
+                className="font-classical text-lg sm:text-xl leading-relaxed text-roman-black tracking-wide"
+              />
+            ) : (
+              <div className="font-classical text-lg sm:text-xl leading-relaxed text-roman-black tracking-wide relative" style={{ lineHeight: '2.5rem' }}>
+                {renderLatinTextWithClickableWords(latinText, handleWordClick, interlinearWords)}
+              </div>
+            )}
+            
             {displayMode === 'interlinear' && (
               <div className="mt-2 text-xs text-roman-gold/70 font-sans">
                 Interlinear mode active - definitions appear above words
               </div>
             )}
-                          <div className="mt-3 sm:mt-4 text-xs sm:text-sm text-muted-foreground flex items-center gap-2 font-classical">
-                <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-roman-gold rounded-full flex-shrink-0"></div>
-                <span>
-                  {displayMode === 'interlinear' 
-                    ? 'Tap on any word to see its definition above the text' 
-                    : 'Tap on any word to see its definition below'
-                  }
-                </span>
-                {displayMode === 'interlinear' && interlinearWords.size > 0 && (
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={() => setInterlinearWords(new Map())}
-                    className="ml-auto text-xs border-roman-gold/30 hover:bg-roman-gold/10 hover:border-roman-gold"
-                  >
-                    Clear Interlinear
-                  </Button>
-                )}
+            
+            {displayMode === 'grammar' && (
+              <div className="mt-2 text-xs text-roman-gold/70 font-sans">
+                Grammar mode active - select text to analyze Latin grammatical cases and forms
               </div>
+            )}
+            
+            <div className="mt-3 sm:mt-4 text-xs sm:text-sm text-muted-foreground flex items-center gap-2 font-classical">
+              <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-roman-gold rounded-full flex-shrink-0"></div>
+              <span>
+                {displayMode === 'interlinear' 
+                  ? 'Tap on any word to see its definition above the text' 
+                  : displayMode === 'bottom'
+                  ? 'Tap on any word to see its definition below'
+                  : 'Select Latin text to analyze its grammatical structure'
+                }
+              </span>
+              {displayMode === 'interlinear' && interlinearWords.size > 0 && (
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => setInterlinearWords(new Map())}
+                  className="ml-auto text-xs border-roman-gold/30 hover:bg-roman-gold/10 hover:border-roman-gold"
+                >
+                  Clear Interlinear
+                </Button>
+              )}
+            </div>
           </div>
         </div>
 

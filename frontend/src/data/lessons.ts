@@ -6,6 +6,25 @@ export interface LessonSection {
   order: number;
 }
 
+export interface WordGrammaticalData {
+  word: string;
+  lemma: string; // Dictionary form
+  case?: 'nominative' | 'genitive' | 'dative' | 'accusative' | 'ablative' | 'vocative';
+  number?: 'singular' | 'plural';
+  gender?: 'masculine' | 'feminine' | 'neuter';
+  partOfSpeech: 'noun' | 'verb' | 'adjective' | 'adverb' | 'preposition' | 'conjunction' | 'interjection' | 'pronoun';
+  person?: '1st' | '2nd' | '3rd'; // For verbs
+  tense?: 'present' | 'imperfect' | 'future' | 'perfect' | 'pluperfect' | 'future-perfect';
+  voice?: 'active' | 'passive';
+  mood?: 'indicative' | 'subjunctive' | 'imperative' | 'infinitive' | 'participle';
+  notes?: string;
+}
+
+export interface SentenceGrammaticalData {
+  sentenceId: string;
+  words: WordGrammaticalData[];
+}
+
 export interface VocabWord {
   id: string;
   latin: string;
@@ -85,6 +104,7 @@ export interface Lesson {
     }[];
     fullTranslation?: string;
     context?: string; // What the story is about
+    grammaticalData?: SentenceGrammaticalData[]; // Pre-computed grammatical analysis
   };
   
   vocabulary: VocabWord[];
@@ -143,7 +163,99 @@ export const lesson1Template: Lesson = {
       { id: "1-prose-21", latin: "\"Pestis! Furcifer!\" coquus clāmat.", english: "\"Pest! Scoundrel!\" the cook shouts.", order: 21 },
       { id: "1-prose-22", latin: "Cerberus exit.", english: "Cerberus leaves.", order: 22 }
     ],
-    fullTranslation: "Caecilius is in the garden. Caecilius sits in the garden. The slave is in the atrium. The slave works in the atrium. Metella is in the atrium. Metella sits in the atrium. Quintus is in the study. Quintus writes in the study. Cerberus is in the street. The cook is in the kitchen. The cook sleeps in the kitchen. Cerberus enters. Cerberus looks around. Food is on the table. The dog jumps. The dog stands on the table. Grumio snores. The dog barks. Grumio gets up. The cook is angry. \"Pest! Scoundrel!\" the cook shouts. Cerberus leaves."
+    fullTranslation: "Caecilius is in the garden. Caecilius sits in the garden. The slave is in the atrium. The slave works in the atrium. Metella is in the atrium. Metella sits in the atrium. Quintus is in the study. Quintus writes in the study. Cerberus is in the street. The cook is in the kitchen. The cook sleeps in the kitchen. Cerberus enters. Cerberus looks around. Food is on the table. The dog jumps. The dog stands on the table. Grumio snores. The dog barks. Grumio gets up. The cook is angry. \"Pest! Scoundrel!\" the cook shouts. Cerberus leaves.",
+    grammaticalData: [
+      {
+        sentenceId: "1-prose-1",
+        words: [
+          { word: "Caecilius", lemma: "Caecilius", case: "nominative", number: "singular", gender: "masculine", partOfSpeech: "noun" },
+          { word: "est", lemma: "sum", person: "3rd", number: "singular", tense: "present", voice: "active", mood: "indicative", partOfSpeech: "verb" },
+          { word: "in", lemma: "in", partOfSpeech: "preposition" },
+          { word: "hortō", lemma: "hortus", case: "ablative", number: "singular", gender: "masculine", partOfSpeech: "noun" }
+        ]
+      },
+      {
+        sentenceId: "1-prose-2", 
+        words: [
+          { word: "Caecilius", lemma: "Caecilius", case: "nominative", number: "singular", gender: "masculine", partOfSpeech: "noun" },
+          { word: "in", lemma: "in", partOfSpeech: "preposition" },
+          { word: "hortō", lemma: "hortus", case: "ablative", number: "singular", gender: "masculine", partOfSpeech: "noun" },
+          { word: "sedet", lemma: "sedeo", person: "3rd", number: "singular", tense: "present", voice: "active", mood: "indicative", partOfSpeech: "verb" }
+        ]
+      },
+      {
+        sentenceId: "1-prose-3",
+        words: [
+          { word: "Servus", lemma: "servus", case: "nominative", number: "singular", gender: "masculine", partOfSpeech: "noun" },
+          { word: "est", lemma: "sum", person: "3rd", number: "singular", tense: "present", voice: "active", mood: "indicative", partOfSpeech: "verb" },
+          { word: "in", lemma: "in", partOfSpeech: "preposition" },
+          { word: "ātriō", lemma: "atrium", case: "ablative", number: "singular", gender: "neuter", partOfSpeech: "noun" }
+        ]
+      },
+      {
+        sentenceId: "1-prose-4",
+        words: [
+          { word: "Servus", lemma: "servus", case: "nominative", number: "singular", gender: "masculine", partOfSpeech: "noun" },
+          { word: "in", lemma: "in", partOfSpeech: "preposition" },
+          { word: "ātriō", lemma: "atrium", case: "ablative", number: "singular", gender: "neuter", partOfSpeech: "noun" },
+          { word: "labōrat", lemma: "laboro", person: "3rd", number: "singular", tense: "present", voice: "active", mood: "indicative", partOfSpeech: "verb" }
+        ]
+      },
+      {
+        sentenceId: "1-prose-5",
+        words: [
+          { word: "Metella", lemma: "Metella", case: "nominative", number: "singular", gender: "feminine", partOfSpeech: "noun" },
+          { word: "est", lemma: "sum", person: "3rd", number: "singular", tense: "present", voice: "active", mood: "indicative", partOfSpeech: "verb" },
+          { word: "in", lemma: "in", partOfSpeech: "preposition" },
+          { word: "ātriō", lemma: "atrium", case: "ablative", number: "singular", gender: "neuter", partOfSpeech: "noun" }
+        ]
+      },
+      {
+        sentenceId: "1-prose-6",
+        words: [
+          { word: "Metella", lemma: "Metella", case: "nominative", number: "singular", gender: "feminine", partOfSpeech: "noun" },
+          { word: "in", lemma: "in", partOfSpeech: "preposition" },
+          { word: "ātriō", lemma: "atrium", case: "ablative", number: "singular", gender: "neuter", partOfSpeech: "noun" },
+          { word: "sedet", lemma: "sedeo", person: "3rd", number: "singular", tense: "present", voice: "active", mood: "indicative", partOfSpeech: "verb" }
+        ]
+      },
+      {
+        sentenceId: "1-prose-7",
+        words: [
+          { word: "Quīntus", lemma: "Quintus", case: "nominative", number: "singular", gender: "masculine", partOfSpeech: "noun" },
+          { word: "est", lemma: "sum", person: "3rd", number: "singular", tense: "present", voice: "active", mood: "indicative", partOfSpeech: "verb" },
+          { word: "in", lemma: "in", partOfSpeech: "preposition" },
+          { word: "tablīnō", lemma: "tablinum", case: "ablative", number: "singular", gender: "neuter", partOfSpeech: "noun" }
+        ]
+      },
+      {
+        sentenceId: "1-prose-8",
+        words: [
+          { word: "Quīntus", lemma: "Quintus", case: "nominative", number: "singular", gender: "masculine", partOfSpeech: "noun" },
+          { word: "in", lemma: "in", partOfSpeech: "preposition" },
+          { word: "tablīnō", lemma: "tablinum", case: "ablative", number: "singular", gender: "neuter", partOfSpeech: "noun" },
+          { word: "scrībit", lemma: "scribo", person: "3rd", number: "singular", tense: "present", voice: "active", mood: "indicative", partOfSpeech: "verb" }
+        ]
+      },
+      {
+        sentenceId: "1-prose-9",
+        words: [
+          { word: "Cerberus", lemma: "Cerberus", case: "nominative", number: "singular", gender: "masculine", partOfSpeech: "noun" },
+          { word: "est", lemma: "sum", person: "3rd", number: "singular", tense: "present", voice: "active", mood: "indicative", partOfSpeech: "verb" },
+          { word: "in", lemma: "in", partOfSpeech: "preposition" },
+          { word: "viā", lemma: "via", case: "ablative", number: "singular", gender: "feminine", partOfSpeech: "noun" }
+        ]
+      },
+      {
+        sentenceId: "1-prose-10",
+        words: [
+          { word: "Coquus", lemma: "coquus", case: "nominative", number: "singular", gender: "masculine", partOfSpeech: "noun" },
+          { word: "est", lemma: "sum", person: "3rd", number: "singular", tense: "present", voice: "active", mood: "indicative", partOfSpeech: "verb" },
+          { word: "in", lemma: "in", partOfSpeech: "preposition" },
+          { word: "culīnā", lemma: "culina", case: "ablative", number: "singular", gender: "feminine", partOfSpeech: "noun" }
+        ]
+      }
+    ]
   },
   
   vocabulary: [
