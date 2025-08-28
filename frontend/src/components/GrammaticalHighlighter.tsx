@@ -31,14 +31,8 @@ const caseColors = {
 };
 
 const partOfSpeechColors = {
-  noun: 'bg-blue-100 border-blue-300',
-  verb: 'bg-green-100 border-green-300',
-  adjective: 'bg-yellow-100 border-yellow-300',
-  adverb: 'bg-orange-100 border-orange-300',
-  preposition: 'bg-gray-100 border-gray-300',
-  conjunction: 'bg-indigo-100 border-indigo-300',
-  interjection: 'bg-pink-100 border-pink-300',
-  pronoun: 'bg-cyan-100 border-cyan-300'
+  verb: 'bg-orange-200 border-orange-400 text-orange-900',
+  preposition: 'bg-gray-200 border-gray-400 text-gray-900'
 };
 
 export default function GrammaticalHighlighter({
@@ -229,43 +223,52 @@ export default function GrammaticalHighlighter({
       const selectedText = range.toString();
       console.log('Selected text:', selectedText);
       
-      // Create highlighted HTML for each word
-      let highlightedHTML = selectedText;
+      // Instead of replacing HTML, let's build highlighted content word by word
+      const words = selectedText.split(/(\s+)/); // Split while preserving whitespace
+      const highlightedParts: string[] = [];
       
-      // Sort analysis by word length (longest first) to avoid partial replacements
-      const sortedAnalysis = [...analysis].sort((a, b) => b.word.length - a.word.length);
-      
-      sortedAnalysis.forEach(wordAnalysis => {
-        const word = wordAnalysis.word;
-        const escapedWord = word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-        
-        // Create the highlighted span based on case or part of speech
-        let spanClass = '';
-        let title = '';
-        
-        if (wordAnalysis.case && caseColors[wordAnalysis.case]) {
-          spanClass = `${caseColors[wordAnalysis.case]} border rounded px-1 mx-0.5`;
-          title = `${wordAnalysis.lemma} (${wordAnalysis.case} ${wordAnalysis.number || ''} ${wordAnalysis.gender || ''})`.trim();
-        } else if (partOfSpeechColors[wordAnalysis.partOfSpeech]) {
-          spanClass = `${partOfSpeechColors[wordAnalysis.partOfSpeech]} border rounded px-1 mx-0.5`;
-          title = `${wordAnalysis.lemma} (${wordAnalysis.partOfSpeech})`;
-        }
-        
-        if (spanClass) {
-          const highlightedWord = `<span class="${spanClass}" title="${title}">${word}</span>`;
-          // Use more precise word boundary matching to avoid replacing partial words
-          // Also escape special characters that might interfere with regex
-          const regex = new RegExp(`\\b${escapedWord}\\b(?![^<]*>)`, 'g');
-          const newHighlightedHTML = highlightedHTML.replace(regex, highlightedWord);
+      words.forEach(word => {
+        if (/^\s+$/.test(word)) {
+          // This is whitespace, keep as is
+          highlightedParts.push(word);
+        } else {
+          // This is a word, check if we have analysis for it
+          const cleanWord = word.replace(/[.,;:!?"]/g, '');
+          const wordAnalysis = analysis.find(a => 
+            a.word.toLowerCase() === cleanWord.toLowerCase()
+          );
           
-          // Only update if we actually made a replacement
-          if (newHighlightedHTML !== highlightedHTML) {
-            highlightedHTML = newHighlightedHTML;
-            console.log(`Replaced word: ${word} with highlighted version`);
+          if (wordAnalysis) {
+            // Create the highlighted span - prioritize verbs and prepositions, otherwise use case colors
+            let spanClass = '';
+            let title = '';
+            
+            if (wordAnalysis.partOfSpeech === 'verb') {
+              spanClass = `${partOfSpeechColors.verb} border rounded px-1 mx-0.5`;
+              title = `${wordAnalysis.lemma} (${wordAnalysis.person || ''} ${wordAnalysis.number || ''} ${wordAnalysis.tense || ''} ${wordAnalysis.voice || ''} ${wordAnalysis.mood || ''})`.trim().replace(/\s+/g, ' ');
+            } else if (wordAnalysis.partOfSpeech === 'preposition') {
+              spanClass = `${partOfSpeechColors.preposition} border rounded px-1 mx-0.5`;
+              title = `${wordAnalysis.lemma} (${wordAnalysis.partOfSpeech})`;
+            } else if (wordAnalysis.case && caseColors[wordAnalysis.case]) {
+              // Use case coloring for everything else (nouns, adjectives, pronouns, etc.)
+              spanClass = `${caseColors[wordAnalysis.case]} border rounded px-1 mx-0.5`;
+              title = `${wordAnalysis.lemma} (${wordAnalysis.case} ${wordAnalysis.number || ''} ${wordAnalysis.gender || ''})`.trim();
+            }
+            
+            if (spanClass) {
+              highlightedParts.push(`<span class="${spanClass}" title="${title}">${word}</span>`);
+              console.log(`Highlighted word: ${word} as ${wordAnalysis.partOfSpeech}`);
+            } else {
+              highlightedParts.push(word);
+            }
+          } else {
+            // No analysis found, keep word as is
+            highlightedParts.push(word);
           }
         }
       });
       
+      const highlightedHTML = highlightedParts.join('');
       console.log('Highlighted HTML:', highlightedHTML);
       
       // Create a new span element with the highlighted content
@@ -316,7 +319,9 @@ export default function GrammaticalHighlighter({
       <div className="grid grid-cols-2 gap-2 text-sm">
         <div>
           <span className="font-medium">Part of Speech:</span>
-          <span className={`ml-2 px-2 py-1 rounded ${partOfSpeechColors[word.partOfSpeech]}`}>
+          <span className={`ml-2 px-2 py-1 rounded ${
+            partOfSpeechColors[word.partOfSpeech as keyof typeof partOfSpeechColors] || 'bg-gray-100 border-gray-300'
+          }`}>
             {word.partOfSpeech}
           </span>
         </div>
@@ -441,13 +446,26 @@ export default function GrammaticalHighlighter({
 
       {/* Legend */}
       <div className="mt-4 p-3 bg-gray-50 rounded">
-        <h5 className="font-semibold mb-2">Case Color Legend:</h5>
-        <div className="flex flex-wrap gap-2 text-xs">
-          {Object.entries(caseColors).map(([caseType, colorClass]) => (
-            <span key={caseType} className={`px-2 py-1 rounded border ${colorClass}`}>
-              {caseType}
+        <div className="mb-3">
+          <h5 className="font-semibold mb-2">Case Colors:</h5>
+          <div className="flex flex-wrap gap-2 text-xs">
+            {Object.entries(caseColors).map(([caseType, colorClass]) => (
+              <span key={caseType} className={`px-2 py-1 rounded border ${colorClass}`}>
+                {caseType}
+              </span>
+            ))}
+          </div>
+        </div>
+        <div>
+          <h5 className="font-semibold mb-2">Special Categories:</h5>
+          <div className="flex flex-wrap gap-2 text-xs">
+            <span className={`px-2 py-1 rounded border ${partOfSpeechColors.verb}`}>
+              verb
             </span>
-          ))}
+            <span className={`px-2 py-1 rounded border ${partOfSpeechColors.preposition}`}>
+              preposition
+            </span>
+          </div>
         </div>
         <p className="text-xs text-gray-600 mt-2">
           Grammar mode active - select text to analyze Latin grammatical cases and forms

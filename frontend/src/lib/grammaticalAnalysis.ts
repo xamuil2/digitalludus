@@ -85,6 +85,8 @@ export const precomputedGrammaticalData: Record<string, WordAnalysis> = {
   'metella': { word: 'Metella', lemma: 'Metella', case: 'nominative', number: 'singular', gender: 'feminine', partOfSpeech: 'noun' },
   'Quintus': { word: 'Quintus', lemma: 'Quintus', case: 'nominative', number: 'singular', gender: 'masculine', partOfSpeech: 'noun' },
   'quintus': { word: 'Quintus', lemma: 'Quintus', case: 'nominative', number: 'singular', gender: 'masculine', partOfSpeech: 'noun' },
+  'Quīntus': { word: 'Quīntus', lemma: 'Quintus', case: 'nominative', number: 'singular', gender: 'masculine', partOfSpeech: 'noun' },
+  'quīntus': { word: 'Quīntus', lemma: 'Quintus', case: 'nominative', number: 'singular', gender: 'masculine', partOfSpeech: 'noun' },
   'Servus': { word: 'Servus', lemma: 'servus', case: 'nominative', number: 'singular', gender: 'masculine', partOfSpeech: 'noun' },
   'servus': { word: 'servus', lemma: 'servus', case: 'nominative', number: 'singular', gender: 'masculine', partOfSpeech: 'noun' },
   'coquus': { word: 'coquus', lemma: 'coquus', case: 'nominative', number: 'singular', gender: 'masculine', partOfSpeech: 'noun' },
