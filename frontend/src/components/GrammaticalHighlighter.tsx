@@ -61,53 +61,114 @@ export default function GrammaticalHighlighter({
     const cleanText = selectedText.replace(/[""".,!?;:]/g, '').trim();
     const selectedWords = cleanText.split(/\s+/).filter(word => word.length > 0);
     
-    // First try lesson-specific pre-computed data
-    if (grammaticalData && sentenceId) {
-      const sentenceData = grammaticalData.find(data => data.sentenceId === sentenceId);
-      if (sentenceData) {
-        const matchingAnalysis: WordAnalysis[] = [];
-        
-        for (const selectedWord of selectedWords) {
-          const wordData = sentenceData.words.find(w => 
-            w.word.toLowerCase() === selectedWord.toLowerCase()
-          );
+    console.log('getPrecomputedAnalysis called with:', { selectedText, cleanText, selectedWords });
+    
+    const allAnalysis: WordAnalysis[] = [];
+    
+    // First try lesson-specific pre-computed data for each word
+    if (grammaticalData) {
+      if (sentenceId) {
+        // Search in specific sentence
+        const sentenceData = grammaticalData.find(data => data.sentenceId === sentenceId);
+        if (sentenceData) {
+          console.log('Found sentence data for:', sentenceId, 'with words:', sentenceData.words.map(w => w.word));
           
-          if (wordData) {
-            matchingAnalysis.push({
-              word: wordData.word,
-              lemma: wordData.lemma,
-              case: wordData.case,
-              number: wordData.number,
-              gender: wordData.gender,
-              partOfSpeech: wordData.partOfSpeech,
-              person: wordData.person,
-              tense: wordData.tense,
-              voice: wordData.voice,
-              mood: wordData.mood,
-              notes: wordData.notes
-            });
+          for (const selectedWord of selectedWords) {
+            const wordData = sentenceData.words.find(w => 
+              w.word.toLowerCase() === selectedWord.toLowerCase()
+            );
+            
+            if (wordData) {
+              console.log('Found lesson-specific data for word:', selectedWord);
+              allAnalysis.push({
+                word: wordData.word,
+                lemma: wordData.lemma,
+                case: wordData.case,
+                number: wordData.number,
+                gender: wordData.gender,
+                partOfSpeech: wordData.partOfSpeech,
+                person: wordData.person,
+                tense: wordData.tense,
+                voice: wordData.voice,
+                mood: wordData.mood,
+                notes: wordData.notes
+              });
+            } else {
+              console.log('No lesson-specific data for word:', selectedWord, 'trying global data');
+              // Try global data for this specific word
+              const globalWordAnalysis = getPrecomputedWordAnalysis(selectedWord);
+              if (globalWordAnalysis) {
+                console.log('Found global data for word:', selectedWord);
+                allAnalysis.push(globalWordAnalysis);
+              } else {
+                console.log('No global data found for word:', selectedWord);
+              }
+            }
           }
         }
+      } else {
+        // Search across all sentences in the lesson
+        console.log('No specific sentence ID, searching across all sentences');
         
-        if (matchingAnalysis.length > 0) {
-          return matchingAnalysis;
+        for (const selectedWord of selectedWords) {
+          let foundWord = false;
+          
+          // Search through all sentence data
+          for (const sentenceData of grammaticalData) {
+            const wordData = sentenceData.words.find(w => 
+              w.word.toLowerCase() === selectedWord.toLowerCase()
+            );
+            
+            if (wordData) {
+              console.log('Found lesson-specific data for word:', selectedWord, 'in sentence:', sentenceData.sentenceId);
+              allAnalysis.push({
+                word: wordData.word,
+                lemma: wordData.lemma,
+                case: wordData.case,
+                number: wordData.number,
+                gender: wordData.gender,
+                partOfSpeech: wordData.partOfSpeech,
+                person: wordData.person,
+                tense: wordData.tense,
+                voice: wordData.voice,
+                mood: wordData.mood,
+                notes: wordData.notes
+              });
+              foundWord = true;
+              break; // Found the word, no need to continue searching
+            }
+          }
+          
+          if (!foundWord) {
+            console.log('No lesson-specific data for word:', selectedWord, 'trying global data');
+            // Try global data for this specific word
+            const globalWordAnalysis = getPrecomputedWordAnalysis(selectedWord);
+            if (globalWordAnalysis) {
+              console.log('Found global data for word:', selectedWord);
+              allAnalysis.push(globalWordAnalysis);
+            } else {
+              console.log('No global data found for word:', selectedWord);
+            }
+          }
+        }
+      }
+    } else {
+      console.log('No sentence data available, using global data only');
+      // Fallback to global precomputed data for all words
+      for (const selectedWord of selectedWords) {
+        const wordAnalysis = getPrecomputedWordAnalysis(selectedWord);
+        if (wordAnalysis) {
+          console.log('Found global data for word:', selectedWord);
+          allAnalysis.push(wordAnalysis);
+        } else {
+          console.log('No global data found for word:', selectedWord);
         }
       }
     }
     
-    // Fallback to global precomputed data
-    const globalAnalysis: WordAnalysis[] = [];
-    for (const selectedWord of selectedWords) {
-      const wordAnalysis = getPrecomputedWordAnalysis(selectedWord);
-      if (wordAnalysis) {
-        globalAnalysis.push(wordAnalysis);
-      }
-    }
-    
-    return globalAnalysis.length > 0 ? globalAnalysis : null;
-  }, [grammaticalData, sentenceId]);
-
-  // Handle text selection
+    console.log('Total analysis found:', allAnalysis.length, 'out of', selectedWords.length, 'words');
+    return allAnalysis.length > 0 ? allAnalysis : null;
+  }, [grammaticalData, sentenceId]);  // Handle text selection
   const handleTextSelection = useCallback(async () => {
     const selection = window.getSelection();
     if (!selection || selection.rangeCount === 0) {
@@ -237,6 +298,8 @@ export default function GrammaticalHighlighter({
           const wordAnalysis = analysis.find(a => 
             a.word.toLowerCase() === cleanWord.toLowerCase()
           );
+          
+          console.log(`Processing word: "${word}" -> clean: "${cleanWord}" -> found analysis:`, !!wordAnalysis);
           
           if (wordAnalysis) {
             // Create the highlighted span - prioritize verbs and prepositions, otherwise use case colors

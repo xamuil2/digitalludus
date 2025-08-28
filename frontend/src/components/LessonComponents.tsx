@@ -230,7 +230,7 @@ export function ProsePassage({ lesson }: { lesson: Lesson }) {
             {displayMode === 'grammar' ? (
               <GrammaticalHighlighter
                 text={latinText}
-                sentenceId={lesson.prosePassage.sentences[0]?.id} // Use first sentence for now, could be improved
+                sentenceId={undefined} // Don't restrict to a specific sentence, allow cross-sentence analysis
                 grammaticalData={lesson.prosePassage.grammaticalData}
                 lessonId={lesson.id}
                 className="font-classical text-lg sm:text-xl leading-relaxed text-roman-black tracking-wide"
