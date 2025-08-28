@@ -979,6 +979,89 @@ export const lesson2Template: Lesson = {
       { id: "2-prose-47", latin: "ancilla Grumionem delectat.", order: 47 },
       { id: "2-prose-48", latin: "Grumio ancillam delectat.", order: 48 },
       { id: "2-prose-49", latin: "Grumio est laetissimus.", order: 49 }
+    ],
+    grammaticalData: [
+      {
+        sentenceId: "2-prose-1",
+        words: [
+          { word: "amicus", lemma: "amicus", case: "nominative", number: "singular", gender: "masculine", partOfSpeech: "noun" },
+          { word: "Caecilium", lemma: "Caecilius", case: "accusative", number: "singular", gender: "masculine", partOfSpeech: "noun" },
+          { word: "visitat", lemma: "visito", person: "3rd", number: "singular", tense: "present", voice: "active", mood: "indicative", partOfSpeech: "verb" }
+        ]
+      },
+      {
+        sentenceId: "2-prose-2",
+        words: [
+          { word: "amicus", lemma: "amicus", case: "nominative", number: "singular", gender: "masculine", partOfSpeech: "noun" },
+          { word: "est", lemma: "sum", person: "3rd", number: "singular", tense: "present", voice: "active", mood: "indicative", partOfSpeech: "verb" },
+          { word: "mercator", lemma: "mercator", case: "nominative", number: "singular", gender: "masculine", partOfSpeech: "noun" }
+        ]
+      },
+      {
+        sentenceId: "2-prose-3",
+        words: [
+          { word: "mercator", lemma: "mercator", case: "nominative", number: "singular", gender: "masculine", partOfSpeech: "noun" },
+          { word: "villam", lemma: "villa", case: "accusative", number: "singular", gender: "feminine", partOfSpeech: "noun" },
+          { word: "intrat", lemma: "intro", person: "3rd", number: "singular", tense: "present", voice: "active", mood: "indicative", partOfSpeech: "verb" }
+        ]
+      },
+      {
+        sentenceId: "2-prose-4",
+        words: [
+          { word: "Clemens", lemma: "Clemens", case: "nominative", number: "singular", gender: "masculine", partOfSpeech: "noun" },
+          { word: "est", lemma: "sum", person: "3rd", number: "singular", tense: "present", voice: "active", mood: "indicative", partOfSpeech: "verb" },
+          { word: "in", lemma: "in", partOfSpeech: "preposition" },
+          { word: "ātriō", lemma: "atrium", case: "ablative", number: "singular", gender: "neuter", partOfSpeech: "noun" }
+        ]
+      },
+      {
+        sentenceId: "2-prose-5",
+        words: [
+          { word: "Clemens", lemma: "Clemens", case: "nominative", number: "singular", gender: "masculine", partOfSpeech: "noun" },
+          { word: "mercatorem", lemma: "mercator", case: "accusative", number: "singular", gender: "masculine", partOfSpeech: "noun" },
+          { word: "salutat", lemma: "saluto", person: "3rd", number: "singular", tense: "present", voice: "active", mood: "indicative", partOfSpeech: "verb" }
+        ]
+      },
+      {
+        sentenceId: "2-prose-6",
+        words: [
+          { word: "Caecilius", lemma: "Caecilius", case: "nominative", number: "singular", gender: "masculine", partOfSpeech: "noun" },
+          { word: "est", lemma: "sum", person: "3rd", number: "singular", tense: "present", voice: "active", mood: "indicative", partOfSpeech: "verb" },
+          { word: "in", lemma: "in", partOfSpeech: "preposition" },
+          { word: "tablīnō", lemma: "tablinum", case: "ablative", number: "singular", gender: "neuter", partOfSpeech: "noun" }
+        ]
+      },
+      {
+        sentenceId: "2-prose-7",
+        words: [
+          { word: "Caecilius", lemma: "Caecilius", case: "nominative", number: "singular", gender: "masculine", partOfSpeech: "noun" },
+          { word: "pecuniam", lemma: "pecunia", case: "accusative", number: "singular", gender: "feminine", partOfSpeech: "noun" },
+          { word: "numerat", lemma: "numero", person: "3rd", number: "singular", tense: "present", voice: "active", mood: "indicative", partOfSpeech: "verb" }
+        ]
+      },
+      {
+        sentenceId: "2-prose-8",
+        words: [
+          { word: "Caecilius", lemma: "Caecilius", case: "nominative", number: "singular", gender: "masculine", partOfSpeech: "noun" },
+          { word: "est", lemma: "sum", person: "3rd", number: "singular", tense: "present", voice: "active", mood: "indicative", partOfSpeech: "verb" },
+          { word: "argentarius", lemma: "argentarius", case: "nominative", number: "singular", gender: "masculine", partOfSpeech: "noun" }
+        ]
+      },
+      {
+        sentenceId: "2-prose-9",
+        words: [
+          { word: "amicus", lemma: "amicus", case: "nominative", number: "singular", gender: "masculine", partOfSpeech: "noun" },
+          { word: "tablīnum", lemma: "tablinum", case: "accusative", number: "singular", gender: "neuter", partOfSpeech: "noun" },
+          { word: "intrat", lemma: "intro", person: "3rd", number: "singular", tense: "present", voice: "active", mood: "indicative", partOfSpeech: "verb" }
+        ]
+      },
+      {
+        sentenceId: "2-prose-10",
+        words: [
+          { word: "Caecilius", lemma: "Caecilius", case: "nominative", number: "singular", gender: "masculine", partOfSpeech: "noun" },
+          { word: "surgit", lemma: "surgo", person: "3rd", number: "singular", tense: "present", voice: "active", mood: "indicative", partOfSpeech: "verb" }
+        ]
+      }
     ]
   },
   
@@ -1294,7 +1377,98 @@ export const lesson3Template: Lesson = {
       { id: "3-prose-43", latin: "Caecilius ad villam revenit et triclinium intrat.", english: "Caecilius returns to the house and enters the dining room.", order: 43 },
       { id: "3-prose-44", latin: "Caecilius picturam intente spectat et picturam laudat.", english: "Caecilius looks intently at the picture and praises the picture.", order: 44 }
     ],
-    fullTranslation: "Caecilius is not in the house. Caecilius is doing business in the forum. Caecilius is a banker. The banker counts money. Caecilius looks around the forum. Look! A painter is walking in the forum. The painter is Celer. Celer greets Caecilius. Look! A barber is also in the forum. The barber is Pantagathus. Caecilius sees the barber. \"Hello!\" Caecilius greets the barber. \"Hello!\" Pantagathus replies. Look! A slave-dealer enters the forum. The slave-dealer is Syphax. The slave-dealer waits for a merchant. The merchant does not come. Syphax is angry. Syphax criticizes the merchant. The painter comes to the house. The painter is Celer. Celer knocks on the door. Clemens does not hear the painter. The slave is in the garden. Celer shouts. The dog hears Celer and barks. Quintus hears the dog. Quintus comes to the door. The son opens the door. Celer greets Quintus and enters the house. Metella is in the kitchen. Quintus calls his mother. Metella enters the atrium. The painter greets Metella. Metella leads the painter to the dining room. Celer works in the dining room. Celer paints a picture. A large lion is in the picture. Hercules is also in the picture. The lion fiercely attacks Hercules. Hercules holds a large club and strikes the lion. Hercules is brave. Caecilius returns to the house and enters the dining room. Caecilius looks intently at the picture and praises the picture."
+    fullTranslation: "Caecilius is not in the house. Caecilius is doing business in the forum. Caecilius is a banker. The banker counts money. Caecilius looks around the forum. Look! A painter is walking in the forum. The painter is Celer. Celer greets Caecilius. Look! A barber is also in the forum. The barber is Pantagathus. Caecilius sees the barber. \"Hello!\" Caecilius greets the barber. \"Hello!\" Pantagathus replies. Look! A slave-dealer enters the forum. The slave-dealer is Syphax. The slave-dealer waits for a merchant. The merchant does not come. Syphax is angry. Syphax criticizes the merchant. The painter comes to the house. The painter is Celer. Celer knocks on the door. Clemens does not hear the painter. The slave is in the garden. Celer shouts. The dog hears Celer and barks. Quintus hears the dog. Quintus comes to the door. The son opens the door. Celer greets Quintus and enters the house. Metella is in the kitchen. Quintus calls his mother. Metella enters the atrium. The painter greets Metella. Metella leads the painter to the dining room. Celer works in the dining room. Celer paints a picture. A large lion is in the picture. Hercules is also in the picture. The lion fiercely attacks Hercules. Hercules holds a large club and strikes the lion. Hercules is brave. Caecilius returns to the house and enters the dining room. Caecilius looks intently at the picture and praises the picture.",
+    grammaticalData: [
+      {
+        sentenceId: "3-prose-1",
+        words: [
+          { word: "Caecilius", lemma: "Caecilius", case: "nominative", number: "singular", gender: "masculine", partOfSpeech: "noun" },
+          { word: "non", lemma: "non", partOfSpeech: "adverb" },
+          { word: "est", lemma: "sum", person: "3rd", number: "singular", tense: "present", voice: "active", mood: "indicative", partOfSpeech: "verb" },
+          { word: "in", lemma: "in", partOfSpeech: "preposition" },
+          { word: "villa", lemma: "villa", case: "ablative", number: "singular", gender: "feminine", partOfSpeech: "noun" }
+        ]
+      },
+      {
+        sentenceId: "3-prose-2",
+        words: [
+          { word: "Caecilius", lemma: "Caecilius", case: "nominative", number: "singular", gender: "masculine", partOfSpeech: "noun" },
+          { word: "in", lemma: "in", partOfSpeech: "preposition" },
+          { word: "foro", lemma: "forum", case: "ablative", number: "singular", gender: "neuter", partOfSpeech: "noun" },
+          { word: "negotium", lemma: "negotium", case: "accusative", number: "singular", gender: "neuter", partOfSpeech: "noun" },
+          { word: "agit", lemma: "ago", person: "3rd", number: "singular", tense: "present", voice: "active", mood: "indicative", partOfSpeech: "verb" }
+        ]
+      },
+      {
+        sentenceId: "3-prose-3",
+        words: [
+          { word: "Caecilius", lemma: "Caecilius", case: "nominative", number: "singular", gender: "masculine", partOfSpeech: "noun" },
+          { word: "est", lemma: "sum", person: "3rd", number: "singular", tense: "present", voice: "active", mood: "indicative", partOfSpeech: "verb" },
+          { word: "argentarius", lemma: "argentarius", case: "nominative", number: "singular", gender: "masculine", partOfSpeech: "noun" }
+        ]
+      },
+      {
+        sentenceId: "3-prose-4",
+        words: [
+          { word: "argentarius", lemma: "argentarius", case: "nominative", number: "singular", gender: "masculine", partOfSpeech: "noun" },
+          { word: "pecuniam", lemma: "pecunia", case: "accusative", number: "singular", gender: "feminine", partOfSpeech: "noun" },
+          { word: "numerat", lemma: "numero", person: "3rd", number: "singular", tense: "present", voice: "active", mood: "indicative", partOfSpeech: "verb" }
+        ]
+      },
+      {
+        sentenceId: "3-prose-5",
+        words: [
+          { word: "Caecilius", lemma: "Caecilius", case: "nominative", number: "singular", gender: "masculine", partOfSpeech: "noun" },
+          { word: "forum", lemma: "forum", case: "accusative", number: "singular", gender: "neuter", partOfSpeech: "noun" },
+          { word: "circumspectat", lemma: "circumspecto", person: "3rd", number: "singular", tense: "present", voice: "active", mood: "indicative", partOfSpeech: "verb" }
+        ]
+      },
+      {
+        sentenceId: "3-prose-6",
+        words: [
+          { word: "ecce", lemma: "ecce", partOfSpeech: "interjection" },
+          { word: "pictor", lemma: "pictor", case: "nominative", number: "singular", gender: "masculine", partOfSpeech: "noun" },
+          { word: "in", lemma: "in", partOfSpeech: "preposition" },
+          { word: "foro", lemma: "forum", case: "ablative", number: "singular", gender: "neuter", partOfSpeech: "noun" },
+          { word: "ambulat", lemma: "ambulo", person: "3rd", number: "singular", tense: "present", voice: "active", mood: "indicative", partOfSpeech: "verb" }
+        ]
+      },
+      {
+        sentenceId: "3-prose-7",
+        words: [
+          { word: "pictor", lemma: "pictor", case: "nominative", number: "singular", gender: "masculine", partOfSpeech: "noun" },
+          { word: "est", lemma: "sum", person: "3rd", number: "singular", tense: "present", voice: "active", mood: "indicative", partOfSpeech: "verb" },
+          { word: "Celer", lemma: "Celer", case: "nominative", number: "singular", gender: "masculine", partOfSpeech: "noun" }
+        ]
+      },
+      {
+        sentenceId: "3-prose-8",
+        words: [
+          { word: "Celer", lemma: "Celer", case: "nominative", number: "singular", gender: "masculine", partOfSpeech: "noun" },
+          { word: "Caecilium", lemma: "Caecilius", case: "accusative", number: "singular", gender: "masculine", partOfSpeech: "noun" },
+          { word: "salutat", lemma: "saluto", person: "3rd", number: "singular", tense: "present", voice: "active", mood: "indicative", partOfSpeech: "verb" }
+        ]
+      },
+      {
+        sentenceId: "3-prose-9",
+        words: [
+          { word: "ecce", lemma: "ecce", partOfSpeech: "interjection" },
+          { word: "tonsor", lemma: "tonsor", case: "nominative", number: "singular", gender: "masculine", partOfSpeech: "noun" },
+          { word: "quoque", lemma: "quoque", partOfSpeech: "adverb" },
+          { word: "est", lemma: "sum", person: "3rd", number: "singular", tense: "present", voice: "active", mood: "indicative", partOfSpeech: "verb" },
+          { word: "in", lemma: "in", partOfSpeech: "preposition" },
+          { word: "foro", lemma: "forum", case: "ablative", number: "singular", gender: "neuter", partOfSpeech: "noun" }
+        ]
+      },
+      {
+        sentenceId: "3-prose-10",
+        words: [
+          { word: "tonsor", lemma: "tonsor", case: "nominative", number: "singular", gender: "masculine", partOfSpeech: "noun" },
+          { word: "est", lemma: "sum", person: "3rd", number: "singular", tense: "present", voice: "active", mood: "indicative", partOfSpeech: "verb" },
+          { word: "Pantagathus", lemma: "Pantagathus", case: "nominative", number: "singular", gender: "masculine", partOfSpeech: "noun" }
+        ]
+      }
+    ]
   },
   
   vocabulary: [
@@ -1723,7 +1897,89 @@ export const lesson4Template: Lesson = {
       { id: "4-prose-84", latin: "\"ecce! anulus rem probat.\"", english: "\"Look! The ring proves the case.\"", order: 84 },
       { id: "4-prose-85", latin: "\"ego Hermogenem convinco.\"", english: "\"I convict Hermogenes.\"", order: 85 }
     ],
-    fullTranslation: "I am a cook. I cook dinner. I am a banker. I hold money. I am a barber. I trim a beard. I am a slave-dealer. I sell a slave. I am a poet. I recite a verse. I am a painter. I paint a lion. What are you cooking? I cook dinner. What are you holding? I hold money. What are you trimming? I trim a beard. What are you selling? I sell a slave. What are you reciting? I recite a verse. What are you painting? I paint a lion. Who are you? I am Melissa. I am Syphax. I am Pantagathus. Caecilius is in the forum. Caecilius has a banker's stall in the forum. Hermogenes comes to the forum. Hermogenes is a Greek merchant. The merchant has a ship. The merchant greets Caecilius. \"I am a Greek merchant,\" says Hermogenes. \"I am an honest merchant.\" \"I am looking for money.\" \"Why are you looking for money?\" says Caecilius. \"You have a ship.\" \"But the ship is not here,\" replies Hermogenes. \"The ship is in Greece.\" \"I do not have money.\" \"However, I am honest.\" \"I always give back money.\" \"Look!\" says Caecilius. \"I have a wax tablet. Do you have a ring?\" \"I have a ring,\" replies Hermogenes. \"The ring has a seal.\" \"Look! I press the seal into the wax.\" Caecilius hands over the money. The merchant takes the money and runs from the forum. Alas! Hermogenes does not return. The merchant does not give back the money. Caecilius summons Hermogenes to the law court. The judge enters the law court. \"Who are you?\" says the judge. \"I am Lucius Caecilius Iucundus,\" replies Caecilius. \"Are you a Pompeian?\" \"I am a Pompeian.\" \"What do you do in the city?\" \"I come to the forum daily. I am a banker.\" \"Why do you come to the law court today?\" \"Hermogenes owes a lot of money.\" \"Hermogenes does not give back the money.\" \"Caecilius is a liar!\" says Hermogenes. \"Who are you?\" says the judge. \"I am Hermogenes.\" \"Hermogenes, what do you do in the city?\" \"I do not owe money. My friend is a witness.\" \"I am a witness,\" says the friend. \"Hermogenes does not owe money.\" \"Caecilius is a liar.\" \"You, Hermogenes, are a liar,\" says Caecilius. \"Your friend is also a liar.\" \"You do not give back the money...\" \"Enough!\" says the judge. \"You accuse Hermogenes, but you do not prove the case.\" \"I have the wax tablet,\" says Caecilius. \"You see the seal in the wax.\" \"Alas!\" says Hermogenes. \"Hermogenes, do you have a ring?\" says the judge. \"Look! Hermogenes is hiding the ring,\" says Caecilius. \"Where is the ring?\" says the judge. \"Look! The ring proves the case.\" \"I convict Hermogenes.\""
+    fullTranslation: "I am a cook. I cook dinner. I am a banker. I hold money. I am a barber. I trim a beard. I am a slave-dealer. I sell a slave. I am a poet. I recite a verse. I am a painter. I paint a lion. What are you cooking? I cook dinner. What are you holding? I hold money. What are you trimming? I trim a beard. What are you selling? I sell a slave. What are you reciting? I recite a verse. What are you painting? I paint a lion. Who are you? I am Melissa. I am Syphax. I am Pantagathus. Caecilius is in the forum. Caecilius has a banker's stall in the forum. Hermogenes comes to the forum. Hermogenes is a Greek merchant. The merchant has a ship. The merchant greets Caecilius. \"I am a Greek merchant,\" says Hermogenes. \"I am an honest merchant.\" \"I am looking for money.\" \"Why are you looking for money?\" says Caecilius. \"You have a ship.\" \"But the ship is not here,\" replies Hermogenes. \"The ship is in Greece.\" \"I do not have money.\" \"However, I am honest.\" \"I always give back money.\" \"Look!\" says Caecilius. \"I have a wax tablet. Do you have a ring?\" \"I have a ring,\" replies Hermogenes. \"The ring has a seal.\" \"Look! I press the seal into the wax.\" Caecilius hands over the money. The merchant takes the money and runs from the forum. Alas! Hermogenes does not return. The merchant does not give back the money. Caecilius summons Hermogenes to the law court. The judge enters the law court. \"Who are you?\" says the judge. \"I am Lucius Caecilius Iucundus,\" replies Caecilius. \"Are you a Pompeian?\" \"I am a Pompeian.\" \"What do you do in the city?\" \"I come to the forum daily. I am a banker.\" \"Why do you come to the law court today?\" \"Hermogenes owes a lot of money.\" \"Hermogenes does not give back the money.\" \"Caecilius is a liar!\" says Hermogenes. \"Who are you?\" says the judge. \"I am Hermogenes.\" \"Hermogenes, what do you do in the city?\" \"I do not owe money. My friend is a witness.\" \"I am a witness,\" says the friend. \"Hermogenes does not owe money.\" \"Caecilius is a liar.\" \"You, Hermogenes, are a liar,\" says Caecilius. \"Your friend is also a liar.\" \"You do not give back the money...\" \"Enough!\" says the judge. \"You accuse Hermogenes, but you do not prove the case.\" \"I have the wax tablet,\" says Caecilius. \"You see the seal in the wax.\" \"Alas!\" says Hermogenes. \"Hermogenes, do you have a ring?\" says the judge. \"Look! Hermogenes is hiding the ring,\" says Caecilius. \"Where is the ring?\" says the judge. \"Look! The ring proves the case.\" \"I convict Hermogenes.\"",
+    grammaticalData: [
+      {
+        sentenceId: "4-prose-1",
+        words: [
+          { word: "ego", lemma: "ego", case: "nominative", number: "singular", partOfSpeech: "pronoun" },
+          { word: "sum", lemma: "sum", person: "1st", number: "singular", tense: "present", voice: "active", mood: "indicative", partOfSpeech: "verb" },
+          { word: "coquus", lemma: "coquus", case: "nominative", number: "singular", gender: "masculine", partOfSpeech: "noun" }
+        ]
+      },
+      {
+        sentenceId: "4-prose-2",
+        words: [
+          { word: "ego", lemma: "ego", case: "nominative", number: "singular", partOfSpeech: "pronoun" },
+          { word: "cenam", lemma: "cena", case: "accusative", number: "singular", gender: "feminine", partOfSpeech: "noun" },
+          { word: "coquo", lemma: "coquo", person: "1st", number: "singular", tense: "present", voice: "active", mood: "indicative", partOfSpeech: "verb" }
+        ]
+      },
+      {
+        sentenceId: "4-prose-3",
+        words: [
+          { word: "ego", lemma: "ego", case: "nominative", number: "singular", partOfSpeech: "pronoun" },
+          { word: "sum", lemma: "sum", person: "1st", number: "singular", tense: "present", voice: "active", mood: "indicative", partOfSpeech: "verb" },
+          { word: "argentarius", lemma: "argentarius", case: "nominative", number: "singular", gender: "masculine", partOfSpeech: "noun" }
+        ]
+      },
+      {
+        sentenceId: "4-prose-4",
+        words: [
+          { word: "ego", lemma: "ego", case: "nominative", number: "singular", partOfSpeech: "pronoun" },
+          { word: "pecuniam", lemma: "pecunia", case: "accusative", number: "singular", gender: "feminine", partOfSpeech: "noun" },
+          { word: "teneo", lemma: "teneo", person: "1st", number: "singular", tense: "present", voice: "active", mood: "indicative", partOfSpeech: "verb" }
+        ]
+      },
+      {
+        sentenceId: "4-prose-5",
+        words: [
+          { word: "ego", lemma: "ego", case: "nominative", number: "singular", partOfSpeech: "pronoun" },
+          { word: "sum", lemma: "sum", person: "1st", number: "singular", tense: "present", voice: "active", mood: "indicative", partOfSpeech: "verb" },
+          { word: "tonsor", lemma: "tonsor", case: "nominative", number: "singular", gender: "masculine", partOfSpeech: "noun" }
+        ]
+      },
+      {
+        sentenceId: "4-prose-6",
+        words: [
+          { word: "ego", lemma: "ego", case: "nominative", number: "singular", partOfSpeech: "pronoun" },
+          { word: "barbam", lemma: "barba", case: "accusative", number: "singular", gender: "feminine", partOfSpeech: "noun" },
+          { word: "tondeo", lemma: "tondeo", person: "1st", number: "singular", tense: "present", voice: "active", mood: "indicative", partOfSpeech: "verb" }
+        ]
+      },
+      {
+        sentenceId: "4-prose-7",
+        words: [
+          { word: "ego", lemma: "ego", case: "nominative", number: "singular", partOfSpeech: "pronoun" },
+          { word: "sum", lemma: "sum", person: "1st", number: "singular", tense: "present", voice: "active", mood: "indicative", partOfSpeech: "verb" },
+          { word: "venalicius", lemma: "venalicius", case: "nominative", number: "singular", gender: "masculine", partOfSpeech: "noun" }
+        ]
+      },
+      {
+        sentenceId: "4-prose-8",
+        words: [
+          { word: "ego", lemma: "ego", case: "nominative", number: "singular", partOfSpeech: "pronoun" },
+          { word: "servum", lemma: "servus", case: "accusative", number: "singular", gender: "masculine", partOfSpeech: "noun" },
+          { word: "vendo", lemma: "vendo", person: "1st", number: "singular", tense: "present", voice: "active", mood: "indicative", partOfSpeech: "verb" }
+        ]
+      },
+      {
+        sentenceId: "4-prose-9",
+        words: [
+          { word: "ego", lemma: "ego", case: "nominative", number: "singular", partOfSpeech: "pronoun" },
+          { word: "sum", lemma: "sum", person: "1st", number: "singular", tense: "present", voice: "active", mood: "indicative", partOfSpeech: "verb" },
+          { word: "poeta", lemma: "poeta", case: "nominative", number: "singular", gender: "masculine", partOfSpeech: "noun" }
+        ]
+      },
+      {
+        sentenceId: "4-prose-10",
+        words: [
+          { word: "ego", lemma: "ego", case: "nominative", number: "singular", partOfSpeech: "pronoun" },
+          { word: "versum", lemma: "versus", case: "accusative", number: "singular", gender: "masculine", partOfSpeech: "noun" },
+          { word: "recito", lemma: "recito", person: "1st", number: "singular", tense: "present", voice: "active", mood: "indicative", partOfSpeech: "verb" }
+        ]
+      }
+    ]
   },
   
   vocabulary: [
